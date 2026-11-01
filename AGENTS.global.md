@@ -1,4 +1,4 @@
-# Working preferences
+# Global AGENTS.md
 
 ## Context
 - I am a recent university graduate who develops software for personal and company projects.

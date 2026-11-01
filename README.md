@@ -24,6 +24,7 @@ Every skill is one of two kinds:
 - **[arena](./skills/arena/SKILL.md)**: Compare parallel candidates for the same task, select a base, combine their strongest parts, and verify the result.
 - **[benchmark-checklist](./skills/benchmark-checklist/SKILL.md)**: Check performance measurements for bottlenecks, fair tuning, errors, repeatability, and user-visible impact.
 - **[blast-radius](./skills/blast-radius/SKILL.md)**: Trace what a change could break beyond its diff and run real code to prove the key safety assumptions.
+- **[bro](./skills/bro/SKILL.md)**: Say it again in plain human language, without jargon.
 - **[correct](./skills/correct/SKILL.md)**: Find the mistakes agents keep repeating in this repo and make each one impossible.
 - **[create-verification-skill](./skills/create-verification-skill/SKILL.md)**: Generate and exercise a project-local skill for launching the real app, driving features, and preserving evidence.
 - **[ds-prompting](./skills/ds-prompting/SKILL.md)**: DeepSeek 极限用量提示词的逐字存档，需要原样取用时调用。

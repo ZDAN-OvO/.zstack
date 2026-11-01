@@ -55,7 +55,7 @@ The user runs `/reload` in Pi after a skill or its frontmatter changes.
 - `~/.agents/scoped-skills` is a symlink to `scoped-skills/` for a stable path to reach it from a project, not for discovery. Pi's user skill locations are `~/.pi/agent/skills` and `~/.agents/skills`; it never scans the rest of `~/.agents/`, so the scoped folder stays inert however it is linked.
 - Because of the first symlink, writing into `~/.agents/skills/<name>` writes into this repo's working tree. Tools that install skills by writing there modify the repo directly; treat those changes as unreviewed and verify them with `git status`.
 - `scripts/link-skills.mjs` maintains both links; it is the only supported way to publish skills. Idempotent, no dependencies.
-- `global-agents-principle.md` is the global principles asset. Publish it by symlink at `~/.agents/AGENTS.md` for shared consumers and at `~/.pi/agent/AGENTS.md` for Pi's native context loader. This repo's own instructions remain in this file.
+- `AGENTS.global.md` is the global instructions asset. Publish it by symlink at `~/.agents/AGENTS.md` for shared consumers and at `~/.pi/agent/AGENTS.md` for Pi's native context loader. This repo's own instructions remain in this file.
 
 ## Verify library assets
 
