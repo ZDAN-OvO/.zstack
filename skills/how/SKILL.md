@@ -8,54 +8,29 @@ disable-model-invocation: true
 
 Explore the codebase to answer "how does X work?" questions. Produce architectural explanations at the level of a senior engineer onboarding onto a subsystem, enough to build a working mental model, not so much that it reads like annotated source code.
 
-Every spawn below names a seat. Resolve it per [Seats](#seats).
+Every spawn uses Pi's `subagent` tool with `agent: "scout"` for explorers and `agent: "reviewer"` for explainers, and a read-only task brief. Explorers use the `how explorer` line in `~/.pi/agent/pstack-models.md`, and every explainer uses the `how explainer` line. Set `model` to that line's exact Pi `provider/id`; if the file or line is missing, or the value is `auto`, leave `model` unset to use the agent's configured Pi model. For `inherit-parent`, pass the current session's exact `provider/id`. Use `subagent({ action: "models" })` to inspect available models. If a launch fails, stop and report the failure rather than switching runtimes or retrying a rejected model. Read `/pi-subagents` for the native call shape and reasoning overrides. Run dependent exploration and synthesis inside one async scripted workflow; native completion wakes the parent.
 
-## Step 1. Assess Complexity
+## 1. Assess complexity
 
 If the scope is ambiguous, state your interpretation and explore. The user can redirect.
 
-- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): no explorers. One explainer explores and explains in a single pass. Go to Step 2b.
-- **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): spawn parallel explorers first, then hand off to the explainer. Go to Step 2a.
+- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): no explorers. Spawn one explainer that explores and explains in one pass, built from `references/explainer-prompt.md` without the explorer-findings section. Go to step 4.
+- **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): go to step 2.
 
 When in doubt, take the simple path.
 
-## Step 2a. Explore (complex questions only)
+## 2. Explore (complex only)
 
-Decompose the question into 2 to 4 exploration angles, each a distinct slice of the subsystem. Spawn all explorers in a single message, each read-only, on the `explorer` seat.
+Decompose the question into 2 to 4 angles, each a distinct slice of the subsystem. Spawn all explorers in a single message, each with `references/explorer-prompt.md` and its angle filled in.
 
-Each explorer gets the prompt in `references/explorer-prompt.md` with its angle filled in. Then go to Step 3.
+## 3. Synthesize (complex only)
 
-## Step 2b. Direct Explain (simple questions)
+Once all explorers have returned, spawn one explainer with `references/explainer-prompt.md` and every explorer's findings filled in.
 
-Spawn one read-only subagent on the `explainer` seat that explores and explains in one pass.
+## 4. Present
 
-Build its prompt from `references/explainer-prompt.md` without the explorer-findings section. Go to Step 4.
+Present the explainer's output. Light edits for clarity or context from the conversation are fine. Do not substantially rewrite it.
 
-## Step 3. Synthesize (complex questions only)
-
-Once all explorers have returned, spawn one read-only subagent on the `explainer` seat to synthesize their findings into one explanation.
-
-Build its prompt from `references/explainer-prompt.md` with every explorer's findings filled in.
-
-## Step 4. Present
-
-Present the explainer's output to the user. Light edits for clarity or context from the conversation are fine. Do not substantially rewrite it.
-
-## Output Format
+## Output format
 
 The explanation uses the sections defined in `references/explainer-prompt.md`, dropping any that do not apply: Overview, Key Concepts, How It Works, Where Things Live, Gotchas.
-
-## Seats
-
-A seat is a capability profile plus a reasoning effort, never a model name. Resolve each seat in this order:
-
-1. Use your environment's own role-to-model mapping when it has one for that seat. Its file, variable, or setting name is specific to that runtime, so don't assume a path.
-2. Otherwise leave the model unset so the harness picks, and set only the reasoning effort.
-3. When you must choose a model by hand, match the profile, then say which seat ran on what. If nothing available fits, say so instead of quietly substituting.
-
-Effort, weakest to strongest: `minimal`, `low`, `medium`, `high`, `max`. Use the closest level your runtime offers, and leave effort unset to inherit the parent's.
-
-| Seat | Profile | Effort |
-| --- | --- | --- |
-| explorer | Fast and cheap across many files. Reports what the code does with paths and line references, and resists filling gaps with guesses. | low |
-| explainer | Strong synthesis and plain prose for a senior-engineer reader. Turns findings into a mental model rather than a file tour. | high |

@@ -1,6 +1,6 @@
 # Agent Instructions
 
-This repo is a skill library, not a project to build or test. Each directory under `skills/` is one Agent Skill, copied from an upstream source and published by symlinking `~/.agents/skills` at the `skills/` folder itself.
+This repo is a skill library, not a project to build or test. Each directory under `skills/` is one Agent Skill, copied from an upstream source and published by symlinking `~/.agents/skills` at the `skills/` folder itself. `scoped-skills/` is published the same way at `~/.agents/scoped-skills`, which is not a place Pi reads.
 
 ## Layout
 
@@ -9,6 +9,7 @@ This repo is a skill library, not a project to build or test. Each directory und
 | Skill | `skills/<skill-name>/SKILL.md` |
 | Categories | None. `skills/` is flat: no bucket, no lifecycle folder, no nesting |
 | Root index | `README.md` lists every skill, grouped as user-invoked and model-invoked. It is the only index |
+| Scoped | `scoped-skills/<skill-name>/SKILL.md`, published as the whole folder at `~/.agents/scoped-skills`. Pi reads only `~/.agents/skills` under `~/.agents/`, so nothing here is ever loaded on its own. `README.md` keeps it under `## Scoped`, and a project opts one in by symlinking it into its own `.agents/skills/` |
 | Supporting files | `references/`, `scripts/`, and assets stay beside `SKILL.md` |
 | Frontmatter | `name` must equal the skill directory name |
 
@@ -42,7 +43,7 @@ This is a Pi porting rule rather than upstream wording. When an upstream skill l
    node scripts/link-skills.mjs --check
    ```
 
-   `~/.agents/skills` is one symlink to `skills/`, so a new skill needs no per-skill link: run the script once if the link is missing or points elsewhere. It replaces an older per-skill directory only when every entry in it points back into this repo; otherwise it leaves the directory alone and tells you what it found. It does not read frontmatter, so check the invocation flag against upstream yourself.
+   The script maintains both links, `~/.agents/skills` -> `skills/` and `~/.agents/scoped-skills` -> `scoped-skills/`, so a new skill needs no per-skill link: run it once if either link is missing or points elsewhere. It replaces an older per-skill directory only when every entry in it points back into this repo; otherwise it leaves the directory alone and tells you what it found. It does not read frontmatter, so check the invocation flag against upstream yourself.
 
 7. Add the entry to `README.md` under the right invocation heading, and report the source and revision, plus any reference the copy left dangling (a playbook, skill, or path that does not exist here).
 
@@ -51,19 +52,21 @@ The user runs `/reload` in Pi after a skill or its frontmatter changes.
 ## Facts
 
 - `~/.agents/skills` is Pi's user skill directory, and it is a single symlink to this repo's `skills/` folder. Every skill directory here is immediately a skill Pi can load.
-- Because of that symlink, writing into `~/.agents/skills/<name>` writes into this repo's working tree. Tools that install skills by writing there modify the repo directly; treat those changes as unreviewed and verify them with `git status`.
-- `scripts/link-skills.mjs` maintains the symlink; it is the only supported way to publish skills. Idempotent, no dependencies.
+- `~/.agents/scoped-skills` is a symlink to `scoped-skills/` for a stable path to reach it from a project, not for discovery. Pi's user skill locations are `~/.pi/agent/skills` and `~/.agents/skills`; it never scans the rest of `~/.agents/`, so the scoped folder stays inert however it is linked.
+- Because of the first symlink, writing into `~/.agents/skills/<name>` writes into this repo's working tree. Tools that install skills by writing there modify the repo directly; treat those changes as unreviewed and verify them with `git status`.
+- `scripts/link-skills.mjs` maintains both links; it is the only supported way to publish skills. Idempotent, no dependencies.
 - `global-agents-principle.md` is the global principles asset. Publish it by symlink at `~/.agents/AGENTS.md` for shared consumers and at `~/.pi/agent/AGENTS.md` for Pi's native context loader. This repo's own instructions remain in this file.
 
 ## Verify library assets
 
 | Check | Command |
 | --- | --- |
-| `~/.agents/skills` points at `skills/` | `node scripts/link-skills.mjs --check` |
+| `~/.agents/skills` points at `skills/`, and `~/.agents/scoped-skills` at `scoped-skills/` | `node scripts/link-skills.mjs --check` |
 | Flat layout, root index, frontmatter, invocation mode | `node scripts/check-assets.mjs` |
+| Scoped layout: `## Scoped` entries, frontmatter, duplicates | `node scripts/check-assets.mjs` |
 | Checker regression tests | `node --test scripts/*.test.mjs` |
 
-`.github/workflows/validate-assets.yml` runs the last two on every push and pull request. The link check stays local, because CI has no `~/.agents/skills`.
+`.github/workflows/validate-assets.yml` runs the last two on every push and pull request. The link check stays local, because CI has no `~/.agents`.
 
 ## Don't
 
@@ -72,3 +75,4 @@ The user runs `/reload` in Pi after a skill or its frontmatter changes.
 - Do not create a category, bucket, or lifecycle folder under `skills/`. A retired skill is deleted, and git history is the archive.
 - Do not put a real directory or file directly under `skills/`. Every entry there is a skill directory with a `SKILL.md`.
 - Do not let `README.md` drift from `skills/`. Update it in the same change that touches the skill.
+- Do not use `scoped-skills/` as a staging area for the next `skills/` entry. It holds skills that only pay off in one stack or one file format, and being out of context is the whole point.

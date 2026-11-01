@@ -44,6 +44,14 @@
 - End substantial tasks with a brief summary of the result, verification, and anything that still needs my decision.
 - Apply my corrections to subsequent work. Suggest a durable instruction for recurring mistakes rather than creating a lesson file after every correction.
 
+## Memory management
+- Store information only when it is likely to improve a future session: explicit user preferences and corrections, durable constraints, confirmed decisions and their rationale, or hard-won lessons that are costly to rediscover. Honor explicit requests to remember; choose storage by scope and lifetime.
+- Use `MEMORY.md` for concise, durable cross-project knowledge. Put task progress, dated observations, session outcomes, and project-specific history in `daily`; actionable reminders in `scratchpad`; project rules and reusable procedures in the relevant project document or skill. Keep only a short retrieval pointer in global memory when needed.
+- Keep one authoritative source. Reference existing instructions and documents instead of copying them. Derive file paths, commands, architecture, and implementation details from the current repository when needed; preserve only non-obvious rationale or discovery context.
+- Before writing, check related memory and merge or replace overlapping entries. Record user statements and verified findings as such; label uncertainty, project scope, and dates for changeable facts. Preserve explicit corrections without inferring broader preferences or abilities.
+- Treat memory as historical context. Current user instructions and applicable project rules govern behavior; recheck changeable facts before relying on them. Store no credentials or secrets.
+- Keep `MEMORY.md` below 3,000 characters and 150 lines. Before a write would exceed either budget, consolidate duplicates, archive historical detail to `daily`, and retain essential constraints and retrieval pointers. Preserve a recoverable copy before rewriting, then verify retained meaning and actual size.
+
 ## Approval boundaries
 - Ask before irreversible or hard-to-reverse actions, including destructive deletion, discarding work, and destructive changes to shared data or history.
 - Ask before actions that use my identity or represent me to others, including sending messages, publishing posts, submitting forms, and committing or pushing under my identity.

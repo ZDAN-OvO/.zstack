@@ -64,6 +64,42 @@ function dirs(dir) {
     .sort();
 }
 
+// `scoped-skills/` is the second place a skill can live: indexed under `## Scoped`, never in
+// Pi's skill path. Its entries link `./scoped-skills/<name>/SKILL.md`.
+const SCOPED_DIR = "scoped-skills";
+const SCOPED_ENTRY = /\]\(\.\/scoped-skills\/([^/)\s]+)\/SKILL\.md\)/;
+
+// The `## Scoped` section's entries in file order.
+function scopedSection(readme) {
+  const lines = readme.split(/\r?\n/);
+  const start = lines.findIndex((line) => /^##\s+scoped\b/i.test(line));
+  if (start < 0) return null;
+  const body = [];
+  for (let i = start + 1; i < lines.length; i++) {
+    if (/^##\s+/.test(lines[i])) break;
+    body.push({ text: lines[i], lineNo: i + 1 });
+  }
+  const entries = [];
+  for (const line of body) {
+    const match = SCOPED_ENTRY.exec(line.text);
+    if (match) entries.push({ name: match[1], lineNo: line.lineNo });
+  }
+  return { entries };
+}
+
+// The frontmatter both layouts must agree on. `prefix` keeps scoped failures distinguishable.
+function checkFrontmatter(fail, rel, name, text, prefix = "") {
+  const fields = parseFrontmatter(text);
+  if (fields === null) {
+    fail(`${prefix}frontmatter-invalid`, rel, "no `---` delimited frontmatter block at the top of the file");
+    return;
+  }
+  if (fields.name !== name) {
+    fail(`${prefix}frontmatter-name-mismatch`, rel, `name is "${fields.name ?? ""}", directory is "${name}"`);
+  }
+  if (!(fields.description ?? "").trim()) fail(`${prefix}frontmatter-description-missing`, rel, "description is empty");
+}
+
 export function checkAssets(root) {
   const problems = [];
   const fail = (rule, file, message) => problems.push({ rule, file, message });
@@ -112,15 +148,10 @@ export function checkAssets(root) {
     }
     if (!indexed.has(name)) fail("skill-not-indexed", readmeRel, `"${name}" has no entry in the index`);
 
-    const fields = parseFrontmatter(fs.readFileSync(skillPath, "utf8"));
-    if (fields === null) {
-      fail("frontmatter-invalid", rel, "no `---` delimited frontmatter block at the top of the file");
-      continue;
-    }
-    if (fields.name !== name) {
-      fail("frontmatter-name-mismatch", rel, `name is "${fields.name ?? ""}", directory is "${name}"`);
-    }
-    if (!(fields.description ?? "").trim()) fail("frontmatter-description-missing", rel, "description is empty");
+    const text = fs.readFileSync(skillPath, "utf8");
+    const fields = parseFrontmatter(text);
+    checkFrontmatter(fail, rel, name, text);
+    if (fields === null) continue;
 
     const flagged = (fields["disable-model-invocation"] ?? "").trim().toLowerCase() === "true";
     const entry = entries.find((candidate) => candidate.name === name);
@@ -132,6 +163,46 @@ export function checkAssets(root) {
     } else if (entry.declared === "model" && flagged) {
       fail("invocation-mismatch", `${readmeRel}:${entry.lineNo}`, `"${name}" is listed as model-invoked but its frontmatter sets disable-model-invocation: true`);
     }
+  }
+
+  // `scoped-skills/` mirrors the index rule, split by whether git carries the skill at all.
+  const scopedDir = path.join(root, SCOPED_DIR);
+  const scopedDirs = fs.existsSync(scopedDir) ? dirs(scopedDir) : [];
+  const scoped = scopedSection(readme);
+  if (scopedDirs.length > 0 && scoped === null) {
+    fail("scoped-section-missing", readmeRel, `${SCOPED_DIR}/ holds skills but README has no "## Scoped" section`);
+  }
+  const scopedEntries = scoped?.entries ?? [];
+  const scopedIndexed = new Set(scopedEntries.map((entry) => entry.name));
+
+  for (const entry of scopedEntries) {
+    const where = `${readmeRel}:${entry.lineNo}`;
+    if (!fs.existsSync(path.join(scopedDir, entry.name, "SKILL.md"))) {
+      fail("scoped-index-entry-unresolved", where, `"${entry.name}" has no ${SCOPED_DIR}/${entry.name}/SKILL.md`);
+    }
+    if (indexed.has(entry.name)) {
+      fail("scoped-duplicate", where, `"${entry.name}" is a skill in skills/ and also listed as scoped`);
+    }
+  }
+  for (let i = 1; i < scopedEntries.length; i++) {
+    const prev = scopedEntries[i - 1];
+    const entry = scopedEntries[i];
+    if (entry.name < prev.name) {
+      fail("scoped-index-order", `${readmeRel}:${entry.lineNo}`, `"${entry.name}" comes after "${prev.name}"; entries are alphabetical`);
+    }
+  }
+
+  for (const name of scopedDirs) {
+    const rel = `${SCOPED_DIR}/${name}/SKILL.md`;
+    const skillPath = path.join(scopedDir, name, "SKILL.md");
+    if (!fs.existsSync(skillPath)) {
+      fail("scoped-no-skill-md", `${SCOPED_DIR}/${name}`, "directory has no SKILL.md");
+      continue;
+    }
+    if (!scopedIndexed.has(name)) {
+      fail("scoped-skill-not-indexed", readmeRel, `"${name}" has no entry in the Scoped section`);
+    }
+    checkFrontmatter(fail, rel, name, fs.readFileSync(skillPath, "utf8"), "scoped-");
   }
 
   return problems;

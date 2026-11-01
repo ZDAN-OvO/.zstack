@@ -1,6 +1,6 @@
 # astack
 
-My agent skill library. Each directory under `skills/` is one Agent Skill, copied byte for byte from an upstream source, adapted only where Pi needs it, and published by symlinking `~/.agents/skills` at the `skills/` folder itself.
+My agent skill library. Each directory under `skills/` is one Agent Skill, copied byte for byte from upstream and adapted only where Pi needs it, or written for this library. Skills are published by symlinking `~/.agents/skills` at the `skills/` folder itself.
 
 ## Layout
 
@@ -21,29 +21,36 @@ Every skill is one of two kinds:
 
 ## User-invoked
 
-- **[architect](./skills/architect/SKILL.md)**: Sketch types, signatures, and module structure before code, then stay in the loop while implementation fills in.
-- **[arena](./skills/arena/SKILL.md)**: Run N parallel candidates at the same task, pick one as the base, graft the strongest parts of the others into it.
-- **[book-to-skill](./skills/book-to-skill/SKILL.md)**: Convert a book or document into a structured agent skill holding its frameworks, mental models, and anti-patterns.
+- **[arena](./skills/arena/SKILL.md)**: Compare parallel candidates for the same task, select a base, combine their strongest parts, and verify the result.
+- **[benchmark-checklist](./skills/benchmark-checklist/SKILL.md)**: Check performance measurements for bottlenecks, fair tuning, errors, repeatability, and user-visible impact.
+- **[blast-radius](./skills/blast-radius/SKILL.md)**: Trace what a change could break beyond its diff and run real code to prove the key safety assumptions.
 - **[correct](./skills/correct/SKILL.md)**: Find the mistakes agents keep repeating in this repo and make each one impossible.
+- **[create-verification-skill](./skills/create-verification-skill/SKILL.md)**: Generate and exercise a project-local skill for launching the real app, driving features, and preserving evidence.
 - **[ds-prompting](./skills/ds-prompting/SKILL.md)**: DeepSeek 极限用量提示词的逐字存档，需要原样取用时调用。
 - **[grill-me](./skills/grill-me/SKILL.md)**: Get relentlessly interviewed about a plan or design until every branch of the design tree is settled.
 - **[grill-with-docs](./skills/grill-with-docs/SKILL.md)**: Grilling session that also builds the project's domain model, writing `GLOSSARY.md` and ADRs inline. Asks at most 3 questions per round.
 - **[handoff](./skills/handoff/SKILL.md)**: Compact the current conversation into a handoff document another agent can pick up.
-- **[how](./skills/how/SKILL.md)**: Walk the code before changing it; answer placement, ownership, and layering questions.
+- **[how](./skills/how/SKILL.md)**: Trace a subsystem’s architecture, runtime flow, ownership, and gotchas from the code.
+- **[implement-spec](./skills/implement-spec/SKILL.md)**: Run unblocked tickets in parallel worktrees, merge them into an integration branch, and review the completed spec.
+- **[improve-codebase-architecture](./skills/improve-codebase-architecture/SKILL.md)**: Find opportunities to deepen modules, compare them in a visual HTML report, and work through a chosen design.
 - **[in-your-own-words](./skills/in-your-own-words/SKILL.md)**: Restate your reading of the user's goals and the problem before working on it.
-- **[interrogate](./skills/interrogate/SKILL.md)**: Adversarial review of a change by one reviewer per reachable model family, synthesized into a verdict.
+- **[interrogate](./skills/interrogate/SKILL.md)**: Challenge a change with parallel adversaries and retain only findings confirmed by rerunning their reproductions.
+- **[learn-tech](./skills/learn-tech/SKILL.md)**: Learn a language, framework or library from official docs and version-matched source, checking understanding through teach-back and small exercises.
+- **[maintain-verification-skill](./skills/maintain-verification-skill/SKILL.md)**: Keep a project’s verification skill and feature map accurate through source review and live feature checks.
 - **[no-comments](./skills/no-comments/SKILL.md)**: Spawn the comment-sicko subagent, fix accepted findings, offer encodings for claimed constraints.
 - **[readme-crafter-skill](./skills/readme-crafter-skill/SKILL.md)**: Write, rewrite, or audit a repository's `README.md` as a landing page and onboarding guide.
 - **[retro](./skills/retro/SKILL.md)**: Retrospective on a coding session, most severe improvement first.
+- **[setup-matt-pocock-skills](./skills/setup-matt-pocock-skills/SKILL.md)**: Configure a repo's issue tracker, optional triage labels, and domain documentation for Matt Pocock's engineering skills.
 - **[sharpen](./skills/sharpen/SKILL.md)**: Make a task deeper rather than bigger, then rewrite the prompt to ask for that.
-- **[statechart](./skills/statechart/SKILL.md)**: Draw what the user sees as a Mermaid statechart from a TLA+ model, with found bugs as numbered paths.
-- **[teach](./skills/teach/SKILL.md)**: Explain a body of work plainly by running `/how` and `/why` and weaving both into one explanation.
+- **[show-me](./skills/show-me/SKILL.md)**: Explain the current topic visually with diagrams, code-shape sketches, and focused HTML artifacts.
+- **[skill-creator](./skills/skill-creator/SKILL.md)**: Create or revise a skill, then measure it: test cases, a review viewer, and variance analysis before shipping it.
 - **[to-goal](./skills/to-goal/SKILL.md)**: Compile approved work and the current repo state into a copyable goal another session can execute and verify. Read-only.
+- **[to-spec](./skills/to-spec/SKILL.md)**: Synthesize the current conversation into a spec, agree the test seams, and publish it to the issue tracker as `ready-for-agent`, without re-interviewing.
+- **[to-tickets](./skills/to-tickets/SKILL.md)**: Turn a plan, spec, or conversation into independently verifiable tickets with explicit blocking dependencies.
+- **[triage](./skills/triage/SKILL.md)**: Move issues and external PRs through a state machine of triage roles, verify the claim, and write agent-ready briefs.
 - **[unslop](./skills/unslop/SKILL.md)**: Cut AI tells from any writing.
-- **[video-transcribe](./skills/video-transcribe/SKILL.md)**: Bilibili 视频或本地音频转成带时间戳的中文转写，并按内容生成阅读报告或笔记。
-- **[voice-debrief](./skills/voice-debrief/SKILL.md)**: 面试或会议录音转写复盘，可存飞书文档并归档到对应多维表格。
 - **[wait-what](./skills/wait-what/SKILL.md)**: Stop the answer that did not land and re-pitch it: context first, Simplified Technical English, project glossary terms.
-- **[why](./skills/why/SKILL.md)**: Answer "why does it work this way": design rationale, regressions, postmortems, data-backed thresholds.
+- **[why](./skills/why/SKILL.md)**: Investigate the evidence behind design decisions across git history and available MCP sources, separating facts from inference.
 
 ## Model-invoked
 
@@ -55,20 +62,43 @@ Every skill is one of two kinds:
 - **[domain-modeling](./skills/domain-modeling/SKILL.md)**: Build and sharpen the domain model: challenge terms, test edge-case scenarios, keep `GLOSSARY.md` and ADRs current.
 - **[find-skills](./skills/find-skills/SKILL.md)**: Discover and install skills from the open agent skills ecosystem.
 - **[grilling](./skills/grilling/SKILL.md)**: Interview the user relentlessly about a plan until every branch of the design tree is settled. The engine behind `/grill-me` and `/grill-with-docs`.
-- **[pandoc-docx-template](./skills/pandoc-docx-template/SKILL.md)**: Markdown to DOCX (and back) with Pandoc, using the bundled Chinese Word templates and Lua filters.
+- **[impeccable](./skills/impeccable/SKILL.md)**: Steer and review an existing interface with 24 named design moves, from a scored critique and technical audit to bolder, quieter, polish, or a deliberate rewrite. Ships a rule-based slop detector.
+- **[ljg-explain](./skills/ljg-explain/SKILL.md)**: Explain a concept, formula or mechanism in plain Chinese until the reader can recognise it, derive results and transfer the reasoning to a new case.
+- **[pr](./skills/pr/SKILL.md)**: Write concise PR descriptions with a visual summary, before-and-after evidence, and merge risk.
 - **[prototype](./skills/prototype/SKILL.md)**: Build a throwaway prototype to answer a design question: one shareable HTML file for a state model, or several switchable UI variations on one route.
-- **[reticle](./skills/reticle/SKILL.md)**: Verify a change inside the running web app: a verdict with the request and state that decided it, plus the `file:line` to fix.
-- **[show-me](./skills/show-me/SKILL.md)**: Explain the current topic visually with diagrams, code-shape sketches, and focused HTML artifacts.
-- **[ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md)**: Design intelligence for web, mobile, and desktop interfaces: styles, palettes, font pairings, UX guidelines, charts, and stack-specific implementation.
+- **[shuorenhua](./skills/shuorenhua/SKILL.md)**: Cut packaging and translationese from Chinese or English without dropping facts, terms or who is responsible, or mark the problems without rewriting.
+- **[tdd](./skills/tdd/SKILL.md)**: Build features or fix bugs test-first at pre-agreed public seams, red-green-refactor.
 - **[verification-before-completion](./skills/verification-before-completion/SKILL.md)**: Put every completion claim behind fresh evidence: run the check, read the output, then report.
 - **[writing-for-agents](./skills/writing-for-agents/SKILL.md)**: The levers for writing anything an agent consumes: context pointers, skills, `AGENTS.md`, and pointer wording.
 
-## Install
+## Scoped
 
-`~/.agents/skills` is one symlink to this repo's `skills/` folder, so every skill here is a skill Pi can load and `git pull` keeps them current:
+`scoped-skills/` holds skills that are real but should not sit in every session's context: one book converter, React/Next performance, video transcription, recording debriefs, and the Word, PDF, Sheets and Slides pipelines. Nothing here is in Pi's skill path, so none of it is advertised or loaded, and that is deliberate: Pi reads only `~/.agents/skills` under `~/.agents/`, so the folder's own link at `~/.agents/scoped-skills` is a stable path to reach it, not a place Pi scans. A project that needs one symlinks it into its own `.agents/skills/`:
 
 ```bash
-node scripts/link-skills.mjs          # point ~/.agents/skills at skills/, replacing the old per-skill links
+mkdir -p .agents/skills
+ln -s ~/.agents/scoped-skills/docx .agents/skills/docx
+```
+
+Pi discovers project `.agents/skills/` from the working directory up to the repository root once the project is trusted, and its loader follows directory symlinks, so the skill loads in that project only and disappears from everywhere else.
+
+- **[book-to-skill](./scoped-skills/book-to-skill/SKILL.md)**: Convert a book or document into a structured agent skill holding its frameworks, mental models, and anti-patterns.
+- **[docx](./scoped-skills/docx/SKILL.md)**: Create, read, edit and template Word `.docx`/`.dotx` files.
+- **[pdf](./scoped-skills/pdf/SKILL.md)**: Read, merge, split, fill, encrypt and OCR PDFs.
+- **[pptx](./scoped-skills/pptx/SKILL.md)**: Build, parse and edit `.pptx` decks from templates.
+- **[vercel-react-best-practices](./scoped-skills/vercel-react-best-practices/SKILL.md)**: React and Next.js performance rules from Vercel Engineering.
+- **[video-transcribe](./scoped-skills/video-transcribe/SKILL.md)**: Bilibili 视频或本地音频转成带时间戳的中文转写，并按内容生成阅读报告或笔记。
+- **[voice-debrief](./scoped-skills/voice-debrief/SKILL.md)**: 面试或会议录音转写复盘，可存飞书文档并归档到对应多维表格。
+- **[xlsx](./scoped-skills/xlsx/SKILL.md)**: Read, edit, clean and generate spreadsheets, formulas and charts.
+
+`scoped-skills/` is a store, not a second library: it has no loader of its own.
+
+## Install
+
+`~/.agents/skills` is one symlink to this repo's `skills/` folder, and `~/.agents/scoped-skills` one to `scoped-skills/`, so every skill here is a skill Pi can load, the scoped store stays out of Pi's way, and `git pull` keeps both current:
+
+```bash
+node scripts/link-skills.mjs          # point both links at this repo, replacing the old per-skill links
 node scripts/link-skills.mjs --check  # report a wrong or missing link
 ```
 

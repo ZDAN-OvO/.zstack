@@ -14,50 +14,35 @@ Every candidate gets the same prompt, so the prompt is the contract.
 
 1. State the artifact each candidate is producing.
 2. Derive the rubric, 3-6 concrete gradeable criteria for what success looks like on *this* task. It is the picker's tool in Phase D. Candidates only see the task.
-3. Reserve one `runner` seat per candidate from [Seats](#seats). Spread runners across model families so the candidates differ in kind, not only in wording. Spawn more runners when the arena covers multiple design directions. Use the same model N times when the work is generation-bound rather than judgment-sensitive.
-4. Give each candidate its own output location (a git worktree where possible, otherwise `/tmp/arena-<slug>/candidate-<n>/`).
+3. Pick the runners. Use the `arena runners` line in `~/.agents/agent/pstack-models.md`. If the file or that line is missing, default to two available Pi models from different families. If only one family is available, use it for both candidates and say so. An `auto` entry leaves `model` unset; an `inherit-parent` entry passes the current session's exact `provider/id`. Use `subagent({ action: "models" })` to inspect available models and pass exact Pi `provider/id` values, with a supported reasoning suffix when needed. Families follow the underlying model ID (for example Claude, GPT, or DeepSeek), not a routing provider. If a launch fails, stop and report the failure rather than switching runtimes or retrying a rejected model. Spawn more runners when the arena covers multiple design directions. Use the same model N times when the work is generation-bound rather than judgment-sensitive. Read `/pi-subagents` for the native call shape and reasoning overrides.
+4. Give each candidate its own output location (a git worktree where possible, otherwise `/tmp/arena-<slug>/candidate-<n>/`), per the `/principle-separate-before-serializing-shared-state` principle skill.
 
 ## Phase B: Fan out
 
-Spawn all N subagents in one message with `run_in_background: true`, each with the task, the path to the shared grounding, its own output path, and instructions to produce the artifact and a short rationale naming the alternatives it considered and what it rejected.
+Spawn all N subagents with Pi's `subagent` tool using `agent: "worker"` and `async: true`, each with the task, the path to the shared grounding, its own output path, and instructions to produce the artifact and a short rationale naming the alternatives it considered and what it rejected. Run dependent fan-out and judging phases inside one async scripted workflow, per `/pi-subagents`; native completion wakes the parent.
 
 If a candidate produces no output, proceed with N-1 and note the dropout.
 
 ## Phase C: Cross-judge
 
-After all Phase B candidates complete, take one `cross-judge` seat from [Seats](#seats), preferring a model family different from the parent's. Spawn one subagent with read-only access on that seat. It sees the rubric and the candidates by path label, scores each criterion, and recommends a base with rationale. It runs in parallel with your reading in Phase D. Don't spawn it while candidates are still writing.
+After all Phase B candidates complete, choose one model from the `arena cross-judge pool` line in `~/.agents/pstack-models.md`. If the file or that line is missing, choose an available Pi model from another family using `subagent({ action: "models" })`. Spawn one judge with `agent: "reviewer"` and a read-only task brief. The judge is never from the parent's family, as Phase A step 3 defines families. Consider only entries from another family, in pool order, and verify their exact `provider/id` values before launching. An `auto` or `inherit-parent` entry is not an explicit independent judge model, so it never judges. If no model from another family is available, skip the judge, pick the base alone in Phase D, and say so. If you do not know the parent's model, use the pool's exact registered IDs and say that the family check did not run. If a launch fails, stop and report the failure. The judge sees the rubric and the candidates by path label, scores each criterion, and recommends a base with rationale. It runs in parallel with your reading in Phase D. Don't spawn it while candidates are still writing.
 
 ## Phase D: Pick a base
 
-Read every candidate end to end before picking. Score each against the rubric criterion by criterion, not on holistic feel, and compare with the cross-judge. Agreement on the base confirms the pick. Disagreement means one of you is biased or the rubric was ambiguous. Read both rationales before deciding.
+Read every candidate end to end before picking. Score each against the rubric criterion by criterion, not on holistic feel, and compare with the cross-judge when Phase C ran one. Agreement on the base confirms the pick. Disagreement means one of you is biased or the rubric was ambiguous. Read both rationales before deciding.
 
-Pick the base a future maintainer can extend most easily without breaking invariants. When two feel tied, prefer the cleaner boundary or smaller API, per the Laziness Protocol.
+Pick the base a future maintainer can extend most easily without breaking invariants. When two feel tied, prefer the cleaner boundary or smaller API, per `/principle-laziness-protocol`.
 
 ## Phase E: Graft
 
-Walk each losing candidate once more for what is worth porting into the base, usually one or two things per candidate, not most of it. Fold each graft in by hand, so the result stays coherent under one mental model. Don't paste mechanically.
+Walk each losing candidate once more for what is worth porting into the base, usually one or two things per candidate, not most of it. Fold each graft in by hand, per the `/principle-redesign-from-first-principles` principle skill, so the result stays coherent under one mental model. Don't paste mechanically.
 
 If the candidates converge on one shape, that is strong agreement. Note it and ship the consensus shape. No graft is needed. If they wildly diverge, Phase A was under-specified. Reframe and re-run rather than averaging the divergence.
 
 ## Phase F: Verify
 
-Verify the synthesized artifact like any other output. If verification finds a problem the arena missed, either Phase A was wrong (re-frame and re-run) or a candidate caught it and you missed the graft (go back to Phase E). Don't paper over it.
-
-## Seats
-
-A seat is a capability profile plus a reasoning effort, never a model name. Resolve each seat in this order:
-
-1. Use your environment's own role-to-model mapping when it has one for that seat. Its file, variable, or setting name is specific to that runtime, so don't assume a path.
-2. Otherwise leave the model unset so the harness picks, and set only the reasoning effort.
-3. When you must choose a model by hand, match the profile, then say which seat ran on what. If nothing available fits, say so instead of quietly substituting.
-
-Effort, weakest to strongest: `minimal`, `low`, `medium`, `high`, `max`. Use the closest level your runtime offers, and leave effort unset to inherit the parent's.
-
-| Seat | Profile | Effort |
-| --- | --- | --- |
-| runner | Strong open-ended generation under a shared contract, with a wide range of design shapes. Read the whole task before producing anything. | high |
-| cross-judge | Independent judgment on an artifact it did not write. Scores against a supplied rubric rather than a holistic feel, and defends the score. | high |
+Verify the synthesized artifact like any other output, per the `/principle-prove-it-works` principle skill. If verification finds a problem the arena missed, either Phase A was wrong (re-frame and re-run) or a candidate caught it and you missed the graft (go back to Phase E). Don't paper over it.
 
 ## Outputs
 
-One synthesized artifact, with a short synthesis note alongside naming the base and why, the cross-judge's verdict, each graft with its source candidate, what was rejected and why, any convergence or dropouts, and the verification result.
+One synthesized artifact, with a short synthesis note alongside naming the base and why, the cross-judge's verdict or that Phase C skipped the judge, each graft with its source candidate, what was rejected and why, any convergence or dropouts, and the verification result.

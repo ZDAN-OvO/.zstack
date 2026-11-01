@@ -125,3 +125,91 @@ test("frontmatter parsing rejects a missing block", () => {
   assert.equal(parseFrontmatter("# no frontmatter\n"), null);
   assert.equal(parseFrontmatter("---\nname: x\n"), null);
 });
+
+// `scoped-skills/` mirrors the index rule, split by whether git carries the skill.
+const BASE = "## Model-invoked\n\n- **[beta](./skills/beta/SKILL.md)**: second.\n";
+const SCOPED = (entries, prose = "") =>
+  `${BASE}\n## Scoped\n\n${prose}\n${entries.map((name) => `- **[${name}](./scoped-skills/${name}/SKILL.md)**: scoped.`).join("\n")}\n`;
+
+test("a consistent scoped library has no problems", (t) => {
+  const root = library(t, {
+    "README.md": SCOPED(["alpha", "tracked"]),
+    "skills/beta/SKILL.md": SKILL("beta"),
+    "scoped-skills/alpha/SKILL.md": SKILL("alpha"),
+    "scoped-skills/tracked/SKILL.md": SKILL("tracked"),
+  });
+  assert.deepEqual(checkAssets(root), []);
+});
+
+test("a scoped entry with no matching skill is reported", (t) => {
+  const root = library(t, {
+    "README.md": SCOPED(["ghost"]),
+    "skills/beta/SKILL.md": SKILL("beta"),
+  });
+  const rules = checkAssets(root).map((problem) => problem.rule);
+  assert.deepEqual(rules, ["scoped-index-entry-unresolved"]);
+});
+
+
+test("a tracked scoped skill missing from the index is reported", (t) => {
+  const root = library(t, {
+    "README.md": SCOPED(["listed"]),
+    "skills/beta/SKILL.md": SKILL("beta"),
+    "scoped-skills/listed/SKILL.md": SKILL("listed"),
+    "scoped-skills/forgotten/SKILL.md": SKILL("forgotten"),
+  });
+  const rules = checkAssets(root).map((problem) => problem.rule);
+  assert.deepEqual(rules, ["scoped-skill-not-indexed"]);
+});
+
+
+test("scoped entries out of alphabetical order are reported", (t) => {
+  const root = library(t, {
+    "README.md": SCOPED(["zulu", "alpha"]),
+    "skills/beta/SKILL.md": SKILL("beta"),
+    "scoped-skills/zulu/SKILL.md": SKILL("zulu"),
+    "scoped-skills/alpha/SKILL.md": SKILL("alpha"),
+  });
+  const rules = checkAssets(root).map((problem) => problem.rule);
+  assert.deepEqual(rules, ["scoped-index-order"]);
+});
+
+test("scoped skills without a Scoped section are reported", (t) => {
+  const root = library(t, {
+    "README.md": BASE,
+    "skills/beta/SKILL.md": SKILL("beta"),
+    "scoped-skills/alpha/SKILL.md": SKILL("alpha"),
+  });
+  const rules = checkAssets(root).map((problem) => problem.rule);
+  assert.deepEqual(rules, ["scoped-section-missing", "scoped-skill-not-indexed"]);
+});
+
+test("a name in both layouts is reported", (t) => {
+  const root = library(t, {
+    "README.md": `${BASE}\n## Scoped\n\n- **[beta](./scoped-skills/beta/SKILL.md)**: scoped.\n`,
+    "skills/beta/SKILL.md": SKILL("beta"),
+    "scoped-skills/beta/SKILL.md": SKILL("beta"),
+  });
+  const rules = checkAssets(root).map((problem) => problem.rule);
+  assert.deepEqual(rules, ["scoped-duplicate"]);
+});
+
+test("scoped frontmatter name must equal the directory name", (t) => {
+  const root = library(t, {
+    "README.md": SCOPED(["alpha"]),
+    "skills/beta/SKILL.md": SKILL("beta"),
+    "scoped-skills/alpha/SKILL.md": SKILL("renamed"),
+  });
+  const rules = checkAssets(root).map((problem) => problem.rule);
+  assert.deepEqual(rules, ["scoped-frontmatter-name-mismatch"]);
+});
+
+test("a scoped directory without SKILL.md is reported", (t) => {
+  const root = library(t, {
+    "README.md": SCOPED([]),
+    "skills/beta/SKILL.md": SKILL("beta"),
+    "scoped-skills/half-written/notes.md": "work in progress\n",
+  });
+  const rules = checkAssets(root).map((problem) => problem.rule);
+  assert.deepEqual(rules, ["scoped-no-skill-md"]);
+});
