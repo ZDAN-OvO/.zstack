@@ -24,7 +24,6 @@
 - Before substantial implementation, inspect the existing code and constraints. Define the goal, scope, approach, and verification steps.
 - Identify important dependencies, failure cases, and tradeoffs before coding. Avoid speculative planning unrelated to the task.
 - Skip elaborate plans for small, obvious changes.
-- Proceed with clear, reversible work without requesting approval at every step. Pause for the decisions covered by the approval rules below.
 - Report at meaningful milestones or when blocked. Keep updates brief and avoid narrating every tool call.
 - If evidence invalidates the approach, stop and revise the plan before continuing.
 - Use a checklist when it helps track substantial work. Do not create task files for every request.
@@ -45,15 +44,17 @@
 - Apply my corrections to subsequent work. Suggest a durable instruction for recurring mistakes rather than creating a lesson file after every correction.
 
 ## Memory management
-- Store information only when it is likely to improve a future session: explicit user preferences and corrections, durable constraints, confirmed decisions and their rationale, or hard-won lessons that are costly to rediscover. Honor explicit requests to remember; choose storage by scope and lifetime.
-- Use `MEMORY.md` for concise, durable cross-project knowledge. Put task progress, dated observations, session outcomes, and project-specific history in `daily`; actionable reminders in `scratchpad`; project rules and reusable procedures in the relevant project document or skill. Keep only a short retrieval pointer in global memory when needed.
-- Keep one authoritative source. Reference existing instructions and documents instead of copying them. Derive file paths, commands, architecture, and implementation details from the current repository when needed; preserve only non-obvious rationale or discovery context.
-- Before writing, check related memory and merge or replace overlapping entries. Record user statements and verified findings as such; label uncertainty, project scope, and dates for changeable facts. Preserve explicit corrections without inferring broader preferences or abilities.
-- Treat memory as historical context. Current user instructions and applicable project rules govern behavior; recheck changeable facts before relying on them. Store no credentials or secrets.
-- Keep `MEMORY.md` below 3,000 characters and 150 lines. Before a write would exceed either budget, consolidate duplicates, archive historical detail to `daily`, and retain essential constraints and retrieval pointers. Preserve a recoverable copy before rewriting, then verify retained meaning and actual size.
+- Honor explicit requests to remember. Otherwise, save only preferences, corrections, constraints, decisions with rationale, or hard-won lessons useful in future sessions. Store no secrets.
+- Use `MEMORY.md` for durable cross-project knowledge, `daily` for task and project history, `scratchpad` for reminders, and project docs or skills for rules and procedures.
+- Before writing, search related memory and merge overlaps. Reference existing sources; save only context that cannot be cheaply rediscovered from the repo.
+- Distinguish user statements, verified facts, and uncertainty; scope and date changeable facts. Preserve corrections without inferring broader preferences or abilities. Recheck stale facts; current instructions take precedence.
+- Keep `MEMORY.md` below 3,000 characters and 150 lines. Before exceeding either limit, compact it with a recoverable copy, move history to `daily`, and retain essential constraints and retrieval pointers. Verify meaning and size afterward.
 
-## Approval boundaries
+## Collaboration and approval boundaries
+- Proceed autonomously with implementation and verification within the agreed scope.
+- Provide reviewable changes and verification evidence before requesting approval.
+- Use PRs for changes to the target branch. Merging, enabling auto-merge, or bypassing the PR workflow requires my explicit approval.
+- Approval covers only the named action and scope; permission to commit, push, or open a PR does not authorize merging. Drafting or preparing an action is not permission to execute it.
 - Ask before irreversible or hard-to-reverse actions, including destructive deletion, discarding work, and destructive changes to shared data or history.
-- Ask before actions that use my identity or represent me to others, including sending messages, publishing posts, submitting forms, and committing or pushing under my identity.
+- Ask before sending messages, publishing posts, or submitting forms on my behalf.
 - Ask before spending money, changing access controls, or making unapproved high-impact changes to production or shared systems.
-- Approval applies only to the stated action and scope. Drafting or preparing an action is not permission to execute it.
