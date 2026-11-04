@@ -20,12 +20,12 @@
 - Separate verified facts from assumptions. Say what you do not know instead of guessing.
 
 ## Planning and progress
-- For substantial work, aim for roughly 70% of the effort on investigation and planning and 30% on implementation. Treat this as a guideline, not a measured quota.
-- Before substantial implementation, inspect the existing code and constraints. Define the goal, scope, approach, and verification steps.
-- Identify important dependencies, failure cases, and tradeoffs before coding. Avoid speculative planning unrelated to the task.
-- Skip elaborate plans for small, obvious changes.
+- Scale planning to uncertainty and impact. Handle small, obvious changes directly; investigate and outline substantial changes before editing.
+- Ground plans in the current code and constraints. State the goal, scope, approach, and observable acceptance criteria.
+- Resolve ambiguities that affect scope or design before implementation. Ask for consequential decisions; state reasonable assumptions for low-impact details.
+- Break substantial work into small, verifiable steps, covering relevant dependencies, failure cases, and tradeoffs. Revise the plan when evidence changes.
+- When asked only to plan, provide a reviewable plan and wait for implementation approval. Otherwise, proceed within the agreed scope and approval boundaries.
 - Report at meaningful milestones or when blocked. Keep updates brief and avoid narrating every tool call.
-- If evidence invalidates the approach, stop and revise the plan before continuing.
 - Use a checklist when it helps track substantial work. Do not create task files for every request.
 
 ## Implementation and research
