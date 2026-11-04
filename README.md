@@ -22,6 +22,7 @@ Every skill is one of two kinds:
 ## User-invoked
 
 - **[arena](./skills/arena/SKILL.md)**: Compare parallel candidates for the same task, select a base, combine their strongest parts, and verify the result.
+- **[automate-me](./skills/automate-me/SKILL.md)**: Turn recurring working preferences and conversation evidence into a personal mode skill, or update an existing one.
 - **[benchmark-checklist](./skills/benchmark-checklist/SKILL.md)**: Check performance measurements for bottlenecks, fair tuning, errors, repeatability, and user-visible impact.
 - **[blast-radius](./skills/blast-radius/SKILL.md)**: Trace what a change could break beyond its diff and run real code to prove the key safety assumptions.
 - **[bro](./skills/bro/SKILL.md)**: Say it again in plain human language, without jargon.
@@ -35,7 +36,6 @@ Every skill is one of two kinds:
 - **[improve-codebase-architecture](./skills/improve-codebase-architecture/SKILL.md)**: Find opportunities to deepen modules, compare them in a visual HTML report, and work through a chosen design.
 - **[in-your-own-words](./skills/in-your-own-words/SKILL.md)**: Restate your reading of the user's goals and the problem before working on it.
 - **[interrogate](./skills/interrogate/SKILL.md)**: Challenge a change with parallel adversaries and retain only findings confirmed by rerunning their reproductions.
-- **[learn-tech](./skills/learn-tech/SKILL.md)**: Learn a language, framework or library from official docs and version-matched source, checking understanding through teach-back and small exercises.
 - **[maintain-verification-skill](./skills/maintain-verification-skill/SKILL.md)**: Keep a project’s verification skill and feature map accurate through source review and live feature checks.
 - **[multi-phase-plan](./skills/multi-phase-plan/SKILL.md)**: Ground changes in code and feasibility evidence, then plan reviewable PRs with strict verification gates and safe parallel boundaries.
 - **[no-comments](./skills/no-comments/SKILL.md)**: Spawn the comment-sicko subagent, fix accepted findings, offer encodings for claimed constraints.
@@ -62,7 +62,6 @@ Every skill is one of two kinds:
 - **[find-skills](./skills/find-skills/SKILL.md)**: Discover and install skills from the open agent skills ecosystem.
 - **[grilling](./skills/grilling/SKILL.md)**: Interview the user relentlessly about a plan until every branch of the design tree is settled. The engine behind `/grill-me` and `/grill-with-docs`.
 - **[impeccable](./skills/impeccable/SKILL.md)**: Steer and review an existing interface with 24 named design moves, from a scored critique and technical audit to bolder, quieter, polish, or a deliberate rewrite. Ships a rule-based slop detector.
-- **[ljg-explain](./skills/ljg-explain/SKILL.md)**: Explain a concept, formula or mechanism in plain Chinese until the reader can recognise it, derive results and transfer the reasoning to a new case.
 - **[opening-a-pr](./skills/opening-a-pr/SKILL.md)**: Write a fixed PR briefing on the problem, changes, scope, risk and observed verification, with original evidence linked.
 - **[prototype](./skills/prototype/SKILL.md)**: Build a throwaway prototype to answer a design question: one shareable HTML file for a state model, or several switchable UI variations on one route.
 - **[shuorenhua](./skills/shuorenhua/SKILL.md)**: Cut packaging and translationese from Chinese or English without dropping facts, terms or who is responsible, or mark the problems without rewriting.
