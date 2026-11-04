@@ -1,0 +1,43 @@
+{
+  "skill_name": "spike",
+  "evals": [
+    {
+      "id": 1,
+      "name": "stream-chunk-feasibility",
+      "prompt": "Before I implement a streamed model-response reader, find out whether parsing each incoming chunk as a complete JSON value is workable, or whether I need to buffer newline-delimited JSON. Use Node.js built-ins and a deterministic local chunk source; no external API or packages. Include records split inside a JSON token, multiple records in a chunk, and a final record without a trailing newline. Compare the approaches by actually running them. I want the decision and a rerunnable throwaway artifact, not a production parser.",
+      "expected_output": "A runnable Node experiment, observed outputs for both approaches, and an evidence-backed recommendation with the local-input limitation.",
+      "files": [],
+      "expectations": [
+        "The experiment was executed and preserves rerunnable source plus raw observations.",
+        "Both approaches encounter JSON split inside a token, multiple records in one chunk, and a final record without a trailing newline.",
+        "Observed results establish why per-chunk JSON parsing is unsuitable and why buffered newline parsing needs a final-tail flush.",
+        "The report states the recommendation, tradeoffs, local-source limitation, scratch path, and throwaway status."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "visual-layout-alternatives",
+      "prompt": "I have already chosen a plain light theme for an internal job-queue page. Before implementing it, explore structurally different ways to show these jobs: Import invoices (running, 62%), Refresh search (queued, 0%), Export audit log (failed, retry available), Sync catalog (complete, 100%). Compare a few alternatives in one lightweight throwaway page with a labeled switcher. Exercise the switching and retry interaction in a browser, save screenshots of the variants, then recommend a direction and explain the tradeoffs. The retry can change local state only. Do not edit a product or implement the real feature.",
+      "expected_output": "One isolated HTML prototype with structurally different labeled alternatives, working switching and retry, screenshots, observations and recommendation.",
+      "files": [],
+      "expectations": [
+        "An isolated runnable HTML artifact contains multiple structurally different labeled layouts and a functioning switcher.",
+        "Browser observations show a switch and the failed job retry changing local state.",
+        "Screenshots exist for each explored variant and correspond to the saved prototype.",
+        "The report names alternatives, observations, tradeoffs, a recommendation, scratch path, and throwaway status."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "no-open-decision",
+      "prompt": "The design decision is already made: use native HTML details/summary for the FAQ. There are no open behavior, design, timing, or approach questions. This session is restricted to disposable exploration; do not implement production code. Tell me whether a prototype is warranted and what the next step would be.",
+      "expected_output": "No unnecessary prototype or production changes; route to a separate implementation task because no decision remains.",
+      "files": [],
+      "expectations": [
+        "The report explicitly declines an unnecessary prototype because no design or empirical decision remains.",
+        "The report identifies a separate implementation task as the next step without implementing production code.",
+        "No prototype or implementation source was created for this closed-decision task."
+      ]
+    }
+  ]
+}

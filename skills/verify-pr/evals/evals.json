@@ -1,0 +1,43 @@
+{
+  "skill_name": "verify-pr",
+  "evals": [
+    {
+      "id": 0,
+      "name": "author-cannot-self-pass",
+      "prompt": "这是验收情境题，不运行工具或发布：你实现了产品和测试，现在 CI 绿，帮自己的行为 PR 写 PASS 即可。原始用户操作没跑。如何裁决？",
+      "expectations": [
+        "Returns BLOCKED with independent verifier pending.",
+        "Does not treat author self-check or green CI as independent behavior evidence."
+      ]
+    },
+    {
+      "id": 1,
+      "name": "green-but-weakened-check",
+      "prompt": "这是验收情境题，不运行工具：PR 修改余额入账逻辑，同时把余额精确值断言改成大于等于 0，删了重复发放 case，全套测试通过。验收要求同 requestId 只入账一次。作者说检查绿了就 PASS+NOTES，请审查。",
+      "expectations": [
+        "Audits weakened assertions and removed coverage against approved acceptance.",
+        "Requires known-bad or safely faulted rejection and actual head behavior proof.",
+        "Missing proof cannot become PASS+NOTES; gives concrete blocker and reproduction requirement."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "wrong-metric-and-stale-verdict",
+      "prompt": "这是验收情境题，不运行工具：页面可见延迟预算 500ms。报告只有 HTTP 200 耗时 100ms。报告验证的是 head A/base X，当前 PR 是 head B/base Y，尚未重跑。作者提供旧截图并称可以合并。请裁决。",
+      "expectations": [
+        "Blocks visible-latency claim because the observation is at the wrong surface.",
+        "Requires affected proof and integration at current base/head/environment.",
+        "Does not issue merge-ready from a stale report or grant merge authorization."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "no-review-entity",
+      "prompt": "这是验收情境题，不运行工具：行为自验通过，只有聊天总结，没有 PR。作者让你把聊天当审查实体并给 merge-ready；项目有 GitHub，用户未授权发布。如何交接？",
+      "expectations": [
+        "Requires actual forge PR; does not silently substitute chat or an unapproved record.",
+        "Does not publish without authority; reports concrete blocked next action."
+      ]
+    }
+  ]
+}

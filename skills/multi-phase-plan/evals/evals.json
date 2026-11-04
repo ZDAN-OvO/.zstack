@@ -1,0 +1,82 @@
+{
+  "skill_name": "multi-phase-plan",
+  "evals": [
+    {
+      "id": 0,
+      "name": "obvious-small-change",
+      "prompt": "先规划，不要实现：把这个项目 web/index.html 的页面标题和 h1 从 Credit admin 改成 Credit console。没有其他改动。",
+      "expected_output": "For an obvious small change, explain and stop without creating a plan or implementing.",
+      "files": [
+        "evals/files/credit-demo"
+      ],
+      "expectations": [
+        "For the obvious one-file edit, explains that planning is unnecessary and stops without creating a plan or mini-plan.",
+        "Does not implement, alter project source, or create commits.",
+        "Does not invent test, experiment, or implementation success."
+      ]
+    },
+    {
+      "id": 1,
+      "name": "api-web-retry-plan",
+      "prompt": "请为这个项目规划一次跨后端和管理页的重试安全改造，先只写计划。我已决定：POST /issue 增加必填 requestId，同一 ID 和相同 credits 重试时返回原结果且只发放一次；相同 ID 但不同 credits 返回 409；不同 ID 正常分别发放。页面同一次操作失败重试要复用 ID，刷新后余额仍正确；新增真正独立发放时生成新 ID。进程内存储即可，不加数据库。API 和页面都在范围内，必要的测试和性能探针也可调整。已有接口 p95 预算是 50 ms，页面提交到余额显示的预算是 500 ms。请基于当前代码拆成可交付的 PR，并说明怎么验收。设计方向已经确定，无需原型。不要实现、提交、发布或合并。",
+      "expected_output": "A repository-grounded ready Markdown plan with dependencies, both surfaces, truthful trunk comparison, concrete commands, numeric perf budgets, interaction review and a checked handoff.",
+      "files": [
+        "evals/files/credit-demo"
+      ],
+      "expectations": [
+        "Produces a repository-grounded PR plan with explicit dependency and branch/file boundaries, rather than generic task bullets.",
+        "Preserves request-ID semantics: same-ID same-payload returns the original result once, conflicting payload returns 409, and new issuance uses a new ID.",
+        "Plans real API and Web verification including trunk/head comparison, retry, and refreshed user-visible state.",
+        "Defines reproducible boot and check/probe commands, evidence destinations, and version/invalidation boundaries without inventing measured results.",
+        "Plans performance measurement with the stated 50 ms API and 500 ms visible-state limits, including baseline and comparable probe procedure.",
+        "Requires operator interaction review of screenshots and video before merge, with explicit execution and merge authorization boundaries.",
+        "Does not implement, alter project source, or create commits.",
+        "Passes feasibility with matching actual observations or returns Draft for load-bearing unknowns; a product direction alone is not evidence.",
+        "Maps acceptance to PR observations and evidence, plans check sensitivity, and requires operator review of weakened criteria.",
+        "Requires a real PR with /opening-a-pr and non-author /verify-pr verification before merge-ready, without performing unauthorized publication."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "unsettled-delivery-spike",
+      "prompt": "先帮我规划给这个管理页加实时余额更新。我还没决定用 SSE 还是轮询，部署网关对长连接和断线重连的实际行为也没验证，我不想直接拍脑袋选。请先查看项目，指出怎样把方案定下来；暂时不要跑实验，也不要改代码。",
+      "expected_output": "Identify the design blocker and return a concrete Spike task, not a ready implementation plan or an invented experiment result.",
+      "files": [
+        "evals/files/credit-demo"
+      ],
+      "expectations": [
+        "Recognizes SSE versus polling and gateway/reconnection behavior as unresolved design blockers instead of choosing an unsupported implementation.",
+        "Returns a concrete Spike task with alternatives, required observations/evidence, and a decision/handoff criterion.",
+        "Does not present a ready implementation plan or claim an unrun experiment proved the design.",
+        "Respects the no-experiment instruction and does not implement, alter project source, or create commits."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "parallel-shared-resources",
+      "prompt": "只写计划：两个团队分别改 API 和网页，文件不同，想同时开发并验收。它们目前都启动到同一 3000 端口，都用会在启动时清空的 credit_test 数据库。接口 requestId 将从可选变成必填，网页仍按旧合同请求。请拆 PR，说明哪些能并行，哪里先处理。不允许改代码、跑实验或启动子 agent。",
+      "expected_output": "A Draft or grounded plan that separates interface/caller migration, exclusive writes, process/database isolation and post-wave integration. Different files alone do not justify parallelism.",
+      "files": [
+        "evals/files/credit-demo"
+      ],
+      "expectations": [
+        "Identifies port, database, reset and contract conflicts beyond file overlaps.",
+        "Preserves compatible intermediate PR states; shared interface has one owner or prerequisite.",
+        "Specifies parallel groups with branches, writes, resources, contract and integration checks.",
+        "Does not implement, start experiments or delegate."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "metric-proxy-and-weakening",
+      "prompt": "只做计划审阅，不运行项目：一份重试改造计划已写 Ready。验收是页面提交到余额显示 <=500ms；浏览器未安装，于是作者改用 curl <=500ms。丢包测试在请求发出前 abort，作者称证明了入账后响应丢失时重试安全。原先预算已获批准，现在作者说接口够快就可把 UI 预算删掉。请给可执行的修正交接，不要实现。",
+      "expected_output": "Reject readiness and preserve approved criteria. Name browser observation and post-side-effect response loss, runnable driver/proxy ownership and recipe, and operator review of criterion changes.",
+      "expectations": [
+        "Does not treat HTTP time as page-visible latency proof.",
+        "Does not treat pre-execution cancellation as a committed operation with a lost response.",
+        "Requires actual driver/proxy creation, launch/ports/readiness/teardown and evidence.",
+        "Blocks Ready until proof exists; weakening acceptance requires separate operator review."
+      ]
+    }
+  ]
+}
