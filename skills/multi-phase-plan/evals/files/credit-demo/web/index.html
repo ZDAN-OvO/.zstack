@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Credit admin</title>
+<h1>Credit admin</h1><button id="issue">Issue 10</button><button id="refresh">Refresh</button><output id="balance"></output>
+<script>
+const balance = document.querySelector('#balance');
+async function refresh() { balance.textContent = (await (await fetch('/balance')).json()).balance; }
+document.querySelector('#issue').onclick = async () => {
+  await fetch('/issue', {method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({credits:10})});
+  await refresh();
+};
+document.querySelector('#refresh').onclick = refresh;
+refresh();
+</script></html>

@@ -4,4 +4,4 @@ description: A relentless interview to sharpen a plan or design, which also crea
 disable-model-invocation: true
 ---
 
-Run `/grilling` and `/domain-modeling`. Ask at most 3 questions per round.
+Run `/grilling` and `/domain-modeling`. By default, ask at most two questions per round.
