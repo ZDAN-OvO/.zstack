@@ -5,9 +5,9 @@ Read the poteto-mode skill in full before any work:
 
 ## Scope
 
-Create a new project at `mcp_servers/pi-subagent/` inside your isolated worktree of `~/github/astack`. It is a local stdio MCP server that lets Claude Code delegate a task to the `pi` coding agent.
+Create a new project at `mcp_servers/pi-subagent/` inside your isolated worktree of `~/.zstack`. It is a local stdio MCP server that lets Claude Code delegate a task to the `pi` coding agent.
 
-Read the design contract at `/home/zdan/github/astack/.audit/pi-subagent-mcp.design.md`. It is the contract. Deviate only with a stated reason.
+Read the design contract at `/home/zdan/.zstack/.audit/pi-subagent-mcp.design.md`. It is the contract. Deviate only with a stated reason.
 
 Do not write outside `mcp_servers/pi-subagent/` in your worktree. Do not register the MCP server or touch the user's Claude config.
 
