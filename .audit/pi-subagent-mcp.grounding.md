@@ -2,7 +2,7 @@
 
 ## Goal
 
-Build a local stdio MCP server that lets Claude Code delegate a task to the `pi` coding agent, with a per-call model choice and full coding tools by default. Install at `~/github/astack/mcp_servers/pi-subagent/` and register it user-level with `claude mcp add --scope user`.
+Build a local stdio MCP server that lets Claude Code delegate a task to the `pi` coding agent, with a per-call model choice and full coding tools by default. Install at `~/.zstack/mcp_servers/pi-subagent/` and register it user-level with `claude mcp add --scope user`.
 
 ## Verified environment
 
@@ -10,7 +10,7 @@ Build a local stdio MCP server that lets Claude Code delegate a task to the `pi`
 - `pi` 1.4.0 at `/home/zdan/.nvm/versions/node/v24.20.0/bin/pi` (`@earendil-works/pi-coding-agent`).
 - Pi's default provider and model come from `~/.pi/agent/settings.json`: `magpie` / `auto/deepseek-v4.1-flash`. `pi -p` and `pi --mode json` both work today.
 - `@modelcontextprotocol/sdk` latest is 1.32.2 and accepts zod 3.25 or 4.
-- `~/github/astack` is a git repo on `main` with remote `origin`. It is a skill library; `mcp_servers/` does not exist yet.
+- `~/.zstack` is a git repo on `main` with remote `origin`. It is a skill library; `mcp_servers/` does not exist yet.
 
 ## pi interfaces that matter
 
@@ -37,7 +37,7 @@ Build a local stdio MCP server that lets Claude Code delegate a task to the `pi`
 - MCP server, not a skill or CLI-only wrapper.
 - Full coding tools by default; callers can narrow with a tools parameter.
 - Per-call model choice.
-- Install under `~/github/astack/mcp_servers/`.
+- Install under `~/.zstack/mcp_servers/`.
 
 ## Design questions the candidates must answer
 

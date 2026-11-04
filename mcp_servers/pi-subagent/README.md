@@ -11,14 +11,14 @@
 ## 安装与注册
 
 ```bash
-cd /home/zdan/github/astack/mcp_servers/pi-subagent
+cd /home/zdan/.zstack/mcp_servers/pi-subagent
 npm ci
 ```
 
 注册到当前用户的 Claude Code 配置：
 
 ```bash
-claude mcp add --scope user pi_subagent -- node /home/zdan/github/astack/mcp_servers/pi-subagent/src/server.mjs
+claude mcp add --scope user pi_subagent -- node /home/zdan/.zstack/mcp_servers/pi-subagent/src/server.mjs
 ```
 
 注册后需要新开 Claude Code 会话，或在现有会话执行 `/mcp` 重连，工具才会出现。工具名为 `mcp__pi_subagent__pi_delegate`、`mcp__pi_subagent__pi_job_result`、`mcp__pi_subagent__pi_job_abort`、`mcp__pi_subagent__pi_list_models`。
