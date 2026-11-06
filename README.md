@@ -20,7 +20,7 @@ Every skill is one of two kinds, and the flag is independent of the harness that
 - **User-invoked**: `disable-model-invocation: true` in the frontmatter, so only `/skill:<name>` reaches it. Its description is read by a human.
 - **Model-invoked**: no such flag, so the model can also reach for it on its own. Its description carries trigger phrasing.
 
-This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 29 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
+This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 30 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
 
 ## Targets
 
@@ -56,6 +56,7 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[grilling](./skills/plan/grilling/SKILL.md)**: Interview the user relentlessly about a plan until every branch of the design tree is settled. The engine behind `/grill-me` and `/grill-with-docs`.
 - **[pdf](./skills/documents/pdf/SKILL.md)**: Read, merge, split, fill, encrypt and OCR PDFs.
 - **[pptx](./skills/documents/pptx/SKILL.md)**: Build, parse and edit `.pptx` decks from templates.
+- **[prototype](./skills/plan/prototype/SKILL.md)**: Build a throwaway prototype to answer a design question: one shareable HTML file for a state model, or several switchable UI variations on one route.
 - **[shuorenhua](./skills/explain/shuorenhua/SKILL.md)**: Cut packaging and translationese from Chinese or English without dropping facts, terms or who is responsible, or mark the problems without rewriting.
 - **[tdd](./skills/build/tdd/SKILL.md)**: Write the failing regression test before fixing a bug with a cheap local test target, and fall back to the closest executable check when a test is impractical.
 - **[verification-before-completion](./skills/verify/verification-before-completion/SKILL.md)**: Put every completion claim behind fresh evidence: run the check, read the output, then report.
@@ -81,7 +82,6 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[interrogate](./skills/archive/interrogate/SKILL.md)**: Challenge a change with parallel adversaries and retain only findings confirmed by rerunning their reproductions.
 - **[maintain-verification-skill](./skills/archive/maintain-verification-skill/SKILL.md)**: Keep a project’s verification skill and feature map accurate through source review and live feature checks.
 - **[opening-a-pr](./skills/archive/opening-a-pr/SKILL.md)**: Write a fixed PR briefing on the problem, changes, scope, risk and observed verification, with original evidence linked.
-- **[prototype](./skills/archive/prototype/SKILL.md)**: Build a throwaway prototype to answer a design question: one shareable HTML file for a state model, or several switchable UI variations on one route.
 - **[retro](./skills/archive/retro/SKILL.md)**: Retrospective on a coding session, most severe improvement first.
 - **[sharpen](./skills/archive/sharpen/SKILL.md)**: Make a task deeper rather than bigger, then rewrite the prompt to ask for that.
 - **[show-me](./skills/archive/show-me/SKILL.md)**: Explain the current topic visually with diagrams, code-shape sketches, and focused HTML artifacts.
