@@ -20,7 +20,7 @@ Every skill is one of two kinds, and the flag is independent of the harness that
 - **User-invoked**: `disable-model-invocation: true` in the frontmatter, so only `/skill:<name>` reaches it. Its description is read by a human.
 - **Model-invoked**: no such flag, so the model can also reach for it on its own. Its description carries trigger phrasing.
 
-This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 30 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
+This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 31 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
 
 ## Targets
 
@@ -53,6 +53,7 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[dispatching-parallel-agents](./skills/build/dispatching-parallel-agents/SKILL.md)**: Split independent work across agents dispatched in one response, then review and integrate what they return.
 - **[docx](./skills/documents/docx/SKILL.md)**: Create, read, edit and template Word `.docx`/`.dotx` files.
 - **[domain-modeling](./skills/plan/domain-modeling/SKILL.md)**: Build and sharpen the domain model: challenge terms, test edge-case scenarios, keep `GLOSSARY.md` and ADRs current.
+- **[find-skills](./skills/meta/find-skills/SKILL.md)**: Discover and install skills from the open agent skills ecosystem.
 - **[grilling](./skills/plan/grilling/SKILL.md)**: Interview the user relentlessly about a plan until every branch of the design tree is settled. The engine behind `/grill-me` and `/grill-with-docs`.
 - **[pdf](./skills/documents/pdf/SKILL.md)**: Read, merge, split, fill, encrypt and OCR PDFs.
 - **[pptx](./skills/documents/pptx/SKILL.md)**: Build, parse and edit `.pptx` decks from templates.
@@ -75,7 +76,6 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[code-review](./skills/archive/code-review/SKILL.md)**: Review the diff since a fixed point on two axes, Standards and Spec, run as parallel sub-agents and reported side by side.
 - **[codebase-design](./skills/archive/codebase-design/SKILL.md)**: Shared vocabulary for deep modules: interface, seam, depth, adapter, plus deepening and design-it-twice passes.
 - **[create-verification-skill](./skills/archive/create-verification-skill/SKILL.md)**: Generate and exercise a project-local skill for launching the real app, driving features, and preserving evidence.
-- **[find-skills](./skills/archive/find-skills/SKILL.md)**: Discover and install skills from the open agent skills ecosystem.
 - **[impeccable](./skills/archive/impeccable/SKILL.md)**: Steer and review an existing interface with 24 named design moves, from a scored critique and technical audit to bolder, quieter, polish, or a deliberate rewrite. Ships a rule-based slop detector.
 - **[improve-codebase-architecture](./skills/archive/improve-codebase-architecture/SKILL.md)**: Find opportunities to deepen modules, compare them in a visual HTML report, and work through a chosen design.
 - **[in-your-own-words](./skills/archive/in-your-own-words/SKILL.md)**: Restate your reading of the user's goals and the problem before working on it.
