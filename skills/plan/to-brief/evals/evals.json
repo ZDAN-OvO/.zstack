@@ -1,0 +1,23 @@
+{
+  "skill_name": "to-brief",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我写个 brief：目标是给下季度产品方向决策（更好用 vs 更便宜）提供依据，最后要一个明确建议和理由。背景：年营收约 200 万美元的营销自动化 SaaS，客户是 50 人以下公司，常嫌复杂和贵，去年调价反响不好。素材用三家竞品官网和我整理的用户评论，不用二手评论文章，查不到就留白。不要编 ARR/用户数，不动付费等级架构。先给 outline，审过再展开。",
+      "expected_output": "All five slots clear: no grilling, writes docs/briefs/<slug>.md with Stage: execute, then asks for confirmation.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我把这份 30 页的项目周报总结成一页给管理层，突出亮点，语言简洁专业，分成背景、进展、风险、下一步四块。",
+      "expected_output": "Done/format is clear but Goal is missing (what decision the page supports). Picks Goal first, grills with /grill-me (non-coding, no docs dir), at most 3-5 slots, each question with a recommended answer; does not write the brief before Goal is settled.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "给我们的 Spring Boot 项目加一个完整的多租户权限体系。",
+      "expected_output": "Large coding request with almost every slot thin or missing. Picks /grill-with-docs, ranks Goal/Boundaries/Done highest, looks up repo facts itself instead of asking, and proposes an outline/design checkpoint as Done.",
+      "files": []
+    }
+  ]
+}
