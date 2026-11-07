@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "eval_name": "ready-all-slots",
+  "prompt": "帮我写个 brief：目标是给下季度产品方向决策（更好用 vs 更便宜）提供依据，最后要一个明确建议和理由。背景：年营收约 200 万美元的营销自动化 SaaS，客户是 50 人以下公司，常嫌复杂和贵，去年调价反响不好。素材用三家竞品官网和我整理的用户评论，不用二手评论文章，查不到就留白。不要编 ARR/用户数，不动付费等级架构。先给 outline，审过再展开。",
+  "assertions": [
+    "[auto] Exactly one new brief file exists under docs/briefs/",
+    "[auto] The brief passes check-brief.mjs",
+    "[auto] The brief's Stage is execute",
+    "The response asks no clarifying questions before writing the brief",
+    "The response asks the user to confirm or correct the brief"
+  ]
+}

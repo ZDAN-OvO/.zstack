@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+      "passed": true,
+      "evidence": "new briefs: ['docs/briefs/billing-cron-migration-checklist.md']"
+    },
+    {
+      "text": "[auto] The brief passes check-brief.mjs",
+      "passed": true,
+      "evidence": "billing-cron-migration-checklist.md: 1 brief(s) ok"
+    },
+    {
+      "text": "[auto] The brief's Stage is execute",
+      "passed": true,
+      "evidence": "Stage: execute"
+    },
+    {
+      "text": "[auto] The brief body is written in English",
+      "passed": true,
+      "evidence": "CJK characters in brief: 0"
+    },
+    {
+      "text": "The response asks no clarifying questions before writing the brief",
+      "passed": true,
+      "evidence": "写入 brief 后只问一个事实缺口（crontab 和 manifests 在哪），未追问用户已给的五栏"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 3,
+      "bash": 5,
+      "write": 1
+    },
+    "total_tool_calls": 9,
+    "output_chars": 2707
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "_note": "人工评分：new_skill 为本轮按 4 点修改后的技能；old_skill 直接沿用 iteration-1 的 with_skill 运行与评分。键为 <eval_id>/<config>，值按 evals.json 中非 auto 断言的顺序排列。",
+  "1/new_skill": [[true, "未提问即写入 brief，回复称五栏均可执行"], [true, "结尾请用户确认或指出要改的地方"]],
+  "2/new_skill": [[true, "Q1 问这一页要支撑管理层做什么决定"], [true, "Q1、Q2 均带 ➡️ 推荐答案"], [true, "本轮 2 问，Materials/Boundaries 列为下一轮"], [true, "引用摘录中的 6h→2h、62%、7 月底作为已知事实"]],
+  "3/new_skill": [[true, "会话中读取 grill-with-docs、grilling、domain-modeling；回复按 GLOSSARY/ADR 处理术语"], [true, "表中列出 ADR 0001 共享 schema + tenant_id，标为“我查到的（不用你回答）”"], [true, "本轮 2 问（Goal、Done），各带推荐，Boundaries/Context 列为下一轮"], [true, "Q2 推荐先交设计说明，批准后再动代码"]],
+  "4/new_skill": [[true, "“你现在的处境是 think 阶段……完整的推广落地方案是 execute 阶段的产物”"], [true, "Done 为一页 6–10 个决策问题，交付即停"], [true, "未写方案"], [true, "brief Stage: think，check-brief 通过"]],
+  "5/new_skill": [[true, "按 When not to brief：快速查询重做成本远低于写 brief"], [true, "未提问"]],
+  "6/new_skill": [[true, "Done 为 3 行路线 × 6 列维度的对比表，Boundaries 写明不给推荐"], [true, "Context 列出 vue 3.4.21 / vuex 4.1.0 / element-plus 2.6.1 等依赖"]],
+  "7/new_skill": [[true, "Q1 问收件人是具体客户还是一批客户的模板，Goal 判为 ambiguous"], [true, "Q2 把“语气高级”列为形容词代替标准，给出三种可检验读法请用户选"], [true, "已读 price.md 三档价格，未追问价格"], [true, "2 问，各带 ➡️ 推荐答案"]],
+  "8/new_skill": [[true, "写入 -2 后缀文件，说明原文件未动，Q1 询问旧文件如何处理"]],
+  "9/new_skill": [[true, "Q1 先问“更稳定”具体指哪一类"], [true, "列出两份 incidents，并作为 Q1 的 (a)(b) 候选"], [true, "会话中读取 grill-with-docs 及其依赖的 grilling、domain-modeling"], [true, "明确判 Done、Boundaries 为清楚，未追问；Q2 问的是 Context（症状与规模）"]],
+  "10/new_skill": [[true, "写入 brief 后只问一个事实缺口（crontab 和 manifests 在哪），未追问用户已给的五栏"]]
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No brief file is written yet",
+      "passed": true,
+      "evidence": "new briefs: none"
+    },
+    {
+      "text": "The response treats the target customers as ambiguous and asks which customers the email is for",
+      "passed": true,
+      "evidence": "Q1 问收件人是具体客户还是一批客户的模板，Goal 判为 ambiguous"
+    },
+    {
+      "text": "The response flags 'high-end tone' as an adjective and asks for a concrete criterion or example",
+      "passed": true,
+      "evidence": "Q2 把“语气高级”列为形容词代替标准，给出三种可检验读法请用户选"
+    },
+    {
+      "text": "The response asks no question about prices already in price.md",
+      "passed": true,
+      "evidence": "已读 price.md 三档价格，未追问价格"
+    },
+    {
+      "text": "The interview follows /grill-me with a recommended answer per question",
+      "passed": true,
+      "evidence": "2 问，各带 ➡️ 推荐答案"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 5,
+      "bash": 2
+    },
+    "total_tool_calls": 7,
+    "output_chars": 1428
+  }
+}

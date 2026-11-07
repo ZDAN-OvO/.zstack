@@ -1,0 +1,12 @@
+{
+  "eval_id": 10,
+  "eval_name": "english-ready-request",
+  "prompt": "Write a brief for this: I need a migration checklist so our on-call team can move the billing cron jobs from the old VM to Kubernetes CronJobs next sprint without a missed run. Context: 6 jobs, the nightly invoice job must not run twice, the team has run CronJobs before. Use the crontab in the repo and our k8s manifests only. Don't change job schedules or touch the payments DB. Done is a Markdown checklist per job plus a rollback step, reviewed by me before anyone executes it.",
+  "assertions": [
+    "[auto] Exactly one new brief file exists under docs/briefs/",
+    "[auto] The brief passes check-brief.mjs",
+    "[auto] The brief's Stage is execute",
+    "[auto] The brief body is written in English",
+    "The response asks no clarifying questions before writing the brief"
+  ]
+}

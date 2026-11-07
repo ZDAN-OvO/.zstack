@@ -1,0 +1,882 @@
+{
+  "metadata": {
+    "skill_name": "to-brief",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "auto/deepseek-v4.1-flash",
+    "analyzer_model": "main session (manual judgments)",
+    "timestamp": "2026-11-06T17:18:32Z",
+    "evals_run": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 46.4,
+        "tokens": 128241,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+          "passed": true,
+          "evidence": "new briefs: ['docs/briefs/product-direction-easier-vs-cheaper.md']"
+        },
+        {
+          "text": "[auto] The brief passes check-brief.mjs",
+          "passed": true,
+          "evidence": "product-direction-easier-vs-cheaper.md: 1 brief(s) ok"
+        },
+        {
+          "text": "[auto] The brief's Stage is execute",
+          "passed": false,
+          "evidence": "Stage: decide"
+        },
+        {
+          "text": "The response asks no clarifying questions before writing the brief",
+          "passed": true,
+          "evidence": "未提问即写入 brief，回复称五栏均可执行"
+        },
+        {
+          "text": "The response asks the user to confirm or correct the brief",
+          "passed": true,
+          "evidence": "结尾请用户确认或指出要改的地方"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 10,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 91.1,
+        "tokens": 163921,
+        "tool_calls": 9,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+          "passed": true,
+          "evidence": "new briefs: ['docs/briefs/billing-cron-migration-checklist.md']"
+        },
+        {
+          "text": "[auto] The brief passes check-brief.mjs",
+          "passed": true,
+          "evidence": "billing-cron-migration-checklist.md: 1 brief(s) ok"
+        },
+        {
+          "text": "[auto] The brief's Stage is execute",
+          "passed": true,
+          "evidence": "Stage: execute"
+        },
+        {
+          "text": "[auto] The brief body is written in English",
+          "passed": true,
+          "evidence": "CJK characters in brief: 0"
+        },
+        {
+          "text": "The response asks no clarifying questions before writing the brief",
+          "passed": true,
+          "evidence": "写入 brief 后只问一个事实缺口（crontab 和 manifests 在哪），未追问用户已给的五栏"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 16.5,
+        "tokens": 99231,
+        "tool_calls": 8,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No brief file is written yet",
+          "passed": true,
+          "evidence": "new briefs: none"
+        },
+        {
+          "text": "The first question targets Goal: what decision or use the one-pager serves",
+          "passed": true,
+          "evidence": "Q1 问这一页要支撑管理层做什么决定"
+        },
+        {
+          "text": "Each question carries a recommended answer",
+          "passed": true,
+          "evidence": "Q1、Q2 均带 ➡️ 推荐答案"
+        },
+        {
+          "text": "The interview follows /grill-me (non-coding, no docs record), asking at most two questions in the round",
+          "passed": true,
+          "evidence": "本轮 2 问，Materials/Boundaries 列为下一轮"
+        },
+        {
+          "text": "The response does not ask for facts already in weekly-report.md",
+          "passed": true,
+          "evidence": "引用摘录中的 6h→2h、62%、7 月底作为已知事实"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 23.4,
+        "tokens": 112954,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No brief file is written yet",
+          "passed": true,
+          "evidence": "new briefs: none"
+        },
+        {
+          "text": "The response chooses /grill-with-docs (coding work with a docs record)",
+          "passed": true,
+          "evidence": "会话中读取 grill-with-docs、grilling、domain-modeling；回复按 GLOSSARY/ADR 处理术语"
+        },
+        {
+          "text": "The response cites the existing ADR (shared schema + tenant_id) or GLOSSARY as a looked-up fact instead of asking the user about it",
+          "passed": true,
+          "evidence": "表中列出 ADR 0001 共享 schema + tenant_id，标为“我查到的（不用你回答）”"
+        },
+        {
+          "text": "Questions cover at most five slots, highest-impact first, each with a recommended answer",
+          "passed": true,
+          "evidence": "本轮 2 问（Goal、Done），各带推荐，Boundaries/Context 列为下一轮"
+        },
+        {
+          "text": "The proposed Done includes a design or outline checkpoint before implementation",
+          "passed": true,
+          "evidence": "Q2 推荐先交设计说明，批准后再动代码"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 75.1,
+        "tokens": 200906,
+        "tool_calls": 10,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response says the request is at the think stage while asking for a full plan",
+          "passed": true,
+          "evidence": "“你现在的处境是 think 阶段……完整的推广落地方案是 execute 阶段的产物”"
+        },
+        {
+          "text": "The proposed Done is questions back to the user or an exploration, not a full rollout plan",
+          "passed": true,
+          "evidence": "Done 为一页 6–10 个决策问题，交付即停"
+        },
+        {
+          "text": "The response does not produce a full rollout plan",
+          "passed": true,
+          "evidence": "未写方案"
+        },
+        {
+          "text": "If a brief is written, its Stage is think and it passes check-brief.mjs",
+          "passed": true,
+          "evidence": "brief Stage: think，check-brief 通过"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 10.2,
+        "tokens": 52158,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No brief file is written",
+          "passed": true,
+          "evidence": "new briefs: none"
+        },
+        {
+          "text": "The response says the request does not need a brief because a redo is cheap",
+          "passed": true,
+          "evidence": "按 When not to brief：快速查询重做成本远低于写 brief"
+        },
+        {
+          "text": "The response asks no grilling questions",
+          "passed": true,
+          "evidence": "未提问"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 91.7,
+        "tokens": 240100,
+        "tool_calls": 13,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+          "passed": true,
+          "evidence": "new briefs: ['docs/briefs/vue-to-react-migration-options.md']"
+        },
+        {
+          "text": "[auto] The brief passes check-brief.mjs",
+          "passed": true,
+          "evidence": "vue-to-react-migration-options.md: 1 brief(s) ok"
+        },
+        {
+          "text": "[auto] The brief's Stage is explore",
+          "passed": true,
+          "evidence": "Stage: explore"
+        },
+        {
+          "text": "The brief's Done asks for options with trade-offs, not a single recommendation",
+          "passed": true,
+          "evidence": "Done 为 3 行路线 × 6 列维度的对比表，Boundaries 写明不给推荐"
+        },
+        {
+          "text": "The brief's Context includes facts read from package.json (Vue 3, vuex, element-plus)",
+          "passed": true,
+          "evidence": "Context 列出 vue 3.4.21 / vuex 4.1.0 / element-plus 2.6.1 等依赖"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 7,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 15.5,
+        "tokens": 99569,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No brief file is written yet",
+          "passed": true,
+          "evidence": "new briefs: none"
+        },
+        {
+          "text": "The response treats the target customers as ambiguous and asks which customers the email is for",
+          "passed": true,
+          "evidence": "Q1 问收件人是具体客户还是一批客户的模板，Goal 判为 ambiguous"
+        },
+        {
+          "text": "The response flags 'high-end tone' as an adjective and asks for a concrete criterion or example",
+          "passed": true,
+          "evidence": "Q2 把“语气高级”列为形容词代替标准，给出三种可检验读法请用户选"
+        },
+        {
+          "text": "The response asks no question about prices already in price.md",
+          "passed": true,
+          "evidence": "已读 price.md 三档价格，未追问价格"
+        },
+        {
+          "text": "The interview follows /grill-me with a recommended answer per question",
+          "passed": true,
+          "evidence": "2 问，各带 ➡️ 推荐答案"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 8,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 91.0,
+        "tokens": 203486,
+        "tool_calls": 11,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] The existing docs/briefs/competitor-usp-direction.md is unchanged",
+          "passed": true,
+          "evidence": "sha256 identical to fixture"
+        },
+        {
+          "text": "The response either asks before overwriting or writes a separately named file and says so",
+          "passed": true,
+          "evidence": "写入 -2 后缀文件，说明原文件未动，Q1 询问旧文件如何处理"
+        },
+        {
+          "text": "[auto] Any newly written brief passes check-brief.mjs",
+          "passed": true,
+          "evidence": "competitor-usp-direction-2.md: 1 brief(s) ok"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 9,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 25.3,
+        "tokens": 113505,
+        "tool_calls": 10,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No brief file is written yet",
+          "passed": true,
+          "evidence": "new briefs: none"
+        },
+        {
+          "text": "The response treats Goal as ambiguous and asks what 'more stable' means first",
+          "passed": true,
+          "evidence": "Q1 先问“更稳定”具体指哪一类"
+        },
+        {
+          "text": "The response cites the incident records in docs/incidents/ as candidate targets instead of asking the user for them",
+          "passed": true,
+          "evidence": "列出两份 incidents，并作为 Q1 的 (a)(b) 候选"
+        },
+        {
+          "text": "The response chooses /grill-with-docs",
+          "passed": true,
+          "evidence": "会话中读取 grill-with-docs 及其依赖的 grilling、domain-modeling"
+        },
+        {
+          "text": "The response does not re-ask about Boundaries or Done, which are already clear",
+          "passed": true,
+          "evidence": "明确判 Done、Boundaries 为清楚，未追问；Q2 问的是 Context（症状与规模）"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 98.1,
+        "tokens": 171836,
+        "tool_calls": 9,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+          "passed": true,
+          "evidence": "new briefs: ['docs/briefs/next-quarter-product-direction.md']"
+        },
+        {
+          "text": "[auto] The brief passes check-brief.mjs",
+          "passed": true,
+          "evidence": "next-quarter-product-direction.md: 1 brief(s) ok"
+        },
+        {
+          "text": "[auto] The brief's Stage is execute",
+          "passed": true,
+          "evidence": "Stage: execute"
+        },
+        {
+          "text": "The response asks no clarifying questions before writing the brief",
+          "passed": true,
+          "evidence": "未提问即写入 brief，回复称五栏均判为 clear"
+        },
+        {
+          "text": "The response asks the user to confirm or correct the brief",
+          "passed": true,
+          "evidence": "结尾请用户确认或指出要改的地方"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 10,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 64.6,
+        "tokens": 131290,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+          "passed": true,
+          "evidence": "new briefs: ['docs/briefs/billing-cronjobs-cutover.md']"
+        },
+        {
+          "text": "[auto] The brief passes check-brief.mjs",
+          "passed": true,
+          "evidence": "billing-cronjobs-cutover.md: 1 brief(s) ok"
+        },
+        {
+          "text": "[auto] The brief's Stage is execute",
+          "passed": true,
+          "evidence": "Stage: execute"
+        },
+        {
+          "text": "[auto] The brief body is written in English",
+          "passed": true,
+          "evidence": "CJK characters in brief: 0"
+        },
+        {
+          "text": "The response asks no clarifying questions before writing the brief",
+          "passed": true,
+          "evidence": "未提问即写入 brief，仅请用户确认"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 22.3,
+        "tokens": 125941,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No brief file is written yet",
+          "passed": true,
+          "evidence": "new briefs: none"
+        },
+        {
+          "text": "The first question targets Goal: what decision or use the one-pager serves",
+          "passed": true,
+          "evidence": "Q1 问这页要促成哪个决定"
+        },
+        {
+          "text": "Each question carries a recommended answer",
+          "passed": true,
+          "evidence": "Q1、Q2 均带 ➡️ 推荐答案"
+        },
+        {
+          "text": "The interview follows /grill-me (non-coding, no docs record), asking at most two questions in the round",
+          "passed": true,
+          "evidence": "按 grilling 格式，本轮 2 问"
+        },
+        {
+          "text": "The response does not ask for facts already in weekly-report.md",
+          "passed": true,
+          "evidence": "引用摘录中的 80%、7 月底、62% 作为已知事实"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 68.4,
+        "tokens": 142100,
+        "tool_calls": 9,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No brief file is written yet",
+          "passed": true,
+          "evidence": "new briefs: none"
+        },
+        {
+          "text": "The response chooses /grill-with-docs (coding work with a docs record)",
+          "passed": true,
+          "evidence": "明确选择 /grill-with-docs，理由为编码任务且有 docs/adr 与 GLOSSARY"
+        },
+        {
+          "text": "The response cites the existing ADR (shared schema + tenant_id) or GLOSSARY as a looked-up fact instead of asking the user about it",
+          "passed": true,
+          "evidence": "引用 ADR 0001 共享 schema + tenant_id，声明“这条已经定了，我不会再问”"
+        },
+        {
+          "text": "Questions cover at most five slots, highest-impact first, each with a recommended answer",
+          "passed": true,
+          "evidence": "3 问分别对应 Goal、Boundaries、Done，按影响排序，均带推荐答案"
+        },
+        {
+          "text": "The proposed Done includes a design or outline checkpoint before implementation",
+          "passed": true,
+          "evidence": "Done 第一段为 ≤2 页设计说明，批准后再实现"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 50.4,
+        "tokens": 126924,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response says the request is at the think stage while asking for a full plan",
+          "passed": true,
+          "evidence": "“你停在 think 阶段……推广落地方案是 execute 阶段的产物”"
+        },
+        {
+          "text": "The proposed Done is questions back to the user or an exploration, not a full rollout plan",
+          "passed": true,
+          "evidence": "推荐先出“要不要用”的判断材料，而非落地方案"
+        },
+        {
+          "text": "The response does not produce a full rollout plan",
+          "passed": true,
+          "evidence": "未产出方案"
+        },
+        {
+          "text": "If a brief is written, its Stage is think and it passes check-brief.mjs",
+          "passed": true,
+          "evidence": "未写 brief，条件断言不适用，按通过计"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 11.9,
+        "tokens": 56016,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No brief file is written",
+          "passed": true,
+          "evidence": "new briefs: none"
+        },
+        {
+          "text": "The response says the request does not need a brief because a redo is cheap",
+          "passed": true,
+          "evidence": "按 When not to brief：重做成本远低于写 brief"
+        },
+        {
+          "text": "The response asks no grilling questions",
+          "passed": true,
+          "evidence": "未提问"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "failed": 5,
+        "total": 5,
+        "time_seconds": 60.8,
+        "tokens": 156782,
+        "tool_calls": 9,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+          "passed": false,
+          "evidence": "new briefs: none"
+        },
+        {
+          "text": "[auto] The brief passes check-brief.mjs",
+          "passed": false,
+          "evidence": "no new brief"
+        },
+        {
+          "text": "[auto] The brief's Stage is explore",
+          "passed": false,
+          "evidence": "no single brief to read"
+        },
+        {
+          "text": "The brief's Done asks for options with trade-offs, not a single recommendation",
+          "passed": false,
+          "evidence": "未写 brief；回复中预告的 Done 是对比表，但请求已就绪仍追问 2 题"
+        },
+        {
+          "text": "The brief's Context includes facts read from package.json (Vue 3, vuex, element-plus)",
+          "passed": false,
+          "evidence": "未写 brief；Context 预告中含 Vue 3.4.21、Vuex、Element Plus，但未落盘"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 7,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4,
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "time_seconds": 124.3,
+        "tokens": 186859,
+        "tool_calls": 10,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No brief file is written yet",
+          "passed": false,
+          "evidence": "new briefs: ['docs/briefs/renewal-reminder-email.md']"
+        },
+        {
+          "text": "The response treats the target customers as ambiguous and asks which customers the email is for",
+          "passed": false,
+          "evidence": "Context 直接假设“老客户群体、决策人是采购”，Q1 只问模板还是单封，未问目标客户是谁"
+        },
+        {
+          "text": "The response flags 'high-end tone' as an adjective and asks for a concrete criterion or example",
+          "passed": false,
+          "evidence": "把“高级”自行落地为规则写进 Boundaries，未请用户给标准或样例"
+        },
+        {
+          "text": "The response asks no question about prices already in price.md",
+          "passed": true,
+          "evidence": "Q2 问正文是否写金额，未追问 price.md 中已有价格"
+        },
+        {
+          "text": "The interview follows /grill-me with a recommended answer per question",
+          "passed": true,
+          "evidence": "两问均带 ➡️ 推荐答案"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 8,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 74.8,
+        "tokens": 188651,
+        "tool_calls": 9,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] The existing docs/briefs/competitor-usp-direction.md is unchanged",
+          "passed": true,
+          "evidence": "sha256 identical to fixture"
+        },
+        {
+          "text": "The response either asks before overwriting or writes a separately named file and says so",
+          "passed": true,
+          "evidence": "写入 -2 后缀文件，并说明原文件未改动，Q1 询问如何处理冲突"
+        },
+        {
+          "text": "[auto] Any newly written brief passes check-brief.mjs",
+          "passed": true,
+          "evidence": "competitor-usp-direction-2.md: 1 brief(s) ok"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 9,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 63.7,
+        "tokens": 149921,
+        "tool_calls": 12,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No brief file is written yet",
+          "passed": true,
+          "evidence": "new briefs: none"
+        },
+        {
+          "text": "The response treats Goal as ambiguous and asks what 'more stable' means first",
+          "passed": true,
+          "evidence": "Q1 先问把“稳定”收敛成哪条主线和验收数字"
+        },
+        {
+          "text": "The response cites the incident records in docs/incidents/ as candidate targets instead of asking the user for them",
+          "passed": true,
+          "evidence": "列出两份 incidents 作为已查事实，并作为 Q1 的候选目标"
+        },
+        {
+          "text": "The response chooses /grill-with-docs",
+          "passed": true,
+          "evidence": "明确选择 /grill-with-docs"
+        },
+        {
+          "text": "The response does not re-ask about Boundaries or Done, which are already clear",
+          "passed": false,
+          "evidence": "把 Done 判为 thin，Q2 追问方案形态与审批后范围，用户已给“先给方案让我审”"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "new_skill": {
+      "pass_rate": {
+        "mean": 0.98,
+        "stddev": 0.0632,
+        "min": 0.8,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 48.62,
+        "stddev": 34.8763,
+        "min": 10.2,
+        "max": 91.7
+      },
+      "tokens": {
+        "mean": 141407.1,
+        "stddev": 58591.9764,
+        "min": 52158,
+        "max": 240100
+      }
+    },
+    "old_skill": {
+      "pass_rate": {
+        "mean": 0.82,
+        "stddev": 0.3458,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 63.93,
+        "stddev": 32.6323,
+        "min": 11.9,
+        "max": 124.3
+      },
+      "tokens": {
+        "mean": 143632.0,
+        "stddev": 38480.2803,
+        "min": 56016,
+        "max": 188651
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.16",
+      "time_seconds": "-15.3",
+      "tokens": "-2225"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No brief file is written yet",
+      "passed": true,
+      "evidence": "new briefs: none"
+    },
+    {
+      "text": "The response chooses /grill-with-docs (coding work with a docs record)",
+      "passed": true,
+      "evidence": "会话中读取 grill-with-docs、grilling、domain-modeling；回复按 GLOSSARY/ADR 处理术语"
+    },
+    {
+      "text": "The response cites the existing ADR (shared schema + tenant_id) or GLOSSARY as a looked-up fact instead of asking the user about it",
+      "passed": true,
+      "evidence": "表中列出 ADR 0001 共享 schema + tenant_id，标为“我查到的（不用你回答）”"
+    },
+    {
+      "text": "Questions cover at most five slots, highest-impact first, each with a recommended answer",
+      "passed": true,
+      "evidence": "本轮 2 问（Goal、Done），各带推荐，Boundaries/Context 列为下一轮"
+    },
+    {
+      "text": "The proposed Done includes a design or outline checkpoint before implementation",
+      "passed": true,
+      "evidence": "Q2 推荐先交设计说明，批准后再动代码"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 4,
+      "bash": 3
+    },
+    "total_tool_calls": 7,
+    "output_chars": 2346
+  }
+}

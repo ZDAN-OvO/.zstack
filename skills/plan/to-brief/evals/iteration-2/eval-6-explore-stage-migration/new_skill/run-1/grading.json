@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+      "passed": true,
+      "evidence": "new briefs: ['docs/briefs/vue-to-react-migration-options.md']"
+    },
+    {
+      "text": "[auto] The brief passes check-brief.mjs",
+      "passed": true,
+      "evidence": "vue-to-react-migration-options.md: 1 brief(s) ok"
+    },
+    {
+      "text": "[auto] The brief's Stage is explore",
+      "passed": true,
+      "evidence": "Stage: explore"
+    },
+    {
+      "text": "The brief's Done asks for options with trade-offs, not a single recommendation",
+      "passed": true,
+      "evidence": "Done 为 3 行路线 × 6 列维度的对比表，Boundaries 写明不给推荐"
+    },
+    {
+      "text": "The brief's Context includes facts read from package.json (Vue 3, vuex, element-plus)",
+      "passed": true,
+      "evidence": "Context 列出 vue 3.4.21 / vuex 4.1.0 / element-plus 2.6.1 等依赖"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 6,
+      "bash": 6,
+      "write": 1
+    },
+    "total_tool_calls": 13,
+    "output_chars": 1481
+  }
+}

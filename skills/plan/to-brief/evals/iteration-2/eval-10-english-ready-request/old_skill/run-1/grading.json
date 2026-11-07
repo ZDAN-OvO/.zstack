@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+      "passed": true,
+      "evidence": "new briefs: ['docs/briefs/billing-cronjobs-cutover.md']"
+    },
+    {
+      "text": "[auto] The brief passes check-brief.mjs",
+      "passed": true,
+      "evidence": "billing-cronjobs-cutover.md: 1 brief(s) ok"
+    },
+    {
+      "text": "[auto] The brief's Stage is execute",
+      "passed": true,
+      "evidence": "Stage: execute"
+    },
+    {
+      "text": "[auto] The brief body is written in English",
+      "passed": true,
+      "evidence": "CJK characters in brief: 0"
+    },
+    {
+      "text": "The response asks no clarifying questions before writing the brief",
+      "passed": true,
+      "evidence": "未提问即写入 brief，仅请用户确认"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 2,
+      "bash": 4,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 1727
+  }
+}

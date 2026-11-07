@@ -1,0 +1,11 @@
+{
+  "eval_id": 4,
+  "eval_name": "stage-mismatch-think",
+  "prompt": "我还没想好团队要不要用 AI 做代码审查，也说不清担心什么。你先直接给我写一份完整的推广落地方案吧，越完整越好。",
+  "assertions": [
+    "The response says the request is at the think stage while asking for a full plan",
+    "The proposed Done is questions back to the user or an exploration, not a full rollout plan",
+    "The response does not produce a full rollout plan",
+    "If a brief is written, its Stage is think and it passes check-brief.mjs"
+  ]
+}

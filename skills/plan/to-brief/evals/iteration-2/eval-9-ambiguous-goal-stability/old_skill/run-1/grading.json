@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No brief file is written yet",
+      "passed": true,
+      "evidence": "new briefs: none"
+    },
+    {
+      "text": "The response treats Goal as ambiguous and asks what 'more stable' means first",
+      "passed": true,
+      "evidence": "Q1 先问把“稳定”收敛成哪条主线和验收数字"
+    },
+    {
+      "text": "The response cites the incident records in docs/incidents/ as candidate targets instead of asking the user for them",
+      "passed": true,
+      "evidence": "列出两份 incidents 作为已查事实，并作为 Q1 的候选目标"
+    },
+    {
+      "text": "The response chooses /grill-with-docs",
+      "passed": true,
+      "evidence": "明确选择 /grill-with-docs"
+    },
+    {
+      "text": "The response does not re-ask about Boundaries or Done, which are already clear",
+      "passed": false,
+      "evidence": "把 Done 判为 thin，Q2 追问方案形态与审批后范围，用户已给“先给方案让我审”"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 6,
+      "bash": 6
+    },
+    "total_tool_calls": 12,
+    "output_chars": 2784
+  }
+}

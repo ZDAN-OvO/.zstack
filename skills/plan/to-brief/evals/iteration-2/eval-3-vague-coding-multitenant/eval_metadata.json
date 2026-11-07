@@ -1,0 +1,12 @@
+{
+  "eval_id": 3,
+  "eval_name": "vague-coding-multitenant",
+  "prompt": "给我们的 Spring Boot 项目加一个完整的多租户权限体系。",
+  "assertions": [
+    "[auto] No brief file is written yet",
+    "The response chooses /grill-with-docs (coding work with a docs record)",
+    "The response cites the existing ADR (shared schema + tenant_id) or GLOSSARY as a looked-up fact instead of asking the user about it",
+    "Questions cover at most five slots, highest-impact first, each with a recommended answer",
+    "The proposed Done includes a design or outline checkpoint before implementation"
+  ]
+}

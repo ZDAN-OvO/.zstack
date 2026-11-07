@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The response says the request is at the think stage while asking for a full plan",
+      "passed": true,
+      "evidence": "“你现在的处境是 think 阶段……完整的推广落地方案是 execute 阶段的产物”"
+    },
+    {
+      "text": "The proposed Done is questions back to the user or an exploration, not a full rollout plan",
+      "passed": true,
+      "evidence": "Done 为一页 6–10 个决策问题，交付即停"
+    },
+    {
+      "text": "The response does not produce a full rollout plan",
+      "passed": true,
+      "evidence": "未写方案"
+    },
+    {
+      "text": "If a brief is written, its Stage is think and it passes check-brief.mjs",
+      "passed": true,
+      "evidence": "brief Stage: think，check-brief 通过"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 5,
+      "bash": 4,
+      "write": 1
+    },
+    "total_tool_calls": 10,
+    "output_chars": 1283
+  }
+}

@@ -31,7 +31,7 @@ Each example is followed by ` -- ` and the reason it fails or works. Examples ar
 Place the request on the ladder **think → explore → decide → execute**. A brief commissions execution; the other stages need a different Done:
 
 - **think**: the user has no thesis yet. Done is "questions for the user", not a draft.
-- **explore**: Done is "options with trade-offs", not a recommendation.
+- **explore**: Done is "options with trade-offs", not a recommendation. Goal is clear once it names the options to compare and the open decision they feed; the user's decision criteria are not needed yet, since finding them is what exploring is for.
 - **decide**: Done is "a recommendation against the user's stated criteria"; those criteria must be in Goal or Context.
 - **execute**: the normal brief.
 
@@ -42,7 +42,9 @@ If the request asks for a later-stage artifact than the user is at (a full draft
 Map the user's words onto the five slots and grade each one **clear**, **thin**, **ambiguous**, or **missing**:
 
 - **thin**: present, but too little for the request's size. A large or high-stakes request with a one-phrase slot means the user hasn't thought it through yet.
-- **ambiguous**: two reasonable readings lead to different outputs.
+- **ambiguous**: two reasonable readings lead to different outputs. An adjective standing in for a criterion ("high-end tone", "more stable") or an unnamed audience ("old customers" when tiers or segments differ) is ambiguous, not thin.
+
+Grade against the stated words: a slot the user stated concretely is **clear**, even if you would phrase it differently or could add sub-questions under it. "Give me a plan to review before changing anything" is a clear Done; its exact shape is yours to propose in the brief, not a question.
 
 Facts you can look up yourself (repo layout, existing docs, file contents, tooling) are never gaps: look them up and fill them in. Only the user's intent, preferences, and decisions count as gaps.
 
@@ -50,7 +52,7 @@ Facts you can look up yourself (repo layout, existing docs, file contents, tooli
 
 **Ready** when Goal and Done are clear and at least three slots in total are clear, with every remaining slot safe to default (see Defaults). Then go to step 5.
 
-Otherwise rank the non-clear slots by **impact**: how much a wrong guess there would change the output. Goal and Done usually rank highest; a missing slot on a large request outranks a thin slot on a small one. Pick the top 3–5 to question. Default the rest and list them as assumptions.
+Otherwise rank the non-clear slots by **impact**: how much a wrong guess there would change the output. Goal and Done usually rank highest; a missing slot on a large request outranks a thin slot on a small one. Pick the top 3–5 to question. Every **ambiguous** slot is on that list: a default would pick one reading for the user. Only **thin** or **missing** low-impact slots may be defaulted (see Defaults); list them as assumptions.
 
 ### 4. Grill the selected slots
 
@@ -59,7 +61,7 @@ Choose the interview:
 - **`/grill-with-docs`** when the task is coding work, or the workspace keeps a record of past work (`docs/`, `GLOSSARY.md`, ADRs). Its glossary and ADR writes keep the brief's terms consistent with the project.
 - **`/grill-me`** when the task is non-coding and the workspace has no such record.
 
-Run the chosen interview scoped to the selected slots only: each question targets one slot, carries your recommended answer, and is worded so "yes" accepts it. Highest-impact slots go first. Stop when every selected slot grades clear; the user saying "just use your recommendation" also settles a slot.
+Run the chosen interview scoped to the selected slots only: each question targets one slot, carries your recommended answer, and is worded so "yes" accepts it. Ask **at most two questions per round**, both interviews' default, highest-impact slots first; the rest of the selected slots wait for the next round, listed in one line so the user sees what is coming. Never put a clear slot in a question. Stop when every selected slot grades clear; the user saying "just use your recommendation" also settles a slot.
 
 Grilling may reveal the stage was wrong (step 1). Then update the stage and Done, rather than pressing on with the old frame.
 
@@ -102,7 +104,7 @@ Show the user the path and a one-line summary per slot. Ask them to confirm or c
 
 ## Defaults
 
-Use these when a low-impact slot stays unfilled, and list each one under Assumptions:
+Use these only for a **thin** or **missing** low-impact slot, never for an ambiguous one, and list each one under Assumptions:
 
 - **Materials**: the files and links the user named; no unsourced figures; leave gaps blank and mark them.
 - **Boundaries**: no fabricated numbers, names or sources; no changes outside the named scope; trade-offs over adjectives.

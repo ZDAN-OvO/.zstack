@@ -1,0 +1,12 @@
+{
+  "eval_id": 6,
+  "eval_name": "explore-stage-migration",
+  "prompt": "我们在考虑把 admin-console 从 Vue 迁到 React，还没决定迁不迁。想先看看有哪些路线：全量重写、渐进迁移、不迁，各自代价和风险。依据就用仓库代码和 package.json，不要引用网上的框架对比软文。不要给我写迁移代码。先给一页对比表就行。",
+  "assertions": [
+    "[auto] Exactly one new brief file exists under docs/briefs/",
+    "[auto] The brief passes check-brief.mjs",
+    "[auto] The brief's Stage is explore",
+    "The brief's Done asks for options with trade-offs, not a single recommendation",
+    "The brief's Context includes facts read from package.json (Vue 3, vuex, element-plus)"
+  ]
+}
