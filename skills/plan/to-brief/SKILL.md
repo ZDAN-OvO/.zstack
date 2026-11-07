@@ -88,9 +88,17 @@ Write the slot contents in the user's language; keep the headings below in Engli
 <!-- Only questions the user chose to defer. Omit if empty. -->
 ```
 
+Then validate the file:
+
+```bash
+node <this-skill-directory>/scripts/check-brief.mjs docs/briefs/<topic>.md
+```
+
+Fix every reported line and rerun. The step is done when the checker exits 0 (`1 brief(s) ok`). It checks format only: title, Stage/Source, slot order, bullets-only bodies, 1–5 bullets per slot, no leftover placeholders or empty optional sections. Whether each slot is clear stays your judgment from step 2.
+
 ### 6. Confirm
 
-Show the user the path and a one-line summary per slot. Ask them to confirm or correct. Apply corrections to the file; the step is done when the user confirms the brief.
+Show the user the path and a one-line summary per slot. Ask them to confirm or correct. Apply corrections to the file and rerun the checker; the step is done when the user confirms the brief and the checker exits 0.
 
 ## Defaults
 
