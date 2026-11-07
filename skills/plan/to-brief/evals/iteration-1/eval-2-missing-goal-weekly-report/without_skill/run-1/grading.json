@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No brief file is written yet",
+      "passed": false,
+      "evidence": "new briefs: ['docs/briefs/weekly-report-management-summary.md']"
+    },
+    {
+      "text": "The first question targets Goal: what decision or use the one-pager serves",
+      "passed": false,
+      "evidence": "首问是 30 页原文在哪，目标相关问题排在第 4 问"
+    },
+    {
+      "text": "Each question carries a recommended answer",
+      "passed": false,
+      "evidence": "7 个问题均无推荐答案"
+    },
+    {
+      "text": "The interview follows /grill-me (non-coding, no docs record), asking at most two questions in the round",
+      "passed": false,
+      "evidence": "未使用 grill 格式，一次 7 问"
+    },
+    {
+      "text": "The response does not ask for facts already in weekly-report.md",
+      "passed": true,
+      "evidence": "未追问摘录中已有的事实"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 948
+  }
+}

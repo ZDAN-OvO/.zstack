@@ -1,0 +1,12 @@
+{
+  "eval_id": 7,
+  "eval_name": "ambiguous-renewal-email",
+  "prompt": "帮我写一封续费提醒邮件，目标是让老客户续费。价格参考 price.md，别承诺折扣。语气要高级一点。",
+  "assertions": [
+    "[auto] No brief file is written yet",
+    "The response treats the target customers as ambiguous and asks which customers the email is for",
+    "The response flags 'high-end tone' as an adjective and asks for a concrete criterion or example",
+    "The response asks no question about prices already in price.md",
+    "The interview follows /grill-me with a recommended answer per question"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No brief file is written yet",
+      "passed": false,
+      "evidence": "new briefs: ['docs/briefs/multitenant-permissions.md']"
+    },
+    {
+      "text": "The response chooses /grill-with-docs (coding work with a docs record)",
+      "passed": false,
+      "evidence": "未提及任何 grill 流程"
+    },
+    {
+      "text": "The response cites the existing ADR (shared schema + tenant_id) or GLOSSARY as a looked-up fact instead of asking the user about it",
+      "passed": true,
+      "evidence": "简报列为“已证实：共享 schema + tenant_id（ADR 0001）”"
+    },
+    {
+      "text": "Questions cover at most five slots, highest-impact first, each with a recommended answer",
+      "passed": false,
+      "evidence": "7 个决策问题，无推荐答案、无影响排序"
+    },
+    {
+      "text": "The proposed Done includes a design or outline checkpoint before implementation",
+      "passed": false,
+      "evidence": "交付物为分期代码变更，没有实现前的设计审阅关卡"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 5,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 1088
+  }
+}

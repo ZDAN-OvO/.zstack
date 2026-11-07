@@ -3,21 +3,138 @@
   "evals": [
     {
       "id": 1,
+      "name": "ready-all-slots",
       "prompt": "帮我写个 brief：目标是给下季度产品方向决策（更好用 vs 更便宜）提供依据，最后要一个明确建议和理由。背景：年营收约 200 万美元的营销自动化 SaaS，客户是 50 人以下公司，常嫌复杂和贵，去年调价反响不好。素材用三家竞品官网和我整理的用户评论，不用二手评论文章，查不到就留白。不要编 ARR/用户数，不动付费等级架构。先给 outline，审过再展开。",
-      "expected_output": "All five slots clear: no grilling, writes docs/briefs/<slug>.md with Stage: execute, then asks for confirmation.",
-      "files": []
+      "expected_output": "All five slots clear: no questions, writes docs/briefs/<slug>.md with Stage: execute that passes check-brief.mjs, then asks for confirmation.",
+      "files": ["evals/files/plain"],
+      "expectations": [
+        "[auto] Exactly one new brief file exists under docs/briefs/",
+        "[auto] The brief passes check-brief.mjs",
+        "[auto] The brief's Stage is execute",
+        "The response asks no clarifying questions before writing the brief",
+        "The response asks the user to confirm or correct the brief"
+      ]
     },
     {
       "id": 2,
-      "prompt": "帮我把这份 30 页的项目周报总结成一页给管理层，突出亮点，语言简洁专业，分成背景、进展、风险、下一步四块。",
-      "expected_output": "Done/format is clear but Goal is missing (what decision the page supports). Picks Goal first, grills with /grill-me (non-coding, no docs dir), at most 3-5 slots, each question with a recommended answer; does not write the brief before Goal is settled.",
-      "files": []
+      "name": "missing-goal-weekly-report",
+      "prompt": "帮我把 weekly-report.md 这份周报总结成一页给管理层，突出亮点，语言简洁专业，分成背景、进展、风险、下一步四块。",
+      "expected_output": "Format/Done is clear but Goal is missing. Asks about Goal first via the /grill-me format (non-coding, no docs dir), each question with a recommended answer, and writes no brief yet.",
+      "files": ["evals/files/weekly-report"],
+      "expectations": [
+        "[auto] No brief file is written yet",
+        "The first question targets Goal: what decision or use the one-pager serves",
+        "Each question carries a recommended answer",
+        "The interview follows /grill-me (non-coding, no docs record), asking at most two questions in the round",
+        "The response does not ask for facts already in weekly-report.md"
+      ]
     },
     {
       "id": 3,
+      "name": "vague-coding-multitenant",
       "prompt": "给我们的 Spring Boot 项目加一个完整的多租户权限体系。",
-      "expected_output": "Large coding request with almost every slot thin or missing. Picks /grill-with-docs, ranks Goal/Boundaries/Done highest, looks up repo facts itself instead of asking, and proposes an outline/design checkpoint as Done.",
-      "files": []
+      "expected_output": "Large coding request with almost every slot thin. Uses /grill-with-docs, reads the repo and the existing ADR/GLOSSARY itself, ranks Goal/Boundaries/Done highest, writes no brief yet.",
+      "files": ["evals/files/spring-tenant"],
+      "expectations": [
+        "[auto] No brief file is written yet",
+        "The response chooses /grill-with-docs (coding work with a docs record)",
+        "The response cites the existing ADR (shared schema + tenant_id) or GLOSSARY as a looked-up fact instead of asking the user about it",
+        "Questions cover at most five slots, highest-impact first, each with a recommended answer",
+        "The proposed Done includes a design or outline checkpoint before implementation"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "stage-mismatch-think",
+      "prompt": "我还没想好团队要不要用 AI 做代码审查，也说不清担心什么。你先直接给我写一份完整的推广落地方案吧，越完整越好。",
+      "expected_output": "User is at the think stage but asks for an execute-stage artifact. Flags the mismatch and proposes an earlier-stage Done (questions back to the user) instead of commissioning a full plan.",
+      "files": ["evals/files/plain"],
+      "expectations": [
+        "The response says the request is at the think stage while asking for a full plan",
+        "The proposed Done is questions back to the user or an exploration, not a full rollout plan",
+        "The response does not produce a full rollout plan",
+        "If a brief is written, its Stage is think and it passes check-brief.mjs"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "trivial-lookup-no-brief",
+      "prompt": "Node 22 LTS 什么时候 end-of-life？",
+      "expected_output": "Redo is cheap: says no brief is needed and stops, without writing a file or grilling.",
+      "files": ["evals/files/plain"],
+      "expectations": [
+        "[auto] No brief file is written",
+        "The response says the request does not need a brief because a redo is cheap",
+        "The response asks no grilling questions"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "explore-stage-migration",
+      "prompt": "我们在考虑把 admin-console 从 Vue 迁到 React，还没决定迁不迁。想先看看有哪些路线：全量重写、渐进迁移、不迁，各自代价和风险。依据就用仓库代码和 package.json，不要引用网上的框架对比软文。不要给我写迁移代码。先给一页对比表就行。",
+      "expected_output": "Explore stage: Done is options with trade-offs, not a recommendation. Slots are clear enough to write the brief directly with Stage: explore.",
+      "files": ["evals/files/vue-app"],
+      "expectations": [
+        "[auto] Exactly one new brief file exists under docs/briefs/",
+        "[auto] The brief passes check-brief.mjs",
+        "[auto] The brief's Stage is explore",
+        "The brief's Done asks for options with trade-offs, not a single recommendation",
+        "The brief's Context includes facts read from package.json (Vue 3, vuex, element-plus)"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "ambiguous-renewal-email",
+      "prompt": "帮我写一封续费提醒邮件，目标是让老客户续费。价格参考 price.md，别承诺折扣。语气要高级一点。",
+      "expected_output": "Goal is present but the audience is ambiguous (which tier, expiring when, churn risk?) and 'high-end tone' is an adjective, not a criterion; Done is missing. Grills on these via /grill-me, writes no brief yet.",
+      "files": ["evals/files/renewal"],
+      "expectations": [
+        "[auto] No brief file is written yet",
+        "The response treats the target customers as ambiguous and asks which customers the email is for",
+        "The response flags 'high-end tone' as an adjective and asks for a concrete criterion or example",
+        "The response asks no question about prices already in price.md",
+        "The interview follows /grill-me with a recommended answer per question"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "existing-file-overwrite",
+      "prompt": "帮我写个 brief：目标是给下季度产品方向决策（更好用 vs 更便宜）提供依据，最后要一个明确建议和理由。背景：年营收约 200 万美元的营销自动化 SaaS，客户是 50 人以下公司，常嫌复杂和贵，去年调价反响不好。素材用三家竞品官网和我整理的用户评论，不用二手评论文章，查不到就留白。不要编 ARR/用户数，不动付费等级架构。先给 outline，审过再展开。",
+      "expected_output": "Same ready request, but docs/briefs/competitor-usp-direction.md already exists. Leaves the old file untouched and asks before overwriting, or writes a -2 suffixed file.",
+      "files": ["evals/files/existing-brief"],
+      "expectations": [
+        "[auto] The existing docs/briefs/competitor-usp-direction.md is unchanged",
+        "The response either asks before overwriting or writes a separately named file and says so",
+        "[auto] Any newly written brief passes check-brief.mjs"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "ambiguous-goal-stability",
+      "prompt": "让 order-service 更稳定一点。只改 src/ 下面的代码，不要动数据库 schema。改之前先给我一份方案让我审。",
+      "expected_output": "Boundaries and Done are clear, Goal is ambiguous ('more stable' could mean fewer incidents, timeouts, lock waits...). Uses /grill-with-docs, reads docs/incidents/ itself and offers them as candidate goals, writes no brief yet.",
+      "files": ["evals/files/order-service"],
+      "expectations": [
+        "[auto] No brief file is written yet",
+        "The response treats Goal as ambiguous and asks what 'more stable' means first",
+        "The response cites the incident records in docs/incidents/ as candidate targets instead of asking the user for them",
+        "The response chooses /grill-with-docs",
+        "The response does not re-ask about Boundaries or Done, which are already clear"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "english-ready-request",
+      "prompt": "Write a brief for this: I need a migration checklist so our on-call team can move the billing cron jobs from the old VM to Kubernetes CronJobs next sprint without a missed run. Context: 6 jobs, the nightly invoice job must not run twice, the team has run CronJobs before. Use the crontab in the repo and our k8s manifests only. Don't change job schedules or touch the payments DB. Done is a Markdown checklist per job plus a rollback step, reviewed by me before anyone executes it.",
+      "expected_output": "English, all slots clear: writes the brief in English directly with Stage: execute, passing check-brief.mjs.",
+      "files": ["evals/files/plain"],
+      "expectations": [
+        "[auto] Exactly one new brief file exists under docs/briefs/",
+        "[auto] The brief passes check-brief.mjs",
+        "[auto] The brief's Stage is execute",
+        "[auto] The brief body is written in English",
+        "The response asks no clarifying questions before writing the brief"
+      ]
     }
   ]
 }

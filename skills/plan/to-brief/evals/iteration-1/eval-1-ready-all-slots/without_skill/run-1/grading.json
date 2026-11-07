@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+      "passed": true,
+      "evidence": "new briefs: ['docs/briefs/next-quarter-product-direction.md']"
+    },
+    {
+      "text": "[auto] The brief passes check-brief.mjs",
+      "passed": false,
+      "evidence": "next-quarter-product-direction.md: 24 problems found"
+    },
+    {
+      "text": "[auto] The brief's Stage is execute",
+      "passed": false,
+      "evidence": "Stage: None"
+    },
+    {
+      "text": "The response asks no clarifying questions before writing the brief",
+      "passed": false,
+      "evidence": "写完后列出 6 个阻塞性问题（竞品是谁、评论在哪等）"
+    },
+    {
+      "text": "The response asks the user to confirm or correct the brief",
+      "passed": false,
+      "evidence": "以提问收尾，没有请用户确认 brief 本身"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 3,
+    "output_chars": 971
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No brief file is written",
+      "passed": true,
+      "evidence": "new briefs: none"
+    },
+    {
+      "text": "The response says the request does not need a brief because a redo is cheap",
+      "passed": false,
+      "evidence": "给出的理由是“单一事实查询”，未提及重做成本；结论相同但依据不同"
+    },
+    {
+      "text": "The response asks no grilling questions",
+      "passed": true,
+      "evidence": "未提问"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.67
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1,
+      "web_search": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 378
+  }
+}

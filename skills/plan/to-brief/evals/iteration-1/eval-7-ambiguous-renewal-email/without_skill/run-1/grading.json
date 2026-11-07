@@ -1,0 +1,45 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No brief file is written yet",
+      "passed": false,
+      "evidence": "new briefs: ['docs/briefs/renewal-reminder-email.md']"
+    },
+    {
+      "text": "The response treats the target customers as ambiguous and asks which customers the email is for",
+      "passed": true,
+      "evidence": "Q2 问面向哪个套餐层级"
+    },
+    {
+      "text": "The response flags 'high-end tone' as an adjective and asks for a concrete criterion or example",
+      "passed": false,
+      "evidence": "自行把“高级”拆成规则，未向用户确认"
+    },
+    {
+      "text": "The response asks no question about prices already in price.md",
+      "passed": true,
+      "evidence": "未追问 price.md 已有价格"
+    },
+    {
+      "text": "The interview follows /grill-me with a recommended answer per question",
+      "passed": false,
+      "evidence": "未使用 grill 格式，7 问无推荐答案"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.4
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 2,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 565
+  }
+}

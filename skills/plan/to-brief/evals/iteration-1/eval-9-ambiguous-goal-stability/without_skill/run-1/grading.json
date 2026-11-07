@@ -1,0 +1,46 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No brief file is written yet",
+      "passed": false,
+      "evidence": "new briefs: ['docs/briefs/order-service-stability.md']"
+    },
+    {
+      "text": "The response treats Goal as ambiguous and asks what 'more stable' means first",
+      "passed": true,
+      "evidence": "首个待答问题为稳定性目标与判定标准"
+    },
+    {
+      "text": "The response cites the incident records in docs/incidents/ as candidate targets instead of asking the user for them",
+      "passed": true,
+      "evidence": "简报以两份 incidents 为依据"
+    },
+    {
+      "text": "The response chooses /grill-with-docs",
+      "passed": false,
+      "evidence": "未使用 grill 流程"
+    },
+    {
+      "text": "The response does not re-ask about Boundaries or Done, which are already clear",
+      "passed": false,
+      "evidence": "追问“能否新增依赖”等边界问题，并在简报中重写验收方式"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.4
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "find": 1,
+      "read": 4,
+      "bash": 2,
+      "write": 1
+    },
+    "total_tool_calls": 9,
+    "output_chars": 1030
+  }
+}

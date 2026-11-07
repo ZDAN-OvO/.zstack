@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] The existing docs/briefs/competitor-usp-direction.md is unchanged",
+      "passed": true,
+      "evidence": "sha256 identical to fixture"
+    },
+    {
+      "text": "The response either asks before overwriting or writes a separately named file and says so",
+      "passed": true,
+      "evidence": "另起新文件名，并说明没动原文件"
+    },
+    {
+      "text": "[auto] Any newly written brief passes check-brief.mjs",
+      "passed": false,
+      "evidence": "usability-vs-price-direction.md: 21 problems found"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.67
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 845
+  }
+}

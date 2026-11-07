@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] Exactly one new brief file exists under docs/briefs/",
+      "passed": true,
+      "evidence": "new briefs: ['docs/briefs/billing-cron-k8s-migration.md']"
+    },
+    {
+      "text": "[auto] The brief passes check-brief.mjs",
+      "passed": false,
+      "evidence": "billing-cron-k8s-migration.md: 19 problems found"
+    },
+    {
+      "text": "[auto] The brief's Stage is execute",
+      "passed": false,
+      "evidence": "Stage: None"
+    },
+    {
+      "text": "[auto] The brief body is written in English",
+      "passed": true,
+      "evidence": "CJK characters in brief: 0"
+    },
+    {
+      "text": "The response asks no clarifying questions before writing the brief",
+      "passed": false,
+      "evidence": "写完后列出 5 个问题（仓库在哪、时区等）"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.4
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 2650
+  }
+}

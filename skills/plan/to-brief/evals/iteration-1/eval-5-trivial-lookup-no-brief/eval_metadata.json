@@ -1,0 +1,10 @@
+{
+  "eval_id": 5,
+  "eval_name": "trivial-lookup-no-brief",
+  "prompt": "Node 22 LTS 什么时候 end-of-life？",
+  "assertions": [
+    "[auto] No brief file is written",
+    "The response says the request does not need a brief because a redo is cheap",
+    "The response asks no grilling questions"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "eval_id": 9,
+  "eval_name": "ambiguous-goal-stability",
+  "prompt": "让 order-service 更稳定一点。只改 src/ 下面的代码，不要动数据库 schema。改之前先给我一份方案让我审。",
+  "assertions": [
+    "[auto] No brief file is written yet",
+    "The response treats Goal as ambiguous and asks what 'more stable' means first",
+    "The response cites the incident records in docs/incidents/ as candidate targets instead of asking the user for them",
+    "The response chooses /grill-with-docs",
+    "The response does not re-ask about Boundaries or Done, which are already clear"
+  ]
+}

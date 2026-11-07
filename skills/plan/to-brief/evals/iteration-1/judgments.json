@@ -1,0 +1,23 @@
+{
+  "_note": "人工评分：非 [auto] 断言，由主会话逐条阅读子代理最终回复与产物后判定。键为 <eval_id>/<config>，值按 evals.json 中非 auto 断言的顺序排列。",
+  "1/with_skill": [[true, "未提问即写入 brief，回复称五栏均判为 clear"], [true, "结尾请用户确认或指出要改的地方"]],
+  "1/without_skill": [[false, "写完后列出 6 个阻塞性问题（竞品是谁、评论在哪等）"], [false, "以提问收尾，没有请用户确认 brief 本身"]],
+  "2/with_skill": [[true, "Q1 问这页要促成哪个决定"], [true, "Q1、Q2 均带 ➡️ 推荐答案"], [true, "按 grilling 格式，本轮 2 问"], [true, "引用摘录中的 80%、7 月底、62% 作为已知事实"]],
+  "2/without_skill": [[false, "首问是 30 页原文在哪，目标相关问题排在第 4 问"], [false, "7 个问题均无推荐答案"], [false, "未使用 grill 格式，一次 7 问"], [true, "未追问摘录中已有的事实"]],
+  "3/with_skill": [[true, "明确选择 /grill-with-docs，理由为编码任务且有 docs/adr 与 GLOSSARY"], [true, "引用 ADR 0001 共享 schema + tenant_id，声明“这条已经定了，我不会再问”"], [true, "3 问分别对应 Goal、Boundaries、Done，按影响排序，均带推荐答案"], [true, "Done 第一段为 ≤2 页设计说明，批准后再实现"]],
+  "3/without_skill": [[false, "未提及任何 grill 流程"], [true, "简报列为“已证实：共享 schema + tenant_id（ADR 0001）”"], [false, "7 个决策问题，无推荐答案、无影响排序"], [false, "交付物为分期代码变更，没有实现前的设计审阅关卡"]],
+  "4/with_skill": [[true, "“你停在 think 阶段……推广落地方案是 execute 阶段的产物”"], [true, "推荐先出“要不要用”的判断材料，而非落地方案"], [true, "未产出方案"], [true, "未写 brief，条件断言不适用，按通过计"]],
+  "4/without_skill": [[true, "“你的请求和所处阶段不匹配”"], [true, "交付物换成决策阶段材料，推广方案降为条件附录"], [true, "未直接产出完整方案"], [false, "写了 brief，但无 Stage 行，check-brief 报 23 个问题"]],
+  "5/with_skill": [[true, "按 When not to brief：重做成本远低于写 brief"], [true, "未提问"]],
+  "5/without_skill": [[false, "给出的理由是“单一事实查询”，未提及重做成本；结论相同但依据不同"], [true, "未提问"]],
+  "6/with_skill": [[false, "未写 brief；回复中预告的 Done 是对比表，但请求已就绪仍追问 2 题"], [false, "未写 brief；Context 预告中含 Vue 3.4.21、Vuex、Element Plus，但未落盘"]],
+  "6/without_skill": [[true, "Done 为 3 行 × 5 列对比表，明确禁止直接下“建议迁移”结论"], [true, "简报写明 4 个依赖及版本"]],
+  "7/with_skill": [[false, "Context 直接假设“老客户群体、决策人是采购”，Q1 只问模板还是单封，未问目标客户是谁"], [false, "把“高级”自行落地为规则写进 Boundaries，未请用户给标准或样例"], [true, "Q2 问正文是否写金额，未追问 price.md 中已有价格"], [true, "两问均带 ➡️ 推荐答案"]],
+  "7/without_skill": [[true, "Q2 问面向哪个套餐层级"], [false, "自行把“高级”拆成规则，未向用户确认"], [true, "未追问 price.md 已有价格"], [false, "未使用 grill 格式，7 问无推荐答案"]],
+  "8/with_skill": [[true, "写入 -2 后缀文件，并说明原文件未改动，Q1 询问如何处理冲突"]],
+  "8/without_skill": [[true, "另起新文件名，并说明没动原文件"]],
+  "9/with_skill": [[true, "Q1 先问把“稳定”收敛成哪条主线和验收数字"], [true, "列出两份 incidents 作为已查事实，并作为 Q1 的候选目标"], [true, "明确选择 /grill-with-docs"], [false, "把 Done 判为 thin，Q2 追问方案形态与审批后范围，用户已给“先给方案让我审”"]],
+  "9/without_skill": [[true, "首个待答问题为稳定性目标与判定标准"], [true, "简报以两份 incidents 为依据"], [false, "未使用 grill 流程"], [false, "追问“能否新增依赖”等边界问题，并在简报中重写验收方式"]],
+  "10/with_skill": [[true, "未提问即写入 brief，仅请用户确认"]],
+  "10/without_skill": [[false, "写完后列出 5 个问题（仓库在哪、时区等）"]]
+}
