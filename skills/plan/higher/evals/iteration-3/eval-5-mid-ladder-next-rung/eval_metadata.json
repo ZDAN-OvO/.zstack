@@ -1,0 +1,11 @@
+{
+  "eval_id": 5,
+  "eval_name": "mid-ladder-next-rung",
+  "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/higher 帮我把这季度的数字填进上季度的季报模板里\n\n[助手]\n（grill 完成）你要这份季报是为了周一管理层会上决定下季度预算怎么分；数据在公司 BI 里，AI 能拿到导出的 CSV，没有直接查询权限。\n\nRung 0：把数字填进上季度模板。\n建议 Rung 1：解释这季度变了什么、为什么、下季度怎么做。理由：老板在会上一定会问数字为什么变。AI 新增负责：归因分析。需要：本季和上季 CSV。\n\n[用户·最新]\nrung 1 接受，就按你写的。",
+  "assertions": [
+    "The response suggests exactly one new rung (rung 2)",
+    "The suggested rung comes with a reason, what AI would newly own, and what it needs",
+    "The response asks the user to accept, rewrite or stop",
+    "[auto] No ladders/ file is written yet"
+  ]
+}

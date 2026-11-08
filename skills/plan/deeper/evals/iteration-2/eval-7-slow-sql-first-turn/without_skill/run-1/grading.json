@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks about the user's access, material (logs, monitoring) or what has been tried",
+      "passed": true,
+      "evidence": "Asks SQL, EXPLAIN, DDL, code, edit boundaries"
+    },
+    {
+      "text": "The response does not rewrite or optimize SQL yet",
+      "passed": true,
+      "evidence": "No rewrite"
+    },
+    {
+      "text": "The response does not adopt a 'senior DBA' persona",
+      "passed": true,
+      "evidence": "No persona"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

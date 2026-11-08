@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] Exactly one ladders/*.md file exists",
+      "passed": true,
+      "evidence": "ladders/quarterly-report.md"
+    },
+    {
+      "text": "[auto] The ladder file marks one rung handed and names it on a 'Handed over' line",
+      "passed": true,
+      "evidence": "rung 3 handed + Handed over: rung 3"
+    },
+    {
+      "text": "The ladder records rung 3 in the user's rewritten words (two quarters, backtest marked insufficient)",
+      "passed": true,
+      "evidence": "Rung 3 in the user's rewrite"
+    },
+    {
+      "text": "The response names the handed rung and the file path",
+      "passed": true,
+      "evidence": "Names rung 3 and path"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  }
+}

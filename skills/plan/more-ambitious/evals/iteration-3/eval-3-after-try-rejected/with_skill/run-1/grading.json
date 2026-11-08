@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] ladders/login-whitescreen.md has a dated entry under Trials",
+      "passed": true,
+      "evidence": "### 2026-11-08 · rung 2 · rejected"
+    },
+    {
+      "text": "The response suggests running /deeper on the same rung because the failure is about diagnosis/method",
+      "passed": true,
+      "evidence": "落空的是方法，同档 /deeper"
+    },
+    {
+      "text": "The response leaves the step-down vs deeper choice to the user",
+      "passed": true,
+      "evidence": "两条路，你选"
+    },
+    {
+      "text": "[auto] Rung 2 is not yet marked rejected in the ladder file",
+      "passed": true,
+      "evidence": "rung 2 still handed"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  }
+}

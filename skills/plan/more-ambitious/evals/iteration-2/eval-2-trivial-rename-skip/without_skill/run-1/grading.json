@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file under src/ was modified",
+      "passed": false,
+      "evidence": "Renamed in src/login.ts"
+    },
+    {
+      "text": "The response suggests skipping the more-ambitious interview because the task is trivial",
+      "passed": false,
+      "evidence": "No skip suggestion"
+    },
+    {
+      "text": "The response asks no height/depth/breadth interview question",
+      "passed": true,
+      "evidence": "No interview question"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.33
+  }
+}

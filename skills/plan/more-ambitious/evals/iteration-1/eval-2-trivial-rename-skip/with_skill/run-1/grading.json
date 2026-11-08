@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file under src/ was modified",
+      "passed": false,
+      "evidence": "src/login.ts renamed mountLogin → renderLogin"
+    },
+    {
+      "text": "The response suggests skipping the more-ambitious interview because the task is trivial",
+      "passed": true,
+      "evidence": "没跑 /more-ambitious：这种改名重做一遍比访谈便宜"
+    },
+    {
+      "text": "The response asks no height/depth/breadth interview question",
+      "passed": true,
+      "evidence": "No interview question"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.67
+  }
+}

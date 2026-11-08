@@ -1,0 +1,10 @@
+{
+  "eval_id": 7,
+  "eval_name": "slow-sql-first-turn",
+  "prompt": "我们一个接口 P99 从 200ms 涨到 900ms，帮我优化一下这几个慢 SQL",
+  "assertions": [
+    "The response asks about the user's access, material (logs, monitoring) or what has been tried",
+    "The response does not rewrite or optimize SQL yet",
+    "The response does not adopt a 'senior DBA' persona"
+  ]
+}

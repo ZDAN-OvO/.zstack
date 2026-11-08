@@ -1,0 +1,11 @@
+{
+  "eval_id": 3,
+  "eval_name": "after-try-rejected",
+  "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/more-ambitious 帮我修一下登录页偶尔白屏的 bug\n\n[助手]\n（已完成 higher，阶梯写在 ladders/login-whitescreen.md，交出 rung 2；你确认并复述了任务，已交给 /to-brief 执行。）\n\n[用户·最新]\n按 rung 2 跑完了，结果不行：它只给登录页加了个 loading 骨架屏，白屏的真正原因根本没找到。",
+  "assertions": [
+    "[auto] ladders/login-whitescreen.md has a dated entry under Trials",
+    "The response suggests running /deeper on the same rung because the failure is about diagnosis/method",
+    "The response leaves the step-down vs deeper choice to the user",
+    "[auto] Rung 2 is not yet marked rejected in the ladder file"
+  ]
+}

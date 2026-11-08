@@ -1,0 +1,12 @@
+{
+  "eval_id": 8,
+  "eval_name": "homepage-post-grill-suggest",
+  "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/deeper 网站转化率低，想改首页文案\n\n[助手]\n（grill 完成）你的情况：B2B SaaS 官网，月访客约 8000；有 GA4 和 Hotjar（录屏+热图，已开 3 个月）；客服对话在 Intercom；没有 A/B 测试工具；两周内要给结论；上个月换了广告投放渠道。\n\n[用户·最新]\n情况就这些，你给建议吧。",
+  "assertions": [
+    "The first suggestion questions the premise and names the recent ad-channel change as a possible cause",
+    "Raw-material suggestions name the user's actual sources (Hotjar, Intercom or GA4)",
+    "The proof suggestion accounts for having no A/B testing tool",
+    "Claims are marked as known or unsure",
+    "The response asks the user to keep, edit or drop each suggestion"
+  ]
+}

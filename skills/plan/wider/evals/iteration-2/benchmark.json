@@ -1,0 +1,206 @@
+{
+  "metadata": {
+    "skill_name": "wider",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-11-08T10:14:25Z",
+    "evals_run": [
+      9,
+      10
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 10,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 20.6,
+        "tokens": 39943,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response suggests two or three verbs for the job",
+          "passed": true,
+          "evidence": "Three verbs"
+        },
+        {
+          "text": "The suggested verbs leave out the noun (\u7b80\u62a5/deck)",
+          "passed": true,
+          "evidence": "None use \u7b80\u62a5"
+        },
+        {
+          "text": "The response asks the user to pick or rewrite a verb",
+          "passed": true,
+          "evidence": "\u4f60\u5b9a\u4e00\u4e2a\u52a8\u8bcd"
+        },
+        {
+          "text": "The response does not yet list fields or techniques",
+          "passed": true,
+          "evidence": "Industries deferred until a verb is picked"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 9,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 42.7,
+        "tokens": 63501,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No README file is written",
+          "passed": true,
+          "evidence": "No README"
+        },
+        {
+          "text": "The response asks who reads the README or in what moment",
+          "passed": true,
+          "evidence": "Q1 \u8c01\u5728\u4ec0\u4e48\u65f6\u523b\u7b2c\u4e00\u6b21\u78b0\u5230\u5b83"
+        },
+        {
+          "text": "The response asks what the reader should do or feel afterwards",
+          "passed": true,
+          "evidence": "Q2 \u8bfb\u8005\u4f1a\u505a\u51fa\u7684\u4e0b\u4e00\u4e2a\u52a8\u4f5c"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 10,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "failed": 4,
+        "total": 4,
+        "time_seconds": 31.0,
+        "tokens": 32757,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response suggests two or three verbs for the job",
+          "passed": false,
+          "evidence": "Writes a six-block outline"
+        },
+        {
+          "text": "The suggested verbs leave out the noun (\u7b80\u62a5/deck)",
+          "passed": false,
+          "evidence": "No verbs"
+        },
+        {
+          "text": "The response asks the user to pick or rewrite a verb",
+          "passed": false,
+          "evidence": "No pick"
+        },
+        {
+          "text": "The response does not yet list fields or techniques",
+          "passed": false,
+          "evidence": "Lists fields"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 9,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.33,
+        "passed": 1,
+        "failed": 2,
+        "total": 3,
+        "time_seconds": 20.0,
+        "tokens": 45900,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No README file is written",
+          "passed": true,
+          "evidence": "No README"
+        },
+        {
+          "text": "The response asks who reads the README or in what moment",
+          "passed": false,
+          "evidence": "Asks for code and facts, not reader or moment"
+        },
+        {
+          "text": "The response asks what the reader should do or feel afterwards",
+          "passed": false,
+          "evidence": "No reader-action question"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 31.65,
+        "stddev": 15.6271,
+        "min": 20.6,
+        "max": 42.7
+      },
+      "tokens": {
+        "mean": 51722.0,
+        "stddev": 16658.0216,
+        "min": 39943,
+        "max": 63501
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.165,
+        "stddev": 0.2333,
+        "min": 0.0,
+        "max": 0.33
+      },
+      "time_seconds": {
+        "mean": 25.5,
+        "stddev": 7.7782,
+        "min": 20.0,
+        "max": 31.0
+      },
+      "tokens": {
+        "mean": 39328.5,
+        "stddev": 9293.5044,
+        "min": 32757,
+        "max": 45900
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.83",
+      "time_seconds": "+6.1",
+      "tokens": "+12394"
+    }
+  },
+  "notes": []
+}

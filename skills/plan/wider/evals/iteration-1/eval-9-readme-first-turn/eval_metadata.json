@@ -1,0 +1,10 @@
+{
+  "eval_id": 9,
+  "eval_name": "readme-first-turn",
+  "prompt": "给我们的 Agent 项目写个 README",
+  "assertions": [
+    "[auto] No README file is written",
+    "The response asks who reads the README or in what moment",
+    "The response asks what the reader should do or feel afterwards"
+  ]
+}

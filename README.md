@@ -20,7 +20,7 @@ Every skill is one of two kinds, and the flag is independent of the harness that
 - **User-invoked**: `disable-model-invocation: true` in the frontmatter, so only `/skill:<name>` reaches it. Its description is read by a human.
 - **Model-invoked**: no such flag, so the model can also reach for it on its own. Its description carries trigger phrasing.
 
-This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 32 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
+This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 36 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
 
 ## Targets
 
@@ -31,11 +31,14 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 ## User-invoked
 
 - **[correct](./skills/meta/correct/SKILL.md)**: Find the mistakes agents keep repeating in this repo and make each one impossible.
+- **[deeper](./skills/plan/deeper/SKILL.md)**: Grill the user, then suggest how an expert would do the task: premise check, raw sources, named methods and proof.
 - **[ds-prompting](./skills/meta/ds-prompting/SKILL.md)**: DeepSeek 极限用量提示词的逐字存档，需要原样取用时调用。
 - **[grill-me](./skills/plan/grill-me/SKILL.md)**: Get relentlessly interviewed about a plan or design until every branch of the design tree is settled.
 - **[grill-with-docs](./skills/plan/grill-with-docs/SKILL.md)**: Grilling session that also builds the project's domain model, writing `GLOSSARY.md` and ADRs inline. Asks at most 3 questions per round.
 - **[handoff](./skills/meta/handoff/SKILL.md)**: Compact the current conversation into a handoff document another agent can pick up.
+- **[higher](./skills/plan/higher/SKILL.md)**: Build a "then what?" ladder with the user, hand over the top rung, and step back after a rejected try. Writes no files.
 - **[how](./skills/investigate/how/SKILL.md)**: Trace a subsystem’s architecture, runtime flow, ownership, and gotchas from the code.
+- **[more-ambitious](./skills/plan/more-ambitious/SKILL.md)**: Route a request through `/higher`, `/deeper` and `/wider`, then record the ambitious requirement at `docs/reqs/<topic>.md` for `/to-brief`.
 - **[multi-phase-plan](./skills/plan/multi-phase-plan/SKILL.md)**: Ground changes in code and feasibility evidence, then plan reviewable PRs with strict verification gates and safe parallel boundaries.
 - **[no-comments](./skills/build/no-comments/SKILL.md)**: Spawn the comment-sicko subagent, fix accepted findings, offer encodings for claimed constraints.
 - **[readme-crafter-skill](./skills/explain/readme-crafter-skill/SKILL.md)**: Write, rewrite, or audit a repository's `README.md` as a landing page and onboarding guide.
@@ -45,6 +48,7 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[video-transcribe](./skills/documents/video-transcribe/SKILL.md)**: Bilibili 视频或本地音频转成带时间戳的中文转写，并按内容生成阅读报告或笔记。
 - **[wait-what](./skills/explain/wait-what/SKILL.md)**: Stop the answer that did not land and re-pitch it: context first, Simplified Technical English, project glossary terms.
 - **[why](./skills/investigate/why/SKILL.md)**: Investigate the evidence behind design decisions across git history and available MCP sources, separating facts from inference.
+- **[wider](./skills/plan/wider/SKILL.md)**: Turn a deliverable's noun into a verb, then suggest fields that do that verb best and one technique to borrow from each.
 
 ## Model-invoked
 

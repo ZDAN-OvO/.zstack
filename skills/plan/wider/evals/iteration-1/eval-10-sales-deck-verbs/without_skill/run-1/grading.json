@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests two or three verbs for the job",
+      "passed": false,
+      "evidence": "Writes brief.md instead"
+    },
+    {
+      "text": "The suggested verbs leave out the noun (简报/deck)",
+      "passed": false,
+      "evidence": "No verbs offered"
+    },
+    {
+      "text": "The response asks the user to pick or rewrite a verb",
+      "passed": false,
+      "evidence": "No pick asked"
+    },
+    {
+      "text": "The response does not yet list fields or techniques",
+      "passed": true,
+      "evidence": "No fields"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 3,
+    "total": 4,
+    "pass_rate": 0.25
+  }
+}

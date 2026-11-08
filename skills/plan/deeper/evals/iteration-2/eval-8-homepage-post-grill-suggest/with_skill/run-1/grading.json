@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "The first suggestion questions the premise and names the recent ad-channel change as a possible cause",
+      "passed": true,
+      "evidence": "Group 1 premise, names the ad-channel change"
+    },
+    {
+      "text": "Raw-material suggestions name the user's actual sources (Hotjar, Intercom or GA4)",
+      "passed": true,
+      "evidence": "GA4, Hotjar, Intercom"
+    },
+    {
+      "text": "The proof suggestion accounts for having no A/B testing tool",
+      "passed": true,
+      "evidence": "5 秒测试, pre/post, ad-platform experiments"
+    },
+    {
+      "text": "Claims are marked as known or unsure",
+      "passed": true,
+      "evidence": "（已知）/（不确定） markers"
+    },
+    {
+      "text": "The response asks the user to keep, edit or drop each suggestion",
+      "passed": true,
+      "evidence": "逐条说保留/改写/放弃"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

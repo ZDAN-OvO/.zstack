@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file under src/ was modified",
+      "passed": true,
+      "evidence": "src/ unchanged"
+    },
+    {
+      "text": "The response suggests skipping the more-ambitious interview because the task is trivial",
+      "passed": true,
+      "evidence": "纯改名属于「重做比重访谈便宜」"
+    },
+    {
+      "text": "The response asks no height/depth/breadth interview question",
+      "passed": true,
+      "evidence": "No interview question"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

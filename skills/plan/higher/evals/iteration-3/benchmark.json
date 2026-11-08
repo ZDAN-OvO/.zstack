@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "higher",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-11-08T10:34:37Z",
+    "evals_run": [
+      4,
+      5,
+      6
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 27.8,
+        "tokens": 53107,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No ladders/ file is written",
+          "passed": true,
+          "evidence": "No ladders/"
+        },
+        {
+          "text": "The response asks what the report is for or who uses it",
+          "passed": true,
+          "evidence": "Q1 \u7ed9\u8c01\u770b\u3001\u8981\u63a8\u52a8\u4ec0\u4e48"
+        },
+        {
+          "text": "The response does not yet suggest a rung above rung 0",
+          "passed": true,
+          "evidence": "No rung; next round of grill promised"
+        },
+        {
+          "text": "The response does not fill in the report",
+          "passed": true,
+          "evidence": "Did not fill"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 11.7,
+        "tokens": 33816,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response suggests exactly one new rung (rung 2)",
+          "passed": true,
+          "evidence": "One Rung 2"
+        },
+        {
+          "text": "The suggested rung comes with a reason, what AI would newly own, and what it needs",
+          "passed": true,
+          "evidence": "\u7406\u7531 / AI \u65b0\u8d1f\u8d23 / \u9700\u8981 / \u68c0\u67e5"
+        },
+        {
+          "text": "The response asks the user to accept, rewrite or stop",
+          "passed": true,
+          "evidence": "\u63a5\u53d7\u3001\u6539\u5199\uff0c\u6216\u8005\u8bf4\u505c\u5728\u8fd9\u91cc"
+        },
+        {
+          "text": "[auto] No ladders/ file is written yet",
+          "passed": true,
+          "evidence": "No file; writes only on stop"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 32.7,
+        "tokens": 61552,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] Exactly one ladders/*.md file exists",
+          "passed": true,
+          "evidence": "ladders/quarterly-report.md"
+        },
+        {
+          "text": "[auto] The ladder file marks one rung handed and names it on a 'Handed over' line",
+          "passed": true,
+          "evidence": "rung 3 handed + Handed over: rung 3"
+        },
+        {
+          "text": "The ladder records rung 3 in the user's rewritten words (two quarters, backtest marked insufficient)",
+          "passed": true,
+          "evidence": "Rung 3 in the user's rewrite"
+        },
+        {
+          "text": "The response names the handed rung and the file path",
+          "passed": true,
+          "evidence": "Names rung 3 and path"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 12.7,
+        "tokens": 30430,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] No ladders/ file is written",
+          "passed": true,
+          "evidence": "No ladders/"
+        },
+        {
+          "text": "The response asks what the report is for or who uses it",
+          "passed": false,
+          "evidence": "Asks template, source and file naming, not purpose"
+        },
+        {
+          "text": "The response does not yet suggest a rung above rung 0",
+          "passed": true,
+          "evidence": "No rung"
+        },
+        {
+          "text": "The response does not fill in the report",
+          "passed": true,
+          "evidence": "Did not fill"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 18.5,
+        "tokens": 31694,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response suggests exactly one new rung (rung 2)",
+          "passed": true,
+          "evidence": "One Rung 2"
+        },
+        {
+          "text": "The suggested rung comes with a reason, what AI would newly own, and what it needs",
+          "passed": true,
+          "evidence": "\u7406\u7531 / AI \u65b0\u589e\u8d1f\u8d23 / \u9700\u8981"
+        },
+        {
+          "text": "The response asks the user to accept, rewrite or stop",
+          "passed": false,
+          "evidence": "Offers accept or stop, no rewrite"
+        },
+        {
+          "text": "[auto] No ladders/ file is written yet",
+          "passed": true,
+          "evidence": "No file"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 27.3,
+        "tokens": 58324,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "[auto] Exactly one ladders/*.md file exists",
+          "passed": true,
+          "evidence": "ladders/quarterly-report.md"
+        },
+        {
+          "text": "[auto] The ladder file marks one rung handed and names it on a 'Handed over' line",
+          "passed": false,
+          "evidence": "No handed status, no 'Handed over' line"
+        },
+        {
+          "text": "The ladder records rung 3 in the user's rewritten words (two quarters, backtest marked insufficient)",
+          "passed": true,
+          "evidence": "User's rewrite recorded"
+        },
+        {
+          "text": "The response names the handed rung and the file path",
+          "passed": true,
+          "evidence": "Names Rung 3 and path"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 24.0667,
+        "stddev": 10.9865,
+        "min": 11.7,
+        "max": 32.7
+      },
+      "tokens": {
+        "mean": 49491.6667,
+        "stddev": 14217.0461,
+        "min": 33816,
+        "max": 61552
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 19.5,
+        "stddev": 7.3512,
+        "min": 12.7,
+        "max": 27.3
+      },
+      "tokens": {
+        "mean": 40149.3333,
+        "stddev": 15752.4063,
+        "min": 30430,
+        "max": 58324
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.25",
+      "time_seconds": "+4.6",
+      "tokens": "+9342"
+    }
+  },
+  "notes": []
+}

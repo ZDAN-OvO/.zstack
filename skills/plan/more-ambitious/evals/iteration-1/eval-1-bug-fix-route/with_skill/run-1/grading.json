@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file under src/ was modified",
+      "passed": true,
+      "evidence": "src/ unchanged"
+    },
+    {
+      "text": "The response suggests which leaves to run and names the signal seen for each, including /higher",
+      "passed": true,
+      "evidence": "Suggests /higher (step not result), /deeper (diagnosis), declines /wider with reason"
+    },
+    {
+      "text": "The response leaves the choice of leaves to the user (asks to add or drop) rather than starting all of them silently",
+      "passed": true,
+      "evidence": "Ends: 要保留哪几层？"
+    },
+    {
+      "text": "The response does not propose a code fix for the bug",
+      "passed": true,
+      "evidence": "Explicitly does not guess the cause or fix"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  }
+}

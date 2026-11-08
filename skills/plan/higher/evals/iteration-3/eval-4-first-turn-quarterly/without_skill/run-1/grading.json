@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No ladders/ file is written",
+      "passed": true,
+      "evidence": "No ladders/"
+    },
+    {
+      "text": "The response asks what the report is for or who uses it",
+      "passed": false,
+      "evidence": "Asks template, source and file naming, not purpose"
+    },
+    {
+      "text": "The response does not yet suggest a rung above rung 0",
+      "passed": true,
+      "evidence": "No rung"
+    },
+    {
+      "text": "The response does not fill in the report",
+      "passed": true,
+      "evidence": "Did not fill"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  }
+}

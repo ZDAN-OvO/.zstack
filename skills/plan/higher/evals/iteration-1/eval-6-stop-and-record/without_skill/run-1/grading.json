@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] Exactly one ladders/*.md file exists",
+      "passed": true,
+      "evidence": "ladders/q-report-numbers.md (plus an extra handoff/ file)"
+    },
+    {
+      "text": "[auto] The ladder file marks one rung handed and names it on a 'Handed over' line",
+      "passed": false,
+      "evidence": "Uses 交出 in prose; no handed status, no 'Handed over' line"
+    },
+    {
+      "text": "The ladder records rung 3 in the user's rewritten words (two quarters, backtest marked insufficient)",
+      "passed": true,
+      "evidence": "User's rewrite recorded"
+    },
+    {
+      "text": "The response names the handed rung and the file path",
+      "passed": true,
+      "evidence": "Names rung 3 and both files"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  }
+}

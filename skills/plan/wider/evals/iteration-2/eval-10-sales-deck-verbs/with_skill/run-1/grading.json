@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests two or three verbs for the job",
+      "passed": true,
+      "evidence": "Three verbs"
+    },
+    {
+      "text": "The suggested verbs leave out the noun (简报/deck)",
+      "passed": true,
+      "evidence": "None use 简报"
+    },
+    {
+      "text": "The response asks the user to pick or rewrite a verb",
+      "passed": true,
+      "evidence": "你定一个动词"
+    },
+    {
+      "text": "The response does not yet list fields or techniques",
+      "passed": true,
+      "evidence": "Industries deferred until a verb is picked"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  }
+}

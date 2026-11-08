@@ -1,0 +1,44 @@
+{
+  "skill_name": "higher",
+  "evals": [
+    {
+      "id": 4,
+      "name": "first-turn-quarterly",
+      "prompt": "帮我把这季度的数字填进上季度的季报模板里",
+      "expected_output": "Grills on what the report is for, who uses it, data/access before suggesting any rung; writes no ladder yet.",
+      "files": [],
+      "assertions": [
+        "[auto] No ladders/ file is written",
+        "The response asks what the report is for or who uses it",
+        "The response does not yet suggest a rung above rung 0",
+        "The response does not fill in the report"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "mid-ladder-next-rung",
+      "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/higher 帮我把这季度的数字填进上季度的季报模板里\n\n[助手]\n（grill 完成）你要这份季报是为了周一管理层会上决定下季度预算怎么分；数据在公司 BI 里，AI 能拿到导出的 CSV，没有直接查询权限。\n\nRung 0：把数字填进上季度模板。\n建议 Rung 1：解释这季度变了什么、为什么、下季度怎么做。理由：老板在会上一定会问数字为什么变。AI 新增负责：归因分析。需要：本季和上季 CSV。\n\n[用户·最新]\nrung 1 接受，就按你写的。",
+      "expected_output": "Records rung 1 and suggests exactly one next rung with reason, what AI newly owns, and needs; waits for the user.",
+      "files": [],
+      "assertions": [
+        "The response suggests exactly one new rung (rung 2)",
+        "The suggested rung comes with a reason, what AI would newly own, and what it needs",
+        "The response asks the user to accept, rewrite or stop",
+        "[auto] No ladders/ file is written yet"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "stop-and-record",
+      "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/higher 帮我把这季度的数字填进上季度的季报模板里\n\n[助手]\n（grill 完成）用途：周一管理层会上决定下季度预算分配。数据：BI 导出 CSV。\n\n[助手]\n阶梯目前：\nRung 0 填模板\nRung 1 解释变化、原因、下一步（已接受）\nRung 2 挑出最急的三个预算决策，各写支持与反对（已接受）\n建议 Rung 3：评估季报是否还该存在，设计每天自动监测、只在显著变化时提醒的流程。AI 新增负责：监测规则设计与历史回测。需要：至少 4 个季度的历史 CSV、提醒渠道。你的历史数据只有 2 个季度，回测会弱，这层可能超出 AI 当前能可靠完成的范围。\n\n[用户·最新]\nrung 3 我接受，但改成“先用两个季度的数据做出监测规则草案，标明回测不足”。就停在这层，交出去。",
+      "expected_output": "Records rung 3 in the user's words, writes ladders/<slug>.md with the table, marks rung 3 handed, names the file.",
+      "files": [],
+      "assertions": [
+        "[auto] Exactly one ladders/*.md file exists",
+        "[auto] The ladder file marks one rung handed and names it on a 'Handed over' line",
+        "The ladder records rung 3 in the user's rewritten words (two quarters, backtest marked insufficient)",
+        "The response names the handed rung and the file path"
+      ]
+    }
+  ]
+}

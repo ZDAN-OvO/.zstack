@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No README file is written",
+      "passed": true,
+      "evidence": "No README"
+    },
+    {
+      "text": "The response asks who reads the README or in what moment",
+      "passed": false,
+      "evidence": "Asks for code and facts, not reader or moment"
+    },
+    {
+      "text": "The response asks what the reader should do or feel afterwards",
+      "passed": false,
+      "evidence": "No reader-action question"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.33
+  }
+}

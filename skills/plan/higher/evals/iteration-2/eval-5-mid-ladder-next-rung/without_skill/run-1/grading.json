@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests exactly one new rung (rung 2)",
+      "passed": false,
+      "evidence": "No new rung; starts executing rung 1"
+    },
+    {
+      "text": "The suggested rung comes with a reason, what AI would newly own, and what it needs",
+      "passed": false,
+      "evidence": "n/a"
+    },
+    {
+      "text": "The response asks the user to accept, rewrite or stop",
+      "passed": false,
+      "evidence": "No accept/rewrite/stop"
+    },
+    {
+      "text": "[auto] No ladders/ file is written yet",
+      "passed": true,
+      "evidence": "No file"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 3,
+    "total": 4,
+    "pass_rate": 0.25
+  }
+}

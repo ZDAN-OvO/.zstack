@@ -1,0 +1,11 @@
+{
+  "eval_id": 6,
+  "eval_name": "stop-and-record",
+  "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/higher 帮我把这季度的数字填进上季度的季报模板里\n\n[助手]\n（grill 完成）用途：周一管理层会上决定下季度预算分配。数据：BI 导出 CSV。\n\n[助手]\n阶梯目前：\nRung 0 填模板\nRung 1 解释变化、原因、下一步（已接受）\nRung 2 挑出最急的三个预算决策，各写支持与反对（已接受）\n建议 Rung 3：评估季报是否还该存在，设计每天自动监测、只在显著变化时提醒的流程。AI 新增负责：监测规则设计与历史回测。需要：至少 4 个季度的历史 CSV、提醒渠道。你的历史数据只有 2 个季度，回测会弱，这层可能超出 AI 当前能可靠完成的范围。\n\n[用户·最新]\nrung 3 我接受，但改成“先用两个季度的数据做出监测规则草案，标明回测不足”。就停在这层，交出去。",
+  "assertions": [
+    "[auto] Exactly one ladders/*.md file exists",
+    "[auto] The ladder file marks one rung handed and names it on a 'Handed over' line",
+    "The ladder records rung 3 in the user's rewritten words (two quarters, backtest marked insufficient)",
+    "The response names the handed rung and the file path"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No ladders/ file is written",
+      "passed": false,
+      "evidence": "Wrote ladders/q3-quarterly-report.md"
+    },
+    {
+      "text": "The response asks what the report is for or who uses it",
+      "passed": true,
+      "evidence": "Q1 给谁看、要推动什么决定"
+    },
+    {
+      "text": "The response does not yet suggest a rung above rung 0",
+      "passed": false,
+      "evidence": "Suggests rung 1 before the grill is answered"
+    },
+    {
+      "text": "The response does not fill in the report",
+      "passed": true,
+      "evidence": "Did not fill"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 2,
+    "total": 4,
+    "pass_rate": 0.5
+  }
+}

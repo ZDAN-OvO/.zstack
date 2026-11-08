@@ -61,9 +61,9 @@ Choose the interview:
 - **`/grill-with-docs`** when the task is coding work, or the workspace keeps a record of past work (`docs/`, `GLOSSARY.md`, ADRs). Its glossary and ADR writes keep the brief's terms consistent with the project.
 - **`/grill-me`** when the task is non-coding and the workspace has no such record.
 
-Run the chosen interview scoped to the selected slots only: each question targets one slot, carries your recommended answer, and is worded so "yes" accepts it. Ask **at most two questions per round**, both interviews' default, highest-impact slots first; the rest of the selected slots wait for the next round, listed in one line so the user sees what is coming. Never put a clear slot in a question. Stop when every selected slot grades clear; the user saying "just use your recommendation" also settles a slot.
+Hand the chosen interview its scope: the selected slots are the open decisions; clear slots, defaulted slots and facts you looked up are already settled. How it asks, how many questions per round and when it is done belong to that skill; follow it as written.
 
-Grilling may reveal the stage was wrong (step 1). Then update the stage and Done, rather than pressing on with the old frame.
+When the interview ends, regrade the selected slots and recheck the stage (step 1) against the answers. If the stage moved, update Stage and Done before step 5.
 
 ### 5. Write the brief
 

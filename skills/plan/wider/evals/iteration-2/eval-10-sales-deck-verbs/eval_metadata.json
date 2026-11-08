@@ -1,0 +1,11 @@
+{
+  "eval_id": 10,
+  "eval_name": "sales-deck-verbs",
+  "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/wider 帮我做一份业务简报\n\n[助手]\n（grill 完成）对象：50 人以下公司的老板；场景：15 分钟的初次面谈，对方多半边看手机边听；希望之后：同意让你们免费试用两周。\n\n[用户·最新]\n嗯就是这样，下一步呢？",
+  "assertions": [
+    "The response suggests two or three verbs for the job",
+    "The suggested verbs leave out the noun (简报/deck)",
+    "The response asks the user to pick or rewrite a verb",
+    "The response does not yet list fields or techniques"
+  ]
+}

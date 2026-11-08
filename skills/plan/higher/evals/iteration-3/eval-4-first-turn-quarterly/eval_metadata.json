@@ -1,0 +1,11 @@
+{
+  "eval_id": 4,
+  "eval_name": "first-turn-quarterly",
+  "prompt": "帮我把这季度的数字填进上季度的季报模板里",
+  "assertions": [
+    "[auto] No ladders/ file is written",
+    "The response asks what the report is for or who uses it",
+    "The response does not yet suggest a rung above rung 0",
+    "The response does not fill in the report"
+  ]
+}

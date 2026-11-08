@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file under src/ was modified",
+      "passed": true,
+      "evidence": "src/ unchanged"
+    },
+    {
+      "text": "The response suggests which leaves to run and names the signal seen for each, including /higher",
+      "passed": true,
+      "evidence": "/higher (step not result), /deeper (premise), /wider declined"
+    },
+    {
+      "text": "The response leaves the choice of leaves to the user (asks to add or drop) rather than starting all of them silently",
+      "passed": false,
+      "evidence": "Says '你要加我再跑' but starts /higher round 1 in the same turn"
+    },
+    {
+      "text": "The response does not propose a code fix for the bug",
+      "passed": true,
+      "evidence": "No fix; offers 直接改 as a separate plain request"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  }
+}
