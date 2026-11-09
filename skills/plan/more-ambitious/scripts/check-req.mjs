@@ -16,7 +16,9 @@ export const VERDICTS = ["accepted", "rejected"];
 
 // 模板残留：SKILL.md 模板里的尖括号占位、HTML 注释、TODO 类标记
 const PLACEHOLDER =
-  /<!--|<(?:handed rung in a few words|request as (?:the user wrote it|written)|YYYY-MM-DD|the user's (?:restatement|words|verb)|what moved to AI|data, access, checks|N|holds \|[^>]*|suggestion[^>]*|noun|field: technique|technique[^>]*|what the user said fell short)>|\b(?:TODO|TBD|FIXME)\b/i;
+  /<!--|<(?:handed rung in a few words|request as (?:the user wrote it|written)|YYYY-MM-DD|the user's (?:restatement|words|verb)|what moved to AI|data, access, checks|N|holds \|[^>]*|suggestion[^>]*|noun|field: technique|technique[^>]*|what the user said fell short)>/i;
+// Case-sensitive: "todo" is an ordinary word (e.g. a Todo tool); only the all-caps marker is a leftover.
+const MARKER = /\b(?:TODO|TBD|FIXME)\b/;
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*\.md$/;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const BULLET = /^- \S/;
@@ -56,7 +58,7 @@ export function checkReq(text, file = "") {
       (current?.body ?? preamble).push({ raw, n, fenced: true });
       continue;
     }
-    if (PLACEHOLDER.test(raw)) fail(n, "template placeholder left in the requirement", "placeholder");
+    if (PLACEHOLDER.test(raw) || MARKER.test(raw)) fail(n, "template placeholder left in the requirement", "placeholder");
     const h2 = raw.match(/^## (.+?)\s*$/);
     if (h2) {
       current = { name: h2[1], n, body: [] };

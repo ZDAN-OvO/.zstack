@@ -12,7 +12,9 @@ export const OPTIONAL = ["Assumptions", "Open questions"];
 const MAX_BULLETS = 5;
 
 // 模板残留：尖括号占位、HTML 注释、TODO 类标记
-const PLACEHOLDER = /<!--|<(?:one-line outcome|topic|think \|[^>]*|the user's original request[^>]*)>|\b(?:TODO|TBD|FIXME)\b/i;
+const PLACEHOLDER = /<!--|<(?:one-line outcome|topic|think \|[^>]*|the user's original request[^>]*)>/i;
+// 大小写敏感：小写 todo 是普通词（如 Todo 工具），只有全大写标记才算残留
+const MARKER = /\b(?:TODO|TBD|FIXME)\b/;
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*\.md$/;
 const BULLET = /^- \S/;
 const CONTINUATION = /^ {2,}\S/;
@@ -40,7 +42,7 @@ export function checkBrief(text, file = "") {
   for (let i = 1; i < lines.length; i++) {
     const raw = lines[i];
     const n = i + 1;
-    if (PLACEHOLDER.test(raw)) fail(n, "template placeholder left in the brief", "placeholder");
+    if (PLACEHOLDER.test(raw) || MARKER.test(raw)) fail(n, "template placeholder left in the brief", "placeholder");
     const fenceMark = raw.match(/^\s*(`{3,}|~{3,})/);
     if (fence) {
       if (fenceMark && fenceMark[1][0] === fence[0] && fenceMark[1].length >= fence.length) fence = null;
