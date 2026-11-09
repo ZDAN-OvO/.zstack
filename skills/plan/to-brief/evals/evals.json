@@ -5,10 +5,10 @@
       "id": 1,
       "name": "ready-all-slots",
       "prompt": "帮我写个 brief：目标是给下季度产品方向决策（更好用 vs 更便宜）提供依据，最后要一个明确建议和理由。背景：年营收约 200 万美元的营销自动化 SaaS，客户是 50 人以下公司，常嫌复杂和贵，去年调价反响不好。素材用三家竞品官网和我整理的用户评论，不用二手评论文章，查不到就留白。不要编 ARR/用户数，不动付费等级架构。先给 outline，审过再展开。",
-      "expected_output": "All five slots clear: no questions, writes docs/briefs/<slug>.md with Stage: execute that passes check-brief.mjs, then asks for confirmation.",
+      "expected_output": "All five slots clear: no questions, writes local/briefs/<slug>.md with Stage: execute that passes check-brief.mjs, then asks for confirmation.",
       "files": ["evals/files/plain"],
       "expectations": [
-        "[auto] Exactly one new brief file exists under docs/briefs/",
+        "[auto] Exactly one new brief file exists under local/briefs/",
         "[auto] The brief passes check-brief.mjs",
         "[auto] The brief's Stage is execute",
         "The response asks no clarifying questions before writing the brief",
@@ -75,7 +75,7 @@
       "expected_output": "Explore stage: Done is options with trade-offs, not a recommendation. Slots are clear enough to write the brief directly with Stage: explore.",
       "files": ["evals/files/vue-app"],
       "expectations": [
-        "[auto] Exactly one new brief file exists under docs/briefs/",
+        "[auto] Exactly one new brief file exists under local/briefs/",
         "[auto] The brief passes check-brief.mjs",
         "[auto] The brief's Stage is explore",
         "The brief's Done asks for options with trade-offs, not a single recommendation",
@@ -100,10 +100,10 @@
       "id": 8,
       "name": "existing-file-overwrite",
       "prompt": "帮我写个 brief：目标是给下季度产品方向决策（更好用 vs 更便宜）提供依据，最后要一个明确建议和理由。背景：年营收约 200 万美元的营销自动化 SaaS，客户是 50 人以下公司，常嫌复杂和贵，去年调价反响不好。素材用三家竞品官网和我整理的用户评论，不用二手评论文章，查不到就留白。不要编 ARR/用户数，不动付费等级架构。先给 outline，审过再展开。",
-      "expected_output": "Same ready request, but docs/briefs/competitor-usp-direction.md already exists. Leaves the old file untouched and asks before overwriting, or writes a -2 suffixed file.",
+      "expected_output": "Same ready request, but local/briefs/competitor-usp-direction.md already exists. Leaves the old file untouched and asks before overwriting, or writes a -2 suffixed file.",
       "files": ["evals/files/existing-brief"],
       "expectations": [
-        "[auto] The existing docs/briefs/competitor-usp-direction.md is unchanged",
+        "[auto] The existing local/briefs/competitor-usp-direction.md is unchanged",
         "The response either asks before overwriting or writes a separately named file and says so",
         "[auto] Any newly written brief passes check-brief.mjs"
       ]
@@ -129,7 +129,7 @@
       "expected_output": "English, all slots clear: writes the brief in English directly with Stage: execute, passing check-brief.mjs.",
       "files": ["evals/files/plain"],
       "expectations": [
-        "[auto] Exactly one new brief file exists under docs/briefs/",
+        "[auto] Exactly one new brief file exists under local/briefs/",
         "[auto] The brief passes check-brief.mjs",
         "[auto] The brief's Stage is execute",
         "[auto] The brief body is written in English",

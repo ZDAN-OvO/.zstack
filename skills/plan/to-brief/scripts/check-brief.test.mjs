@@ -45,7 +45,7 @@ const VALID = `# Brief: 下季产品方向的竞品分析
 const rules = (text, file) => checkBrief(text, file).problems.map((p) => p.rule);
 
 test("accepts the documented template filled in", () => {
-  assert.deepEqual(checkBrief(VALID, "docs/briefs/competitor-usp-direction.md").problems, []);
+  assert.deepEqual(checkBrief(VALID, "local/briefs/competitor-usp-direction.md").problems, []);
 });
 
 test("accepts a brief without optional sections", () => {
@@ -103,7 +103,7 @@ test("rejects headings below H2", () => {
 });
 
 test("checks file name and location", () => {
-  assert.ok(rules(VALID, "docs/briefs/Competitor USP.md").includes("slug"));
+  assert.ok(rules(VALID, "local/briefs/Competitor USP.md").includes("slug"));
   assert.ok(rules(VALID, "notes/competitor-usp.md").includes("location"));
 });
 
@@ -113,10 +113,10 @@ test("CLI exits 0 on a valid brief, 1 on problems, 2 with nothing to check", (t)
   const run = (args) => spawnSync(process.execPath, [CLI, ...args], { cwd: root, encoding: "utf8" });
 
   assert.equal(run([]).status, 2);
-  fs.mkdirSync(path.join(root, "docs", "briefs"), { recursive: true });
-  fs.writeFileSync(path.join(root, "docs", "briefs", "good-brief.md"), VALID);
+  fs.mkdirSync(path.join(root, "local", "briefs"), { recursive: true });
+  fs.writeFileSync(path.join(root, "local", "briefs", "good-brief.md"), VALID);
   assert.equal(run([]).status, 0);
-  fs.writeFileSync(path.join(root, "docs", "briefs", "bad-brief.md"), VALID.replace("Stage: execute", "Stage: x"));
+  fs.writeFileSync(path.join(root, "local", "briefs", "bad-brief.md"), VALID.replace("Stage: execute", "Stage: x"));
   const bad = run([]);
   assert.equal(bad.status, 1);
   assert.match(bad.stdout, /bad-brief\.md:3: .*\[stage\]/);

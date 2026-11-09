@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // 校验 /to-brief 产出的 brief 文档格式，只接受 SKILL.md 里的模板，不接受任意 Markdown。
-// 用法：node check-brief.mjs [docs/briefs/<topic>.md ...]
-// 不带参数时校验当前目录下 docs/briefs/*.md。无依赖。
+// 用法：node check-brief.mjs [local/briefs/<topic>.md ...]
+// 不带参数时校验当前目录下 local/briefs/*.md。无依赖。
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -28,7 +28,7 @@ export function checkBrief(text, file = "") {
   if (file) {
     const base = path.basename(file);
     if (!SLUG.test(base)) fail(1, `file name "${base}" is not a kebab-case slug ending in .md`, "slug");
-    if (!/(^|[\\/])docs[\\/]briefs[\\/][^\\/]+$/.test(path.resolve(file))) fail(1, "brief must live in docs/briefs/", "location");
+    if (!/(^|[\\/])local[\\/]briefs[\\/][^\\/]+$/.test(path.resolve(file))) fail(1, "brief must live in local/briefs/", "location");
   }
 
   // 第一行：标题
@@ -126,12 +126,12 @@ function checkBody(section, fail) {
 function main(argv) {
   let files = argv;
   if (files.length === 0) {
-    const dir = path.join(process.cwd(), "docs", "briefs");
+    const dir = path.join(process.cwd(), "local", "briefs");
     files = fs.existsSync(dir)
-      ? fs.readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => path.join("docs", "briefs", f))
+      ? fs.readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => path.join("local", "briefs", f))
       : [];
     if (files.length === 0) {
-      console.error("no briefs found: pass a path or run from a directory with docs/briefs/*.md");
+      console.error("no briefs found: pass a path or run from a directory with local/briefs/*.md");
       return 2;
     }
   }

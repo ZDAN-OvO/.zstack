@@ -88,7 +88,7 @@ def auto(text, fixture, ws, new_briefs, final):
         got = stage.group(1) if stage else None
         return (got == m.group(1), f"Stage: {got}")
     if "unchanged" in t:
-        rel = "docs/briefs/competitor-usp-direction.md"
+        rel = "local/briefs/competitor-usp-direction.md"
         same = sha(fixture / rel) == sha(ws / rel)
         return (same, "sha256 identical to fixture" if same else "file was modified")
     if "in english" in t:
@@ -126,7 +126,7 @@ def main(run_root, iteration, configs=("with_skill=with_skill", "without_skill=w
                 dst = outputs / "workspace" / rel
                 dst.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(ws / rel, dst)
-            new_briefs = [r for r in changed if str(r).startswith("docs/briefs/")]
+            new_briefs = [r for r in changed if str(r).startswith("local/briefs/")]
             manual = iter(judgments[f"{e['id']}/{cfg}"])
             exps = []
             for a in e["expectations"]:

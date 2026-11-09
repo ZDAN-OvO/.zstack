@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // 校验 /more-ambitious 产出的需求文档格式，只接受 SKILL.md 里的模板，不接受任意 Markdown。
-// 用法：node check-req.mjs [docs/reqs/<topic>.md ...]
-// 不带参数时校验当前目录下 docs/reqs/*.md。无依赖。
+// 用法：node check-req.mjs [local/reqs/<topic>.md ...]
+// 不带参数时校验当前目录下 local/reqs/*.md。无依赖。
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -34,7 +34,7 @@ export function checkReq(text, file = "") {
   if (file) {
     const base = path.basename(file);
     if (!SLUG.test(base)) fail(1, `file name "${base}" is not a kebab-case slug ending in .md`, "slug");
-    if (!/(^|[\\/])docs[\\/]reqs[\\/][^\\/]+$/.test(path.resolve(file))) fail(1, "requirement must live in docs/reqs/", "location");
+    if (!/(^|[\\/])local[\\/]reqs[\\/][^\\/]+$/.test(path.resolve(file))) fail(1, "requirement must live in local/reqs/", "location");
   }
 
   if (!/^# Requirement: \S/.test(lines[0] ?? "")) fail(1, 'first line must be "# Requirement: <handed rung in a few words>"', "title");
@@ -239,12 +239,12 @@ function checkTrials(section, rungs, fail) {
 function main(argv) {
   let files = argv;
   if (files.length === 0) {
-    const dir = path.join(process.cwd(), "docs", "reqs");
+    const dir = path.join(process.cwd(), "local", "reqs");
     files = fs.existsSync(dir)
-      ? fs.readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => path.join("docs", "reqs", f))
+      ? fs.readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => path.join("local", "reqs", f))
       : [];
     if (files.length === 0) {
-      console.error("no requirements found: pass a path or run from a directory with docs/reqs/*.md");
+      console.error("no requirements found: pass a path or run from a directory with local/reqs/*.md");
       return 2;
     }
   }

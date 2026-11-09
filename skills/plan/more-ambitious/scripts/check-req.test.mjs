@@ -56,7 +56,7 @@ const swap = (from, to) => {
 };
 
 test("accepts the documented template filled in", () => {
-  assert.deepEqual(checkReq(VALID, "docs/reqs/login-stability.md").problems, []);
+  assert.deepEqual(checkReq(VALID, "local/reqs/login-stability.md").problems, []);
 });
 
 test("accepts a requirement with only higher run and no trials yet", () => {
@@ -133,7 +133,7 @@ test("rejects stray headings", () => {
 });
 
 test("checks file name and location", () => {
-  assert.ok(rules(VALID, "docs/reqs/Login Stability.md").includes("slug"));
+  assert.ok(rules(VALID, "local/reqs/Login Stability.md").includes("slug"));
   assert.ok(rules(VALID, "ladders/login-stability.md").includes("location"));
 });
 
@@ -143,10 +143,10 @@ test("CLI exits 0 on a valid requirement, 1 on problems, 2 with nothing to check
   const run = (args) => spawnSync(process.execPath, [CLI, ...args], { cwd: root, encoding: "utf8" });
 
   assert.equal(run([]).status, 2);
-  fs.mkdirSync(path.join(root, "docs", "reqs"), { recursive: true });
-  fs.writeFileSync(path.join(root, "docs", "reqs", "good-req.md"), VALID);
+  fs.mkdirSync(path.join(root, "local", "reqs"), { recursive: true });
+  fs.writeFileSync(path.join(root, "local", "reqs", "good-req.md"), VALID);
   assert.equal(run([]).status, 0);
-  fs.writeFileSync(path.join(root, "docs", "reqs", "bad-req.md"), VALID.replace("Date: 2026-11-08", "Date: x"));
+  fs.writeFileSync(path.join(root, "local", "reqs", "bad-req.md"), VALID.replace("Date: 2026-11-08", "Date: x"));
   const bad = run([]);
   assert.equal(bad.status, 1);
   assert.match(bad.stdout, /bad-req\.md:4: .*\[date\]/);

@@ -1,6 +1,6 @@
 ---
 name: more-ambitious
-description: Help the user make a request more ambitious with the higher, deeper and wider interviews, record it in docs/reqs/<topic>.md for /to-brief, and step the task back after a rejected result.
+description: Help the user make a request more ambitious with the higher, deeper and wider interviews, record it in local/reqs/<topic>.md for /to-brief, and step the task back after a rejected result.
 disable-model-invocation: true
 ---
 
@@ -44,7 +44,7 @@ Suggest skipping the whole skill when a redo is cheaper than the interview (a re
 
 ## Record
 
-Write `docs/reqs/<topic>.md` at the workspace root (the git root, or the current directory if there is none). `<topic>` is a short kebab-case English slug of the handed rung. Create the directory if needed. If the file exists and is not this task's, ask before overwriting; offer a `-2` suffix instead.
+Write `local/reqs/<topic>.md` at the workspace root (the git root, or the current directory if there is none). `<topic>` is a short kebab-case English slug of the handed rung. Create the directory if needed. If the file exists and is not this task's, ask before overwriting; offer a `-2` suffix instead.
 
 The file is the ambitious requirement, not the finished brief. Fill it from the leaves' result blocks, in the user's final words, and leave out the section of a leaf that did not run:
 
@@ -92,7 +92,7 @@ Trials starts empty. Each later entry is a dated H3 with the rung and the verdic
 Then validate the file:
 
 ```bash
-node <this-skill-directory>/scripts/check-req.mjs docs/reqs/<topic>.md
+node <this-skill-directory>/scripts/check-req.mjs local/reqs/<topic>.md
 ```
 
 Fix every reported line and rerun. It checks format only: title, Source/Date, section order, the ladder table (header, rung numbering, one `handed` rung matching the "Handed over" line), the field bullets in Deeper and Wider, Trials headings, and leftover placeholders. Whether the requirement is ambitious enough stays the user's call.

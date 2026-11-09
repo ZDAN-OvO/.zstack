@@ -1,6 +1,6 @@
 ---
 name: to-brief
-description: Turn a raw request into a five-slot brief (Goal, Context, Materials, Boundaries, Done) at docs/briefs/<topic>.md, grilling the user only on the gaps that would change the output.
+description: Turn a raw request into a five-slot brief (Goal, Context, Materials, Boundaries, Done) at local/briefs/<topic>.md, grilling the user only on the gaps that would change the output.
 disable-model-invocation: true
 ---
 
@@ -67,7 +67,7 @@ When the interview ends, regrade the selected slots and recheck the stage (step 
 
 ### 5. Write the brief
 
-Write `docs/briefs/<topic>.md` at the workspace root (the git root, or the current directory if there is none). `<topic>` is a short kebab-case English slug of the outcome, e.g. `competitor-usp-direction`. Create the directory if needed. If the file exists, ask before overwriting; offer a `-2` suffix instead.
+Write `local/briefs/<topic>.md` at the workspace root (the git root, or the current directory if there is none). `<topic>` is a short kebab-case English slug of the outcome, e.g. `competitor-usp-direction`. Create the directory if needed. If the file exists, ask before overwriting; offer a `-2` suffix instead.
 
 Write the slot contents in the user's language; keep the headings below in English so other agents can parse the file. Each slot is 1–5 bullets of concrete statements, no adjectives standing in for criteria.
 
@@ -93,7 +93,7 @@ Write the slot contents in the user's language; keep the headings below in Engli
 Then validate the file:
 
 ```bash
-node <this-skill-directory>/scripts/check-brief.mjs docs/briefs/<topic>.md
+node <this-skill-directory>/scripts/check-brief.mjs local/briefs/<topic>.md
 ```
 
 Fix every reported line and rerun. The step is done when the checker exits 0 (`1 brief(s) ok`). It checks format only: title, Stage/Source, slot order, bullets-only bodies, 1–5 bullets per slot, no leftover placeholders or empty optional sections. Whether each slot is clear stays your judgment from step 2.
