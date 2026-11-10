@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; FILE_CONTENTS is {}."
+    },
+    {
+      "text": "The response treats this as an exploring stage and lays out options with trade-offs",
+      "passed": true,
+      "evidence": "Explores data shape, atomicity, and query patterns: “关系型 + 索引更可预测” versus “文档型更省事”; asks three questions to establish project criteria."
+    },
+    {
+      "text": "The response does not jump to one final recommendation as if criteria were known",
+      "passed": false,
+      "evidence": "Opens with “直接建议” and “默认选 Postgres，除非你能说出一个具体的、现在就能验证的理由选 MongoDB” before establishing the user's criteria."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1,
+      "ls": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 1008
+  },
+  "timing": {
+    "executor_duration_seconds": 10.6,
+    "grader_duration_seconds": 15.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "3ba2a13939af6d963f14d2d092c1966f0ea047cf5fb0eb6d044ad15e3c75762c"
+}

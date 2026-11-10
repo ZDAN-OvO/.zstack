@@ -1,0 +1,1 @@
+The release this week is delayed until Friday.

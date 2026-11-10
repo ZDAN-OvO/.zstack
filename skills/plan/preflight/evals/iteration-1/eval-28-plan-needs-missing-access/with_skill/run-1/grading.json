@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES lists local/plans/early-warning-monitoring.md, and FILE_CONTENTS provides its contents."
+    },
+    {
+      "text": "The plan notes that only monthly or quarterly data is available and daily data or access is missing",
+      "passed": true,
+      "evidence": "“data/ 里只有 3 行月度数据，这是主要缺口”；“缺：日粒度与事件级数据、告警接收渠道。”"
+    },
+    {
+      "text": "The plan's judge or Done includes backtesting on history and/or running beside the current review",
+      "passed": true,
+      "evidence": "“Done：一份回测报告（每个已知事件：比季报早几天、误报几次）+ 一条日监控与季报并行跑一个季度。”"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 2,
+      "ls": 1,
+      "bash": 3,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 580
+  },
+  "timing": {
+    "executor_duration_seconds": 59.2,
+    "grader_duration_seconds": 7.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "a93a05668a49773b9452e57b067b17d9bba3e23c8428c64529be5345d94dd5ea"
+}

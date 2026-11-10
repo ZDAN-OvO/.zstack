@@ -1,0 +1,12 @@
+{
+  "changed": [
+    "local/plans/top-crash-login-undefined-user.md"
+  ],
+  "deleted": [],
+  "excluded_directory_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 31,
+    "name": "after-wrong-method",
+    "fixture": "rejected",
+    "explicit": true,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户·最新]\n按 local/plans/login-whitescreen.md 跑完了，结果不行：它只给登录页加了个 loading 骨架屏，白屏的真正原因根本没找到。",
+    "expected_output": "Diagnoses wrong method; goes deeper on the same rung (crash data, root cause); updates the plan with a dated Tries line.",
+    "files": [
+      "evals/eval-fixtures/rejected"
+    ],
+    "expectations": [
+      "The response identifies the failure as a wrong method (no diagnosis of root cause)",
+      "The response proposes more depth on the same rung (e.g. start from the crash log, the undefined user at login.ts:5) rather than dropping to the fallback",
+      "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户·最新]\n按 local/plans/login-whitescreen.md 跑完了，结果不行：它只给登录页加了个 loading 骨架屏，白屏的真正原因根本没找到。",
+  "input_hash": "3a4a1f4987ea98165579af37512ea17598dc02f838b89781108e720f2676665a"
+}

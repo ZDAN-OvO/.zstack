@@ -1,0 +1,12 @@
+{
+  "eval_id": 14,
+  "eval_name": "depth-homepage",
+  "prompt": "首页转化率掉了一半，帮我重写首页文案",
+  "assertions": [
+    "The response notices from analytics/weekly.csv that the drop coincides with a traffic source shift to paid_social",
+    "The response questions whether the copy is really the cause before rewriting",
+    "The response names raw material to start from (e.g. support chats, session recordings, funnel data)",
+    "The response names a judge outside the session, such as an A/B test",
+    "[auto] index.html was not modified"
+  ]
+}

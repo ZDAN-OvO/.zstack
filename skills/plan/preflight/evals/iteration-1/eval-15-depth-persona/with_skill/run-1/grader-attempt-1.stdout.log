@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response names concrete methods or tools a data analyst would use (e.g. cohort analysis, SQL, statistical tests) rather than just adopting a persona voice",
+      "passed": true,
+      "evidence": "“用 cohort 留存三角 + 按试用长度分层 + 工单文本分类” names concrete analytical methods."
+    },
+    {
+      "text": "The response points to the raw data in data/q3-metrics.csv or notes/worklog.md",
+      "passed": true,
+      "evidence": "“`data/q3-metrics.csv`：流失 **12 → 19 → 24**，新增 **41 → 35 → 30**” explicitly references and summarizes the data."
+    },
+    {
+      "text": "The response suggests testing a belief against the data (e.g. whether the trial change from 14 to 7 days drove churn)",
+      "passed": true,
+      "evidence": "“做一个否证测试：若 8、9 月流失的大多是 7 月前注册的账户，那‘试用期改短’就不是主因” proposes testing the trial-change hypothesis against account cohorts."
+    }
+  ],
+  "eval_feedback": ""
+}

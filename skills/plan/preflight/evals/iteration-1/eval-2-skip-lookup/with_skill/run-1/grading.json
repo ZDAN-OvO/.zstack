@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; FILE_CONTENTS is {}."
+    },
+    {
+      "text": "The response answers that Node >=20 is required, citing package.json",
+      "passed": true,
+      "evidence": "“**Node >= 20**（见 `package.json` 的 `engines.node` 字段，项目 `acme-web@2.3.1`）。”"
+    },
+    {
+      "text": "The response asks no planning questions",
+      "passed": true,
+      "evidence": "The response directly states the Node requirement and gives version guidance without asking any questions."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 2
+    },
+    "total_tool_calls": 3,
+    "output_chars": 192
+  },
+  "timing": {
+    "executor_duration_seconds": 5.5,
+    "grader_duration_seconds": 7.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "74e61e38bf4a25df35b366d9ea45587e798a5a360b669017a47bf5f818d795f2"
+}

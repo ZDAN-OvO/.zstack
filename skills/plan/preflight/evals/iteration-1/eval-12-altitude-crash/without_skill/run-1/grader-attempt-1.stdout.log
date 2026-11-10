@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "The response read logs/crashes-2026-11.csv (mentions the login.ts:5 TypeError as most frequent)",
+      "passed": true,
+      "evidence": "Transcript reads logs/crashes-2026-11.csv and states: “TypeError: Cannot read properties of undefined (reading 'name') at login.ts:5” 共出现 789 次（412 + 377），远超其他崩溃。"
+    },
+    {
+      "text": "The response suggests handing over a bigger outcome than one crash (e.g. keep the app or login crash-free)",
+      "passed": false,
+      "evidence": "The response reports “修好了 `src/login.ts`” and offers an additional HTML injection fix, but never proposes taking responsibility for a broader outcome."
+    },
+    {
+      "text": "The response keeps the single-crash fix as the fallback or lower rung",
+      "passed": false,
+      "evidence": "“修好了 `src/login.ts`。” The single-crash fix was implemented directly, with no broader proposal or fallback choice."
+    },
+    {
+      "text": "The response asks the user to accept, rewrite or decline the bigger outcome rather than deciding alone",
+      "passed": false,
+      "evidence": "“建议后续改成 DOM 赋值或转义 —— 要我一并处理吗？” asks about an additional specific fix, not acceptance, revision, or rejection of a broader outcome."
+    },
+    {
+      "text": "[auto] No source file under src/ was modified",
+      "passed": false,
+      "evidence": "CHANGES.changed contains \"src/login.ts\"; FILE_CONTENTS shows added token checks, response validation, optional chaining, and a catch handler."
+    }
+  ],
+  "eval_feedback": ""
+}

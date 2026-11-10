@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"MIGRATION-PLAN.md\" at the repository root; FILE CONTENTS contains no plan under local/plans/."
+    },
+    {
+      "text": "The plan is written in English",
+      "passed": true,
+      "evidence": "\"Scope: 12 cron jobs on one VM → a queue-backed runner.\" The plan's prose and checklists are in English."
+    },
+    {
+      "text": "The plan's judge is outside the session (e.g. monitoring of job runs, alerting), not the assistant's own check",
+      "passed": true,
+      "evidence": "\"A nightly watchdog ... reads `job_runs` and alerts if any expected job is missing a successful run\"; alerts go to a human-read mailbox or chat webhook."
+    }
+  ],
+  "eval_feedback": ""
+}

@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS both include local/plans/login-crash-fix.md."
+    },
+    {
+      "text": "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "passed": true,
+      "evidence": "Hand over: 只修 `login.ts:5` 的 `TypeError`（用户明确拒绝上提，见 Declined）。"
+    },
+    {
+      "text": "The plan records the declined bigger move together with the reason (demo next week)",
+      "passed": true,
+      "evidence": "Declined: 上提到\"登录页零崩溃 + 一周崩溃日志归零\"——原因：下周演示，用户只要修这一个；记录为退路之上的动作不做。"
+    },
+    {
+      "text": "The plan's Task section contains all five slots from the user's answer",
+      "passed": true,
+      "evidence": "Task includes Purpose: 下周演示时登录页不崩; Context: React 前端; Materials: logs/crashes-2026-11.csv、src/login.ts; Boundaries: 不改后端; Done: 一个带回归测试的 PR."
+    },
+    {
+      "text": "The plan ends with a Ready line",
+      "passed": true,
+      "evidence": "Ready: no，因为第 1 条未定，且 2/3 缺失使\"带回归测试的 PR\"当前不可达。"
+    }
+  ],
+  "eval_feedback": ""
+}

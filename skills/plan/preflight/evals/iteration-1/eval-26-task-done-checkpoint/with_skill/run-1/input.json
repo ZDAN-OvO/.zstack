@@ -1,0 +1,21 @@
+{
+  "case": {
+    "id": 26,
+    "name": "task-done-checkpoint",
+    "fixture": "empty",
+    "explicit": false,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 写一份我们 SaaS 的竞品分析报告\n\n[助手]\n这份报告支撑什么决定？做到什么就算完成？\n\n[用户·最新]\n支撑下季 USP 往易用还是便宜走。完成就是直接给我完整报告。",
+    "expected_output": "Suggests an early checkpoint (outline first) inside Done, as a suggestion.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "The response suggests an early checkpoint such as an outline or framework before the full report",
+      "The suggestion is framed as the user's call, not imposed"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 写一份我们 SaaS 的竞品分析报告\n\n[助手]\n这份报告支撑什么决定？做到什么就算完成？\n\n[用户·最新]\n支撑下季 USP 往易用还是便宜走。完成就是直接给我完整报告。",
+  "input_hash": "73822b1ad7225d6e3ca6345b520dfdd5fc2182a73894e7387fdfca3ef40ab523"
+}

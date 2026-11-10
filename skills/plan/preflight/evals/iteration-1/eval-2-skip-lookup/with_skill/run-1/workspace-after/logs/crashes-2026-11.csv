@@ -1,0 +1,5 @@
+date,app_version,error,count
+2026-11-01,2.3.0,"TypeError: Cannot read properties of undefined (reading 'name') at login.ts:5",412
+2026-11-01,2.3.0,"ChunkLoadError: Loading chunk 7 failed",88
+2026-11-03,2.3.1,"TypeError: Cannot read properties of undefined (reading 'name') at login.ts:5",377
+2026-11-05,2.3.1,"RangeError: Maximum call stack size exceeded at cart.ts:41",19

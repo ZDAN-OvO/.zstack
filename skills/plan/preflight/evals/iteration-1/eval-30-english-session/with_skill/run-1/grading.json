@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS both include \"local/plans/nightly-jobs-queue-migration.md\"."
+    },
+    {
+      "text": "The plan is written in English",
+      "passed": true,
+      "evidence": "\"# Plan: nightly jobs stop going missing\" and \"Purpose: no more missed nightly jobs\" show the plan's English language."
+    },
+    {
+      "text": "The plan's judge is outside the session (e.g. monitoring of job runs, alerting), not the assistant's own check",
+      "passed": true,
+      "evidence": "\"Primary check: the 2am failure drill above, run against staging, graded on whether absence produced a page.\""
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "bash": 2,
+      "write": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 1379
+  },
+  "timing": {
+    "executor_duration_seconds": 52.7,
+    "grader_duration_seconds": 6.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "189c605327ea46b5d0d47b88196723b72e5b50bd2252267f261444dea2b3c62c"
+}

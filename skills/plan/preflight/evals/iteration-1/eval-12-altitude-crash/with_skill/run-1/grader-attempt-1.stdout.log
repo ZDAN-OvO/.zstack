@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "The response read logs/crashes-2026-11.csv (mentions the login.ts:5 TypeError as most frequent)",
+      "passed": true,
+      "evidence": "Transcript shows the CSV was read. Response identifies the login.ts:5 TypeError as most frequent: “412 + 377 = **789 次，占全部 896 条中的 88%**”."
+    },
+    {
+      "text": "The response suggests handing over a bigger outcome than one crash (e.g. keep the app or login crash-free)",
+      "passed": true,
+      "evidence": "Proposes correcting the expired-token flow: “把‘token 失效’这条路径做对”, with 401 handling, session-contract options, and post-release log review."
+    },
+    {
+      "text": "The response keeps the single-crash fix as the fallback or lower rung",
+      "passed": true,
+      "evidence": "“或者直接说‘就修掉它’，我按最保守的读法执行（line 5 加防护 + 401 分支，不改契约）。”"
+    },
+    {
+      "text": "The response asks the user to accept, rewrite or decline the bigger outcome rather than deciding alone",
+      "passed": true,
+      "evidence": "Asks the user to choose the outcome: “是把崩溃率降下来（指标要降到多少），还是把‘token 失效’这条路径做对？” and offers “就修掉它” as the fallback."
+    },
+    {
+      "text": "[auto] No source file under src/ was modified",
+      "passed": true,
+      "evidence": "CHANGES contains empty changed and deleted arrays: {\"changed\": [], \"deleted\": []}."
+    }
+  ],
+  "eval_feedback": ""
+}

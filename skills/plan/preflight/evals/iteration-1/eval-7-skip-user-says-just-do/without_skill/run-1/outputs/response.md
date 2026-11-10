@@ -1,0 +1,1 @@
+`src/login.ts` 里 3 处 `console.log` 已全部删除（第 2、6、10 行），文件无残留。

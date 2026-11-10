@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": 22,
+    "name": "task-done-unanswerable",
+    "fixture": "qbr",
+    "explicit": false,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 帮我做 Q3 回顾，讲清楚本季变化、原因和下季要做的三个决定\n\n[助手]\n好的。目标：给 VP 讲清变化和三个决定；背景、素材我从 notes/worklog.md 和 data/q3-metrics.csv 看到了，请确认。边界：哪些东西出现会让你说\"这不是我要的\"？完成定义：什么出现在你面前就可以收工？\n\n[用户·最新]\n边界就是别编数字。完成定义……我说不清，你看着办，直接写 plan。",
+    "expected_output": "Writes the plan but leaves Done under Open as an unresolved gap; Ready: no.",
+    "files": [
+      "evals/eval-fixtures/qbr"
+    ],
+    "expectations": [
+      "[auto] A plan file exists under local/plans/",
+      "The plan does not invent a Done definition on the user's behalf (Done is empty, marked open, or explicitly flagged as unanswered)",
+      "The plan lists the missing Done under an Open section",
+      "The plan's Ready line is 'no' with a reason tied to the missing Done"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n帮我做 Q3 回顾，讲清楚本季变化、原因和下季要做的三个决定\n\n[助手]\n好的。目标：给 VP 讲清变化和三个决定；背景、素材我从 notes/worklog.md 和 data/q3-metrics.csv 看到了，请确认。边界：哪些东西出现会让你说\"这不是我要的\"？完成定义：什么出现在你面前就可以收工？\n\n[用户·最新]\n边界就是别编数字。完成定义……我说不清，你看着办，直接写 plan。",
+  "input_hash": "5f233e7127fb573e796d2472bb9f656a51ab12cb56873df859eac69cf9052bf9"
+}

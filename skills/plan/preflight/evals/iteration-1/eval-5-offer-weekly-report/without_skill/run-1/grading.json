@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "The response either offers a brief planning step or asks what the report must achieve for the manager, before writing it",
+      "passed": true,
+      "evidence": "Before the template, it proposes gathering facts and then drafting: “我可以直接给你一份结构，你把事实填进去；如果你把要点告诉我，我也可以帮你写成成稿。”"
+    },
+    {
+      "text": "The response does not produce a full generic weekly report filled with invented work items",
+      "passed": true,
+      "evidence": "The report contains blank placeholders such as “【事项】：做了什么 → 进展/结果” and requests “本周实际做成的 3–5 件事”; sample achievements are explicitly writing examples."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 636
+  },
+  "timing": {
+    "executor_duration_seconds": 14.8,
+    "grader_duration_seconds": 9.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "12c649682f9d5230d71a9fdb41e7b13c1cb129e08f50313ade5c2e41bfae41bd"
+}

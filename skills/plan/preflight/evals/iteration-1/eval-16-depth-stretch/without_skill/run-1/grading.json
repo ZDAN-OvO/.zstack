@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": false,
+      "evidence": "The response only references “5 秒优化到 3 秒” and proposes no faster performance target."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": false,
+      "evidence": "No stretch target is proposed. “要我改吗？” asks about fixing a login crash, not accepting a performance target."
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "“用 Lighthouse / WebPageTest 跑一次，给我 report JSON 或截图。”"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 3,
+      "read": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 1232
+  },
+  "timing": {
+    "executor_duration_seconds": 21.8,
+    "grader_duration_seconds": 5.7
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "8df15a5fe04ffc0b3b3c364689400bb234ed867fe98d6600c584249de4eb9c11"
+}

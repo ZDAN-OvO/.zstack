@@ -6,3 +6,6 @@ skills-lock.json
 pi-session-*.html
 __pycache__/
 .claude/*
+# eval run artifacts: installed dependencies and raw event streams stay local
+skills/*/*/evals/**/node_modules/
+skills/*/*/evals/**/events.jsonl

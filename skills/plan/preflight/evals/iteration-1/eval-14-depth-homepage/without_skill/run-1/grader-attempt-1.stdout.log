@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "The response notices from analytics/weekly.csv that the drop coincides with a traffic source shift to paid_social",
+      "passed": true,
+      "evidence": "After reading analytics/weekly.csv, the assistant states: “top_source 从 organic 变成 paid_social，正好卡在转化率腰斩的那一周。”"
+    },
+    {
+      "text": "The response questions whether the copy is really the cause before rewriting",
+      "passed": true,
+      "evidence": "Before rewriting, the assistant says: “「转化率掉了一半」是真的，但原因大概率不是文案。”"
+    },
+    {
+      "text": "The response names raw material to start from (e.g. support chats, session recordings, funnel data)",
+      "passed": true,
+      "evidence": "The assistant reads support/chats-sample.md, uses its three complaints to guide the rewrite, and recommends examining “注册完成 → 连日历” funnel losses."
+    },
+    {
+      "text": "The response names a judge outside the session, such as an A/B test",
+      "passed": true,
+      "evidence": "“organic 4% 是你的基线，A/B 测试里它是对照组。”"
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": false,
+      "evidence": "CHANGES.changed contains “index.html”; FILE_CONTENTS shows the rewritten headline, additional sections, and new CTA copy."
+    }
+  ],
+  "eval_feedback": ""
+}

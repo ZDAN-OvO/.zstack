@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS include local/plans/paid-social-signup-rate.md."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": true,
+      "evidence": "“## Requirement” contains Hand over, Fallback, Depth, Judge and Needs; Judge specifies “A/B 数据” and “paid_social 新访客注册率”."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": true,
+      "evidence": "Task includes the 3.5% paid-social goal, B2B/Notion context, support/analytics sources, all three boundaries, and three headline/subtitle options before selection and A/B."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": true,
+      "evidence": "The plan ends with “Ready: yes”."
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": true,
+      "evidence": "The plan has 31 physical lines, below the approximate 60-line limit, although several lines contain long paragraphs."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "The title is “付费社媒新访客注册率回到 3.5%”; the substantive text is Chinese, with English template labels and technical terms."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/paid-social-signup-rate.md as changed and no deleted files; index.html is absent."
+    }
+  ],
+  "eval_feedback": "The Ready-line expectation checks a literal declaration despite unresolved Open items. The length expectation is also weak: counting physical lines permits very long paragraphs that exceed one screen when wrapped."
+}

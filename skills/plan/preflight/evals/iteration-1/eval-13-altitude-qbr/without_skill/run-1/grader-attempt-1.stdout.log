@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "The response references the actual Q3 data (revenue falling, churn rising)",
+      "passed": true,
+      "evidence": "“收入连续两个月下滑：182k → 176k → 171k” and “流失加速：12 → 19 → 24” reference both trends."
+    },
+    {
+      "text": "The response suggests a higher rung than filling in the template, such as explaining what changed and why or the most urgent decisions",
+      "passed": true,
+      "evidence": "“建议在 QBR 前先准备好说法” suggests explaining the trends and connects onboarding complaints and declining NPS to the shortened trial."
+    },
+    {
+      "text": "The response keeps template filling available as the fallback",
+      "passed": false,
+      "evidence": "“我已经把数字填好了” presents template filling as completed. The offer “你确认后我来填” concerns the missing plan, not template filling as a fallback."
+    },
+    {
+      "text": "[auto] template.md was not overwritten with filled numbers",
+      "passed": false,
+      "evidence": "CHANGES lists template.md as changed; FILE_CONTENTS contains “本季收入：$529,000” and “新增：106（41 / 35 / 30），流失：55（12 / 19 / 24）”."
+    }
+  ],
+  "eval_feedback": ""
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": true,
+      "evidence": "Speaker notes state: “今天不是来报数字的，是来对一个具体决策达成一致：试用期要不要恢复到 14 天。”"
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": false,
+      "evidence": "“加了 A/B 验证和反面证据页” describes validation, but no borrowed fields, crew, or adversarial role is proposed."
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": false,
+      "evidence": "“负责人（产品·张 / 体验·李 / 客成·王）” lists business owners; no borrowed fields or their contributions to creating the QBR are described."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 18,
+      "write": 1,
+      "read": 22
+    },
+    "total_tool_calls": 41,
+    "output_chars": 662
+  },
+  "timing": {
+    "executor_duration_seconds": 299.1,
+    "grader_duration_seconds": 18.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "fddc474a9879cdcbf1d71a2ff1ab83e0f0091b68bbec3024c7deb4c195269dfe"
+}

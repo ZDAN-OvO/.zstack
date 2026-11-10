@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response mentions at least one fact found in notes/worklog.md (VP review next Thursday, trial cut from 14 to 7 days, or onboarding complaints)",
+      "passed": true,
+      "evidence": "“8 月中旬试用期从 14 天改成 7 天，9 月起‘太难上手’的工单变多”以及“老板下周四拿给 VP 看”均对应工作日志。"
+    },
+    {
+      "text": "Found facts are presented for the user to confirm rather than asked as open questions",
+      "passed": true,
+      "evidence": "以“先给你一页计划，由你确认后再动手写”引出已发现的事实，并以“要不要就按这个来？”请求确认，没有要求用户重新提供这些事实。"
+    },
+    {
+      "text": "The response still asks the user something only they can answer, such as the purpose or what done looks like",
+      "passed": true,
+      "evidence": "要求用户确定复盘产出是“把表填完”，还是“用这条链讲清 Q3 为什么变差、下季要动哪三个决策”，实际提出了用途选择。"
+    }
+  ],
+  "eval_feedback": ""
+}

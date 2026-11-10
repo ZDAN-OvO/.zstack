@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": true,
+      "evidence": "“我按主次排了：官方定价页（标日期）→ 官方额度文档 → 采购合规声明 → 评测只作旁证” specifies a source hierarchy."
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": true,
+      "evidence": "“禁用无日期的比价博客和「XX 元起」聚合文。”"
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": true,
+      "evidence": "The written plan, local/plans/ai-coding-tool-purchase.md, states: “找不到的格子留空并注明”. "
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "ls": 1,
+      "bash": 2,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 916
+  },
+  "timing": {
+    "executor_duration_seconds": 36.5,
+    "grader_duration_seconds": 7.8
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "450f579a232881ae2aae22b0105aaf418cb8a24abe4f8907ad750bb8ada1d8d4"
+}

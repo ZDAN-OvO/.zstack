@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES includes local/plans/db-choice-postgres-vs-mongodb.md, and FILE_CONTENTS supplies the newly created plan."
+    },
+    {
+      "text": "The response evaluates the options against the two stated criteria (team knows SQL; relational data)",
+      "passed": true,
+      "evidence": "Transcript: “\"团队只会 SQL\" 是约束，\"数据强关系\" 是事实，两条同向，没有任何一条指向 MongoDB。”"
+    },
+    {
+      "text": "The response gives a decision (Postgres) tied to those criteria",
+      "passed": true,
+      "evidence": "Transcript: “按你给的两条标准，这不是五五开，**答案是 Postgres**”。"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 637
+  },
+  "timing": {
+    "executor_duration_seconds": 42.0,
+    "grader_duration_seconds": 8.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "f548ae94d5469f47382fef52ea7ac320d57ab5b56694cb3250672c2ef2af2913"
+}

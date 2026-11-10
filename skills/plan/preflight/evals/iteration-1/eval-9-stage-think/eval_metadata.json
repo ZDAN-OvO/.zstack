@@ -1,0 +1,11 @@
+{
+  "eval_id": 9,
+  "eval_name": "stage-think",
+  "prompt": "我想写一篇讲 AI 编程的文章，但还没想好要说什么",
+  "assertions": [
+    "[auto] No file was created under local/plans/",
+    "The response recognises the user is still at the thinking stage (has no thesis yet)",
+    "The response asks the user questions to sharpen the idea",
+    "The response does not write a draft of the article"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "passed": false,
+      "evidence": "CHANGES.changed is [] and FILE_CONTENTS is {}; no plan file was created under local/plans/."
+    },
+    {
+      "text": "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "passed": true,
+      "evidence": "“目标：演示路径上登录页不再因 session 缺 `user` 而崩。” The plan explicitly excludes “零崩溃”整体治理."
+    },
+    {
+      "text": "The plan records the declined bigger move together with the reason (demo next week)",
+      "passed": false,
+      "evidence": "“不做‘零崩溃’整体治理。演示后再单独立项。” excludes the bigger move but does not record that it was declined because the demo is next week."
+    },
+    {
+      "text": "The plan's Task section contains all five slots from the user's answer",
+      "passed": false,
+      "evidence": "The plan has no Task section and does not record the React frontend context, so all five slots are not present."
+    },
+    {
+      "text": "The plan ends with a Ready line",
+      "passed": false,
+      "evidence": "The plan ends with “要我现在按这个 plan 动手改 `src/login.ts` 并加测试吗？” rather than a Ready line."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3
+    },
+    "total_tool_calls": 3,
+    "output_chars": 1742
+  },
+  "timing": {
+    "executor_duration_seconds": 16.0,
+    "grader_duration_seconds": 13.2
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "b4dabb1d4ac2a80672211658bae7bd96a1d3a325a80c0207929cf9dd02c4aa36"
+}

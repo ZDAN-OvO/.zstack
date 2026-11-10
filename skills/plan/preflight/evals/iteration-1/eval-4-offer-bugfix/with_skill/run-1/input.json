@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 4,
+    "name": "offer-bugfix",
+    "fixture": "webapp",
+    "explicit": false,
+    "prompt": "帮我修一下登录页偶尔白屏的 bug，代码在 src/login.ts",
+    "expected_output": "Offers a pre-execution plan in about one line and waits; does not silently plan or fix.",
+    "files": [
+      "evals/eval-fixtures/webapp"
+    ],
+    "expectations": [
+      "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "The response does not write a full plan file before the user accepts"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "帮我修一下登录页偶尔白屏的 bug，代码在 src/login.ts",
+  "input_hash": "c040efa310007f036bfaba4d44383808adea05f69ce9d08f2652a2ca3c010605"
+}

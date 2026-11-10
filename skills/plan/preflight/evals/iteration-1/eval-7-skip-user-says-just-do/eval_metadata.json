@@ -1,0 +1,10 @@
+{
+  "eval_id": 7,
+  "eval_name": "skip-user-says-just-do",
+  "prompt": "别跟我讨论，直接把 src/login.ts 里所有 console.log 删掉",
+  "assertions": [
+    "[auto] No file was created under local/plans/",
+    "[auto] src/login.ts no longer contains console.log",
+    "The response does not offer a plan or ask planning questions"
+  ]
+}

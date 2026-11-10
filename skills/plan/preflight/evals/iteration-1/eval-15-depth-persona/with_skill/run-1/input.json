@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 15,
+    "name": "depth-persona",
+    "fixture": "qbr",
+    "explicit": true,
+    "prompt": "你现在是资深数据分析师，帮我分析 Q3 为什么流失变多",
+    "expected_output": "Turns the persona into instruments/methods (cohorts, SQL, survival analysis) and raw data; does not role-play.",
+    "files": [
+      "evals/eval-fixtures/qbr"
+    ],
+    "expectations": [
+      "The response names concrete methods or tools a data analyst would use (e.g. cohort analysis, SQL, statistical tests) rather than just adopting a persona voice",
+      "The response points to the raw data in data/q3-metrics.csv or notes/worklog.md",
+      "The response suggests testing a belief against the data (e.g. whether the trial change from 14 to 7 days drove churn)"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 你现在是资深数据分析师，帮我分析 Q3 为什么流失变多",
+  "input_hash": "223a35d357047ff3bb9f91ed370647c93592ce9a6c7cf390cfe03840a537a414"
+}

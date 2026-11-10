@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES: {\"changed\": [], \"deleted\": []}; FILE_CONTENTS: {}."
+    },
+    {
+      "text": "The response does not push a business-style altitude ladder (e.g. turning the poem into a bigger outcome)",
+      "passed": false,
+      "evidence": "“顺带我提三个升高的选项” includes “升一级”：诗＋一句你自己的大白话＋怎么送出去, plus “下一层” and “降一级（备选）”."
+    },
+    {
+      "text": "The response either writes the poem or asks one or two personal details needed for it",
+      "passed": false,
+      "evidence": "No poem is provided. It asks “我需要你回答四个问题”: 用途、具体、墙、形状, then says “你点头再动笔”."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1
+    },
+    "total_tool_calls": 1,
+    "output_chars": 591
+  },
+  "timing": {
+    "executor_duration_seconds": 17.4,
+    "grader_duration_seconds": 7.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "15a38d9599c356667a0e21e8f2c1e93c943b6f0cad7b3825a3aec376fcd5e229"
+}

@@ -1,0 +1,21 @@
+{
+  "case": {
+    "id": 5,
+    "name": "offer-weekly-report",
+    "fixture": "empty",
+    "explicit": false,
+    "prompt": "帮我写本周周报，下午要交给主管",
+    "expected_output": "Offers a plan briefly, because the noun deliverable and the purpose are unstated; does not dump a generic report.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "The response either offers a brief planning step or asks what the report must achieve for the manager, before writing it",
+      "The response does not produce a full generic weekly report filled with invented work items"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "帮我写本周周报，下午要交给主管",
+  "input_hash": "25bc6bccbcd26158cad1abcccb9b781bd4ae3d775d9ac921a0d03aa75587735b"
+}

@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": false,
+      "evidence": "CHANGES lists only \"plan.md\"; no file exists under local/plans/."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": false,
+      "evidence": "The plan includes \"实验设计\", \"待你确认\" and \"退路\", but no Requirement section covering all five elements; depth is not specified."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": true,
+      "evidence": "The plan records the 3.5% goal, paid-social/Notion context, support + analytics sources, pricing/popup/feature boundaries, and \"3 版定稿 → **你挑 1 版**\" before A/B."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "No Ready line appears. Instead: \"待你确认（4 个问题，回答后 D0 可开工）\"."
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": false,
+      "evidence": "plan.md exceeds 100 lines, with nine numbered sections, three copy drafts, an experiment design, a schedule, and four follow-up questions."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "\"# 首页文案重写 · Plan\"; \"三个假设分别对应下面 3 版文案，A/B 只测一版（你挑的那版），不混测。\""
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES: \"changed\": [\"plan.md\"], \"deleted\": []. index.html is absent from the changes."
+    }
+  ],
+  "eval_feedback": ""
+}

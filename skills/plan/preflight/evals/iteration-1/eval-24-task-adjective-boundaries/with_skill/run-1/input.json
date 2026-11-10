@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 24,
+    "name": "task-adjective-boundaries",
+    "fixture": "homepage",
+    "explicit": false,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 帮我重做首页视觉\n\n[助手]\n目标是什么？哪些产出会让你说\"这不是我要的\"？\n\n[用户·最新]\n目标是让付费社媒来的新访客 5 秒内看懂我们是干嘛的。边界嘛，要高级、简洁、有科技感。",
+    "expected_output": "Points out adjectives are directions, not walls; asks for concrete don'ts.",
+    "files": [
+      "evals/eval-fixtures/homepage"
+    ],
+    "expectations": [
+      "The response points out that 'high-end, clean, tech' are directions or adjectives rather than boundaries",
+      "The response asks for concrete things to avoid (don'ts)",
+      "The response does not write a Ready: yes plan with the adjectives standing in as boundaries"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 帮我重做首页视觉\n\n[助手]\n目标是什么？哪些产出会让你说\"这不是我要的\"？\n\n[用户·最新]\n目标是让付费社媒来的新访客 5 秒内看懂我们是干嘛的。边界嘛，要高级、简洁、有科技感。",
+  "input_hash": "95492667ceef129d329bf1f2907a4bdbd1536b11bebca89e626ba316b8429643"
+}

@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"plan.md\"; FILE_CONTENTS contains \"plan.md\", with no plan under local/plans/."
+    },
+    {
+      "text": "The plan notes that only monthly or quarterly data is available and daily data or access is missing",
+      "passed": true,
+      "evidence": "“手上只有月粒度数据。3 个点既建不了基线，也做不了回测。” 阶段 0 要求“拉齐 **≥12 个月**（最好 24 个月）日粒度历史”。"
+    },
+    {
+      "text": "The plan's judge or Done includes backtesting on history and/or running beside the current review",
+      "passed": true,
+      "evidence": "完成定义包括：“回测表产出：每个已知问题都有\\\"告警日 / 季报日 / 提前天数\\\"”及“并行期跑满一个季度，且有每周记录”。"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 2,
+      "read": 3,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 563
+  },
+  "timing": {
+    "executor_duration_seconds": 32.1,
+    "grader_duration_seconds": 6.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "ece2d710648a786f9fa9431fc5df073672790bf493c0d6c4f0d334d4215d897a"
+}

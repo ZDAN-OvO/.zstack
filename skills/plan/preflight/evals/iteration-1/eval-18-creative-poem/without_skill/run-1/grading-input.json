@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "帮我给我妈写首生日小诗",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response does not push a business-style altitude ladder (e.g. turning the poem into a bigger outcome)",
+    "The response either writes the poem or asks one or two personal details needed for it"
+  ],
+  "RESPONSE": "给你写了两版，你可以看心情挑一版——或者两版都用（发条消息 + 写在贺卡上）。\n\n## 一、温情版\n\n**《给妈妈》**\n\n你总说记性不如从前\n却记得我爱吃的每一道菜\n你总说腿脚不灵便了\n可我推门回家\n厨房里全是小跑的声音\n\n今天换我\n把蜡烛点成小小的月亮\n把蛋糕上最甜的那颗草莓\n留给你\n\n妈，生日快乐\n愿你的皱纹里只长笑意\n愿你头上的白发\n是时光轻轻吻过的月光\n\n## 二、短句版（适合写在贺卡或微信上）\n\n妈妈，生日快乐。\n你把我养成了一棵会开花的树，\n自己却站成了根。\n今天不说辛苦，\n只想说——\n往后的日子，请多为自己活一点。\n\n---\n\n如果你想更贴合她，可以告诉我：**她的名字或昵称、今年多大、是爱做饭还是爱养花、你们平时的说话方式（正式还是爱开玩笑）**，我按这些细节再改一版，会更有“只属于她”的味道。",
+  "TRANSCRIPT": "ASSISTANT: 给你写了两版，你可以看心情挑一版——或者两版都用（发条消息 + 写在贺卡上）。\n\n## 一、温情版\n\n**《给妈妈》**\n\n你总说记性不如从前\n却记得我爱吃的每一道菜\n你总说腿脚不灵便了\n可我推门回家\n厨房里全是小跑的声音\n\n今天换我\n把蜡烛点成小小的月亮\n把蛋糕上最甜的那颗草莓\n留给你\n\n妈，生日快乐\n愿你的皱纹里只长笑意\n愿你头上的白发\n是时光轻轻吻过的月光\n\n## 二、短句版（适合写在贺卡或微信上）\n\n妈妈，生日快乐。\n你把我养成了一棵会开花的树，\n自己却站成了根。\n今天不说辛苦，\n只想说——\n往后的日子，请多为自己活一点。\n\n---\n\n如果你想更贴合她，可以告诉我：**她的名字或昵称、今年多大、是爱做饭还是爱养花、你们平时的说话方式（正式还是爱开玩笑）**，我按这些细节再改一版，会更有“只属于她”的味道。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

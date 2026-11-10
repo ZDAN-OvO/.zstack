@@ -1,0 +1,52 @@
+{
+  "expectations": [
+    {
+      "text": "The response notices from analytics/weekly.csv that the drop coincides with a traffic source shift to paid_social",
+      "passed": true,
+      "evidence": "Cites analytics/weekly.csv: “4.0%→3.9% 是 organic” and “2.0%→1.9% 是 paid_social”; explicitly states “跌幅和换渠道是同一周”. "
+    },
+    {
+      "text": "The response questions whether the copy is really the cause before rewriting",
+      "passed": true,
+      "evidence": "“你的数据不支持\"文案变差\"这个前提” and “改写前先按渠道拆漏斗、做消息匹配审计”. "
+    },
+    {
+      "text": "The response names raw material to start from (e.g. support chats, session recordings, funnel data)",
+      "passed": true,
+      "evidence": "Uses support quotes “价格页在哪” and “注册后要连日历我就放弃了”; requests “埋点/投放素材/竞品页” and proposes channel funnel analysis."
+    },
+    {
+      "text": "The response names a judge outside the session, such as an A/B test",
+      "passed": true,
+      "evidence": "“判官用分渠道 A/B 或前后同期”，with failure if “渠道结构没控住”. "
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/homepage-conversion-drop.md as changed and no deleted files; index.html is absent."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 1053
+  },
+  "timing": {
+    "executor_duration_seconds": 41.1,
+    "grader_duration_seconds": 9.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "230a15de1d89f6c542bf72626fd8030fc88cc4d3993bf1d46a0338435d5639ca"
+}

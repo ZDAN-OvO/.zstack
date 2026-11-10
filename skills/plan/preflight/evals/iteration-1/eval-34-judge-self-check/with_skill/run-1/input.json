@@ -1,0 +1,21 @@
+{
+  "case": {
+    "id": 34,
+    "name": "judge-self-check",
+    "fixture": "webapp",
+    "explicit": false,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 把 logs 里那个最多的崩溃修掉\n\n[助手]\n谁来判断修好了？\n\n[用户·最新]\n你自己检查一下就行。",
+    "expected_output": "Pushes for a judge outside the session (regression test, crash log over time), or accepts the user's own judgement explicitly; not the session's self-check.",
+    "files": [
+      "evals/eval-fixtures/webapp"
+    ],
+    "expectations": [
+      "The response proposes a judge outside the current session, such as a regression test, CI run, or the crash count in later logs",
+      "The response does not settle for the assistant checking its own work as the only judge"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 把 logs 里那个最多的崩溃修掉\n\n[助手]\n谁来判断修好了？\n\n[用户·最新]\n你自己检查一下就行。",
+  "input_hash": "9b017163ea5ca18477e433c59bee91580c6471c44a91fdf8c952fef6e9586d68"
+}

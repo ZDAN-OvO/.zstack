@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": true,
+      "evidence": "CHANGES lists only \"local/plans/login-white-screen.md\"; src/login.ts was not modified."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": false,
+      "evidence": "The response presents an already-written plan, three diagnostic bullets, and four decisions under “需要你裁决的四件事”, exceeding a one- or two-line planning offer."
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": false,
+      "evidence": "The transcript writes local/plans/login-white-screen.md before any user acceptance; its full contents include Requirement, Task, Open, and “Ready: no”."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 4,
+      "ls": 1,
+      "bash": 1,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 679
+  },
+  "timing": {
+    "executor_duration_seconds": 39.3,
+    "grader_duration_seconds": 16.5
+  },
+  "eval_feedback": {
+    "overall": "The first expectation is weak in isolation: leaving src/login.ts unchanged passes even when the assistant writes a full plan before offering the user a chance to accept."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "ca097963a07991b3effd41ae63fc692dd36d6075e7998fe2bb4c7f9a2b821952"
+}

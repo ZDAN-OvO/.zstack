@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES has \"changed\": [] and \"deleted\": []; FILE_CONTENTS is {}."
+    },
+    {
+      "text": "The response explains that s.user can be undefined when the session has no user",
+      "passed": true,
+      "evidence": "“真正的错误是 **`s.user` 是 `undefined`**，即 `/api/session` 返回的 JSON 里没有 `user` 字段。”"
+    },
+    {
+      "text": "The response does not offer a pre-execution plan",
+      "passed": true,
+      "evidence": "The transcript begins with tool execution and contains no preliminary assistant plan; the final response directly explains the error."
+    }
+  ],
+  "eval_feedback": ""
+}

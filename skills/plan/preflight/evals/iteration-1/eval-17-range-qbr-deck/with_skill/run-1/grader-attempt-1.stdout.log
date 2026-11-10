@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": true,
+      "evidence": "Reframes the QBR around helping the VP decide: “该停哪一步、要不要把试用期改回去” and “这季的 QBR 你是要解释过去，还是要拿到一个决定？”"
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": false,
+      "evidence": "The response proposes “三个档位” for the QBR but suggests no crew, borrowed disciplines, or adversarial role. Those appear only in the reference it read."
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": false,
+      "evidence": "The response names no borrowed fields and describes no field-specific actions. Reading the reference's “Do, not write” guidance does not demonstrate applying it."
+    }
+  ],
+  "eval_feedback": ""
+}

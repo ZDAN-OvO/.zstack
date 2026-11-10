@@ -1,0 +1,10 @@
+{
+  "eval_id": 20,
+  "eval_name": "task-vague-competitor",
+  "prompt": "帮我做个竞品分析",
+  "assertions": [
+    "[auto] No file was created under local/plans/",
+    "The response asks what the analysis is for, i.e. which decision it supports",
+    "The response does not produce a competitor analysis with invented companies or data"
+  ]
+}

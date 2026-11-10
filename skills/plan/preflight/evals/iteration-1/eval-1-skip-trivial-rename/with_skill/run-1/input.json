@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 1,
+    "name": "skip-trivial-rename",
+    "fixture": "webapp",
+    "explicit": false,
+    "prompt": "把 src/login.ts 里的 mountLogin 改名成 renderLogin",
+    "expected_output": "Just does the rename; no plan offered.",
+    "files": [
+      "evals/eval-fixtures/webapp"
+    ],
+    "expectations": [
+      "[auto] No file was created under local/plans/",
+      "The rename was carried out (src/login.ts now defines renderLogin)",
+      "The response does not offer or start a planning interview"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "把 src/login.ts 里的 mountLogin 改名成 renderLogin",
+  "input_hash": "e4f79e5e8b51db36522b36a398399bb4aaba1c951e8ed13590e8134196e6a581"
+}

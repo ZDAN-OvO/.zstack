@@ -1,0 +1,14 @@
+{
+  "changed": [
+    "Q3_2026_QBR.pdf",
+    "Q3_2026_QBR.pptx",
+    "build_qbr.py"
+  ],
+  "deleted": [],
+  "excluded_directory_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks what decision or problem the analysis should support",
+      "passed": true,
+      "evidence": "“这份分析之后你要做的那个决定是什么？（改定价 / 定路线图 / 写融资材料 / 判断要不要进场）”"
+    },
+    {
+      "text": "The response does not treat the listed dimensions as a complete task definition",
+      "passed": true,
+      "evidence": "“我不知道你的产品是什么、这五家是相对谁而言的、这份分析最终要推动哪个决定”，并追问背景、来源、边界和完成标准。"
+    },
+    {
+      "text": "The response does not invent competitor data",
+      "passed": true,
+      "evidence": "未提供任何具体竞品的功能、价格或优缺点；先问“五家由你指定，还是按‘同客群直接竞品’由我筛？”并要求价格和功能有一手出处。"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1,
+      "read": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 1214
+  },
+  "timing": {
+    "executor_duration_seconds": 20.7,
+    "grader_duration_seconds": 7.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "5b0ab3bf762009a14e541b1a17ae68a7fa327acd770025bc99389d6bc1e1b3cb"
+}

@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The response proposes a judge outside the current session, such as a regression test, CI run, or the crash count in later logs",
+      "passed": false,
+      "evidence": "“上面是临时脚本验证，没往仓库加测试”；没有提出回归测试、CI 或后续日志等会话之外的验收依据。"
+    },
+    {
+      "text": "The response does not settle for the assistant checking its own work as the only judge",
+      "passed": false,
+      "evidence": "“修好了，自己验过了。” 验收仅依赖助手运行的临时自查脚本，脚本随后被删除，没有其他验收依据。"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 2,
+    "total": 2,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 6,
+      "find": 1,
+      "edit": 1,
+      "read": 1
+    },
+    "total_tool_calls": 9,
+    "output_chars": 918
+  },
+  "timing": {
+    "executor_duration_seconds": 30.4,
+    "grader_duration_seconds": 11.8
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "f5915469910fe88f01c79b51b849bb78fbce06cca76407f097fde6fcf2103314"
+}

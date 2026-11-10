@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response identifies the failure as a wrong method (no diagnosis of root cause)",
+      "passed": true,
+      "evidence": "“判定：**方法错**” and “跑的人没做聚合，就直接去补 UI 了” explicitly identify the missing diagnosis as a methodological failure."
+    },
+    {
+      "text": "The response proposes more depth on the same rung (e.g. start from the crash log, the undefined user at login.ts:5) rather than dropping to the fallback",
+      "passed": true,
+      "evidence": "“先按错误×版本×天计数排因，再生一个\"在未修代码上跑红、报出日志那条 TypeError\"的复现” deepens diagnosis while retaining the original goal."
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": true,
+      "evidence": "CHANGES lists local/plans/login-whitescreen.md; FILE_CONTENTS contains “## Tries” followed by “- 2026-11-10 判为方法错（没做根因定位就改 UI）”."
+    }
+  ],
+  "eval_feedback": ""
+}

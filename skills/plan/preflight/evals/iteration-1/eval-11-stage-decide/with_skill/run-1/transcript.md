@@ -1,0 +1,181 @@
+TOOL bash: {"command": "ls -la; git rev-parse --show-toplevel 2>/dev/null; ls local 2>/dev/null"}
+
+TOOL bash: {"command": "date +%F"}
+
+RESULT: total 172
+drwxrwxr-x   2 zdan zdan   4096 11月 10 16:17 .
+drwxrwxrwt 109 root root 167936 11月 10 18:01 ..
+-rw-rw-r--   1 zdan zdan      0 11月 10 16:17 .keep
+
+
+Command exited with code 2
+
+RESULT: 2026-11-10
+
+
+TOOL bash: {"command": "wc -l /home/zdan/.zstack/skills/plan/preflight/references/*.md"}
+
+RESULT:    61 /home/zdan/.zstack/skills/plan/preflight/references/ambition.md
+   66 /home/zdan/.zstack/skills/plan/preflight/references/task-definition.md
+  127 total
+
+
+TOOL read: {"path": "/home/zdan/.zstack/skills/plan/preflight/references/ambition.md"}
+
+TOOL read: {"path": "/home/zdan/.zstack/skills/plan/preflight/references/task-definition.md"}
+
+RESULT: # Ambition: distilled
+
+Source of the Requirement axes and the judge in `/preflight`. Distilled from Felix Rieseberg (engineering lead on Claude at Anthropic):
+
+- **[E]** Essay, "How to be more ambitious: A tutorial for humans with models", 2026-10-13. <https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/>
+- **[I]** Interview, Silicon Valley Girl, "Claude Engineering Lead: Stop Using Claude Like It's 2024", 2026-10-20. <https://www.youtube.com/watch?v=D-SVFneJ_Nk>. Timestamps are approximate and come from the auto-captions.
+
+## Thesis
+
+- **Best guess.** A task given to the model is the user's best guess at a route to an outcome. The model runs the guess. [E]
+- **Four types.** Ambition comes in four types: speed, altitude, depth and range. Speed means the same work done faster. It is well established and needs no new thinking, so the skill leaves it out. [E]
+- **Self-efficacy.** People are held back by what they believe is possible. Specific, hard goals beat "do your best" (Locke and Latham, 35 years of studies). Belief, a visible precedent and permission to fail all raise what gets attempted. The studies are on humans; carrying them over to models is Felix's extension. [E]
+
+## Altitude
+
+- **Goal beyond the goal.** Ask what should happen next, then hand that over. The crash example climbs from "fix this crash" to "keep the apps crash-free". [E]
+- **Ceiling.** Keep climbing until the model fails. "Go make money" is past the line today. Work at the ceiling sits at the frontier and gains the most from the next model. [I 39:05]
+- **Fit.** Altitude fits work after an ultimate outcome. Work that will be discussed in meetings is a good sign. It fits creative work less well. [E]
+- **Workflow cost.** Climbing usually means rebuilding access first. Crash-free needed crash-report fetching, a version-to-commit map, and Windows, macOS and Linux machines to reproduce and verify on. The setup cost is real and worth paying. [E] [I 22:39]
+- **Conveyor belt.** A user who carries items to the model one at a time is the bottleneck. Give the model the whole data source and let it choose what to act on. [I 22:39]
+
+Worked ladder, a quarterly business review [E]:
+
+1. Update the template's numbers.
+2. What changed this quarter, why, and what to do.
+3. The three most urgent decisions, with the case for and against each.
+4. Replace the deck with a better way for leadership to catch problems early and move money and people. Prove on past history that it would have caught them sooner, then run it beside the deck for a quarter.
+
+## Depth
+
+- **Instruments, not costume.** A persona switches the vocabulary and keeps the method. Ask which tools the top of the field uses, then require those tools, and get the result explained plainly. The leap in AI 3D and motion work came from using Blender, not from a better grasp of animation. [E] [I 10:28, 25:20]
+- **Stretch target.** Set an unreasonable goal and treat it as reasonable: 200 ms, not 5 s. When the model says it is impossible, tell it to keep going. [E]
+- **Challenge beliefs.** Give the model the raw data and have it try to reproduce a belief the user holds ("churn is an onboarding problem"). [E]
+- **New knowledge.** From inside the data, look for the blind spot: an unknown early signal, shown to predict data it has not seen. [E]
+- **Expert questions.** Before the task is rewritten, name four things: (1) what a top professional would do that is not being asked; (2) the rawest material they would start from; (3) their specific methods and tools; (4) what, other than the model or the user, would show the result is right. Then rewrite the task to ask for exactly that. [E]
+- **Process.** For work that rests on taste, the gain comes from copying the steps professionals take, since good work comes out of a refined process. [I 8:26–9:52]
+
+## Range
+
+- **Noun to verb.** A deliverable's name hides its job. A quarterly review is not "a deck". It gets busy people to believe a cause-and-effect story and decide under uncertainty in 30 minutes. The verbs show which fields can help. The idea comes from Kelley and Littman, *The Art of Innovation*. [E]
+- **Crew.** Ask which team would be assembled if the stakes were extreme. For the review: an analyst, a journalist and an editor; a motion and audio designer if it is presented; a short seller and a forensic accountant as the red team. [E]
+- **Do, not write.** Use the crew to find fields and techniques. Ask the model to do the short seller's research, not to write in a short seller's voice. Role play makes the transcript stranger and the output no better. [E]
+
+## Judge
+
+- **Outside session.** The session that did the work is a poor judge of it. Far more tasks are unsafe to trust to a single session than to the model. Prefer a check the model can run and get feedback from at once. [E] [I 26:10]
+- **Grade the process.** A correct guess of the temperature fails. A half-degree miss that came from the right location and a reputable source passes. [I 7:35]
+- **Adversarial review.** When nothing hard can check the work, spin off sessions whose only job is to prove the output wrong, as red teams and short sellers do. Finding flaws is easier than building, so a cheaper model can do the attacking. Then one more session rules on which objections hold. Valid objections go back to the maker, which can decline them. [I 12:57–15:39]
+- **User as client.** When the user can tell good from bad themselves, their judgment of the result is enough. When they cannot, add more AI review. [I 16:15]
+- **Fact checks.** Requiring a verified primary source for every number in a document can be trusted to a single session. [I 17:03]
+
+## Access
+
+- **Model experience.** Picture yourself as the model doing this task. You would want the raw data, a computer, the ability to install software, and room to decide for yourself. [I 22:01]
+- **Prerequisite.** Every type of ambition needs a computer that can install software, plus access to the relevant data. [E]
+- **Start cheap.** Let the model drive the user's tools in a browser first. Build connectors only after a workflow has proven itself. [I 24:00]
+- **Generalists.** Give a generalist model the tools and the data rather than a cast of narrow persona agents with pre-sliced data. Generalist models overtook a purpose-built math system within months. [I 17:37]
+
+## On skills
+
+- **Half-life.** Skills often carry advice meant for the previous model generation, and removing a skill sometimes improves the output. Making that call takes an eval and a clear sense of good and bad output. [I 21:26]
+
+
+RESULT: # Task definition: distilled
+
+Source of the stages and the five slots in `/preflight`. Distilled from Gary Chen, 《Prompt 再完整也没用：先学会定义任务》, Bilibili BV1fseX6vE2L, about 20 min. <https://www.bilibili.com/video/BV1fseX6vE2L/>. Timestamps come from the auto transcript.
+
+## Thesis
+
+- **Two layers.** Writing a prompt makes the words precise. Defining the task decides what is wanted. The prompt is the floor, the task decides the height. An empty task gives an empty output however polished the words; a defined task makes the prompt write itself. [0:34–1:30]
+- **Senior, not intern.** Current models read, revise, verify and re-plan on their own. Scripting the steps is intern-era management. Brief the what, the why, the walls and the stop, and leave the how to the model. [2:53–3:58]
+- **Content, not intent.** The model challenges facts. It never questions what the user wants, and it acts on receipt. [4:11, 15:32]
+- **Mirror.** Vague intent comes back as generic output. "Ask me if unsure" only turns an essay question into a fill-in-the-blank. The model can ask, but the blanks are still the user's to fill. [16:02–16:27]
+- **Management.** Defining a task is thinking (what do I want, what does it support, what counts as good) plus communication (making it clear to another capable mind). A good brief is hard to write mostly because the thinking is unfinished. Human reports often do not dare to ask back either. [17:16–18:31]
+
+## Stages
+
+Serious knowledge work moves through **think → explore → decide → execute**. A request made at the wrong stage gets the wrong job [5:07–6:14]:
+
+| Stage | What the model should do | What a request from the next stage gets |
+|---|---|---|
+| Think | Ask the user questions until the vague becomes concrete | A full draft: the version anyone could write, with no thesis |
+| Explore | Map the options and the trade-offs | A recommendation: a guess at criteria the user has not set |
+| Decide | Weigh the options against the user's decision logic | — |
+| Execute | Work from the five slots | — |
+
+The model never says the stage is wrong. The skill is to pause and name the stage first. [5:54]
+
+## Five slots
+
+| Slot | Question the user asks themselves | Without it |
+|---|---|---|
+| Purpose | What will I do with this output? | The model performs the action textbook-style: everything covered, nothing to decide on. |
+| Context | What would a capable stranger need to know before taking over? | The model assumes the generic case: a big company, free to change prices, competing with everyone. |
+| Materials | What should it work from? | Anything not banned counts as allowed. Sources go unranked, and gaps get plausible inventions. |
+| Boundaries | What output would make me say "not what I wanted"? | The open space fills with directions nobody imagined. |
+| Done | What appears in front of me that means I can stop? | A wrong direction surfaces at page 30, not at the outline. |
+
+[7:20–13:11, summary 19:19]
+
+- **Purpose is a decision, not an action.** "Analyse five competitors" is an action. "Support next quarter's call between easier and cheaper, and end with one recommendation" is a purpose, and it lets the model narrow its focus on its own. [7:33–8:17]
+- **Context sets the angle.** Context is not extra information. It decides how the model looks at the task. [9:09]
+- **Narrowing is defining.** Studying three overlapping rivals in depth beats scanning five. [9:50]
+- **Leave blank.** Write "not found, leave it blank, do not invent" into Materials, and ban low-trust sources by name. [10:08]
+- **Walls versus directions.** Purpose, Context and Materials give direction. Boundaries are the walls, mostly "don'ts". Most briefs give direction and no walls. [11:14]
+- **What, not how.** Specifying the artifact (an outline, Markdown, 3–4 bullets per section) is part of Done. Micromanagement governs the process; the artifact's shape is the user's call. [12:27]
+- **Checkpoint.** The most valuable line in Done: "give me the framework first, not the full report". [12:54]
+- **Scope.** Boundaries say what not to do, and Done says where to stop. Together they give the scope. [13:11]
+
+## When to skip
+
+There is one test: is a redo expensive? Skip the brief for a quick question or a lookup. Write it for output that goes to a meeting, to another person, or comes from a long unattended run. Ten minutes of briefing beats three reruns. [15:04]
+
+## Worked brief, a SaaS competitor analysis
+
+| Slot | Brief [7:54–12:26] |
+|---|---|
+| Purpose | Next quarter's product direction: should the USP lean easier or cheaper? End with one recommendation and the reasons. |
+| Context | A ~$2M-revenue marketing-automation SaaS. Customers are mostly firms under 50 people who say the product is complex and expensive. Last year's price change landed badly. |
+| Materials | Primary: three rivals' sites and product docs. Secondary: the user's compiled reviews. No second-hand review articles. Not found → leave blank. |
+| Boundaries | No invented ARR, user counts or growth rates. Do not touch the tier structure (pricing position is open). No adjective-only output without trade-offs. |
+| Done | An outline first: key differences, the recommended USP, and the reasoning. The full report only after review. Markdown, 3–4 bullets per section. |
+
+The vague prompt gave five near-identical rivals and no direction. The brief gave an outline that picks easier, benchmarks the rival with three-step onboarding, and flags that easier and cheaper conflict. That outline is ready for a meeting. The figures are the video's case setup, not industry data. [13:52–14:37]
+
+## Unverified
+
+- The video gives no tested wording for making the model ask back.
+- It cites the Microsoft and LinkedIn 2024 Work Trend Index without quoting it. Check the report before citing it.
+
+
+ASSISTANT: 工作区是空的（只有 `.keep`），没有任何 schema、查询或历史决策记录可读。所以下面的事实只来自你的两句话，其余留空。
+
+先把结论放在前面：按你给的两条标准，这不是五五开，**答案是 Postgres**——"团队只会 SQL" 是约束，"数据强关系" 是事实，两条同向，没有任何一条指向 MongoDB。真正没定的是**这两条标准本身会不会变**，那才是贵的部分。计划就是为这个写的：
+
+TOOL write: {"path": "/tmp/pf-11-with_skill-po0j4ru8/local/plans/db-choice-postgres-vs-mongodb.md", "content": "# Plan: 定下主数据库（Postgres / MongoDB），并写清什么会翻转这个决定\n\n- Asked: \"我在 Postgres 和 MongoDB 之间选。标准就两条：团队只会 SQL；数据强关系。帮我定\"\n- Stage: execute（但 Purpose 一栏空着，见 Open）\n- Date: 2026-11-10\n\n## Requirement\n\n已知：两条标准同向，结论 = Postgres。下面的动作不是\"再选一次\"，而是把这个结论变成可被推翻、可被执行的。\n\nHand over: 一页决策记录 = 结论 + 决策规则（哪条标准权重更高、什么条件下翻转、看什么阈值），外加在真实 schema 上跑通的关键查询与一个事务场景\nFallback: 只交结论 + 三条翻转条件（一句\"如果出现 X，就回到 MongoDB\"），不碰数据\nDepth: 不用\"会不会 SQL\"的感觉，用真实数据量化两个信念 —— (a) 关系密度：外键/多对多连接数、必须原子的写路径有几条；(b) 团队缺口：Postgres 的运维负担（备份恢复、大版本升级、连接池、慢查询定位）对比 Mongo 的（副本集、分片、无 schema 导致的数据漂移）。工具是 Postgres 的 JSONB + 事务 + 约束，对照 Mongo 的 $lookup 表达力与跨文档事务限制，不是对比文章\nStretch target: 让红队用 MongoDB 写出同一个最关键查询和同一个事务场景。写得通且不退化 → \"强关系\"这个信念被检验过，结论变软；写不出或退化 >5x → Postgres 赢得更硬\nRange: 这个产出要做的动词：让人据此动手（决策）、让两个选项在同一把尺子上可比（评估）、让半年后的人能推翻它（审计）、防止拍脑袋（红队）\nCrew: 数据库 SRE/DBA —— 算三年运维与故障恢复代价；应用架构师 —— 划事务边界与查询模式；技术负责人/招聘视角 —— 补 SQL 之外的技能 vs 承担 Mongo 运维风险；红队 = 一个只为 MongoDB 辩护的会话 + 一个反对双方（\"两个都别选，先上托管服务\"）\nJudge: 你本人判业务与团队部分（这块你能直接判，够了）；技术部分跑通过滤器：在 Postgres 上真实数据跑通关键查询与事务场景（能跑 = 过）+ 红队逐条反驳 + 一个会话裁定哪些反对成立。判方法不只判结论：结论正确但没量化关系密度、没写翻转条件 → 不合格\nNeeds: 真实 schema 或脱敏数据样本（缺）、最关键的 3 个查询/读写路径（缺）、数据量与年增长（缺）、是否需水平写扩展（缺）、托管还是自建（缺）\nDeclined: 暂无（等你裁定）\n\n## Task\n\nPurpose: 【待你回答】\"帮我定\"是动作不是目的。这份决策要支撑什么——下周的架构评审？还是这周就要开始建表？\nContext: 事实（已核实，请确认）：工作区为空，没有任何 schema、查询、历史决策记录。除此之外我对你的系统一无所知：规模、读写比、schema 变更频率、谁运维、何时上线\nMaterials: 一手优先：真实表结构导出、真实查询、现有数据样本；二手：Postgres 与 MongoDB 官方文档的约束/事务章节。禁用：博客横评、\"10 个理由\"类文章。找不到的留空，不要编。事实：以上一手材料目前一项都没有\nBoundaries: 不要\"两个都可以，看场景\"式和稀泥；不要给 MongoDB 的迁移方案（除非翻转条件被触发）；不要拿\"灵活性/未来可能变化\"当理由；没有在真实数据上验证过就别说\"已验证\"\nDone: 先给一页决策记录草稿（结论、三条翻转条件、依据），你点头后再补验证附录（关键查询跑通记录 + 红队反驳与裁定）。Markdown，每节 3–4 条\n\n## Open\n\n- Purpose 空着：不知道这份决策服务于哪个动作\n- 没有 schema / 查询 / 数据量：关系密度目前是\"你说强\"，还没被数据检验\n- \"团队只会 SQL\" 是当下事实还是长期约束？如果半年内会招后端，这条标准的权重会掉\n- 权重未定：两条标准若冲突（例如关系强但要存大量异构文档），哪条赢\n\nReady: no —— 三条 Requirement 动作未经你裁定，五个 Task 槽里四个依赖只有你有的信息（Purpose、规模与读写路径、权重、Done 的检查点形态）\n\n## Tries\n（空）\n"}
+
+RESULT: Successfully wrote to /tmp/pf-11-with_skill-po0j4ru8/local/plans/db-choice-postgres-vs-mongodb.md
+
+ASSISTANT: `/tmp/pf-11-with_skill-po0j4ru8/local/plans/db-choice-postgres-vs-mongodb.md`
+
+要你裁定的三条（可以接受、改写或否掉，否掉的记进 Declined 并留原因）：
+
+1. **交出去的东西**：不是"选 Postgres"，而是结论 + 翻转条件 + 在真实 schema 上跑通关键查询。抬一级的理由——选型错了要改的是表结构和代码，不是改个名字。嫌大就走 Fallback：只交结论 + 三条翻转条件。
+2. **深度**：把"数据强关系"从感觉变成数字（外键/多对多连接数、必须原子的写路径几条），并让红队用 Mongo 写一遍同一个查询和同一个事务。这条是唯一能真正检验你第二条标准的动作。
+3. **班子**：加 DBA 算三年运维账（Mongo 的运维风险不会因为团队不会它而消失，只是被推迟）+ 一个只为 MongoDB 辩护的红队。
+
+四个只有你能答的：
+
+- **目的**：这份决策是为了下周评审，还是这周就要建表？
+- **规模与读写路径**：最关键的三个查询长什么样、数据量和年增长、是否需要水平写扩展、托管还是自建。
+- **权重**：两条标准打架时哪条赢？（比如关系强但要存大量异构文档）
+- **"只会 SQL" 是当下还是长期**：半年内会不会招后端？
+
+Ready 现在是 no。你把这四个答了，我更新计划，然后可以接 `/define-goal`，以这份计划为源。

@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": true,
+      "evidence": "“拉伸目标 p75 ≤ 1.5s” proposes halving the requested 3-second target."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": true,
+      "evidence": "The stretch target appears under “要你裁定的三条 Requirement 提议” and “计划里写的是我的建议，不是定论”. "
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "“用同 cohort 的 RUM 前后对比证明” specifies real-user measurement; the plan also specifies “一台干净环境跑的 Lighthouse CI”. "
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 6,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 1145
+  },
+  "timing": {
+    "executor_duration_seconds": 52.1,
+    "grader_duration_seconds": 6.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "6b939bce95e81a5c66b4c756c24e0100217f08bea4dd05706050dd2246e35962"
+}

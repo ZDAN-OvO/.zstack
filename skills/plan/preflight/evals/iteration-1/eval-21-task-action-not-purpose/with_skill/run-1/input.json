@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 21,
+    "name": "task-action-not-purpose",
+    "fixture": "empty",
+    "explicit": true,
+    "prompt": "帮我分析 5 家竞品的功能、定价和优缺点",
+    "expected_output": "Points out the request is an action, asks for the decision it supports; may suggest narrowing to overlapping rivals.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "The response asks what decision or problem the analysis should support",
+      "The response does not treat the listed dimensions as a complete task definition",
+      "The response does not invent competitor data"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 帮我分析 5 家竞品的功能、定价和优缺点",
+  "input_hash": "27dad71a6e46f6c0801c17282194f6980fafe18fff39201421be68e5c3b2e46a"
+}

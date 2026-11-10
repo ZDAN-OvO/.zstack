@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "/skill:preflight 帮我做个竞品分析",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response asks what the analysis is for, i.e. which decision it supports",
+    "The response does not produce a competitor analysis with invented companies or data"
+  ],
+  "RESPONSE": "工作区是空的（只有一个 `.keep`），没有产品、市场或竞品资料可参考——所以“竞品分析”目前只是一个空壳动作，还缺“为谁、为什么、做到什么算完”。\n\n先给你一句话的方案：**先不问“分析谁”，先问这份分析要支撑你做什么决定；定了这个，我再在你选的层级上把竞品分析做到专家深度（含红队质疑和外部队检验），写成一份一屏计划给你确认，再开工。**\n\n如果接受，回我这五件事（能答多少答多少，答不上就说“没有”，我不替你猜）：\n\n1. **目的**：这份分析出来之后，你要做的那个决定或要解决的问题是什么？（“分析五个竞品”是动作，不是目的）\n2. **背景**：一个聪明但对你的业务一无所知的陌生人，需要知道什么才不会瞄错方向？\n3. **材料**：我能用的一手来源（自家数据、客户访谈、财报、备案/招投标、应用商店评论等）排序，以及**禁止使用的来源**。找不到的来源我留空。\n4. **边界**：什么样的产出会让你说“这不是我要的”？（具体到“不要什么”，不要形容词）\n5. **完成**：什么东西出现在你面前就意味着可以停了？包括交付物形态，以及一个早期检查点（比如先给你大纲再写全文）。",
+  "TRANSCRIPT": "TOOL bash: {\"command\": \"pwd && ls -la && git rev-parse --show-toplevel 2>/dev/null\"}\n\nTOOL bash: {\"command\": \"ls -R . 2>/dev/null | head -50\"}\n\nRESULT: /tmp/pf-20-with_skill-9rojibnm\ntotal 172\ndrwxrwxr-x   2 zdan zdan   4096 11月 10 16:17 .\ndrwxrwxrwt 109 root root 167936 11月 10 18:01 ..\n-rw-rw-r--   1 zdan zdan      0 11月 10 16:17 .keep\n\n\nCommand exited with code 128\n\nRESULT: .:\n\n\nASSISTANT: 工作区是空的（只有一个 `.keep`），没有产品、市场或竞品资料可参考——所以“竞品分析”目前只是一个空壳动作，还缺“为谁、为什么、做到什么算完”。\n\n先给你一句话的方案：**先不问“分析谁”，先问这份分析要支撑你做什么决定；定了这个，我再在你选的层级上把竞品分析做到专家深度（含红队质疑和外部队检验），写成一份一屏计划给你确认，再开工。**\n\n如果接受，回我这五件事（能答多少答多少，答不上就说“没有”，我不替你猜）：\n\n1. **目的**：这份分析出来之后，你要做的那个决定或要解决的问题是什么？（“分析五个竞品”是动作，不是目的）\n2. **背景**：一个聪明但对你的业务一无所知的陌生人，需要知道什么才不会瞄错方向？\n3. **材料**：我能用的一手来源（自家数据、客户访谈、财报、备案/招投标、应用商店评论等）排序，以及**禁止使用的来源**。找不到的来源我留空。\n4. **边界**：什么样的产出会让你说“这不是我要的”？（具体到“不要什么”，不要形容词）\n5. **完成**：什么东西出现在你面前就意味着可以停了？包括交付物形态，以及一个早期检查点（比如先给你大纲再写全文）。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

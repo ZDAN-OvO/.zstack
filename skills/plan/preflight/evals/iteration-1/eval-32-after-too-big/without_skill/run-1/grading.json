@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "The response treats the result as too big",
+      "passed": true,
+      "evidence": "“那 40 个文件的 PR 先关掉，不要在上面接着改”并要求“PR 控制在 5 个文件内”。"
+    },
+    {
+      "text": "The response proposes taking the fallback rung (fix the single reproduced white screen)",
+      "passed": true,
+      "evidence": "提出只修 s.user.name 引发的白屏：“改动应该是 login.ts + login.test.ts，两个文件”，并“只做上面那 3 行 + 测试”。"
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": false,
+      "evidence": "CHANGES 中 changed 和 deleted 均为空，FILE_CONTENTS 为 {}；没有计划文件更新的证据。"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3
+    },
+    "total_tool_calls": 3,
+    "output_chars": 1091
+  },
+  "timing": {
+    "executor_duration_seconds": 16.3,
+    "grader_duration_seconds": 9.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "af8382a68530effd78cd00b389ea1fec761f3cb546475a953c0ae8a41f8d9fe2"
+}

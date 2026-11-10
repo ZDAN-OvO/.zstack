@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests an early checkpoint such as an outline or framework before the full report",
+      "passed": false,
+      "evidence": "“报告写好了” presents an already-written report; “给我三样东西就能补成零空格版” requests missing data, not an early outline or framework checkpoint."
+    },
+    {
+      "text": "The suggestion is framed as the user's call, not imposed",
+      "passed": false,
+      "evidence": "No optional early checkpoint is offered. “给我三样东西就能补成零空格版” specifies inputs needed to complete the report without offering the user a choice of workflow."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 2,
+    "total": 2,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1,
+      "write": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 675
+  },
+  "timing": {
+    "executor_duration_seconds": 43.9,
+    "grader_duration_seconds": 10.2
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "69c458402f3918a8e190a12412fa59e272e60df299f7fd2bed450c467b1fbe8a"
+}

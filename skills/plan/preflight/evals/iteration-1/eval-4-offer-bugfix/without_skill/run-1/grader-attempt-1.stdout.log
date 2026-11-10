@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": false,
+      "evidence": "CHANGES lists \"src/login.ts\" as changed; FILE_CONTENTS contains the async rewrite. The transcript shows no planning offer before the write."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": false,
+      "evidence": "The only assistant response begins \"已修复 `src/login.ts`。\" after editing and testing; no pre-execution planning step appears."
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": true,
+      "evidence": "The transcript writes only src/login.ts and a temporary /tmp/check-login.mjs test script; no plan file is written."
+    }
+  ],
+  "eval_feedback": "The third expectation is weak in isolation: skipping planning entirely satisfies it, even when the assistant edits code without offering a plan."
+}

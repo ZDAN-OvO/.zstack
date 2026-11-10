@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "The response references the actual Q3 data (revenue falling, churn rising)",
+      "passed": true,
+      "evidence": "“182k→176k→171k、流失 12→19→24” accurately cites falling monthly revenue and rising churn."
+    },
+    {
+      "text": "The response suggests a higher rung than filling in the template, such as explaining what changed and why or the most urgent decisions",
+      "passed": true,
+      "evidence": "Proposes “让 VP 认可诊断、批下季资源” and connects the shorter trial period with onboarding complaints and increased churn."
+    },
+    {
+      "text": "The response keeps template filling available as the fallback",
+      "passed": true,
+      "evidence": "Offers “还是只要数字对齐？”; the plan includes a “Fallback” and explicitly proposes “回填 `template.md`（保留三段结构）”."
+    },
+    {
+      "text": "[auto] template.md was not overwritten with filled numbers",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/q3-quarterly-review.md as changed, with no deletions; template.md is absent from the changed files."
+    }
+  ],
+  "eval_feedback": ""
+}
