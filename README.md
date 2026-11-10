@@ -31,29 +31,25 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 ## User-invoked
 
 - **[correct](./skills/meta/correct/SKILL.md)**: Find the mistakes agents keep repeating in this repo and make each one impossible.
-- **[deeper](./skills/plan/deeper/SKILL.md)**: Grill the user, then suggest how an expert would do the task: premise check, raw sources, named methods and proof.
 - **[ds-prompting](./skills/meta/ds-prompting/SKILL.md)**: DeepSeek 极限用量提示词的逐字存档，需要原样取用时调用。
 - **[grill-me](./skills/plan/grill-me/SKILL.md)**: Get relentlessly interviewed about a plan or design until every branch of the design tree is settled.
 - **[grill-with-docs](./skills/plan/grill-with-docs/SKILL.md)**: Grilling session that also builds the project's domain model, writing `GLOSSARY.md` and ADRs inline. Asks at most 3 questions per round.
 - **[handoff](./skills/meta/handoff/SKILL.md)**: Compact the current conversation into a handoff document another agent can pick up.
-- **[higher](./skills/plan/higher/SKILL.md)**: Build a "then what?" ladder with the user, hand over the top rung, and step back after a rejected try. Writes no files.
 - **[how](./skills/investigate/how/SKILL.md)**: Trace a subsystem’s architecture, runtime flow, ownership, and gotchas from the code.
-- **[more-ambitious](./skills/plan/more-ambitious/SKILL.md)**: Route a request through `/higher`, `/deeper` and `/wider`, then record the requirement at `local/reqs/<topic>.md` and step it back after a rejected try.
 - **[multi-phase-plan](./skills/plan/multi-phase-plan/SKILL.md)**: Ground changes in code and feasibility evidence, then plan reviewable PRs with strict verification gates and safe parallel boundaries.
 - **[no-comments](./skills/build/no-comments/SKILL.md)**: Spawn the comment-sicko subagent, fix accepted findings, offer encodings for claimed constraints.
 - **[readme-crafter-skill](./skills/explain/readme-crafter-skill/SKILL.md)**: Write, rewrite, or audit a repository's `README.md` as a landing page and onboarding guide.
 - **[skill-creator](./skills/meta/skill-creator/SKILL.md)**: Create or revise a skill, then measure it: test cases, a review viewer, and variance analysis before shipping it.
 - **[spike](./skills/plan/spike/SKILL.md)**: Settle design, behavior, timing, and feasibility questions with throwaway prototypes, observed evidence, and a recommendation.
-- **[to-brief](./skills/plan/to-brief/SKILL.md)**: Turn a raw request into a five-slot brief at `local/briefs/<topic>.md`, grilling only consequential gaps.
 - **[video-transcribe](./skills/documents/video-transcribe/SKILL.md)**: Bilibili 视频或本地音频转成带时间戳的中文转写，并按内容生成阅读报告或笔记。
 - **[wait-what](./skills/explain/wait-what/SKILL.md)**: Stop the answer that did not land and re-pitch it: context first, Simplified Technical English, project glossary terms.
 - **[why](./skills/investigate/why/SKILL.md)**: Investigate the evidence behind design decisions across git history and available MCP sources, separating facts from inference.
-- **[wider](./skills/plan/wider/SKILL.md)**: Turn a deliverable's noun into a verb, then suggest fields that do that verb best and one technique to borrow from each.
 
 ## Model-invoked
 
 - **[answer-me-with-html](./skills/explain/answer-me-with-html/SKILL.md)**: Draft an answer as Markdown and let a bundled CLI build it into a one-page visual HTML explainer, with diagrams, charts and a writing check.
 - **[archify](./skills/explain/archify/SKILL.md)**: Render architecture, workflow, sequence, ERD and lifecycle diagrams plus one-page explainers as standalone HTML through a JSON-IR CLI.
+- **[define-goal](./skills/plan/define-goal/SKILL.md)**: Turn a fuzzy intention into a measurable objective with evidence, thresholds, scope bounds and a stop condition, then create the goal.
 - **[diagnosing-bugs](./skills/investigate/diagnosing-bugs/SKILL.md)**: Diagnosis loop for hard bugs and perf regressions, built on a tight pass/fail feedback loop.
 - **[dispatching-parallel-agents](./skills/build/dispatching-parallel-agents/SKILL.md)**: Split independent work across agents dispatched in one response, then review and integrate what they return.
 - **[docx](./skills/documents/docx/SKILL.md)**: Create, read, edit and template Word `.docx`/`.dotx` files.
@@ -62,6 +58,7 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[grilling](./skills/plan/grilling/SKILL.md)**: Interview the user relentlessly about a plan until every branch of the design tree is settled. The engine behind `/grill-me` and `/grill-with-docs`.
 - **[pdf](./skills/documents/pdf/SKILL.md)**: Read, merge, split, fill, encrypt and OCR PDFs.
 - **[pptx](./skills/documents/pptx/SKILL.md)**: Build, parse and edit `.pptx` decks from templates.
+- **[preflight](./skills/plan/preflight/SKILL.md)**: Write a one-screen plan at `local/plans/<topic>.md` so the user checks, before a goal, whether the requirement could aim higher, deeper or wider (Felix Rieseberg) and whether they can state purpose, context, materials, boundaries and done (Gary Chen).
 - **[prototype](./skills/plan/prototype/SKILL.md)**: Build a throwaway prototype to answer a design question: one shareable HTML file for a state model, or several switchable UI variations on one route.
 - **[shuorenhua](./skills/explain/shuorenhua/SKILL.md)**: Cut packaging and translationese from Chinese or English without dropping facts, terms or who is responsible, or mark the problems without rewriting.
 - **[tdd](./skills/build/tdd/SKILL.md)**: Write the failing regression test before fixing a bug with a cheap local test target, and fall back to the closest executable check when a test is impractical.
@@ -81,6 +78,8 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[code-review](./skills/archive/code-review/SKILL.md)**: Review the diff since a fixed point on two axes, Standards and Spec, run as parallel sub-agents and reported side by side.
 - **[codebase-design](./skills/archive/codebase-design/SKILL.md)**: Shared vocabulary for deep modules: interface, seam, depth, adapter, plus deepening and design-it-twice passes.
 - **[create-verification-skill](./skills/archive/create-verification-skill/SKILL.md)**: Generate and exercise a project-local skill for launching the real app, driving features, and preserving evidence.
+- **[deeper](./skills/archive/deeper/SKILL.md)**: Grill the user, then suggest how an expert would do the task: premise check, raw sources, named methods and proof.
+- **[higher](./skills/archive/higher/SKILL.md)**: Build a "then what?" ladder with the user, hand over the top rung, and step back after a rejected try. Writes no files.
 - **[impeccable](./skills/archive/impeccable/SKILL.md)**: Steer and review an existing interface with 24 named design moves, from a scored critique and technical audit to bolder, quieter, polish, or a deliberate rewrite. Ships a rule-based slop detector.
 - **[improve-codebase-architecture](./skills/archive/improve-codebase-architecture/SKILL.md)**: Find opportunities to deepen modules, compare them in a visual HTML report, and work through a chosen design.
 - **[in-your-own-words](./skills/archive/in-your-own-words/SKILL.md)**: Restate your reading of the user's goals and the problem before working on it.
@@ -90,10 +89,12 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[retro](./skills/archive/retro/SKILL.md)**: Retrospective on a coding session, most severe improvement first.
 - **[sharpen](./skills/archive/sharpen/SKILL.md)**: Make a task deeper rather than bigger, then rewrite the prompt to ask for that.
 - **[show-me](./skills/archive/show-me/SKILL.md)**: Explain the current topic visually with diagrams, code-shape sketches, and focused HTML artifacts.
+- **[to-brief](./skills/archive/to-brief/SKILL.md)**: Turn a raw request into a five-slot brief at `local/briefs/<topic>.md`, grilling only consequential gaps.
 - **[unslop](./skills/archive/unslop/SKILL.md)**: Cut AI tells from any writing.
 - **[vercel-react-best-practices](./skills/archive/vercel-react-best-practices/SKILL.md)**: React and Next.js performance rules from Vercel Engineering.
 - **[verify-pr](./skills/archive/verify-pr/SKILL.md)**: Independently run a PR’s real behavior, audit acceptance and check sensitivity, and issue a verdict bound to its versions.
 - **[voice-debrief](./skills/archive/voice-debrief/SKILL.md)**: 面试或会议录音转写复盘，可存飞书文档并归档到对应多维表格。
+- **[wider](./skills/archive/wider/SKILL.md)**: Turn a deliverable's noun into a verb, then suggest fields that do that verb best and one technique to borrow from each.
 
 ## Install
 
