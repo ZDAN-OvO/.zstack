@@ -16,7 +16,7 @@ const VALID = `# Brief: 下季产品方向的竞品分析
 - Stage: execute
 - Source: "帮我做一份竞品分析"，补充了决策目标和客群
 
-## Goal
+## Purpose
 - 支撑下季产品方向决策：USP 往更好用走还是更便宜走，给明确建议和理由。
 
 ## Context
@@ -70,14 +70,14 @@ test("rejects a missing slot", () => {
 });
 
 test("rejects slots out of order", () => {
-  const goal = VALID.match(/## Goal\n[\s\S]*?(?=## Context)/)[0];
-  const text = VALID.replace(goal, "").replace("## Done", `${goal}## Done`);
+  const purpose = VALID.match(/## Purpose\n[\s\S]*?(?=## Context)/)[0];
+  const text = VALID.replace(purpose, "").replace("## Done", `${purpose}## Done`);
   assert.ok(rules(text).includes("order"));
 });
 
 test("rejects unknown and duplicate sections", () => {
   assert.ok(rules(VALID.replace("## Assumptions", "## Notes")).includes("section"));
-  assert.ok(rules(`${VALID}\n## Goal\n- again\n`).includes("section"));
+  assert.ok(rules(`${VALID}\n## Purpose\n- again\n`).includes("section"));
 });
 
 test("rejects prose instead of bullets", () => {

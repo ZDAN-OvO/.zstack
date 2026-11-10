@@ -21,7 +21,7 @@ Scope it to the deliverable: who meets it, in what moment, and what they should 
 
 ## Suggest
 
-1. **Noun → verb.** Quote the deliverable's noun and suggest two or three verbs for its job. Each names an effect you could check, and leaves the noun out. The user picks one or rewrites it. When the chosen verb changes the goal itself rather than restating the noun's job, hand the new goal to `/higher`. End the turn here: the fields depend on the verb the user picks.
+1. **Noun → verb.** Quote the deliverable's noun and suggest two or three verbs for its job. Each names an effect you could check, and leaves the noun out. The user picks one or rewrites it. When the chosen verb changes the result itself rather than restating the noun's job, hand the new result to `/higher`. End the turn here: the fields depend on the verb the user picks.
 2. **Fields.** For the chosen verb, suggest 3–5 fields whose practitioners are best at it. For each, give one concrete technique that would transfer to this deliverable, and mark the ones you are unsure of.
 
 The user keeps, edits or drops each technique.

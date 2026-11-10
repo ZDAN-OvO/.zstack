@@ -7,7 +7,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 export const STAGES = ["think", "explore", "decide", "execute"];
-export const SLOTS = ["Goal", "Context", "Materials", "Boundaries", "Done"];
+export const SLOTS = ["Purpose", "Context", "Materials", "Boundaries", "Done"];
 export const OPTIONAL = ["Assumptions", "Open questions"];
 const MAX_BULLETS = 5;
 
@@ -83,8 +83,9 @@ function checkMeta(preamble, fail) {
   if (!sm) fail(stage?.n ?? 2, 'expected "- Stage: <think | explore | decide | execute>" after the title', "meta");
   else if (!STAGES.includes(sm[1])) fail(stage.n, `stage "${sm[1]}" is not one of ${STAGES.join(", ")}`, "stage");
   if (!/^- Source: \S/.test(source?.raw ?? "")) fail(source?.n ?? 3, 'expected "- Source: <original request>" after Stage', "meta");
-  for (const extra of content.slice(2)) fail(extra.n, "only Stage and Source may sit between the title and ## Goal", "meta");
+  for (const extra of content.slice(2)) fail(extra.n, "only Stage and Source may sit between the title and ## Purpose", "meta");
 }
+
 
 // 五个必填栏按序出现；可选栏只能在其后且按序；不得重复或出现未知栏
 function checkOrder(sections, fail) {

@@ -5,12 +5,12 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { LADDER_HEADER, OPTIONAL, REQUIRED, TRIALS, checkReq } from "./check-req.mjs";
+import { LADDER_HEADER, OPTIONAL, REQUIRED, checkReq } from "./check-req.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const CLI = path.join(here, "check-req.mjs");
 
-// 一份合法需求文档：中文内容 + 英文标题，三个下游技能都跑过，含一条试跑记录
+// 一份合法需求文档：中文内容 + 英文标题，三个下游技能都跑过
 const VALID = `# Requirement: 登录链路不再卡住或白屏
 
 - Source: "修一下登录页偶尔白屏的 bug"
@@ -22,11 +22,11 @@ const VALID = `# Requirement: 登录链路不再卡住或白屏
 
 ## Ladder
 
-| Rung | Goal | AI owns | Needs | Status |
-|---|---|---|---|---|
-| 0 | 修一下登录页偶尔白屏的 bug | | | |
-| 1 | 登录页每次都能正常打开 | 复现与定位 | 前端错误日志 | rejected |
-| 2 | 用户从打开 App 到登录成功不再卡住或白屏 | 整条登录链路的稳定性 | 前端日志、/api/session 监控 | handed |
+| Rung | Result | AI owns | Needs |
+|---|---|---|---|
+| 0 | 修一下登录页偶尔白屏的 bug | | |
+| 1 | 登录页每次都能正常打开 | 复现与定位 | 前端错误日志 |
+| 2 | 用户从打开 App 到登录成功不再卡住或白屏 | 整条登录链路的稳定性 | 前端日志、/api/session 监控 |
 
 Handed over: rung 2
 
@@ -42,11 +42,6 @@ Handed over: rung 2
 - Borrowed: 游戏存档：断点续玩
   进入时直接回到上次状态
 - Dropped: 机场值机：用户说场景不像
-
-## Trials
-
-### 2026-11-08 · rung 1 · rejected
-- Fell short: 只加了 loading 骨架屏，白屏的真正原因没找到。
 `;
 
 const rules = (text, file) => checkReq(text, file).problems.map((p) => p.rule);
@@ -59,13 +54,9 @@ test("accepts the documented template filled in", () => {
   assert.deepEqual(checkReq(VALID, "local/reqs/login-stability.md").problems, []);
 });
 
-test("accepts a requirement with only higher run and no trials yet", () => {
-  const text = VALID.replace(/## Deeper[\s\S]*$/, "## Trials\n").replace("| rejected |", "| |");
+test("accepts a requirement with only higher run", () => {
+  const text = VALID.replace(/## Deeper[\s\S]*$/, "");
   assert.deepEqual(checkReq(text).problems, []);
-});
-
-test("accepts an accepted handed rung", () => {
-  assert.deepEqual(rules(swap("| handed |", "| accepted |")), []);
 });
 
 test("rejects a missing title", () => {
@@ -78,11 +69,11 @@ test("rejects missing or malformed metadata", () => {
 });
 
 test("rejects missing, unknown, duplicate and out-of-order sections", () => {
-  assert.ok(rules(VALID.replace(/## Trials[\s\S]*$/, "")).includes("missing"));
+  assert.ok(rules(VALID.replace(/## Ladder[\s\S]*?(?=## Deeper)/, "")).includes("missing"));
   assert.ok(rules(swap("## Wider", "## Notes")).includes("section"));
   assert.ok(rules(`${VALID}\n## Deeper\n- Premise: holds\n`).includes("section"));
   const deeper = VALID.match(/## Deeper\n[\s\S]*?(?=## Wider)/)[0];
-  assert.ok(rules(VALID.replace(deeper, "").replace("## Trials", `${deeper}## Trials`)).includes("order"));
+  assert.ok(rules(`${VALID.replace(deeper, "")}\n${deeper}`).includes("order"));
 });
 
 test("rejects an empty requirement", () => {
@@ -90,16 +81,15 @@ test("rejects an empty requirement", () => {
 });
 
 test("rejects a broken ladder table", () => {
-  assert.ok(rules(swap("| Rung | Goal | AI owns | Needs | Status |", "| Rung | Goal | Status |")).includes("ladder"));
+  assert.ok(rules(swap("| Rung | Result | AI owns | Needs |", "| Rung | Result |")).includes("ladder"));
   assert.ok(rules(swap("| 2 | 用户从", "| 3 | 用户从")).includes("rung"));
-  assert.ok(rules(swap("| 0 | 修一下登录页偶尔白屏的 bug | | | |", "| 0 | 修一下登录页偶尔白屏的 bug | AI | | |")).includes("ladder"));
-  assert.ok(rules(swap("| handed |", "| maybe |")).includes("status"));
+  assert.ok(rules(swap("| 0 | 修一下登录页偶尔白屏的 bug | | |", "| 0 | 修一下登录页偶尔白屏的 bug | AI | |")).includes("ladder"));
 });
 
-test("rejects a handed line that disagrees with the table", () => {
-  assert.ok(rules(swap("Handed over: rung 2", "Handed over: rung 1")).includes("handed"));
+test("rejects a missing, duplicate or unknown handed rung", () => {
+  assert.ok(rules(swap("Handed over: rung 2", "Handed over: rung 7")).includes("handed"));
   assert.ok(rules(swap("Handed over: rung 2", "")).includes("handed"));
-  assert.ok(rules(swap("| rejected |", "| handed |")).includes("handed"));
+  assert.ok(rules(swap("Handed over: rung 2", "Handed over: rung 2\nHanded over: rung 1")).includes("handed"));
 });
 
 test("rejects prose in the ladder", () => {
@@ -113,18 +103,10 @@ test("rejects bad Deeper and Wider fields", () => {
   assert.ok(rules(swap("- Premise: holds\n- Kept: 先区分", "- Kept: 先区分")).includes("field"));
 });
 
-test("rejects bad trial entries", () => {
-  assert.ok(rules(swap("### 2026-11-08 · rung 1 · rejected", "### rung 1 rejected")).includes("trial"));
-  assert.ok(rules(swap("· rung 1 · rejected", "· rung 1 · meh")).includes("trial"));
-  assert.ok(rules(swap("· rung 1 · rejected", "· rung 9 · rejected")).includes("trial"));
-  assert.ok(rules(VALID.replace(/- Fell short: .*\n/, "")).includes("trial"));
-  assert.ok(rules(swap("### 2026-11-08 · rung 1 · rejected\n", "")).includes("prose"));
-});
 
 test("rejects template placeholders left behind", () => {
   assert.ok(rules(swap("Handed over: rung 2", "Handed over: rung <N>")).includes("placeholder"));
   assert.ok(rules(swap("- Premise: holds", "- Premise: <holds | moved, handed to /higher>")).includes("placeholder"));
-  assert.ok(rules(swap("- Fell short: 只加了", "- Fell short: <what the user said fell short>")).includes("placeholder"));
   assert.ok(rules(swap("- Kept: 先区分", "<!-- note -->\n- Kept: 先区分")).includes("placeholder"));
 });
 
@@ -157,7 +139,7 @@ test("SKILL.md template matches the checker", () => {
   const skill = fs.readFileSync(path.join(here, "../SKILL.md"), "utf8");
   const template = skill.match(/```markdown\n(# Requirement:[\s\S]*?)\n```/)[1];
   const headings = [...template.matchAll(/^## (.+)$/gm)].map((m) => m[1]);
-  assert.deepEqual(headings, [...REQUIRED, ...OPTIONAL, TRIALS]);
+  assert.deepEqual(headings, [...REQUIRED, ...OPTIONAL]);
   assert.match(template, new RegExp(`^\\| ${LADDER_HEADER.join(" \\| ")} \\|$`, "m"));
   // 模板里每个占位都要被脚本认成占位
   const filled = checkReq(template).problems.filter((p) => p.rule === "placeholder").length;

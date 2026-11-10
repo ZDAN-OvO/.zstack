@@ -38,13 +38,13 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[handoff](./skills/meta/handoff/SKILL.md)**: Compact the current conversation into a handoff document another agent can pick up.
 - **[higher](./skills/plan/higher/SKILL.md)**: Build a "then what?" ladder with the user, hand over the top rung, and step back after a rejected try. Writes no files.
 - **[how](./skills/investigate/how/SKILL.md)**: Trace a subsystem’s architecture, runtime flow, ownership, and gotchas from the code.
-- **[more-ambitious](./skills/plan/more-ambitious/SKILL.md)**: Route a request through `/higher`, `/deeper` and `/wider`, then record the ambitious requirement at `local/reqs/<topic>.md` for `/to-brief`.
+- **[more-ambitious](./skills/plan/more-ambitious/SKILL.md)**: Route a request through `/higher`, `/deeper` and `/wider`, then record the requirement at `local/reqs/<topic>.md` and step it back after a rejected try.
 - **[multi-phase-plan](./skills/plan/multi-phase-plan/SKILL.md)**: Ground changes in code and feasibility evidence, then plan reviewable PRs with strict verification gates and safe parallel boundaries.
 - **[no-comments](./skills/build/no-comments/SKILL.md)**: Spawn the comment-sicko subagent, fix accepted findings, offer encodings for claimed constraints.
 - **[readme-crafter-skill](./skills/explain/readme-crafter-skill/SKILL.md)**: Write, rewrite, or audit a repository's `README.md` as a landing page and onboarding guide.
 - **[skill-creator](./skills/meta/skill-creator/SKILL.md)**: Create or revise a skill, then measure it: test cases, a review viewer, and variance analysis before shipping it.
 - **[spike](./skills/plan/spike/SKILL.md)**: Settle design, behavior, timing, and feasibility questions with throwaway prototypes, observed evidence, and a recommendation.
-- **[to-brief](./skills/plan/to-brief/SKILL.md)**: Turn a raw request into a five-slot brief at `local/briefs/<topic>.md`, grilling only the gaps that would change the output.
+- **[to-brief](./skills/plan/to-brief/SKILL.md)**: Turn a raw request into a five-slot brief at `local/briefs/<topic>.md`, grilling only consequential gaps.
 - **[video-transcribe](./skills/documents/video-transcribe/SKILL.md)**: Bilibili 视频或本地音频转成带时间戳的中文转写，并按内容生成阅读报告或笔记。
 - **[wait-what](./skills/explain/wait-what/SKILL.md)**: Stop the answer that did not land and re-pitch it: context first, Simplified Technical English, project glossary terms.
 - **[why](./skills/investigate/why/SKILL.md)**: Investigate the evidence behind design decisions across git history and available MCP sources, separating facts from inference.
@@ -90,7 +90,6 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[retro](./skills/archive/retro/SKILL.md)**: Retrospective on a coding session, most severe improvement first.
 - **[sharpen](./skills/archive/sharpen/SKILL.md)**: Make a task deeper rather than bigger, then rewrite the prompt to ask for that.
 - **[show-me](./skills/archive/show-me/SKILL.md)**: Explain the current topic visually with diagrams, code-shape sketches, and focused HTML artifacts.
-- **[to-goal](./skills/archive/to-goal/SKILL.md)**: Compile approved work and the current repo state into a copyable goal another session can execute and verify. Read-only.
 - **[unslop](./skills/archive/unslop/SKILL.md)**: Cut AI tells from any writing.
 - **[vercel-react-best-practices](./skills/archive/vercel-react-best-practices/SKILL.md)**: React and Next.js performance rules from Vercel Engineering.
 - **[verify-pr](./skills/archive/verify-pr/SKILL.md)**: Independently run a PR’s real behavior, audit acceptance and check sensitivity, and issue a verdict bound to its versions.

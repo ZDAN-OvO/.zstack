@@ -8,22 +8,18 @@ import { fileURLToPath } from "node:url";
 
 export const REQUIRED = ["Requirement", "Ladder"];
 export const OPTIONAL = ["Deeper", "Wider"];
-export const TRIALS = "Trials";
-export const SECTIONS = [...REQUIRED, ...OPTIONAL, TRIALS];
-export const LADDER_HEADER = ["Rung", "Goal", "AI owns", "Needs", "Status"];
-export const STATUSES = ["handed", "accepted", "rejected"];
-export const VERDICTS = ["accepted", "rejected"];
+export const SECTIONS = [...REQUIRED, ...OPTIONAL];
+export const LADDER_HEADER = ["Rung", "Result", "AI owns", "Needs"];
 
 // 模板残留：SKILL.md 模板里的尖括号占位、HTML 注释、TODO 类标记
 const PLACEHOLDER =
-  /<!--|<(?:handed rung in a few words|request as (?:the user wrote it|written)|YYYY-MM-DD|the user's (?:restatement|words|verb)|what moved to AI|data, access, checks|N|holds \|[^>]*|suggestion[^>]*|noun|field: technique|technique[^>]*|what the user said fell short)>/i;
+  /<!--|<(?:handed rung in a few words|request as (?:the user wrote it|written)|YYYY-MM-DD|the user's (?:restatement|words|verb)|what moved to AI|data, access, checks|N|holds \|[^>]*|suggestion[^>]*|noun|field: technique|technique[^>]*)>/i;
 // Case-sensitive: "todo" is an ordinary word (e.g. a Todo tool); only the all-caps marker is a leftover.
 const MARKER = /\b(?:TODO|TBD|FIXME)\b/;
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*\.md$/;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const BULLET = /^- \S/;
 const CONTINUATION = /^ {2,}\S/;
-const TRIAL = /^### (\d{4}-\d{2}-\d{2}) · rung (\d+) · (\S+)\s*$/;
 
 /** 返回 { problems: [{ line, message, rule }] }；file 只用于校验文件名和位置。 */
 export function checkReq(text, file = "") {
@@ -39,7 +35,7 @@ export function checkReq(text, file = "") {
 
   if (!/^# Requirement: \S/.test(lines[0] ?? "")) fail(1, 'first line must be "# Requirement: <handed rung in a few words>"', "title");
 
-  // 按 H2 切段；代码块里的内容不参与结构判断；H3 只允许出现在 Trials 里
+  // 按 H2 切段；代码块里的内容不参与结构判断
   const sections = [];
   const preamble = [];
   let current = null;
@@ -65,12 +61,8 @@ export function checkReq(text, file = "") {
       sections.push(current);
       continue;
     }
-    if (/^### /.test(raw) && current?.name === TRIALS) {
-      current.body.push({ raw, n });
-      continue;
-    }
     if (/^#{1,6} /.test(raw)) {
-      fail(n, `unexpected heading "${raw.trim()}"; only "# Requirement:", the section H2s and Trials entries are allowed`, "heading");
+      fail(n, `unexpected heading "${raw.trim()}"; only "# Requirement:" and the section H2s are allowed`, "heading");
       continue;
     }
     (current?.body ?? preamble).push({ raw, n });
@@ -80,12 +72,11 @@ export function checkReq(text, file = "") {
   checkMeta(preamble, fail);
   checkOrder(sections, fail);
   const ladder = sections.find((s) => s.name === "Ladder");
-  const rungs = ladder ? checkLadder(ladder, fail) : null;
+  if (ladder) checkLadder(ladder, fail);
   for (const s of sections) {
     if (s.name === "Requirement") checkRequirement(s, fail);
     else if (s.name === "Deeper") checkFields(s, ["Premise"], ["Kept", "Dropped"], fail);
     else if (s.name === "Wider") checkFields(s, ["Noun → verb"], ["Borrowed", "Dropped"], fail);
-    else if (s.name === TRIALS) checkTrials(s, rungs, fail);
   }
   return { problems };
 }
@@ -101,7 +92,7 @@ function checkMeta(preamble, fail) {
   for (const extra of content.slice(2)) fail(extra.n, "only Source and Date may sit between the title and ## Requirement", "meta");
 }
 
-// 段落按 Requirement → Ladder → Deeper → Wider → Trials 出现；前两段和 Trials 必有，不得重复或未知
+// 段落按 Requirement → Ladder → Deeper → Wider 出现；前两段必有，不得重复或未知
 function checkOrder(sections, fail) {
   const seen = new Set();
   let last = -1;
@@ -116,7 +107,7 @@ function checkOrder(sections, fail) {
     seen.add(s.name);
     last = Math.max(last, idx);
   }
-  for (const name of [...REQUIRED, TRIALS]) if (!seen.has(name)) fail(1, `missing required section "## ${name}"`, "missing");
+  for (const name of REQUIRED) if (!seen.has(name)) fail(1, `missing required section "## ${name}"`, "missing");
 }
 
 // Requirement 是用户的复述，不能为空
@@ -126,23 +117,22 @@ function checkRequirement(section, fail) {
 
 const cells = (raw) => raw.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((c) => c.trim());
 
-// 阶梯表：固定表头，rung 从 0 连续编号，rung 0 只写原话；恰好一层 handed，或交出层已 accepted；
-// 表后一行 "Handed over: rung N"，N 指向表内的 handed 或 accepted 层
+// 阶梯表：固定表头，rung 从 0 连续编号，rung 0 只写原话；表后一行 "Handed over: rung N"，N 指向表内某层
 function checkLadder(section, fail) {
   const body = section.body.filter((l) => !l.fenced && l.raw.trim() !== "");
   const table = body.filter((l) => l.raw.trim().startsWith("|"));
   const rest = body.filter((l) => !l.raw.trim().startsWith("|"));
-  const rungs = new Map();
+  const rungs = new Set();
 
   if (table.length < 3) {
     fail(section.n, '"## Ladder" needs the table header, separator and at least rung 0 and rung 1', "ladder");
-    return rungs;
+    return;
   }
   if (cells(table[0].raw).join("|") !== LADDER_HEADER.join("|")) {
     fail(table[0].n, `ladder header must be | ${LADDER_HEADER.join(" | ")} |`, "ladder");
   }
   if (!cells(table[1].raw).every((c) => /^:?-{3,}:?$/.test(c)) || cells(table[1].raw).length !== LADDER_HEADER.length) {
-    fail(table[1].n, "second ladder row must be the separator |---|---|---|---|---|", "ladder");
+    fail(table[1].n, "second ladder row must be the separator |---|---|---|---|", "ladder");
   }
   table.slice(2).forEach((row, i) => {
     const c = cells(row.raw);
@@ -150,33 +140,26 @@ function checkLadder(section, fail) {
       fail(row.n, `ladder row has ${c.length} cells; expected ${LADDER_HEADER.length}`, "ladder");
       return;
     }
-    const [rung, goal, owns, , status] = c;
+    const [rung, result, owns, needs] = c;
     if (rung !== String(i)) fail(row.n, `rung "${rung}" breaks the numbering; expected ${i}`, "rung");
-    if (!goal) fail(row.n, `rung ${rung} has no Goal`, "ladder");
-    if (i === 0 && (owns || c[3] || status)) fail(row.n, "rung 0 is the request as written; leave AI owns, Needs and Status empty", "ladder");
+    if (!result) fail(row.n, `rung ${rung} has no Result`, "ladder");
+    if (i === 0 && (owns || needs)) fail(row.n, "rung 0 is the request as written; leave AI owns and Needs empty", "ladder");
     if (i > 0 && !owns) fail(row.n, `rung ${rung} has no "AI owns"`, "ladder");
-    if (i > 0 && status && !STATUSES.includes(status)) fail(row.n, `status "${status}" is not one of ${STATUSES.join(", ")}`, "status");
-    rungs.set(Number(rung), { status, n: row.n });
+    rungs.add(Number(rung));
   });
   if (rungs.size < 2) fail(section.n, '"## Ladder" needs at least rung 0 and rung 1', "ladder");
 
-  const handed = [...rungs].filter(([, r]) => r.status === "handed");
-  if (handed.length > 1) fail(handed[1][1].n, "more than one rung is marked handed", "handed");
 
   const hm = rest.map((l) => ({ l, m: l.raw.match(/^Handed over: rung (\d+)\s*$/) })).filter((x) => x.m);
   if (hm.length !== 1) {
     fail(section.n, 'expected exactly one "Handed over: rung <N>" line after the ladder table', "handed");
   } else {
     const n = Number(hm[0].m[1]);
-    const r = rungs.get(n);
-    if (!r) fail(hm[0].l.n, `handed rung ${n} is not in the ladder`, "handed");
-    else if (!["handed", "accepted"].includes(r.status)) fail(hm[0].l.n, `handed rung ${n} has status "${r.status || "empty"}"; expected handed or accepted`, "handed");
-    else if (handed.length === 1 && handed[0][0] !== n) fail(hm[0].l.n, `"Handed over" names rung ${n}, but rung ${handed[0][0]} is marked handed`, "handed");
+    if (!rungs.has(n)) fail(hm[0].l.n, `handed rung ${n} is not in the ladder`, "handed");
   }
   for (const l of rest) {
     if (!/^Handed over: rung \d+\s*$/.test(l.raw)) fail(l.n, '"## Ladder" holds only the table and the "Handed over" line', "prose");
   }
-  return rungs;
 }
 
 // Deeper / Wider：只能是 "- 字段: 内容" 条目；首字段恰好一条且在最前，其余字段可多条
@@ -204,36 +187,6 @@ function checkFields(section, first, more, fail) {
     if (counts[k] !== 1) fail(section.n, `"## ${section.name}" needs exactly one "- ${k}:" line`, "field");
   }
   if (bullets === 0) fail(section.n, `"## ${section.name}" has no bullets; omit the section when the leaf did not run`, "empty");
-}
-
-// Trials 可以为空；每条为 "### YYYY-MM-DD · rung N · accepted|rejected" 加至少一条 "- " 说明，rung 须在阶梯里
-function checkTrials(section, rungs, fail) {
-  let entry = null;
-  const close = () => {
-    if (entry && entry.bullets === 0) fail(entry.n, "trial entry needs at least one \"- \" line on what happened", "trial");
-  };
-  for (const l of section.body) {
-    if (l.fenced || l.raw.trim() === "") continue;
-    if (/^### /.test(l.raw)) {
-      close();
-      const m = l.raw.match(TRIAL);
-      entry = { n: l.n, bullets: 0 };
-      if (!m) {
-        fail(l.n, 'trial heading must be "### YYYY-MM-DD · rung N · accepted|rejected"', "trial");
-        continue;
-      }
-      if (!VERDICTS.includes(m[3])) fail(l.n, `trial verdict "${m[3]}" is not one of ${VERDICTS.join(", ")}`, "trial");
-      if (rungs && rungs.size > 0 && !rungs.has(Number(m[2]))) fail(l.n, `trial names rung ${m[2]}, which is not in the ladder`, "trial");
-      continue;
-    }
-    if (!entry) {
-      fail(l.n, '"## Trials" content must sit under a "### YYYY-MM-DD · rung N · verdict" entry', "prose");
-      continue;
-    }
-    if (BULLET.test(l.raw)) entry.bullets++;
-    else if (!(CONTINUATION.test(l.raw) && entry.bullets > 0)) fail(l.n, "trial content must be \"- \" bullets", "prose");
-  }
-  close();
 }
 
 function main(argv) {

@@ -37,25 +37,25 @@ When the user stops climbing, close with the ladder:
 ```markdown
 **Higher result**
 
-| Rung | Goal | AI owns | Needs | Status |
-|---|---|---|---|---|
-| 0 | <request as written> | | | |
-| 1 | <the user's words> | <what moved to AI> | <data, access, checks> | |
+| Rung | Result | AI owns | Needs |
+|---|---|---|---|
+| 0 | <request as written> | | |
+| 1 | <the user's words> | <what moved to AI> | <data, access, checks> |
 
 Handed over: rung <N>
 ```
 
-Status is one of `handed`, `accepted`, `rejected`. Mark the top rung `handed`.
+The top rung is the handed one.
 
 ## Step back
 
 When the user comes back with a verdict on the handed rung's result:
 
-- **Accepted**: mark it `accepted`. The ladder is done.
-- **Rejected**: ask what fell short and note it as a trial with the date. When the reason points at method rather than size (a wrong diagnosis, a missing source), suggest running `/deeper` on the same rung before stepping down. The user chooses. Stepping down marks the rung `rejected` and the one below `handed`.
+- **Accepted**: the ladder is done.
+- **Rejected**: ask what fell short. When the reason points at method rather than size (a wrong diagnosis, a missing source), suggest running `/deeper` on the same rung before stepping down. The user chooses. Stepping down hands over the rung below.
 
-Close with the updated ladder and the trial.
+Close with the updated "Handed over" line.
 
 ## Done
 
-Building is done when the user has stopped climbing and one rung is marked `handed`. Close with the Higher result block.
+Building is done when the user has stopped climbing and the top rung is named in the "Handed over" line. Close with the Higher result block.

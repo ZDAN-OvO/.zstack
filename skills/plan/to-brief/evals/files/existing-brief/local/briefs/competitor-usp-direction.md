@@ -3,8 +3,8 @@
 - Stage: explore
 - Source: earlier request
 
-## Goal
-- old goal
+## Purpose
+- old purpose
 
 ## Context
 - old context

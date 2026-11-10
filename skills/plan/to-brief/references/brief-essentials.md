@@ -26,7 +26,7 @@ The model never warns you you're at the wrong stage. Pausing before the request 
 
 | Slot | Test question | What the model does without it |
 |---|---|---|
-| Goal | What decision does this output support? | Executes the action textbook-style: everything covered, nothing decidable. |
+| Purpose | What decision does this output support? | Executes the action textbook-style: everything covered, nothing decidable. |
 | Context | What does a smart stranger need so they don't aim wrong? | Assumes the generic case (big company, free to change price, competing with everyone). Theoretically right, unusable. |
 | Materials | What may it be built from; what is banned; what if data is missing? | Treats everything not forbidden as allowed; doesn't rank sources; invents plausible values when it can't find one. |
 | Boundaries | What output would make me say "not what I wanted"? | Fills the open space with things you never imagined. Direction without walls is an open brief. |
@@ -34,9 +34,9 @@ The model never warns you you're at the wrong stage. Pausing before the request 
 
 Pairs worth remembering:
 
-- **Goal vs action.** "Analyse 5 competitors: features, pricing, pros/cons" is an action. "Support next quarter's call: should our USP lean easier or cheaper? End with a clear recommendation and reasons" is a goal. The goal lets the model narrow focus by itself.
+- **Purpose vs action.** "Analyse 5 competitors: features, pricing, pros/cons" is an action. "Support next quarter's call: should our USP lean easier or cheaper? End with a clear recommendation and reasons" is a purpose. The purpose lets the model narrow focus by itself.
 - **Context sets the angle.** Revenue ~$2M, customers <50-person firms who find the product complex and expensive, last year's price change landed badly. With that, the model stops recommending price cuts and benchmarks similar-sized rivals. (Figures are the video's case setup, not industry data.)
-- **Boundaries vs Goal.** "Nordic, minimal, cool tones" is direction; "no tatami, no wood floor, no patterned wallpaper" is walls. Boundaries are mostly "don't".
+- **Boundaries vs Purpose.** "Nordic, minimal, cool tones" is direction; "no tatami, no wood floor, no patterned wallpaper" is walls. Boundaries are mostly "don't".
 - **Boundaries + Done = scope.** Boundaries say what not to do; Done says where to stop.
 
 ## Rules that carry the most weight
@@ -53,7 +53,7 @@ Pairs worth remembering:
 ## Worked example
 
 ```text
-Goal:       Next-quarter product direction (easier vs cheaper). End with one clear recommendation + reasons.
+Purpose:    Next-quarter product direction (easier vs cheaper). End with one clear recommendation + reasons.
 Context:    ~$2M ARR marketing-automation SaaS; customers <50 people, often say we're complex and expensive;
             last year's price change landed badly.
 Materials:  Three competitors' sites and product docs (links); my compiled user reviews.
@@ -67,7 +67,7 @@ Bad-prompt output: five competitors described almost identically ("friendly UI, 
 
 ## Common misdiagnosis
 
-A one-page summary prompt with length, structure, and tone fully specified ("one page, four sections, concise and professional") still fails when **Goal** is missing: is the page to win budget, to warn of a delay, or to get another team's cooperation? Each needs different highlights. "Make the boss happy" is not a Goal; it is an empty criterion. Specs without a Goal are the most common gap.
+A one-page summary prompt with length, structure, and tone fully specified ("one page, four sections, concise and professional") still fails when **Purpose** is missing: is the page to win budget, to warn of a delay, or to get another team's cooperation? Each needs different highlights. "Make the boss happy" is not a Purpose; it is an empty criterion. Specs without a Purpose are the most common gap.
 
 ## When not to brief
 

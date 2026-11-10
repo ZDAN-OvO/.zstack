@@ -59,4 +59,4 @@ The video presents four separate questions. Its own examples show dependencies:
 - **Depth reopens height.** Depth's first expert move ("is the copy really the problem?") questions the task itself, which is a height move.
 - **Depth before breadth.** The video's order. Depth first confirms the problem and exhausts the home field's expert methods; breadth borrows from other fields where those fall short. The homepage example runs this way: diagnose the copy and run the 5-second test, then restate the page as "stop a stranger in 5 seconds" and look to trailer editors.
 - **Stretch pushes depth into breadth.** Once one field's patches can't reach 200 ms, the remaining options lie elsewhere.
-- **Breadth can reopen height.** Noun → verb usually restates the deliverable's job; when it changes the goal itself, that is a height move.
+- **Breadth can reopen height.** Noun → verb usually restates the deliverable's job; when it changes the result itself, that is a height move.

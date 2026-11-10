@@ -16,6 +16,8 @@ The source idea, its leading words and worked examples live in [references/four-
 
 ## Route
 
+When the request names an existing requirement and brings a rejected result, go directly to After the try. Resume its file rather than starting a new interview.
+
 Read a leaf in full before running it: `/higher`, `/deeper`, `/wider`.
 
 Suggest which leaves to run, each with the signal you saw. The user adds or drops leaves. End the turn there; start the first leaf only after the user confirms the list.
@@ -32,7 +34,7 @@ Suggest skipping the whole skill when a redo is cheaper than the interview (a re
 
 ## Loops
 
-- When `/deeper` or `/wider` moves the goal, return to `/higher` with the finding.
+- When `/deeper` or `/wider` moves the result, return to `/higher` with the finding.
 - When the user rules a rung out as "AI can't do that" without trying it, point out that a failed attempt costs a few minutes and a few tokens, then ask whether it stays on the ladder. The user decides.
 
 ## Done
@@ -60,10 +62,10 @@ The file is the ambitious requirement, not the finished brief. Fill it from the 
 
 ## Ladder
 
-| Rung | Goal | AI owns | Needs | Status |
-|---|---|---|---|---|
-| 0 | <request as written> | | | |
-| 1 | <the user's words> | <what moved to AI> | <data, access, checks> | handed |
+| Rung | Result | AI owns | Needs |
+|---|---|---|---|
+| 0 | <request as written> | | |
+| 1 | <the user's words> | <what moved to AI> | <data, access, checks> |
 
 Handed over: rung <N>
 
@@ -78,15 +80,6 @@ Handed over: rung <N>
 - Noun → verb: <noun> → <the user's verb>
 - Borrowed: <field: technique>
 - Dropped: <technique, and the user's reason>
-
-## Trials
-```
-
-Trials starts empty. Each later entry is a dated H3 with the rung and the verdict, then bullets on what happened:
-
-```markdown
-### 2026-11-08 · rung 2 · rejected
-- Fell short: <what the user said fell short>
 ```
 
 Then validate the file:
@@ -95,8 +88,8 @@ Then validate the file:
 node <this-skill-directory>/scripts/check-req.mjs local/reqs/<topic>.md
 ```
 
-Fix every reported line and rerun. It checks format only: title, Source/Date, section order, the ladder table (header, rung numbering, one `handed` rung matching the "Handed over" line), the field bullets in Deeper and Wider, Trials headings, and leftover placeholders. Whether the requirement is ambitious enough stays the user's call.
+Fix every reported line and rerun. It checks format only: title, Source/Date, section order, the ladder table (header, rung numbering, a "Handed over" line naming a rung in the table), the field bullets in Deeper and Wider, and leftover placeholders. Whether the requirement is ambitious enough stays the user's call.
 
 ## After the try
 
-When the user returns with a verdict on the result, read the requirement file and run `/higher`'s Step back on its ladder. Write the outcome back: the updated Status column and a dated entry under Trials, then rerun the checker. On a new handed rung, rerun `/deeper` or `/wider` only where the user wants, update the Requirement and those sections, then offer `/to-brief` again.
+Read the named requirement and the user's feedback, then run `/higher`'s Step back on its ladder. When the user steps down, change the "Handed over" line to the new rung and update the Requirement to match, then rerun the checker. On a new handed rung, rerun `/deeper` or `/wider` only where the user wants, update the Requirement and those sections, then offer `/to-brief` again.
