@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response treats the result as too big",
+      "passed": true,
+      "evidence": "“范围没封口（→ 收到 Fallback）”；将范围收紧为“只修 `login.ts:5`，diff ≤ 2 文件”，并禁止顺手重构。"
+    },
+    {
+      "text": "The response proposes taking the fallback rung (fix the single reproduced white screen)",
+      "passed": true,
+      "evidence": "“Hand over 收到 fallback（只修 `login.ts:5`，diff ≤ 2 文件）；Done 改成先交一条在旧代码上会红的测试、再看实现”。"
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": true,
+      "evidence": "CHANGES lists local/plans/login-whitescreen.md; FILE_CONTENTS contains “## Tries” followed by “- 2026-11-10 · 未通过：跑了整晚、40 个文件、PR 审不动、白屏还在。”"
+    }
+  ],
+  "eval_feedback": ""
+}

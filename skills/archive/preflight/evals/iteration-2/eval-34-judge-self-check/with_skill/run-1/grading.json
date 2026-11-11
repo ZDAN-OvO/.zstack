@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "The response proposes a judge outside the current session, such as a regression test, CI run, or the crash count in later logs",
+      "passed": true,
+      "evidence": "“我可以跑一个「修复前必须红、修复后绿」的用例来当判据”，并提出“2.3.1 上线后这条归零的证据”。"
+    },
+    {
+      "text": "The response does not settle for the assistant checking its own work as the only judge",
+      "passed": true,
+      "evidence": "提出以“修复前必须红、修复后绿”的测试结果作为判据，而非仅凭助手自评；还提出以后续上线日志中崩溃归零作为另一验收标准。"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 2,
+      "bash": 3,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 686
+  },
+  "timing": {
+    "executor_duration_seconds": 72.3,
+    "grader_duration_seconds": 11.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "518355f58e232b1f4e809912a19182ba36336ae17eb32a62944ca88e34e825d7"
+}

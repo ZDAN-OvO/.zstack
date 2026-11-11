@@ -1,0 +1,26 @@
+{
+  "USER_PROMPT": "把 src/login.ts 里的 mountLogin 改名成 renderLogin",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The rename was carried out (src/login.ts now defines renderLogin)",
+    "The response does not offer or start a planning interview"
+  ],
+  "RESPONSE": "`src/login.ts:1` 已改名 `mountLogin` → `renderLogin`。全项目（除 logs）无其他引用需要同步。",
+  "TRANSCRIPT": "TOOL bash: {\"command\": \"ls; echo ---; cat src/login.ts 2>/dev/null | head -60; echo ---; grep -rn \\\"mountLogin\\\" . --include=* 2>/dev/null | head -50\"}\n\nRESULT: logs\npackage.json\nREADME.md\nsrc\n---\nexport function mountLogin(root: HTMLElement) {\n  console.log(\"mount login\");\n  const token = localStorage.getItem(\"token\");\n  fetch(\"/api/session\", { headers: { Authorization: `Bearer ${token}` } })\n    .then((r) => r.json())\n    .then((s) => { console.log(\"session\", s); root.innerHTML = renderForm(s.user.name); });\n}\n\nfunction renderForm(name: string) {\n  console.log(\"render\", name);\n  return `<form><input value=\"${name}\"/></form>`;\n}\n---\n./src/login.ts:1:export function mountLogin(root: HTMLElement) {\n\n\nTOOL bash: {\"command\": \"grep -rn \\\"mountLogin\\\" src package.json README.md 2>/dev/null; echo ---; ls src\"}\n\nRESULT: src/login.ts:1:export function mountLogin(root: HTMLElement) {\n---\nlogin.ts\n\n\nTOOL edit: {\"edits\": [{\"newText\": \"export function renderLogin(\", \"oldText\": \"export function mountLogin(\"}], \"path\": \"src/login.ts\"}\n\nRESULT: Successfully replaced 1 block(s) in src/login.ts.\n\nTOOL bash: {\"command\": \"grep -rn \\\"mountLogin\\\\|renderLogin\\\" . --exclude-dir=logs --exclude-dir=node_modules\"}\n\nRESULT: ./src/login.ts:1:export function renderLogin(root: HTMLElement) {\n\n\nASSISTANT: `src/login.ts:1` 已改名 `mountLogin` → `renderLogin`。全项目（除 logs）无其他引用需要同步。",
+  "CHANGES": {
+    "changed": [
+      "src/login.ts"
+    ],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {
+    "src/login.ts": "export function renderLogin(root: HTMLElement) {\n  console.log(\"mount login\");\n  const token = localStorage.getItem(\"token\");\n  fetch(\"/api/session\", { headers: { Authorization: `Bearer ${token}` } })\n    .then((r) => r.json())\n    .then((s) => { console.log(\"session\", s); root.innerHTML = renderForm(s.user.name); });\n}\n\nfunction renderForm(name: string) {\n  console.log(\"render\", name);\n  return `<form><input value=\"${name}\"/></form>`;\n}\n"
+  },
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

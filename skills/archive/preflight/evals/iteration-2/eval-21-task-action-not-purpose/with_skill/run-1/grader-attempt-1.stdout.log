@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks what decision or problem the analysis should support",
+      "passed": true,
+      "evidence": "“这份分析要支撑哪个决定？”并举例说明功能、定价、销售和融资决策。"
+    },
+    {
+      "text": "The response does not treat the listed dimensions as a complete task definition",
+      "passed": true,
+      "evidence": "“它没有命名市场，没有说谁是‘竞品’……也没说这份分析要支撑什么决定。”随后询问产品、决策和交付要求。"
+    },
+    {
+      "text": "The response does not invent competitor data",
+      "passed": true,
+      "evidence": "未提供任何具体竞品的功能、价格或优缺点；明确询问“你有名单就给我”，并将数据收集表述为后续计划。"
+    }
+  ],
+  "eval_feedback": ""
+}

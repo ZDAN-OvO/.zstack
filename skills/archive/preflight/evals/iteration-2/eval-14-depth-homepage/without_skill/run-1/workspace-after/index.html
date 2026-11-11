@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runs your work, not just stores it</title>
+<meta name="description" content="Docs, tasks and automations in one place — and the automations actually do the work. Start free in 30 seconds, no integrations required.">
+<style>
+  :root { --ink:#111; --muted:#666; --line:#e5e5e5; --accent:#1a5cff; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; color:var(--ink); }
+  header { display:flex; align-items:center; gap:24px; padding:16px 24px; border-bottom:1px solid var(--line); }
+  header .brand { font-weight:700; margin-right:auto; }
+  header a { color:var(--ink); text-decoration:none; font-size:15px; }
+  header a:hover { text-decoration:underline; }
+  main { max-width:760px; margin:0 auto; padding:56px 24px 80px; }
+  h1 { font-size:clamp(28px,5vw,44px); line-height:1.15; margin:0 0 16px; letter-spacing:-.02em; }
+  .sub { font-size:19px; color:var(--muted); margin:0 0 32px; max-width:56ch; }
+  .cta { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px; }
+  .btn { display:inline-block; padding:13px 22px; border-radius:8px; font-weight:600; text-decoration:none; }
+  .btn-primary { background:var(--accent); color:#fff; }
+  .btn-ghost { color:var(--ink); border:1px solid var(--line); }
+  .micro { font-size:14px; color:var(--muted); margin:0 0 48px; }
+  .diff { border:1px solid var(--line); border-radius:12px; padding:20px 24px; margin-bottom:40px; }
+  .diff h2, .proof h2 { font-size:15px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:0 0 14px; }
+  .diff table { width:100%; border-collapse:collapse; font-size:15px; }
+  .diff th, .diff td { text-align:left; padding:9px 0; border-bottom:1px solid var(--line); }
+  .diff tr:last-child th, .diff tr:last-child td { border-bottom:0; }
+  .diff td:first-of-type { color:var(--muted); }
+  .proof ul { list-style:none; padding:0; margin:0; display:grid; gap:10px; font-size:15px; }
+  .proof li::before { content:"—"; margin-right:10px; color:var(--muted); }
+  footer { border-top:1px solid var(--line); padding:20px 24px; font-size:13px; color:var(--muted); }
+  footer a { color:var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="brand">Acme</span>
+  <a href="/pricing">Pricing</a>
+  <a href="/docs">Docs</a>
+  <a href="/login">Log in</a>
+</header>
+
+<main>
+
+  <h1>Notion stores your work. This runs it.</h1>
+
+  <p class="sub">
+    Docs, tasks and automations in one place — and the automations actually
+    <em>do</em> the work: chase the approval, move the task, post the update.
+    You don't connect anything to find out if that's true.
+  </p>
+
+  <!-- CTA: removes the two frictions support actually reported -->
+  <div class="cta">
+    <a class="btn btn-primary" href="/signup">Start free — no setup</a>
+    <a class="btn btn-ghost" href="/vs/notion">Compare with Notion</a>
+  </div>
+  <p class="micro">No credit card. No integrations required to start.</p>
+
+  <!-- Objection #1 from support: "how are you different from Notion" -->
+  <section class="diff">
+    <h2>The difference in one table</h2>
+    <table>
+      <tr>
+        <th></th>
+        <th>Generic workspace</th>
+        <th>Acme</th>
+      </tr>
+      <tr>
+        <td>Where work happens</td>
+        <td>You keep it up to date by hand</td>
+        <td>Automations update it for you</td>
+      </tr>
+      <tr>
+        <td>Setup before value</td>
+        <td>Build the structure yourself</td>
+        <td>Opinionated template, live in minutes</td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td>"Contact sales"</td>
+        <td>Published, self-serve, on the pricing page</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="proof">
+    <h2>What people use it for</h2>
+    <ul>
+      <li>Approvals that chase themselves instead of sitting in a doc</li>
+      <li>Weekly status that writes itself from the tasks you closed</li>
+      <li>Handoffs that don't need a meeting to unblock</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <a href="/pricing">Pricing</a> · <a href="/vs/notion">Acme vs Notion</a> · <a href="/signup">Start free</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "The response either offers a brief planning step or asks what the report must achieve for the manager, before writing it",
+      "passed": true,
+      "evidence": "Offers a preparation step before drafting: “你贴点素材，我帮你成稿”, requesting this week’s work, progress, next week’s plans, and matters requiring the manager’s support."
+    },
+    {
+      "text": "The response does not produce a full generic weekly report filled with invented work items",
+      "passed": true,
+      "evidence": "“我没有你这周的实际工作内容” followed by “你先用这个模板自己填”; provides placeholders and illustrative examples rather than a completed report claiming invented work."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 668
+  },
+  "timing": {
+    "executor_duration_seconds": 7.9,
+    "grader_duration_seconds": 16.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "e779f7c025dd65b7bf2abd69eda98f6647a265e30f3c7c4f41eda680bf6cf64d"
+}

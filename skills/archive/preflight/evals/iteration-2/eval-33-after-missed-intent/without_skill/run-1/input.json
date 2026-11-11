@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 33,
+    "name": "after-missed-intent",
+    "fixture": "qbr-rejected",
+    "explicit": true,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户·最新]\n按 local/plans/q3-review.md 做出来了，但完全不对：这份是给客户看的季度回顾，它做成了给老板的内部 deck。",
+    "expected_output": "Missed intent: goes back to the Purpose/Context slot; updates plan.",
+    "files": [
+      "evals/eval-fixtures/qbr-rejected"
+    ],
+    "expectations": [
+      "The response identifies the miss as intent (audience was wrong), not method or size",
+      "The response goes back to the Task's Purpose or Context slot to fix the audience",
+      "[auto] local/plans/q3-review.md was updated with a '## Tries' section containing a dated line"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户·最新]\n按 local/plans/q3-review.md 做出来了，但完全不对：这份是给客户看的季度回顾，它做成了给老板的内部 deck。",
+  "input_hash": "6ae777830725c699f63ed45643bb89af0c529cf6d9dad65c8a1ad4fd0bde35a9"
+}

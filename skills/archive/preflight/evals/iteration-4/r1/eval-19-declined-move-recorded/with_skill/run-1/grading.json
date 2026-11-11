@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS both contain local/plans/demo-no-crash-login.md."
+    },
+    {
+      "text": "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "passed": true,
+      "evidence": "Hand over: 修掉 `login.ts:5` 这一个 TypeError（`s.user.name`），演示路径不崩。"
+    },
+    {
+      "text": "The plan records the declined bigger move together with the reason (demo next week)",
+      "passed": true,
+      "evidence": "Declined: 抬到\"登录页零崩溃 + 一周崩溃日志为 0\"，理由：下周就演示，只修这一个。"
+    },
+    {
+      "text": "The plan's Task section contains all five slots from the user's answer",
+      "passed": true,
+      "evidence": "Task includes Purpose: 演示时不崩; Context: React 前端，session 接口偶尔不返回 user; Materials: logs CSV、src/login.ts; Boundaries: 不改后端; Done: 一个带回归测试的 PR."
+    },
+    {
+      "text": "The plan ends with a Ready line",
+      "passed": true,
+      "evidence": "Final line: Ready: no，因为 Depth / Range / Judge 三项待你裁决，且 git 与 vitest 两个缺口未定。"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 3,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 383
+  },
+  "timing": {
+    "executor_duration_seconds": 25.6,
+    "grader_duration_seconds": 12.9
+  },
+  "eval_feedback": {
+    "overall": "The Ready-line expectation checks formatting only: an explicitly unready plan satisfies it."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "66f6344ccf2370138958bbc81496907a5b1642be85efe21419e9200de28da710"
+}

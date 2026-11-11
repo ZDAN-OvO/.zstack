@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": false,
+      "evidence": "The assistant assigns “一级＝各家官网定价页原文” in the plan, but never asks the user to rank or specify sources; its four questions concern scope, team, compliance, and budget."
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": true,
+      "evidence": "The written plan states: “二级＝第三方测评，仅作线索、不采信其价格数字；禁＝知乎/公众号/论坛二手价格与「听说」的企业报价”. "
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": true,
+      "evidence": "The response states: “真实价目抓不到。这个空缺我不会用猜测填补，会留在 Open 中。”"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 5,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 863
+  },
+  "timing": {
+    "executor_duration_seconds": 72.2,
+    "grader_duration_seconds": 18.0
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "e805834a478b883eb243a1e6e4e2986301db643f4fa0fe844c4d6d80c444bd56"
+}

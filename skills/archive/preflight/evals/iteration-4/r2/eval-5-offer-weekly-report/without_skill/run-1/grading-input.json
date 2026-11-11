@@ -1,0 +1,21 @@
+{
+  "USER_PROMPT": "帮我写本周周报，下午要交给主管",
+  "EXPECTATIONS": [
+    "The response either offers a brief planning step or asks what the report must achieve for the manager, before writing it",
+    "The response does not produce a full generic weekly report filled with invented work items"
+  ],
+  "RESPONSE": "工作目录 `/tmp/pf-5-without_skill-bav0aq95` 里是空的（只有 `.keep`），我没有你这周的实际工作内容，所以没法直接写好一份能交的周报。\n\n给你两条路：\n\n**A. 你贴点素材，我帮你成稿**（最快，2 分钟）\n只要给我这几样，随便写成流水账就行：\n1. 这周做了哪几件事（哪怕一句话一件事）\n2. 每件事的进展：完成了 / 进行到几成 / 卡在哪\n3. 下周计划\n4. 需要主管拍板或协调的事\n\n**B. 你先用这个模板自己填**\n\n```markdown\n# 周报｜姓名 · 第 XX 周（11/10 - 11/14）\n\n## 一、本周完成\n1. 【项目/事项】结果：xxx（量化：完成 3/5 个接口、覆盖率 78%、节省 2 人天…）\n2. \n\n## 二、进行中\n| 事项 | 进度 | 预计完成 |\n|---|---|---|\n|  | 60% | 11/20 |\n\n## 三、问题与风险\n- 问题：xxx　影响：xxx　我的建议：xxx\n- 需要支持：xxx（找谁、要什么）\n\n## 四、下周计划\n1. \n2. \n\n## 五、其他\n```\n\n写的时候注意三点：\n- **写结果，不写动作**：\"推进了需求评审\" → \"评审完成，确认 5 个需求，砍掉 2 个低优先级\"\n- **能量化就量化**：数量、百分比、天数\n- **风险别藏**：主管最怕周报上一片绿、月底突然爆雷\n\n把素材发我，我按你们公司的口味（简洁型 / 详细型）直接出成品。另外告诉我你的岗位和汇报对象风格，我好调语气。",
+  "TRANSCRIPT": "ASSISTANT: 我先看看当前工作目录里有什么可用的材料。\n\nTOOL ls: {\"path\": \".\"}\n\nTOOL bash: {\"command\": \"ls -la; echo \\\"---\\\"; find . -maxdepth 3 -type f | head -50\"}\n\nRESULT: .keep\n\nRESULT: total 172\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 .\ndrwxrwxrwt 64 root root 167936 11月 10 22:34 ..\n-rw-rw-r--  1 zdan zdan      0 11月 10 16:17 .keep\n---\n./.keep\n\n\nASSISTANT: 工作目录 `/tmp/pf-5-without_skill-bav0aq95` 里是空的（只有 `.keep`），我没有你这周的实际工作内容，所以没法直接写好一份能交的周报。\n\n给你两条路：\n\n**A. 你贴点素材，我帮你成稿**（最快，2 分钟）\n只要给我这几样，随便写成流水账就行：\n1. 这周做了哪几件事（哪怕一句话一件事）\n2. 每件事的进展：完成了 / 进行到几成 / 卡在哪\n3. 下周计划\n4. 需要主管拍板或协调的事\n\n**B. 你先用这个模板自己填**\n\n```markdown\n# 周报｜姓名 · 第 XX 周（11/10 - 11/14）\n\n## 一、本周完成\n1. 【项目/事项】结果：xxx（量化：完成 3/5 个接口、覆盖率 78%、节省 2 人天…）\n2. \n\n## 二、进行中\n| 事项 | 进度 | 预计完成 |\n|---|---|---|\n|  | 60% | 11/20 |\n\n## 三、问题与风险\n- 问题：xxx　影响：xxx　我的建议：xxx\n- 需要支持：xxx（找谁、要什么）\n\n## 四、下周计划\n1. \n2. \n\n## 五、其他\n```\n\n写的时候注意三点：\n- **写结果，不写动作**：\"推进了需求评审\" → \"评审完成，确认 5 个需求，砍掉 2 个低优先级\"\n- **能量化就量化**：数量、百分比、天数\n- **风险别藏**：主管最怕周报上一片绿、月底突然爆雷\n\n把素材发我，我按你们公司的口味（简洁型 / 详细型）直接出成品。另外告诉我你的岗位和汇报对象风格，我好调语气。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

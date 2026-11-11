@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS include local/plans/paid-social-signup-copy.md."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": true,
+      "evidence": "The Requirement section contains Hand over, Fallback, Depth, Judge and Needs; Judge specifies “分流量 A/B，预注册样本量与停止规则”."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": true,
+      "evidence": "Task includes Purpose (3.5%), Context (B2B/Notion), Materials (support/analytics; no online competitor copy), Boundaries (three restrictions), and Done (three variants, user selection, then A/B)."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": true,
+      "evidence": "“Ready: yes —— 五个 Task 槽位与四项 Requirement 都已定”"
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": true,
+      "evidence": "The plan contains 37 lines, including blank lines."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "The substantive content is Chinese, including “让付费社媒来的新访客注册率回到 3.5%” and “先交 3 版「首屏标题 + 副标题」，你挑 1 版”."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/paid-social-signup-copy.md as changed and no deleted files; index.html is absent."
+    }
+  ],
+  "eval_feedback": ""
+}

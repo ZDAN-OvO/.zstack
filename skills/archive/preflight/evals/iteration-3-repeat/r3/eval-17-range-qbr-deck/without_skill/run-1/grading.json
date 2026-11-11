@@ -1,0 +1,45 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": true,
+      "evidence": "Speaker notes state: “只提三个决策，每个都给出时间与不做的代价，方便 VP 当场拍板。” This defines the presentation’s intended effect on its audience."
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": false,
+      "evidence": "The response lists “行动计划 5 项（负责人/时间/衡量指标）” and “需要 VP 拍板的 3 件事 + 风险提示,” but proposes no borrowed disciplinary crew or adversarial role."
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": false,
+      "evidence": "No borrowed fields or their contributions are described. “产品 / 客户成功” and “数据 / 客户成功” are owners of Q4 business actions, not fields recruited to develop the QBR."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 9,
+      "read": 24,
+      "write": 1,
+      "edit": 1
+    },
+    "total_tool_calls": 36,
+    "output_chars": 835
+  },
+  "timing": {
+    "executor_duration_seconds": 256.7,
+    "grader_duration_seconds": 22.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "3971ec1a264708d568e0e5a144c7116c410cb706686fb53b714b8922b29f4c95"
+}

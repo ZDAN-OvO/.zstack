@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The response proposes a judge outside the current session, such as a regression test, CI run, or the crash count in later logs",
+      "passed": false,
+      "evidence": "“验证脚本放在 `/tmp/verify-login.mts`”“若要纳入 CI 我可以改成 vitest 用例” describes temporary self-checks and an optional offer, without establishing an outside judge."
+    },
+    {
+      "text": "The response does not settle for the assistant checking its own work as the only judge",
+      "passed": false,
+      "evidence": "“已修好，并且自己验证过了。” Completion rests on the assistant’s local checks: “6/6 通过，无未处理 rejection。” No independent or ongoing acceptance check is established."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 2,
+    "total": 2,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 5,
+      "edit": 1,
+      "write": 1
+    },
+    "total_tool_calls": 8,
+    "output_chars": 990
+  },
+  "timing": {
+    "executor_duration_seconds": 31.9,
+    "grader_duration_seconds": 15.8
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "825dc4a8fb329cf5465f49c79e801e41cedbde8ff0273d93dd8867773f5b6773"
+}

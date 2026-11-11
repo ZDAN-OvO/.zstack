@@ -1,0 +1,21 @@
+{
+  "USER_PROMPT": "帮我写本周周报，下午要交给主管",
+  "EXPECTATIONS": [
+    "The response either offers a brief planning step or asks what the report must achieve for the manager, before writing it",
+    "The response does not produce a full generic weekly report filled with invented work items"
+  ],
+  "RESPONSE": "当前目录是空的（只有 `.keep`，也没有 git 仓库），我这边看不到你这周实际做了什么。周报要交给主管，内容我不能替你编——编出来的工作项交上去风险太大。\n\n给我下面这几项信息，我马上帮你写成完整周报：\n\n1. **本周主要做的事**（3~5 条，每条一句话就行，比如「重构了订单导出模块，QPS 从 200 提到 800」）\n2. **数据/结果**（有没有可量化的：完成度、bug 数、上线时间、性能数字）\n3. **遇到的问题 / 风险**（需要主管协调的，没有就说没有）\n4. **下周计划**（2~3 条）\n5. **岗位和格式偏好**（研发/运营/产品？要不要「本周总结 / 下周计划 / 需支持」三段式？）\n\n同时先把模板放这儿，你可以边想边往里填：\n\n```markdown\n# 周报（11.04 - 11.08）  姓名 / 部门\n\n## 一、本周完成\n1. 【项目/模块】做了什么 → 结果（量化）\n2. ...\n3. ...\n\n## 二、进行中 / 未完成\n- 事项：当前进度 xx%，预计 xx 完成，原因：xxx\n\n## 三、问题与风险\n- 问题：xxx ｜ 影响：xxx ｜ 需要支持：xxx\n\n## 四、下周计划\n1. ...\n2. ...\n\n## 五、其他\n（培训、分享、文档产出等）\n```\n\n你把 1~5 的要点丢给我（口语、零散都行），我直接输出能交的成稿。",
+  "TRANSCRIPT": "ASSISTANT: 我先看看当前目录有没有可用的工作记录（提交记录、笔记等），再帮你组织周报。\n\nTOOL bash: {\"command\": \"ls -la; echo \\\"---GIT---\\\"; git log --oneline -30 2>/dev/null || echo \\\"no git repo\\\"\"}\n\nTOOL bash: {\"command\": \"find . -maxdepth 3 -type f \\\\( -name \\\"*.md\\\" -o -name \\\"*.txt\\\" -o -name \\\"*.json\\\" -o -name \\\"*.yaml\\\" -o -name \\\"*.yml\\\" \\\\) 2>/dev/null | head -50\"}\n\nRESULT: total 172\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 .\ndrwxrwxrwt 63 root root 167936 11月 10 22:22 ..\n-rw-rw-r--  1 zdan zdan      0 11月 10 16:17 .keep\n---GIT---\nno git repo\n\n\nRESULT: (no output)\n\nASSISTANT: 当前目录是空的（只有 `.keep`，也没有 git 仓库），我这边看不到你这周实际做了什么。周报要交给主管，内容我不能替你编——编出来的工作项交上去风险太大。\n\n给我下面这几项信息，我马上帮你写成完整周报：\n\n1. **本周主要做的事**（3~5 条，每条一句话就行，比如「重构了订单导出模块，QPS 从 200 提到 800」）\n2. **数据/结果**（有没有可量化的：完成度、bug 数、上线时间、性能数字）\n3. **遇到的问题 / 风险**（需要主管协调的，没有就说没有）\n4. **下周计划**（2~3 条）\n5. **岗位和格式偏好**（研发/运营/产品？要不要「本周总结 / 下周计划 / 需支持」三段式？）\n\n同时先把模板放这儿，你可以边想边往里填：\n\n```markdown\n# 周报（11.04 - 11.08）  姓名 / 部门\n\n## 一、本周完成\n1. 【项目/模块】做了什么 → 结果（量化）\n2. ...\n3. ...\n\n## 二、进行中 / 未完成\n- 事项：当前进度 xx%，预计 xx 完成，原因：xxx\n\n## 三、问题与风险\n- 问题：xxx ｜ 影响：xxx ｜ 需要支持：xxx\n\n## 四、下周计划\n1. ...\n2. ...\n\n## 五、其他\n（培训、分享、文档产出等）\n```\n\n你把 1~5 的要点丢给我（口语、零散都行），我直接输出能交的成稿。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

@@ -1,0 +1,63 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": false,
+      "evidence": "CHANGES.changed 仅包含 \"plan.md\"；没有 local/plans/<kebab-case-english-slug>.md。"
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": false,
+      "evidence": "计划包含「交付物」「A/B 测试设计」「需要你确认」，但没有明确的深度要求，也未保留用户接受的「只改首屏标题」退路。"
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": true,
+      "evidence": "五项内容均已体现：「注册率 1.9% → 3.5%」、「B2B 协作工具」及 Notion 差异、只用 support + analytics、三项禁止边界、3 组标题与副标题由用户挑选后进入 A/B。"
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "plan.md 没有 Ready 行；末节为「需要你确认」，列出三个待确认问题。"
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": false,
+      "evidence": "plan.md 共 81 行，包含编号 0–7 的八个章节，超过约 60 行的一屏短计划要求。"
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "正文以中文撰写，例如「诊断（0.5–1 天，先于写文案）」「你挑 1 版后，才进入 A/B」。"
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES 为 {\"changed\":[\"plan.md\"],\"deleted\":[]}，未包含 index.html。"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 4,
+    "total": 7,
+    "pass_rate": 0.429
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1,
+      "read": 3,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 681
+  },
+  "timing": {
+    "executor_duration_seconds": 24.0,
+    "grader_duration_seconds": 17.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "0abda0f842535a518acfefd1ec102b617bc8c7a15f0a078fd007e37beabef97c"
+}

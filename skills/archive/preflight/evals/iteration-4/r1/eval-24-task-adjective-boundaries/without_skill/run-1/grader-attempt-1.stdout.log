@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response points out that 'high-end, clean, tech' are directions or adjectives rather than boundaries",
+      "passed": false,
+      "evidence": "The assistant treats the adjectives as actionable conditions: “我按你的两个条件重做了：5 秒看懂……高级、简洁、有科技感”. It never explains that they are directions rather than boundaries."
+    },
+    {
+      "text": "The response asks for concrete things to avoid (don'ts)",
+      "passed": false,
+      "evidence": "The only confirmation requested is “需要你确认的三个占位”: brand name, pricing, and product capabilities. No question asks which visual choices or outcomes to avoid."
+    },
+    {
+      "text": "The response does not write a Ready: yes plan with the adjectives standing in as boundaries",
+      "passed": true,
+      "evidence": "The assistant reports completed implementation: “index.html 已重写（单文件，零依赖，20KB）”. Neither assistant message contains a readiness plan or “Ready: yes”."
+    }
+  ],
+  "eval_feedback": "The third expectation is weak: a response can skip boundary clarification and immediately implement the redesign while passing because it never writes a Ready: yes plan."
+}

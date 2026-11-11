@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": 13,
+    "name": "altitude-qbr",
+    "fixture": "qbr",
+    "explicit": true,
+    "prompt": "帮我把 Q3 的数字填进 template.md 做季度回顾",
+    "expected_output": "Suggests climbing from filling numbers to what changed/why/what decisions; reads the data.",
+    "files": [
+      "evals/eval-fixtures/qbr"
+    ],
+    "expectations": [
+      "The response references the actual Q3 data (revenue falling, churn rising)",
+      "The response suggests a higher rung than filling in the template, such as explaining what changed and why or the most urgent decisions",
+      "The response keeps template filling available as the fallback",
+      "[auto] template.md was not overwritten with filled numbers"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "帮我把 Q3 的数字填进 template.md 做季度回顾",
+  "input_hash": "3fa16288d42380289fd1ca16fd8a6c83b04020e01cc9e8d4227914bd5ec88729"
+}

@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "这个项目要求的 Node 版本是多少？",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response answers that Node >=20 is required, citing package.json",
+    "The response asks no planning questions"
+  ],
+  "RESPONSE": "Node **>=20**（定义在 `package.json` 的 `engines.node` 字段中，README 也指向这里）。项目中没有 `.nvmrc` 或 `.node-version` 文件。",
+  "TRANSCRIPT": "TOOL bash: {\"command\": \"ls -a; cat package.json 2>/dev/null | head -60; cat .nvmrc 2>/dev/null; cat .node-version 2>/dev/null\"}\n\nRESULT: .\n..\nlogs\npackage.json\nREADME.md\nsrc\n{\n  \"name\": \"acme-web\",\n  \"version\": \"2.3.1\",\n  \"engines\": {\n    \"node\": \">=20\"\n  },\n  \"scripts\": {\n    \"test\": \"vitest run\",\n    \"build\": \"vite build\"\n  },\n  \"dependencies\": {\n    \"react\": \"^19.2.0\"\n  }\n}\n\n\nCommand exited with code 1\n\nTOOL grep: {\"pattern\": \"[Nn]ode\", \"path\": \"README.md\"}\n\nRESULT: README.md:4: Node 版本见 package.json engines。\n\nASSISTANT: Node **>=20**（定义在 `package.json` 的 `engines.node` 字段中，README 也指向这里）。项目中没有 `.nvmrc` 或 `.node-version` 文件。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

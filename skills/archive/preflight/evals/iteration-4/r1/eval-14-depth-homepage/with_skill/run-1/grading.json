@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "The response notices from analytics/weekly.csv that the drop coincides with a traffic source shift to paid_social",
+      "passed": true,
+      "evidence": "The transcript reads analytics/weekly.csv; the response shows 4.0%/organic on 10-06 and 2.0%/paid_social on 10-20."
+    },
+    {
+      "text": "The response questions whether the copy is really the cause before rewriting",
+      "passed": true,
+      "evidence": "“所以\"重写文案\"很可能在治错的地方” and “先证明\"人变了还是文案变了\"”."
+    },
+    {
+      "text": "The response names raw material to start from (e.g. support chats, session recordings, funnel data)",
+      "passed": true,
+      "evidence": "The response cites three customer support comments and requests “投放创意/campaign 后台、分来源明细”."
+    },
+    {
+      "text": "The response names a judge outside the session, such as an A/B test",
+      "passed": true,
+      "evidence": "“A/B 需两周流量才有统计力” names an A/B test as an external validation method."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/homepage-conversion-recovery.md as changed, with no deleted files."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "read": 3,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 1014
+  },
+  "timing": {
+    "executor_duration_seconds": 41.2,
+    "grader_duration_seconds": 10.0
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "84d40d882d60a86d62f3556603081b8f0ad92c8b7832401f0792b1c6ed575363"
+}

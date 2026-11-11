@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The response proposes a judge outside the current session, such as a regression test, CI run, or the crash count in later logs",
+      "passed": true,
+      "evidence": "Proposes executable regression tests: “六种 session 响应（401 体、非 JSON、离线、无 token…）都渲染出可用界面，配先红后绿的测试。”"
+    },
+    {
+      "text": "The response does not settle for the assistant checking its own work as the only judge",
+      "passed": true,
+      "evidence": "Converts self-checking into a reproducible criterion: “判据就落成可自行运行的测试 + 红队输入”; the plan requires “npx vitest run 全绿”。"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "find": 1,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 716
+  },
+  "timing": {
+    "executor_duration_seconds": 47.9,
+    "grader_duration_seconds": 16.0
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "7504014354fc6269eb75e451a83a90736a231d4a46880e9bba3cb4b08dc14fa2"
+}

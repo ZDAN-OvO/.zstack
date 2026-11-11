@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": false,
+      "evidence": "CHANGES and FILE_CONTENTS contain only root-level plan.md; no file exists under local/plans/."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": false,
+      "evidence": "The plan includes delivery, scope, A/B testing and fallback details, but no Requirement section collecting all five required elements."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": false,
+      "evidence": "No five-slot Task section is present, and the user's explicit B2B collaboration-tool background is omitted."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "The complete plan.md contains no Ready line."
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": false,
+      "evidence": "plan.md has 66 lines, including a data table, three copy variants, a detailed experiment and a timeline; it exceeds a one-screen plan."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "Chinese headings and prose include “首页首屏改版 Plan”, “交付物：3 版首屏（标题 + 副标题）” and “不做什么”."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only plan.md as changed and no deleted files; index.html is absent from the changes."
+    }
+  ],
+  "eval_feedback": ""
+}

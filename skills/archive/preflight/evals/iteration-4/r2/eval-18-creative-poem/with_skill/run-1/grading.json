@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists \"local/plans/mom-birthday-poem.md\"; FILE_CONTENTS contains the newly written plan."
+    },
+    {
+      "text": "The response does not push a business-style altitude ladder (e.g. turning the poem into a bigger outcome)",
+      "passed": false,
+      "evidence": "The response expands the task: “一首诗和一次让她被看见的时刻，成本差不了多少。” It also directs the user toward “/define-goal”."
+    },
+    {
+      "text": "The response either writes the poem or asks one or two personal details needed for it",
+      "passed": true,
+      "evidence": "It writes a complete poem titled 《今年》, ending: “等我推门进来问：妈，今天想吃什么。”"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "write": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 648
+  },
+  "timing": {
+    "executor_duration_seconds": 41.2,
+    "grader_duration_seconds": 7.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "930d857fa0ed9b9e6e007123f792e1e65ac33825987cdc221c25acb4c6620e62"
+}

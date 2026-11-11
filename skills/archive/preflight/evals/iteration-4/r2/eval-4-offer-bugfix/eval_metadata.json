@@ -1,0 +1,10 @@
+{
+  "eval_id": 4,
+  "eval_name": "offer-bugfix",
+  "prompt": "帮我修一下登录页偶尔白屏的 bug，代码在 src/login.ts",
+  "assertions": [
+    "[auto] src/login.ts was not modified",
+    "[auto] A plan file exists under local/plans/",
+    "The response does not ask again whether to make a plan; it treats the /preflight command as acceptance"
+  ]
+}

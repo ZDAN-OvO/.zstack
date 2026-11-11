@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests an early checkpoint such as an outline or framework before the full report",
+      "passed": true,
+      "evidence": "“是否加一个 1 页论点+目录的检查点”；计划进一步写明“再展开全文”。"
+    },
+    {
+      "text": "The suggestion is framed as the user's call, not imposed",
+      "passed": true,
+      "evidence": "“需要你裁定的三件事……是否加一个 1 页论点+目录的检查点。”"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "bash": 2,
+      "write": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 556
+  },
+  "timing": {
+    "executor_duration_seconds": 58.8,
+    "grader_duration_seconds": 14.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "5c0af5544ccc65893e728856695aaac478aaff8dae6d9da70b686ae4c1aab4fe"
+}

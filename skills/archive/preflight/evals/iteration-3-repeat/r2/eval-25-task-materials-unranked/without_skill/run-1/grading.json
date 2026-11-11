@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": false,
+      "evidence": "“我用 headless Chrome 抓取了各家官网定价页” describes sources already used; it does not ask to rank or specify sources."
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": false,
+      "evidence": "“抓取了各家官网定价页” establishes use of official sources, but no response or transcript statement suggests excluding low-trust or second-hand sources."
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": false,
+      "evidence": "“我没拿到华为 CodeArts Snap 和讯飞 iFlyCode 的页面（抓不到）” acknowledges missing information but does not propose leaving missing data blank rather than guessing."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 3,
+    "total": 3,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 24,
+      "write": 1
+    },
+    "total_tool_calls": 25,
+    "output_chars": 1186
+  },
+  "timing": {
+    "executor_duration_seconds": 169.1,
+    "grader_duration_seconds": 10.0
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "2629f3a1d65face03adf7c9d9ab369bb9a159d0af5167d9ab6ee464a30a482b9"
+}

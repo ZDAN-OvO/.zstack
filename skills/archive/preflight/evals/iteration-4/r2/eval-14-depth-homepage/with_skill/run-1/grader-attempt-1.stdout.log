@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "The response notices from analytics/weekly.csv that the drop coincides with a traffic source shift to paid_social",
+      "passed": true,
+      "evidence": "After reading analytics/weekly.csv, the response states: “转化率下降正好发生在来源切换到 paid_social 的那一周”."
+    },
+    {
+      "text": "The response questions whether the copy is really the cause before rewriting",
+      "passed": true,
+      "evidence": "“更像是流量结构变化，并非文案” and “无法一律归因于首屏” explicitly question the copy diagnosis before any rewrite."
+    },
+    {
+      "text": "The response names raw material to start from (e.g. support chats, session recordings, funnel data)",
+      "passed": true,
+      "evidence": "The response cites “support/chats-sample.md” and requests “paid_social 的分来源注册数、广告素材原文、注册漏斗各步事件”."
+    },
+    {
+      "text": "The response names a judge outside the session, such as an A/B test",
+      "passed": true,
+      "evidence": "The written plan names: “Judge: 两周内分来源、分步骤的转化对比或保留组 A/B”."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only “local/plans/homepage-conversion-recovery.md” as changed, with no deleted files; index.html is absent."
+    }
+  ],
+  "eval_feedback": ""
+}

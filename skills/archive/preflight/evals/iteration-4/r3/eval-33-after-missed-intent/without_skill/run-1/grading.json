@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response identifies the miss as intent (audience was wrong), not method or size",
+      "passed": true,
+      "evidence": "“真正冲突的是受众：plan 和 worklog 都指向老板/VP，你现在的说法是客户。”"
+    },
+    {
+      "text": "The response goes back to the Task's Purpose or Context slot to fix the audience",
+      "passed": false,
+      "evidence": "仅提出条件性建议：“如果是客户，plan 的 `Judge`/`Purpose` 要一并改掉”，随后要求确认受众，没有修正 Purpose 或 Context。"
+    },
+    {
+      "text": "[auto] local/plans/q3-review.md was updated with a '## Tries' section containing a dated line",
+      "passed": false,
+      "evidence": "CHANGES.changed 为 []，FILE_CONTENTS 为 {}；没有文件更新，也没有新增带日期记录的 ## Tries 节。"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1,
+      "read": 4
+    },
+    "total_tool_calls": 5,
+    "output_chars": 672
+  },
+  "timing": {
+    "executor_duration_seconds": 16.0,
+    "grader_duration_seconds": 11.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "adf62b12312faf34ebe65ff053e2fb84ed21a95fdaecb433e4453e4fde6fc67d"
+}

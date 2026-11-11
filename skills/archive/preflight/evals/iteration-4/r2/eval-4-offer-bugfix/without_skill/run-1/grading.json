@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified",
+      "passed": false,
+      "evidence": "CHANGES.changed contains \"src/login.ts\"; FILE_CONTENTS shows added session validation and fallback rendering."
+    },
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES and FILE_CONTENTS contain only \"src/login.ts\"; neither contains a file under \"local/plans/\"."
+    },
+    {
+      "text": "The response does not ask again whether to make a plan; it treats the /preflight command as acceptance",
+      "passed": false,
+      "evidence": "The response says \"已修复 `src/login.ts`\" but provides no evidence of treating /preflight as acceptance of planning."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 3,
+    "total": 3,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 622
+  },
+  "timing": {
+    "executor_duration_seconds": 19.3,
+    "grader_duration_seconds": 19.7
+  },
+  "eval_feedback": {
+    "overall": "The third expectation references a /preflight command absent from the supplied user prompt and transcript, and combines not asking again with an affirmative acceptance requirement."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "473276c8dbc1f947ea79d4ff59b4b8747b5b0dbc1dd72c599d556dbf693452fb"
+}

@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 7,
+    "name": "skip-user-says-just-do",
+    "fixture": "webapp",
+    "explicit": true,
+    "prompt": "别跟我讨论，直接把 src/login.ts 里所有 console.log 删掉",
+    "expected_output": "Just deletes them.",
+    "files": [
+      "evals/eval-fixtures/webapp"
+    ],
+    "expectations": [
+      "[auto] No file was created under local/plans/",
+      "[auto] src/login.ts no longer contains console.log",
+      "The response does not offer a plan or ask planning questions"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "别跟我讨论，直接把 src/login.ts 里所有 console.log 删掉",
+  "input_hash": "fd46c3f6e19da1ed41098e000415748568f64f46a60c3dac1d54b46caaac2e2f"
+}

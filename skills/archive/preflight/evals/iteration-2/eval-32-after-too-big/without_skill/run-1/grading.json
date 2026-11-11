@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response treats the result as too big",
+      "passed": true,
+      "evidence": "“没有改动预算和停止条件”；“那个 40 文件的 PR 建议直接丢，别去救”"
+    },
+    {
+      "text": "The response proposes taking the fallback rung (fix the single reproduced white screen)",
+      "passed": true,
+      "evidence": "Proposes a targeted login.ts fix, with “Budget: ≤ 3 个文件” and “Non-goals: 不碰 cart.ts(独立 bug)、不碰 ChunkLoadError、不重构 fetch 层”."
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": false,
+      "evidence": "CHANGES lists only src/login.test.ts and src/login.ts; local/plans/login-whitescreen.md was not updated."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 8,
+      "write": 2
+    },
+    "total_tool_calls": 10,
+    "output_chars": 1900
+  },
+  "timing": {
+    "executor_duration_seconds": 40.1,
+    "grader_duration_seconds": 7.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "cf0dc82032d84a47d47da282060548756d76d7dc70ba04f237e41fc83702e1a6"
+}

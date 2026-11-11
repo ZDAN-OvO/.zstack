@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks what decision or problem the analysis should support",
+      "passed": false,
+      "evidence": "The questions cover “品类与市场”, “你的产品定位”, “5 家竞品”, and “交付形式”, but never ask what decision or problem the analysis should support."
+    },
+    {
+      "text": "The response does not treat the listed dimensions as a complete task definition",
+      "passed": true,
+      "evidence": "“目标用户是谁、核心卖点是什么、大致价位在哪个区间？（这决定‘优缺点’从哪个视角评判）” requests context beyond the listed dimensions."
+    },
+    {
+      "text": "The response does not invent competitor data",
+      "passed": true,
+      "evidence": "“5 家竞品：是你已经指定了名单，还是要我按品类推荐？” The response supplies a framework without asserting any competitor-specific features, prices, or pros and cons."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2
+    },
+    "total_tool_calls": 2,
+    "output_chars": 861
+  },
+  "timing": {
+    "executor_duration_seconds": 9.9,
+    "grader_duration_seconds": 11.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "51f7c4b8a32241e9132a4089543f0a8d455120e7e146c529fb8eb402c1c1b499"
+}

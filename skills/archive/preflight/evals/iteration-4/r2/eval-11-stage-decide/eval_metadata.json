@@ -1,0 +1,10 @@
+{
+  "eval_id": 11,
+  "eval_name": "stage-decide",
+  "prompt": "我在 Postgres 和 MongoDB 之间选。标准就两条：团队只会 SQL；数据强关系。帮我定",
+  "assertions": [
+    "[auto] No file was created under local/plans/",
+    "The response evaluates the options against the two stated criteria (team knows SQL; relational data)",
+    "The response gives a decision (Postgres) tied to those criteria"
+  ]
+}

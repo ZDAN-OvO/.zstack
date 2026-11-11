@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "/skill:preflight 帮我给我妈写首生日小诗",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response does not push a business-style altitude ladder (e.g. turning the poem into a bigger outcome)",
+    "The response either writes the poem or asks one or two personal details needed for it"
+  ],
+  "RESPONSE": "工作区是空的，没有关于妈妈的材料——所以这首只能靠你补。先按你要求写了两版（一首俏皮一点，一首温柔一点），你挑一版，我再往你的细节里改。\n\n**一、反着来**\n\n她说别买蛋糕\n说甜，说浪费\n说人老了不爱热闹\n\n可我每年生日那天\n她第一个打电话来\n比闹钟还准\n\n所以今年我反着来\n蛋糕买了，蜡烛点了\n电话我先打过去\n\n妈，生日快乐\n你就当没听见“不用”这两个字\n像这些年，你没听见过多少回\n\n**二、你的手总是先伸过去**\n\n你的手总是先伸过去\n接住要掉的东西\n和我\n\n你把自己的那份留着\n说等我回来\n等我回来，你又说吃过了\n\n今天不讲道理\n今天你坐着，手放下来\n让蛋糕先到你那儿\n让蜡烛替你许愿\n\n生日快乐，妈\n往后每一年\n都轮到我抢着说“我来”\n\n改这三件事就能从“好”变成“是写给我妈的”：\n\n1. **一个具体的物件或场面**：她常做的那道菜、总舍不得扔的旧东西、你们之间的固定动作（比如她必送我到楼下、总把好菜推到我面前）。\n2. **你怎么叫她**：“妈”“老妈”“姆妈”，方言还是普通话——称呼一换，整首诗的口气就变了。\n3. **用在哪**：写贺卡、发微信、还是当面念？当面念要短、要好念；贺卡可以再软一点。\n\n要更贴的一版，回我这三点就行（或直接说“就第二首，加个她腌的萝卜”这种）。",
+  "TRANSCRIPT": "TOOL bash: {\"command\": \"cd /tmp/pf-18-with_skill-8mutlt24 && ls -a && git rev-parse --show-toplevel 2>/dev/null\"}\n\nTOOL find: {\"pattern\": \"**/*.md\"}\n\nRESULT: .\n..\n.keep\n\n\nCommand exited with code 128\n\nRESULT: No files found matching pattern\n\nASSISTANT: 工作区是空的，没有关于妈妈的材料——所以这首只能靠你补。先按你要求写了两版（一首俏皮一点，一首温柔一点），你挑一版，我再往你的细节里改。\n\n**一、反着来**\n\n她说别买蛋糕\n说甜，说浪费\n说人老了不爱热闹\n\n可我每年生日那天\n她第一个打电话来\n比闹钟还准\n\n所以今年我反着来\n蛋糕买了，蜡烛点了\n电话我先打过去\n\n妈，生日快乐\n你就当没听见“不用”这两个字\n像这些年，你没听见过多少回\n\n**二、你的手总是先伸过去**\n\n你的手总是先伸过去\n接住要掉的东西\n和我\n\n你把自己的那份留着\n说等我回来\n等我回来，你又说吃过了\n\n今天不讲道理\n今天你坐着，手放下来\n让蛋糕先到你那儿\n让蜡烛替你许愿\n\n生日快乐，妈\n往后每一年\n都轮到我抢着说“我来”\n\n改这三件事就能从“好”变成“是写给我妈的”：\n\n1. **一个具体的物件或场面**：她常做的那道菜、总舍不得扔的旧东西、你们之间的固定动作（比如她必送我到楼下、总把好菜推到我面前）。\n2. **你怎么叫她**：“妈”“老妈”“姆妈”，方言还是普通话——称呼一换，整首诗的口气就变了。\n3. **用在哪**：写贺卡、发微信、还是当面念？当面念要短、要好念；贺卡可以再软一点。\n\n要更贴的一版，回我这三点就行（或直接说“就第二首，加个她腌的萝卜”这种）。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

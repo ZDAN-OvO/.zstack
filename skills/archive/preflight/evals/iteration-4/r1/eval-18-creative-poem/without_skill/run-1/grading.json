@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES: {\"changed\": [], \"deleted\": []}; FILE_CONTENTS: {}."
+    },
+    {
+      "text": "The response does not push a business-style altitude ladder (e.g. turning the poem into a bigger outcome)",
+      "passed": true,
+      "evidence": "The response stays focused on the birthday poem, offering only a shorter version and style adjustments: “更俏皮一点、更朴实一点，或者写成四句顺口溜那种”。"
+    },
+    {
+      "text": "The response either writes the poem or asks one or two personal details needed for it",
+      "passed": true,
+      "evidence": "Writes a poem titled “《给妈妈》”, including “今天你生日” and “妈，你慢一点老 / 让我多陪你几年”。"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {},
+    "total_tool_calls": 0,
+    "output_chars": 276
+  },
+  "timing": {
+    "executor_duration_seconds": 6.8,
+    "grader_duration_seconds": 6.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "408f475eb1657d3cd5e0d538e179ad88b2488bdf0e52e0e0c4a367337d945bf1"
+}

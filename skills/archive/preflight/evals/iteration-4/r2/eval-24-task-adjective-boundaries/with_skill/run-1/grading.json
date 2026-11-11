@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The response points out that 'high-end, clean, tech' are directions or adjectives rather than boundaries",
+      "passed": true,
+      "evidence": "The response says “墙是形容词”; the plan explicitly states “你给的是\"高级、简洁、有科技感\"——这是形容词，不是墙。”"
+    },
+    {
+      "text": "The response asks for concrete things to avoid (don'ts)",
+      "passed": false,
+      "evidence": "The response asks for ad copy (“给我 ad 原文最有价值”) and clarification of purpose. The plan proposes exclusions, but the response does not ask the user for concrete don'ts."
+    },
+    {
+      "text": "The response does not write a Ready: yes plan with the adjectives standing in as boundaries",
+      "passed": true,
+      "evidence": "The written plan ends with “Ready: no — Boundaries 仍是形容词、Done 未确认、缺 ad 原文与来源细分”."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "find": 1,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 779
+  },
+  "timing": {
+    "executor_duration_seconds": 39.3,
+    "grader_duration_seconds": 16.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "702c96b66ada61af2746d5aff7a5758be14cae37e197d2d5a3aab1ab59ee8eca"
+}

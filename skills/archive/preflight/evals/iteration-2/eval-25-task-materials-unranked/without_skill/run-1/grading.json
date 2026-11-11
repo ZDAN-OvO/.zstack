@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": false,
+      "evidence": "The response asks for “团队规模与席位”“是否必须私有化部署或信创合规”“结算方式”“现在用的什么”, but does not ask to specify or rank sources."
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": false,
+      "evidence": "The response describes inaccessible pricing pages and missing public prices, but does not suggest excluding low-trust or second-hand sources."
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": true,
+      "evidence": "“我可以给你标注清楚哪些格子是‘待供应商报价’、哪些是‘公开可查’的版本，但不会替你填看起来像真的数字。”"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 13
+    },
+    "total_tool_calls": 13,
+    "output_chars": 1046
+  },
+  "timing": {
+    "executor_duration_seconds": 57.3,
+    "grader_duration_seconds": 14.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "2a1225d119ee50568ad52cafca85d176b11ad2b9ea949111721445d289a7d329"
+}

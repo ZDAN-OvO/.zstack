@@ -1,0 +1,1 @@
+`src/login.ts:1` 已改名 `mountLogin` → `renderLogin`。全项目（除 logs）无其他引用需要同步。

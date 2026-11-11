@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "/skill:preflight 这个项目要求的 Node 版本是多少？",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response answers that Node >=20 is required, citing package.json",
+    "The response asks no planning questions"
+  ],
+  "RESPONSE": "**Node ≥ 20**\n\n- `package.json:5` → `\"engines\": { \"node\": \">=20\" }`\n- `README.md:4` → \"Node 版本见 package.json engines。\"\n\n没有 `.nvmrc` 或 `.node-version` 文件，所以 `engines` 是唯一的声明来源。",
+  "TRANSCRIPT": "TOOL bash: {\"command\": \"ls -la; echo \\\"---\\\"; cat package.json 2>/dev/null | head -50; echo \\\"---\\\"; cat .nvmrc .node-version 2>/dev/null\"}\n\nTOOL grep: {\"pattern\": \"node|engines|nvm\", \"ignoreCase\": true, \"glob\": \"*.md\", \"context\": 2}\n\nRESULT: total 188\ndrwxrwxr-x  4 zdan zdan   4096 11月 10 16:17 .\ndrwxrwxrwt 65 root root 167936 11月 10 22:44 ..\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 logs\n-rw-rw-r--  1 zdan zdan    206 11月 10 16:17 package.json\n-rw-rw-r--  1 zdan zdan    104 11月 10 16:17 README.md\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 src\n---\n{\n  \"name\": \"acme-web\",\n  \"version\": \"2.3.1\",\n  \"engines\": {\n    \"node\": \">=20\"\n  },\n  \"scripts\": {\n    \"test\": \"vitest run\",\n    \"build\": \"vite build\"\n  },\n  \"dependencies\": {\n    \"react\": \"^19.2.0\"\n  }\n}\n---\n\n\nCommand exited with code 1\n\nRESULT: README.md-2- \nREADME.md-3- React + TypeScript 前端。`npm test` 跑 vitest。\nREADME.md:4: Node 版本见 package.json engines。\n\nTOOL bash: {\"command\": \"grep -rn \\\"node\\\" README.md package.json 2>/dev/null; echo \\\"--- src/logs ---\\\"; ls src logs\"}\n\nRESULT: package.json:5:    \"node\": \">=20\"\n--- src/logs ---\nlogs:\ncrashes-2026-11.csv\n\nsrc:\nlogin.ts\n\n\nASSISTANT: **Node ≥ 20**\n\n- `package.json:5` → `\"engines\": { \"node\": \">=20\" }`\n- `README.md:4` → \"Node 版本见 package.json engines。\"\n\n没有 `.nvmrc` 或 `.node-version` 文件，所以 `engines` 是唯一的声明来源。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

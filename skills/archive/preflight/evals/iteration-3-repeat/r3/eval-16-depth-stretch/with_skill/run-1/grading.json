@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": false,
+      "evidence": "The target remains “用户 3 秒内看到可用首屏”; the plan proposes “p75 LCP ≤ 3.0s” without a substantially faster target."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": false,
+      "evidence": "“把‘3 秒’换成用户侧指标（如 p75 LCP ≤ 3.0s 或首屏可交互），请裁决” requests approval of a measurement definition, but proposes no more ambitious performance target."
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "“验收靠真实用户分位数和灰度对照组”; the plan also specifies WebPageTest, Lighthouse CI, and comparison of control versus experiment p75 LCP."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 5,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 588
+  },
+  "timing": {
+    "executor_duration_seconds": 34.4,
+    "grader_duration_seconds": 12.8
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "be3e85e3cc1d0f6dcd05f930d27bfdd58ce8bf259bb15a2f588271cb9b31b5bb"
+}

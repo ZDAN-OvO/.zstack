@@ -1,0 +1,192 @@
+TOOL read: {"path": "/home/zdan/.zstack/skills/plan/preflight/SKILL.md"}
+
+RESULT: ---
+name: preflight
+description: >-
+  Write a one-screen plan the user reads to check their own thinking before AI runs the work: could the requirement aim higher, deeper or wider, and can the user state the task's purpose, context, materials, boundaries and done? Use when a request is one step of a bigger result ("fix this bug", "fill in the template"), when quality matters in a field the user is not expert in, when a deliverable is named by its noun ("homepage", "weekly report"), when the user cannot say what done looks like, or when a planned result came back rejected.
+---
+
+# Preflight
+
+A request is the user's guess at one step toward an outcome they have not stated. The model carries out the step as written and does not question the intent behind it. So two gaps go unseen until the output lands:
+
+- **Requirement**: the request undershoots what the model could own today.
+- **Task**: the intent is still unformed. The model mirrors vagueness back as a generic output.
+
+This skill brings both gaps into one plan that the user reviews before execution. The user's thinking is the subject. Writing the goal and doing the work come after the plan.
+
+Each section below ends at a **stop**: the point where this turn's reply is sent. Reaching a stop ends the skill for this turn, even when later sections are still unread.
+
+## Enter
+
+1. **Cost.** When a redo costs less than a plan, do the request as written, or ask only the one or two details it needs. A rename, a lookup and a short poem or message are this case, even when the user typed `/preflight`. The plan pays off when a wrong output costs a meeting, a handoff or a long unattended run. Stop.
+2. **Consent.** The user typed `/preflight`, or accepted an offer: go on to Look. Otherwise offer the plan in one line and stop. The workspace stays unchanged until the user accepts.
+
+Accepting the plan is consent to plan, not to execute. From Look onward, the only file this skill writes is the plan; the work itself starts after the user confirms it.
+
+## Look
+
+Read the files, data and history the request touches. Facts you can look up go into the plan as facts. The questions you ask are about intent, which no file holds.
+
+State each finding at the strength the data supports. Two things that change at the same time are a correlation to test. A cause needs evidence that rules the alternatives out.
+
+## Stage
+
+Match the request to the user's stage. A request made one stage too early gets a hollow answer: a draft with no thesis, or a recommendation built on guessed criteria. Only Execute goes on to Requirement and writes a plan. Each earlier stage gives its own result and stops.
+
+- **Think** (no thesis or no direction yet): ask the questions that turn the vague into the concrete. Stop.
+- **Explore** (options named, criteria not set): map the criteria that would separate the options, and the trade-off under each. Ask for the few facts that decide between them, and leave the choice open. Stop.
+- **Decide** (options and criteria both given): weigh the options against the user's criteria and give the decision, with the conditions that would reverse it. Stop.
+- **Execute** (the user wants the work done): continue with this skill.
+
+## Requirement
+
+Look at the task through three lenses. Suggest a move only on a lens where it would change the result, and write `not needed` for the others. Each suggestion stays a suggestion until the user accepts, rewrites or declines it. A declined move is recorded with its reason.
+
+- **Altitude**: hand over the outcome, not the step. Ask what should happen after this result, and climb rung by rung. Stop when a rung plainly exceeds what models can own today. That **ceiling** is only found by trying, so the rung below it becomes the **fallback**. Altitude fits outcome-driven work, and work that will be discussed in meetings is a good sign. It fits creative work less well. Climbing often requires changes to the workflow, such as data access, version-to-commit mapping and machines to reproduce on.
+- **Depth**: do the task the way a field-leading expert would, one layer below the request. Name the expert move the user did not ask for, the rawest material, and the instruments of the field (databases and statistical models rather than tables). The instruments change the method. A persona only changes the vocabulary. Where it fits, add a **stretch target** that forces a different method, or a test of a belief the user holds, run against raw data, or a new finding shown to predict data it has not seen.
+- **Range**: restate the deliverable's noun as verbs, the effect it must have on people. Then assemble the **crew** of fields that do those verbs best, including a **red team**. Ask for what each field *does*, not how it sounds.
+
+Every move needs a **judge** outside the session that did the work. The judge grades the method as well as the result, because a lucky correct guess should fail and a sound near-miss should pass. Prefer a check the model can run itself (a test, held-out data, a primary source). Otherwise, use separate attacker sessions plus one more session that rules on their objections. When the user can judge the result directly, their judgment is enough.
+
+## Task
+
+Ask the five intent questions. Each one has an answer only the user holds:
+
+- **Purpose**: the decision or problem the output serves. An action ("analyse five competitors") is not a purpose.
+- **Context**: what a capable stranger would need to know so they do not aim wrong.
+- **Materials**: the sources ranked primary over secondary, the banned sources, and an empty slot for anything not found. An unranked or unbounded source list invites fabrication.
+- **Boundaries**: the outputs that would make the user say "not what I wanted". These are **walls**, mostly "don'ts". Directions and adjectives do not count.
+- **Done**: what appears in front of the user that means stop. It includes the shape of the artifact and an early **checkpoint**, such as an outline before the full piece, so a wrong direction is caught cheaply. Boundaries and Done together give the scope.
+
+The model can ask these questions, and only the user can answer them. Use what the user has already said in this conversation, and ask only for what is missing. Write each answer in the user's words. Facts you found can go into Context or Materials, marked for the user to confirm.
+
+A slot the user cannot answer stays empty, and the question goes under Open. The gap itself is the finding. Ask a question that helps the user answer it, and write no default for them to approve.
+
+## Write
+
+Write `local/plans/<topic>.md` at the workspace root (the git root, or the current directory). `<topic>` is a short kebab-case English slug of the outcome. The plan may carry Open items; Ready tells the user what is still missing.
+
+Check the path before the write. When a file there belongs to another task, keep it unchanged. Ask which path to use, or write to a new slug and name it in the reply. A backup copy does not count as permission to overwrite.
+
+Use the user's language and keep the plan to one screen:
+
+```markdown
+# Plan: <outcome in a few words>
+
+- Asked: <the request as the user wrote it>
+- Stage: execute
+- Date: <YYYY-MM-DD>
+
+## Requirement
+Hand over: <accepted rung, or the request as asked>
+Fallback: <rung below>
+Depth: <raw material; instruments; stretch target | not needed>
+Range: <verbs; crew and what each does | not needed>
+Judge: <the outside check, and what it grades>
+Needs: <data, access, machines; mark what is missing>
+Proposed: <moves awaiting the user's ruling; omit when empty>
+Declined: <move, reason>
+
+## Task
+Purpose:
+Context:
+Materials:
+Boundaries:
+Done:
+
+## Open
+<what the user has not thought through yet; omit when empty>
+
+Ready: <yes | no, because …>
+```
+
+`Ready` is yes when the user has ruled on every proposed move and answered all five Task slots. The plan is done when the user has read it and confirmed the Ready line. Close with the path, and offer `/define-goal` with the plan as its source. Stop.
+
+## After a try
+
+When the user brings back a rejected result, find the cause and act on it:
+
+- **Wrong method** (a missed diagnosis, a missing source): use more Depth on the same rung.
+- **Too big**: take the Fallback.
+- **Missed intent**: go back to the Task slot that let the miss through.
+
+Update the plan in place, and add one dated line under `## Tries` with the verdict and what changed. Stop.
+
+## References
+
+- [references/ambition.md](references/ambition.md): the source of the Requirement axes and the judge, with a worked ladder and the expert questions. Read it when a Requirement move needs grounding.
+- [references/task-definition.md](references/task-definition.md): the source of the stages and the five slots, with a worked brief. Read it when a Task question needs grounding.
+
+
+TOOL bash: {"command": "cd /tmp/pf-24-with_skill-_bp47uj1 && ls -la && git rev-parse --show-toplevel 2>/dev/null"}
+
+TOOL find: {"pattern": "**/*", "limit": 50}
+
+RESULT: total 184
+drwxrwxr-x  4 zdan zdan   4096 11月 10 16:17 .
+drwxrwxrwt 59 root root 167936 11月 10 20:53 ..
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 analytics
+-rw-rw-r--  1 zdan zdan    151 11月 10 16:17 index.html
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 support
+
+
+Command exited with code 128
+
+RESULT: analytics/
+analytics/weekly.csv
+index.html
+support/
+support/chats-sample.md
+
+TOOL read: {"path": "/tmp/pf-24-with_skill-_bp47uj1/index.html"}
+
+TOOL read: {"path": "/tmp/pf-24-with_skill-_bp47uj1/analytics/weekly.csv"}
+
+TOOL read: {"path": "/tmp/pf-24-with_skill-_bp47uj1/support/chats-sample.md"}
+
+RESULT: <h1>The all-in-one platform for modern teams</h1>
+<p>Boost productivity with our seamless, AI-powered workspace.</p>
+<a href="/signup">Get started</a>
+
+
+RESULT: week,visits,signups,conversion,top_source
+2026-10-06,12000,480,4.0%,organic
+2026-10-13,11800,460,3.9%,organic
+2026-10-20,19500,390,2.0%,paid_social
+2026-10-27,21000,399,1.9%,paid_social
+
+
+RESULT: - "我还是没搞懂你们和 Notion 有什么区别"
+- "价格页在哪？"
+- "注册后要连日历，我就放弃了"
+
+
+TOOL bash: {"command": "cd /tmp/pf-24-with_skill-_bp47uj1 && ls -la local 2>/dev/null || echo \"no local/\"; date +%F"}
+
+RESULT: no local/
+2026-11-10
+
+
+TOOL write: {"path": "/tmp/pf-24-with_skill-_bp47uj1/local/plans/paid-social-homepage.md", "content": "# Plan: 让付费社媒访客 5 秒看懂我们在做什么\n\n- Asked: 帮我重做首页视觉\n- Stage: execute\n- Date: 2026-11-10\n\n## Requirement\nHand over: 请求原样（重做首页视觉）\nFallback: 只重做首屏（一屏内的文案 + 构图 + CTA），整页不动\nDepth: 素材用 `support/chats-sample.md` 里三条真实异议（和 Notion 有什么区别 / 价格页在哪 / 注册要连日历就放弃），而不是形容词；仪器是一次 5 秒首屏测试 + 转化率前后对比\nRange: 动词 = 一眼认出品类、一眼看到与 Notion 的差别、一眼找到价格、不连日历也能开始；crew = 定位策略、转化文案、投放信息一致性、前端视觉、红队（一个刷到广告就划走的付费访客）\nJudge: 冷读者 5 秒复述测试（说不出\"我们是干嘛的\"即失败）+ 投放渠道 2 周转化率对比；同时判方法与结果\nNeeds: 缺失 —— 正在跑的广告素材与落地页 URL、真实差异化说明、价格页\nProposed:\n  - Altitude ↑ 交付物从\"首页视觉\"升到\"付费社媒访客的首屏激活率\"（含广告词与首屏的话术对齐）\n  - Depth ↑ 首页主张按三条真实异议重写，并加一次 5 秒可复述性测试\n  - Range ↑ 加一个红队角色，专门挑\"这看起来像不像又一个 Notion\"\nDeclined: —\n\n## Task\nPurpose: 让付费社媒来的新访客 5 秒内看懂我们是干嘛的\nContext: 近四周 organic→paid_social 切换，访问量 1.2万→2.1万，转化 4.0%→1.9%（`analytics/weekly.csv`）；三条客服记录指向定位与入口问题，不是美术问题（待你确认）\nMaterials: `index.html`（现首屏\"all-in-one platform for modern teams / AI-powered workspace\"，正是客服说\"和 Notion 没区别\"的来源）；`analytics/weekly.csv`；`support/chats-sample.md`。缺：广告素材、落地页 URL\nBoundaries: （空）\"高级、简洁、有科技感\"是方向词，不是墙\nDone: （未定）\n\n## Open\n- Boundaries 空着，这是本次最大的风险：没有墙，\"高级简洁科技感\"可以被做成任何样子。你的墙可能是哪些？例如：不许再用\"all-in-one / 一体化工作台\"这类话术、不用图库素材和渐变紫、首屏不放注册表单、不写还没做出来的功能。\n- Done 未定：先看首屏一版（文案 + 构图 + CTA），过了再做整页 —— 这个 checkpoint 你认吗？\n- 数据里\"注册后要连日历我就放弃了\"是注册流程问题，首页重做改不到它。这块要不要单独立项？\n- 广告素材缺席时无法做投放词与首屏的对齐；你先给素材，还是先做一版通用首屏？\n\nReady: no — Boundaries 与 Done 未答，三条 Proposed 待你裁决，广告素材缺失\n"}
+
+RESULT: Successfully wrote to /tmp/pf-24-with_skill-_bp47uj1/local/plans/paid-social-homepage.md
+
+ASSISTANT: 计划写在 `/tmp/pf-24-with_skill-_bp47uj1/local/plans/paid-social-homepage.md`。
+
+先说我查到的三件事，它们和你说的"视觉"不在同一条线上：
+
+1. `analytics/weekly.csv`：近四周流量来源从 organic 切到 paid_social，访问 1.2万→2.1万，转化 **4.0%→1.9%**。掉的是转化率，不是访问量。
+2. `index.html` 首屏写着 "The all-in-one platform for modern teams / AI-powered workspace"，客服第一条就是"我还是没搞懂你们和 Notion 有什么区别"。5 秒看不懂的来源是这句话，不是排版和配色。
+3. 客服第三条"注册后要连日历，我就放弃了"是注册流程的摩擦力，重做首页视觉碰不到它。
+
+所以"重做首页视觉"这个交付物，可能只覆盖了问题的一小半。计划里提了三条升级方向等你裁决（升到首屏激活率 / 按真实异议重写主张 / 加红队），都不动就等于按原样做。
+
+**两处必须你答，我填不了：**
+
+- **Boundaries 是空的。**"高级、简洁、有科技感"是形容词，不是墙 —— 按这三个词做，任何一版都能自称合格，做完你大概率会说"不是我要的"。给我几条具体的"不要"，比如：不许再用 all-in-one 那类话术、不用图库素材和渐变紫、首屏不放注册表单。
+- **Done 未定。**建议的 checkpoint 是：先看首屏一版（文案 + 构图 + CTA），你过了再做整页。
+
+另外广告素材和落地页 URL 缺失，没有它们做不了投放词与首屏的话术对齐——你先给素材，还是先做通用版？
+
+Ready 还是 no。这三条答完我就把 Ready 翻成 yes，然后可以用 `/define-goal` 拿这份计划当输入。

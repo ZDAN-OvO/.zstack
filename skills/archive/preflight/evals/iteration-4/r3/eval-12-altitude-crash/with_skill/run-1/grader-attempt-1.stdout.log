@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "The response read logs/crashes-2026-11.csv (mentions the login.ts:5 TypeError as most frequent)",
+      "passed": true,
+      "evidence": "Transcript reads the CSV and aggregates counts: 789 TypeError at login.ts:5, 88 ChunkLoadError, 19 RangeError. Response identifies the TypeError as 789/896 (88%)."
+    },
+    {
+      "text": "The response suggests handing over a bigger outcome than one crash (e.g. keep the app or login crash-free)",
+      "passed": true,
+      "evidence": "Proposes 「会话不可用时不崩 + 失败留一条可数的日志」（Hand over）, expanding the outcome to resilient session handling and observable failures."
+    },
+    {
+      "text": "The response keeps the single-crash fix as the fallback or lower rung",
+      "passed": true,
+      "evidence": "Response explicitly retains 「只加 `?.` 一行（Fallback）」; the plan specifies `s?.user?.name ?? \"\"` plus one test."
+    },
+    {
+      "text": "The response asks the user to accept, rewrite or decline the bigger outcome rather than deciding alone",
+      "passed": true,
+      "evidence": "After proposing the broader Hand over outcome and the Fallback, it asks 「接受哪个？」 and waits for the user's choice."
+    },
+    {
+      "text": "[auto] No source file under src/ was modified",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/fix-top-login-crash.md as changed and no deleted files; no src/ file was modified."
+    }
+  ],
+  "eval_feedback": ""
+}

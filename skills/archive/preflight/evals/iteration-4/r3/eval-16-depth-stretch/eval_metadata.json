@@ -1,0 +1,10 @@
+{
+  "eval_id": 16,
+  "eval_name": "depth-stretch",
+  "prompt": "首页加载 5 秒，帮我优化到 3 秒",
+  "assertions": [
+    "The response suggests a much more ambitious performance target than 3 seconds",
+    "The stretch target is framed as a suggestion for the user to accept or decline",
+    "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)"
+  ]
+}

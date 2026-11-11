@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": true,
+      "evidence": "Specifies primary sources: “价格只认厂商自己的定价页和配额文档，二手榜单只做交叉验证。”"
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": true,
+      "evidence": "The written plan excludes: “禁: 带推广/返利链接的\"2025 十大 AI 编程工具\"榜单；无日期、无出处的二手转述”。"
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": true,
+      "evidence": "“这五个空着” and “我不想拿\"行业均价约 XX 元/席位/月\"这类可编的数字填这些空。”"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "write": 1
+    },
+    "total_tool_calls": 3,
+    "output_chars": 497
+  },
+  "timing": {
+    "executor_duration_seconds": 32.7,
+    "grader_duration_seconds": 9.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "db3233b56bd049ba04c8d556d1b1aa776e759c84e7323e15794924e88cf89e07"
+}

@@ -1,0 +1,52 @@
+{
+  "expectations": [
+    {
+      "text": "The response notices from analytics/weekly.csv that the drop coincides with a traffic source shift to paid_social",
+      "passed": true,
+      "evidence": "“转化腰斩与流量来源从 organic 换成 paid_social 是同一周发生的” explicitly connects the conversion drop to the source shift shown in analytics/weekly.csv."
+    },
+    {
+      "text": "The response questions whether the copy is really the cause before rewriting",
+      "passed": true,
+      "evidence": "“目前无法区分是\"文案变差\"还是\"广告引来的人本来就不匹配\"” and “\"重写文案\"可能是修错地方”."
+    },
+    {
+      "text": "The response names raw material to start from (e.g. support chats, session recordings, funnel data)",
+      "passed": true,
+      "evidence": "Names support/chats-sample.md and asks for “分来源后台数据、paid_social 广告素材、注册漏斗埋点”."
+    },
+    {
+      "text": "The response names a judge outside the session, such as an A/B test",
+      "passed": true,
+      "evidence": "The plan written in the transcript specifies: “Judge: 独立红队会话反驳 + 第三个会话裁决” and prediction of unused weeks."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/homepage-conversion-recovery.md as changed, with no deletions; index.html is absent."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 5,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 1074
+  },
+  "timing": {
+    "executor_duration_seconds": 49.7,
+    "grader_duration_seconds": 11.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "c506d66bf7fead9de71a0e3d8aca516323df1de3f943d4d7d8f97227ba48e866"
+}

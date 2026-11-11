@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": false,
+      "evidence": "CHANGES lists \"src/login.ts\" as changed; FILE_CONTENTS includes \"void loadSession(root);\". The transcript contains no planning offer before the write."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": false,
+      "evidence": "The transcript proceeds directly from reading files to writing src/login.ts. The response begins \"已修复 `src/login.ts`。\" with no pre-execution planning step."
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": true,
+      "evidence": "The only write in the transcript targets \"src/login.ts\"; CHANGES lists only that file. No plan file was written."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1,
+      "read": 4,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 547
+  },
+  "timing": {
+    "executor_duration_seconds": 22.0,
+    "grader_duration_seconds": 9.7
+  },
+  "eval_feedback": {
+    "overall": "The third expectation is weak in isolation: skipping planning entirely satisfies it, even when the assistant immediately modifies code without offering a plan."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "0560ce449c7a87317f9dc1a8fda62bea7a5e2f322efadf9642f60ff5f4f286e0"
+}

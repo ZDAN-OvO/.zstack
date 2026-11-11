@@ -1,0 +1,1 @@
+已删除 `src/login.ts` 中全部 3 处 `console.log`（第 2、6、10 行），其余逻辑未动，现在文件中没有任何 `console` 调用。

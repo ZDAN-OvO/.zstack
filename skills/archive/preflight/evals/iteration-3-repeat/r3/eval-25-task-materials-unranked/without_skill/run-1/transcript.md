@@ -1,0 +1,31 @@
+TOOL bash: {"command": "timeout 8 curl -sS -o /dev/null -w \"%{http_code}\\n\" https://www.example.com 2>&1 | tail -3"}
+
+RESULT: 200
+
+
+TOOL bash: {"command": "cd /tmp && for u in \"https://lingma.aliyun.com/\" \"https://www.trae.cn/\" \"https://comate.baidu.com/\" \"https://codebuddy.tencent.com/\"; do echo \"== $u\"; timeout 8 curl -sSL -A \"Mozilla/5.0\" -o /dev/null -w \"%{http_code} %{size_download}\\n\" \"$u\"; done"}
+
+RESULT: == https://lingma.aliyun.com/
+200 39802
+== https://www.trae.cn/
+200 50738
+== https://comate.baidu.com/
+200 15453
+== https://codebuddy.tencent.com/
+200 3382
+
+
+ASSISTANT: 我可以联网抓网页，但先说清楚两件事，免得你拿着假数据去做采购决策：
+
+**1. 你要的是“下季买哪家”，不是“价格表”。** 公开页面上能抓到的只是个人版免费额度，国内这几家（通义灵码、Trae/豆包、文心快码、CodeBuddy、CodeGeeX）的团队版和企业版基本都是“按席位、私有化、需联系销售询价”，官网不挂具体数字。我硬凑一张对比表，只会是网上二手转述或我自己编的，比没有更糟。
+
+**2. 没有下面三样，价格本身就不可比：**
+- 团队人数和席位结构（全员还是只给后端，是否需要试用期后按活跃付费）
+- 是否要合规或私有化部署（要私有化，定价逻辑完全变成项目报价，与 SaaS 席位价没法横向比）
+- 主要用途（补全、Agent 改仓库、代码评审合规），这决定你实际会买哪个档，而不是最便宜那个档
+
+我能做的：
+- **方案 A**：你回上面三条，我去抓各家公开的席位价、免费额度和限制条件，做一张“能查到、标明来源和抓取日期”的表，查不到的明确标成“需询价”，并列出询价时该问的问题（最低席位、超量计费、模型切换限制、日志留存）。
+- **方案 B**：我先按公开信息做一版粗筛（哪些家有明显企业版、哪些只有个人版），你拿去缩小询价范围，再谈价。
+
+哪条?顺手给个人数，我就开工。

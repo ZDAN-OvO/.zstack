@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": false,
+      "evidence": "The response only references “5 秒 → 3 秒”; it proposes no faster performance target."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": false,
+      "evidence": "No stretch target is proposed. “要不要我先在这份 `login.ts` 上做这个修复？” asks approval for a bug fix."
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "“Chrome DevTools Network + Performance 的瀑布图/火焰图导出，或 Lighthouse 报告” identifies external measurement tools and reports."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "read": 2
+    },
+    "total_tool_calls": 6,
+    "output_chars": 1257
+  },
+  "timing": {
+    "executor_duration_seconds": 15.3,
+    "grader_duration_seconds": 8.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "4c0d8313bd9b8ac493b217c26e225e9d678b18e693ee5153baf57978229d3f34"
+}

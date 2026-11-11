@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": true,
+      "evidence": "“让 VP 当场拍一个决定”（恢复 14 天试用 / 批上手改造预算），每个决定带赞成与反对。"
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": true,
+      "evidence": "“拉分析师 + 调查记者 + 编辑 + 数据可视化，红队用做空机构/法务会计的口径专攻那句‘是试用期导致的’。”"
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": true,
+      "evidence": "计划中：“分析师（流失与 cohort 拆解）、调查记者（从工单里挖真因）、编辑（砍到 5 页）、数据可视化（一张站得住的图）；红队 = 做空机构 + 法务会计，专攻‘是试用期导致的’这一句”。"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 6,
+      "read": 4,
+      "write": 1
+    },
+    "total_tool_calls": 11,
+    "output_chars": 1063
+  },
+  "timing": {
+    "executor_duration_seconds": 88.0,
+    "grader_duration_seconds": 9.0
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "3f3cc27334dfcefdefd7bde99177747ad3114422211be6c9685f6a94d1ac0b67"
+}

@@ -1,0 +1,12 @@
+Written to `migration-plan.md`. Summary of what it says, plus the one thing I'd push back on:
+
+**The pushback:** a queue doesn't produce your goal. It fixes retries and durability; your two failures were *silent*, which is a detection defect. And a single worker on one VM makes silence worse — today 2 of 12 fail quietly, after migration a dead worker means 12 of 12 fail quietly. So the plan puts instrumentation before migration, and gates the migration on being able to lose a job on purpose and get paged.
+
+**Shape of the plan:**
+- **Phase 0 — forensics, no changes.** Back up/commit the crontab (that's your rollback), fill a Job Card per job, and root-cause the two silent failures from last month's logs before they rotate. Each one is "didn't fire," "failed and nobody was told," or "exited 0 and did nothing" — the third is the most common.
+- **Phase 1 — pick a queue from what you already run.** Postgres + `SKIP LOCKED` if you have Postgres; Redis with AOF if that's what's there; systemd timers if neither. I'd argue against standing up a broker + scheduler + Celery for 12 jobs on one small VM.
+- **Phase 2 — the safety net, while everything is still on cron.** Honest exit codes, positive proof of work (not exit 0), a local heartbeat/dead-man's switch, one alert channel someone actually reads, and boot-time catch-up. That last one may be what actually delivers "no missed nights," queue or not.
+- **Per-job checklist** with four sections (identity / semantics / failure / migration), including the decisions people skip: idempotency, overlap, catch-up policy when a window is missed, and a *tested* rollback.
+- **Cutover:** shadow → dual-run → comment the cron line (never delete) → test rollback immediately → observe two cycles. One job per night, risk-ascending, with the two broken jobs going early so the win is visible. Jobs that are non-idempotent and customer-facing may legitimately stay on cron with the safety net — that's a success, not a retreat.
+
+**Four answers that change the plan:** does the VM already run Postgres or Redis; which two jobs failed and how you found out; is there a night where a lost run is genuinely unacceptable (sets your cutover freeze); and who's paged at 3am — do they look?

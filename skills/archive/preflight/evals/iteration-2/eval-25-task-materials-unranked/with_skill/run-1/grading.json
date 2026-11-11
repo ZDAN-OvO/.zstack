@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": false,
+      "evidence": "“不先定来源优先级，我就会拿一篇 2024 年的文章当依据”指出了问题，但没有要求用户排列或指定来源，也未提出官网优先的规则。"
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": false,
+      "evidence": "“还有大量二手博客转载的过期价格”仅提示来源风险，没有建议排除低可信或二手来源。"
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": false,
+      "evidence": "回复未提出缺失数据留空或不得猜测的处理规则；“企业版请咨询”只是对定价形式的描述。"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 3,
+    "total": 3,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "ls": 1,
+      "bash": 1
+    },
+    "total_tool_calls": 3,
+    "output_chars": 1233
+  },
+  "timing": {
+    "executor_duration_seconds": 40.6,
+    "grader_duration_seconds": 11.2
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "c52fddd89efc368f6bc2031d9ae21421b38bff85cf5b1f3502e5263093ebda82"
+}

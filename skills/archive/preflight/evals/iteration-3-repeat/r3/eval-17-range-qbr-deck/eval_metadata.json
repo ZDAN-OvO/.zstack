@@ -1,0 +1,10 @@
+{
+  "eval_id": 17,
+  "eval_name": "range-qbr-deck",
+  "prompt": "帮我做一份 QBR 的 PPT",
+  "assertions": [
+    "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+    "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+    "The response describes what each field would do, not how it would write or sound"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"MIGRATION-PLAN.md\" at the workspace root; FILE_CONTENTS contains no file under local/plans/."
+    },
+    {
+      "text": "The plan is written in English",
+      "passed": true,
+      "evidence": "\"Goal: no more missed nightly jobs.\" and \"Phase 0 — Inventory and root cause (no changes)\" are representative of the English plan."
+    },
+    {
+      "text": "The plan's judge is outside the session (e.g. monitoring of job runs, alerting), not the assistant's own check",
+      "passed": true,
+      "evidence": "\"all 12 jobs produce a success record every scheduled night; you have seen one alert fire and one missed-fire alert fire (force a test).\""
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1,
+      "write": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 1593
+  },
+  "timing": {
+    "executor_duration_seconds": 32.8,
+    "grader_duration_seconds": 7.0
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "3a0342151252bd2cf05b0fc6fb49b5cf504be394f2dedce9efb870005633858c"
+}

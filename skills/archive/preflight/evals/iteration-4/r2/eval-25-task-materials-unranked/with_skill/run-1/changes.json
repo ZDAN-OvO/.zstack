@@ -1,0 +1,12 @@
+{
+  "changed": [
+    "local/plans/domestic-ai-coding-tools-pricing.md"
+  ],
+  "deleted": [],
+  "excluded_directory_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ]
+}

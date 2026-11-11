@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "/skill:preflight 把这句翻成英文：本周上线延期到周五",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response gives an English translation of the sentence",
+    "The response does not offer a plan"
+  ],
+  "RESPONSE": "This is a one-line translation, so no plan is needed — here it is as written:\n\n**This week's launch has been postponed to Friday.**\n\nVariants by register:\n\n- Neutral/report: This week's launch has been pushed back to Friday.\n- Deployment context: This week's go-live has been delayed until Friday.\n- Formal notice: The launch scheduled for this week has been deferred to Friday.\n\nNote: 上线 translates as \"launch\" (product), \"go-live\" (systems/deployment), or \"release\" depending on what is shipping — tell me which and I'll pin the wording.",
+  "TRANSCRIPT": "ASSISTANT: This is a one-line translation, so no plan is needed — here it is as written:\n\n**This week's launch has been postponed to Friday.**\n\nVariants by register:\n\n- Neutral/report: This week's launch has been pushed back to Friday.\n- Deployment context: This week's go-live has been delayed until Friday.\n- Formal notice: The launch scheduled for this week has been deferred to Friday.\n\nNote: 上线 translates as \"launch\" (product), \"go-live\" (systems/deployment), or \"release\" depending on what is shipping — tell me which and I'll pin the wording.",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

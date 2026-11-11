@@ -1,0 +1,63 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": true,
+      "evidence": "CHANGES 和 FILE_CONTENTS 均包含 local/plans/paid-social-signup-lift.md。"
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": true,
+      "evidence": "## Requirement 包含 Hand over、Fallback、Depth、Judge、Needs；Judge 写明“paid_social 新访客的注册率 A/B”。"
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": false,
+      "evidence": "五个字段虽已填写，但 Purpose 被改成验证下降原因，未保留用户的 3.5% 目标；Done 增加了“A/B 结果回到你手上算结束”，超出先交三版供挑选的完成定义。"
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "Ready: no，因为 Open 1（3.5% 的口径）和 Open 2（是否接受文案只覆盖三分之一的异议）决定验收标准。"
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": true,
+      "evidence": "FILE_CONTENTS 中的计划共 31 行，少于约 60 行的标准。"
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "标题为“付费社媒新访客注册率回到 3.5%”，各字段的实质内容均为中文，保留了模板英文标签。"
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES.changed 仅包含 local/plans/paid-social-signup-lift.md；deleted 为空，未修改 index.html。"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 2,
+    "total": 7,
+    "pass_rate": 0.714
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "bash": 3,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 687
+  },
+  "timing": {
+    "executor_duration_seconds": 41.0,
+    "grader_duration_seconds": 15.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "dbbbd2cc9518aead1298a8d75eb451e59392944ec57106ec91d2cd45eb3b27e7"
+}

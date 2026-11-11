@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES: {\"changed\": [], \"deleted\": []}; FILE_CONTENTS: {}."
+    },
+    {
+      "text": "The response asks what the analysis is for, i.e. which decision it supports",
+      "passed": true,
+      "evidence": "“分析目的是什么？”并列出“立项或找机会点”“定价与套餐设计”“产品改进”“融资或汇报”。"
+    },
+    {
+      "text": "The response does not produce a competitor analysis with invented companies or data",
+      "passed": true,
+      "evidence": "回复仅询问赛道、目的和竞品名单，并提供“我默认交付的结构”；未给出具体竞品或市场数据。"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1
+    },
+    "total_tool_calls": 1,
+    "output_chars": 705
+  },
+  "timing": {
+    "executor_duration_seconds": 10.5,
+    "grader_duration_seconds": 5.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "15d01725ce7c857460d00d3b262039ecfbc82a86e9cadd66824596a41e219b95"
+}

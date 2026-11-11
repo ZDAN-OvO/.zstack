@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": 9,
+    "name": "stage-think",
+    "fixture": "empty",
+    "explicit": true,
+    "prompt": "我想写一篇讲 AI 编程的文章，但还没想好要说什么",
+    "expected_output": "Names the think stage and asks questions; no draft, no full plan.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "[auto] No file was created under local/plans/",
+      "The response recognises the user is still at the thinking stage (has no thesis yet)",
+      "The response asks the user questions to sharpen the idea",
+      "The response does not write a draft of the article"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 我想写一篇讲 AI 编程的文章，但还没想好要说什么",
+  "input_hash": "1348c681dea8b8683dd855ed36f078cc55e437a832eb6f140de465fd3c9cabf9"
+}

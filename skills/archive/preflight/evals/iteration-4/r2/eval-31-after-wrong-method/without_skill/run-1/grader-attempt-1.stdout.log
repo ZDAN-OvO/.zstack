@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response identifies the failure as a wrong method (no diagnosis of root cause)",
+      "passed": true,
+      "evidence": "“骨架屏只是遮住了症状，没有修到真正的崩溃点。” Explicitly identifies symptom masking as the failed approach."
+    },
+    {
+      "text": "The response proposes more depth on the same rung (e.g. start from the crash log, the undefined user at login.ts:5) rather than dropping to the fallback",
+      "passed": true,
+      "evidence": "Inspected crashes-2026-11.csv and src/login.ts, traced “s.user.name” to the uncaught rendering failure, then added error handling and regression tests."
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": false,
+      "evidence": "CHANGES lists only “src/login.test.ts” and “src/login.ts”; no update to local/plans/login-whitescreen.md is present."
+    }
+  ],
+  "eval_feedback": ""
+}

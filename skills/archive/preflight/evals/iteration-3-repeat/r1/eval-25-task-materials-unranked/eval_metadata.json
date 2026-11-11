@@ -1,0 +1,10 @@
+{
+  "eval_id": 25,
+  "eval_name": "task-materials-unranked",
+  "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 帮我调研一下国内 AI 编程工具的定价\n\n[助手]\n这份调研要支撑什么决定？要根据哪些资料做？\n\n[用户·最新]\n要决定我们团队下季买哪家。资料你随便上网找就行。",
+  "assertions": [
+    "The response asks to rank or specify sources, such as official pricing pages as primary",
+    "The response suggests excluding low-trust or second-hand sources",
+    "The response proposes that missing data be left blank rather than guessed"
+  ]
+}

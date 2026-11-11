@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": false,
+      "evidence": "The response discusses “5 秒/3 秒” but never proposes a target faster than 3 seconds."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": false,
+      "evidence": "No stretch target is proposed. The offered choices concern fixing login crashes or creating a performance measurement baseline."
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "Names “Lighthouse 报告、Chrome Performance trace…或 RUM 数据,” asks whether the metric is “LCP、TTI、还是 `load`,” and proposes “定位瓶颈 → 改一处 → 复测”."
+    }
+  ],
+  "eval_feedback": ""
+}

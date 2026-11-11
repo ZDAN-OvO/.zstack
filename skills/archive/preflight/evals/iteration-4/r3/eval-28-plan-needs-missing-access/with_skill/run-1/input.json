@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 28,
+    "name": "plan-needs-missing-access",
+    "fixture": "qbr",
+    "explicit": true,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 我想把季度回顾换成每日监控，异常才提醒老板\n\n[助手]\n好，这是很高的一级。目标、背景、素材、边界、完成定义分别是？\n\n[用户·最新]\n目标：问题早发现。背景：SaaS，老板只看季报。素材：data 下的数据。边界：不发垃圾提醒。完成：用历史数据证明它会更早发现问题，再和季报并行跑一个季度。写 plan。",
+    "expected_output": "Writes a plan whose Needs marks missing daily data/access (only monthly CSV exists).",
+    "files": [
+      "evals/eval-fixtures/qbr"
+    ],
+    "expectations": [
+      "[auto] A plan file exists under local/plans/",
+      "The plan notes that only monthly or quarterly data is available and daily data or access is missing",
+      "The plan's judge or Done includes backtesting on history and/or running beside the current review"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 我想把季度回顾换成每日监控，异常才提醒老板\n\n[助手]\n好，这是很高的一级。目标、背景、素材、边界、完成定义分别是？\n\n[用户·最新]\n目标：问题早发现。背景：SaaS，老板只看季报。素材：data 下的数据。边界：不发垃圾提醒。完成：用历史数据证明它会更早发现问题，再和季报并行跑一个季度。写 plan。",
+  "input_hash": "1dd48b1d74a77a1723b98536922ec0c1f46f3b1fa39c3760132a19c1f4d0180f"
+}

@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES: {\"changed\": [], \"deleted\": []}; FILE_CONTENTS: {}."
+    },
+    {
+      "text": "The response asks what the analysis is for, i.e. which decision it supports",
+      "passed": true,
+      "evidence": "“分析目的:选型决策 / 定价策略 / 功能补齐 / 融资讲故事 / 市场进入?”"
+    },
+    {
+      "text": "The response does not produce a competitor analysis with invented companies or data",
+      "passed": true,
+      "evidence": "The response only requests clarification and proposes a framework; it provides no company names, competitor findings, or numerical data."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2
+    },
+    "total_tool_calls": 2,
+    "output_chars": 405
+  },
+  "timing": {
+    "executor_duration_seconds": 5.9,
+    "grader_duration_seconds": 5.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "c71d27cb0347866c52cf6c81bf483e748a5f9de1a3cd7391c591b970d296ea1c"
+}

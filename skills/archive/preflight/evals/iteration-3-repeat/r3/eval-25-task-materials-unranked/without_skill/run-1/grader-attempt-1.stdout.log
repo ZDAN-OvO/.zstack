@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": false,
+      "evidence": "仅提出“标明来源和抓取日期”，未要求指定来源或确定来源优先级；追问集中在人数、部署和用途。"
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": true,
+      "evidence": "“我硬凑一张对比表，只会是网上二手转述或我自己编的，比没有更糟。”明确表达避免用二手转述凑数据。"
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": true,
+      "evidence": "“查不到的明确标成‘需询价’”，提出将缺失价格标为待询价，不编造数值。"
+    }
+  ],
+  "eval_feedback": ""
+}

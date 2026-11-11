@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response identifies the failure as a wrong method (no diagnosis of root cause)",
+      "passed": true,
+      "evidence": "“我把这次拒收按‘方法不足’处理”；并指出“日志里本来就有，上一轮没用上”。"
+    },
+    {
+      "text": "The response proposes more depth on the same rung (e.g. start from the crash log, the undefined user at login.ts:5) rather than dropping to the fallback",
+      "passed": true,
+      "evidence": "定位到 login.ts 的 s.user.name，推断 s.user 为 undefined，并提出“mock 三种响应形态喂 mountLogin”和“一条改动前就失败的用例”。"
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": true,
+      "evidence": "CHANGES 列出 local/plans/login-whitescreen.md；FILE_CONTENTS 包含“## Tries\\n2026-11-10 · 拒收（只加 loading 骨架屏，根因未查）”。"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 742
+  },
+  "timing": {
+    "executor_duration_seconds": 33.1,
+    "grader_duration_seconds": 9.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "6b785901ab667941fa1e5266fff2379a735c15eac5b407331c6402a9549ce0b3"
+}

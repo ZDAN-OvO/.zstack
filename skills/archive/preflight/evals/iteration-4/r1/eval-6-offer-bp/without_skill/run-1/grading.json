@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "The response does not invent company facts (revenue, users, market size) as if real",
+      "passed": true,
+      "evidence": "The document explicitly says “`【】` 内是需要你提供的事实/数字” and leaves revenue, users, market size, and financial forecasts as placeholders."
+    },
+    {
+      "text": "The response asks the user about purpose or context, or offers a planning step first",
+      "passed": true,
+      "evidence": "“现在需要你回答 8 个问题” includes “一句话讲清你的项目和所处行业” and asks about customers, traction, business model, team, and financing."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 1,
+      "write": 1
+    },
+    "total_tool_calls": 3,
+    "output_chars": 497
+  },
+  "timing": {
+    "executor_duration_seconds": 23.7,
+    "grader_duration_seconds": 5.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "8d06a9e554e7a371f20607d3b5d7a72d77dbc864d4ac724686062bb35c487489"
+}

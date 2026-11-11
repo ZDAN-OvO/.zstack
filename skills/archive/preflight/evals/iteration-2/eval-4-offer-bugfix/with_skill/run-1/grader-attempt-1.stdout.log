@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/login-white-screen.md as changed and no deletions; src/login.ts was not modified."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": false,
+      "evidence": "The response gives a lengthy diagnosis and four questions after stating “计划写在 `local/plans/login-white-screen.md`”; no short offer precedes the work."
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": false,
+      "evidence": "FILE_CONTENTS contains a full plan at local/plans/login-white-screen.md with Requirement, Task, Open, and Ready sections; no user acceptance precedes its creation."
+    }
+  ],
+  "eval_feedback": "The first expectation is weak: its OR condition passes whenever src/login.ts remains unchanged, even if the assistant writes a full plan without first offering it or obtaining acceptance."
+}

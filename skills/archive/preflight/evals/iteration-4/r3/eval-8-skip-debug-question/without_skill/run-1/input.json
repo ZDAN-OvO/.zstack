@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 8,
+    "name": "skip-debug-question",
+    "fixture": "webapp",
+    "explicit": true,
+    "prompt": "login.ts 第 5 行为什么会报 Cannot read properties of undefined (reading 'name')？",
+    "expected_output": "Explains the cause (s.user undefined); no plan.",
+    "files": [
+      "evals/eval-fixtures/webapp"
+    ],
+    "expectations": [
+      "[auto] No file was created under local/plans/",
+      "The response explains that s.user can be undefined when the session has no user",
+      "The response does not offer a pre-execution plan"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "login.ts 第 5 行为什么会报 Cannot read properties of undefined (reading 'name')？",
+  "input_hash": "032343945bd005bb6099c27e1e878f448ada7445e38e60086cee6d5823bfcead"
+}

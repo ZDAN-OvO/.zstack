@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "帮我给我妈写首生日小诗",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response does not push a business-style altitude ladder (e.g. turning the poem into a bigger outcome)",
+    "The response either writes the poem or asks one or two personal details needed for it"
+  ],
+  "RESPONSE": "给你妈写一首，写得温一点、不肉麻那种：\n\n**《给妈妈》**\n\n你总说自己是寻常的人，\n柴米油盐，过一年又一年。\n可我记得你灯下缝的线，\n记得你手里那碗汤的暖。\n\n岁月在你眼角描了细纹，\n像春天落在老树上的痕——\n不是衰老，是长过的年轮，\n每一圈，都绕着我长成。\n\n今天不谈辛劳，不说亏欠，\n只愿你笑，愿你好睡好眠，\n愿往后的日子慢一点、甜一点，\n剩下的路，换我来走在前。\n\n---\n\n想让它更贴你妈的话，可以告诉我：\n- 她的名字/你平时怎么称呼她（妈妈、老妈、妈）\n- 她的性格或爱好（爱种花、爱打牌、爱唠叨、退休了、还在上班）\n- 想写成**几句顺口溜**、**古风四句**，还是**能念出口的白话短诗**\n\n我可以再改一版，或者帮你写成适合发微信/写贺卡的短句。",
+  "TRANSCRIPT": "ASSISTANT: 给你妈写一首，写得温一点、不肉麻那种：\n\n**《给妈妈》**\n\n你总说自己是寻常的人，\n柴米油盐，过一年又一年。\n可我记得你灯下缝的线，\n记得你手里那碗汤的暖。\n\n岁月在你眼角描了细纹，\n像春天落在老树上的痕——\n不是衰老，是长过的年轮，\n每一圈，都绕着我长成。\n\n今天不谈辛劳，不说亏欠，\n只愿你笑，愿你好睡好眠，\n愿往后的日子慢一点、甜一点，\n剩下的路，换我来走在前。\n\n---\n\n想让它更贴你妈的话，可以告诉我：\n- 她的名字/你平时怎么称呼她（妈妈、老妈、妈）\n- 她的性格或爱好（爱种花、爱打牌、爱唠叨、退休了、还在上班）\n- 想写成**几句顺口溜**、**古风四句**，还是**能念出口的白话短诗**\n\n我可以再改一版，或者帮你写成适合发微信/写贺卡的短句。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

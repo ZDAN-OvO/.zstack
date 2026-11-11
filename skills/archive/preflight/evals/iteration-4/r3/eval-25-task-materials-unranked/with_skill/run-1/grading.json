@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": true,
+      "evidence": "“建议改成：一手 = 官方定价页/企业版页 + 抓取日期；二手只作线索不取数……确认或改。”"
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": true,
+      "evidence": "“二手只作线索不取数;禁 = 测评号和聚合站的「价格」。”"
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": true,
+      "evidence": "Written plan, Materials: “找不到 → 留空，不许估。待你确认或改。”"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 1207
+  },
+  "timing": {
+    "executor_duration_seconds": 64.6,
+    "grader_duration_seconds": 11.7
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "9afdac0601390edd1d934824584e65b79805896d947f41cc6632fa74f96aac06"
+}

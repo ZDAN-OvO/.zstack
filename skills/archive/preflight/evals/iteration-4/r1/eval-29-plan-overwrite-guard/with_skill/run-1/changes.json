@@ -1,0 +1,13 @@
+{
+  "changed": [
+    "local/plans/onboarding-email-ab-test.md",
+    "local/plans/onboarding-email.md"
+  ],
+  "deleted": [],
+  "excluded_directory_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": false,
+      "evidence": "Calls it “对外交付物” and proposes clarifying “它服务哪个决策、给谁看”; it does not state what the QBR should cause its audience to understand or do."
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": false,
+      "evidence": "The response only proposes a plan at “local/plans/qbr-deck.md”; it suggests no other fields, crew, or adversarial role."
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": false,
+      "evidence": "No fields or roles are identified or assigned actions. “用哪几个数” and “先看大纲” are proposed planning details, not contributions from other fields."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 3,
+    "total": 3,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {},
+    "total_tool_calls": 0,
+    "output_chars": 152
+  },
+  "timing": {
+    "executor_duration_seconds": 7.1,
+    "grader_duration_seconds": 10.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "facd1ca1073f99f87a6eb144a1354ce14a6bc82000c5386611ebe1e89673fc9b"
+}

@@ -1,0 +1,45 @@
+{
+  "expectations": [
+    {
+      "text": "The response identifies the failure as a wrong method (no diagnosis of root cause)",
+      "passed": true,
+      "evidence": "“骨架屏只是遮住了症状，没有修到真正的崩溃点。” Explicitly identifies symptom masking as the failed approach."
+    },
+    {
+      "text": "The response proposes more depth on the same rung (e.g. start from the crash log, the undefined user at login.ts:5) rather than dropping to the fallback",
+      "passed": true,
+      "evidence": "Inspected crashes-2026-11.csv and src/login.ts, traced “s.user.name” to the uncaught rendering failure, then added error handling and regression tests."
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": false,
+      "evidence": "CHANGES lists only “src/login.test.ts” and “src/login.ts”; no update to local/plans/login-whitescreen.md is present."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 6,
+      "find": 1,
+      "read": 2,
+      "edit": 1,
+      "write": 1
+    },
+    "total_tool_calls": 11,
+    "output_chars": 917
+  },
+  "timing": {
+    "executor_duration_seconds": 87.3,
+    "grader_duration_seconds": 18.8
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "e0bd0d5c08a3eb54164caf29791f0adf7944196603cca9e634bff0b9aadb1e1d"
+}

@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": false,
+      "evidence": "CHANGES lists only \"PLAN.md\"; no file exists under local/plans/ in the supplied file evidence."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": false,
+      "evidence": "PLAN.md includes delivery and A/B details, but no Requirement section covering all five items; the accepted fallback of changing only the headline is absent."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": true,
+      "evidence": "The plan covers goal (“回到 3.5%”), background (“和 Notion 的区别”), materials (analytics figures and support quotes), boundaries (“不改价格”), and completion (“交付 3 版”)."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "PLAN.md contains no Ready line."
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": false,
+      "evidence": "PLAN.md exceeds 80 lines across seven sections, including full copy variants, detailed A/B calculations, risks, and next steps."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "Headings and explanations are Chinese: “目标与判定”, “证据与假设”, “风险与未解问题”. English is chiefly used for proposed homepage copy and technical terms."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES: \"changed\": [\"PLAN.md\"], \"deleted\": []; index.html is absent from the changes."
+    }
+  ],
+  "eval_feedback": ""
+}

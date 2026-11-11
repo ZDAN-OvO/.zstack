@@ -1,0 +1,10 @@
+{
+  "eval_id": 33,
+  "eval_name": "after-missed-intent",
+  "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户·最新]\n按 local/plans/q3-review.md 做出来了，但完全不对：这份是给客户看的季度回顾，它做成了给老板的内部 deck。",
+  "assertions": [
+    "The response identifies the miss as intent (audience was wrong), not method or size",
+    "The response goes back to the Task's Purpose or Context slot to fix the audience",
+    "[auto] local/plans/q3-review.md was updated with a '## Tries' section containing a dated line"
+  ]
+}

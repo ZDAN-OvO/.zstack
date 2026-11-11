@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "The response read logs/crashes-2026-11.csv (mentions the login.ts:5 TypeError as most frequent)",
+      "passed": true,
+      "evidence": "Transcript reads `cat logs/crashes-2026-11.csv`; response identifies `src/login.ts:5` TypeError as most frequent with 789 occurrences (412 + 377)."
+    },
+    {
+      "text": "The response suggests handing over a bigger outcome than one crash (e.g. keep the app or login crash-free)",
+      "passed": false,
+      "evidence": "Response reports fixing the most frequent crash. It mentions XSS and ChunkLoadError as separate follow-ups but proposes no broader outcome."
+    },
+    {
+      "text": "The response keeps the single-crash fix as the fallback or lower rung",
+      "passed": false,
+      "evidence": "“已修复出现最多的崩溃” presents the single-crash fix as the completed task, with no broader proposal or fallback."
+    },
+    {
+      "text": "The response asks the user to accept, rewrite or decline the bigger outcome rather than deciding alone",
+      "passed": false,
+      "evidence": "No broader outcome is proposed, and neither the response nor transcript asks the user to accept, rewrite, or decline one."
+    },
+    {
+      "text": "[auto] No source file under src/ was modified",
+      "passed": false,
+      "evidence": "CHANGES.changed contains `src/login.ts`; FILE_CONTENTS shows added session typing, token handling, optional chaining, and a catch handler."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 5,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 818
+  },
+  "timing": {
+    "executor_duration_seconds": 21.1,
+    "grader_duration_seconds": 10.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "3c74a78d5a5290bc2603fcb949e6cc34d09faf67826975591d90e22c53a60689"
+}

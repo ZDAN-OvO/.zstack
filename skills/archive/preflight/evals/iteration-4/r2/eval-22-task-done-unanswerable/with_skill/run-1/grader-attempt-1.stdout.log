@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES lists local/plans/q3-review.md, and FILE_CONTENTS supplies its full plan content."
+    },
+    {
+      "text": "The plan does not invent a Done definition on the user's behalf (Done is empty, marked open, or explicitly flagged as unanswered)",
+      "passed": true,
+      "evidence": "The plan states '**Done**: 未定义——见 Open。' Its suggested approach is explicitly pending approval: '我的默认提议（待你点头）'."
+    },
+    {
+      "text": "The plan lists the missing Done under an Open section",
+      "passed": true,
+      "evidence": "Under '## Open', the plan lists '**Done 没说**: 你没定义「什么出现就可以收工」。'"
+    },
+    {
+      "text": "The plan's Ready line is 'no' with a reason tied to the missing Done",
+      "passed": true,
+      "evidence": "'Ready: no，因为 Done 未定义、「三个决定」的内容未定、Requirement 五条提议未被你裁过。'"
+    }
+  ],
+  "eval_feedback": ""
+}

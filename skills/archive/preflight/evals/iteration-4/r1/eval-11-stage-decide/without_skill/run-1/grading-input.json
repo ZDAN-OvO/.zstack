@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "我在 Postgres 和 MongoDB 之间选。标准就两条：团队只会 SQL；数据强关系。帮我定",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response evaluates the options against the two stated criteria (team knows SQL; relational data)",
+    "The response gives a decision (Postgres) tied to those criteria"
+  ],
+  "RESPONSE": "**结论：Postgres。** 你给的两条都是指向性的条件，并不构成权衡取舍，答案没有悬念。\n\n**1. 团队只会 SQL**\nMongoDB 的查询语言不是 SQL。学习成本由整个团队承担，并非某一个人学了就能消化。更关键的一点是：Mongo 中最容易出问题的部分（聚合管道、索引与查询计划的匹配、事务边界与一致性语义），恰好是“只会 SQL”的团队最不擅长的地方。选择 Postgres，就能把团队已有的技能直接转化为产能；选择 Mongo，就等于让团队在交付业务的同时，还要补一门新课。\n\n**2. 数据强关系**\n这是 Postgres 最擅长的领域，其强项包括外键、JOIN、约束、多表事务和规范化设计。在 Mongo 里处理关系，只有两条路：在应用层手工维护引用完整性，或者用 `$lookup` 勉强拼接。前者会让数据质量完全依赖代码纪律，后者等于用一个不擅长的引擎去执行关系型查询。强关系搭配文档模型，长期来看就是技术债。\n\n**两个补充判断**\n\n- 如果你的“强关系”里混着几个字段结构不固定的情况，不需要更换数据库：Postgres 的 `JSONB` 加 GIN 索引足以覆盖，关系部分仍然用正式表和 JOIN。\n- Mongo 真正合适的场景是：以单文档为聚合根、写多读少、数据天然嵌套且几乎不跨文档 join，并且团队有 NoSQL 经验。你提出的这两条标准一条都不满足。\n\n**需要说明的风险**：Postgres 也会遇到瓶颈，但那通常是规模化之后的问题，有成熟的解法：索引、分区、读写分离。选错数据模型则属于架构级错误，日后迁移的代价是重写业务逻辑，而不只是更换驱动。这两种风险并不对等。",
+  "TRANSCRIPT": "ASSISTANT: **结论：Postgres。** 你给的两条都是指向性的条件，并不构成权衡取舍，答案没有悬念。\n\n**1. 团队只会 SQL**\nMongoDB 的查询语言不是 SQL。学习成本由整个团队承担，并非某一个人学了就能消化。更关键的一点是：Mongo 中最容易出问题的部分（聚合管道、索引与查询计划的匹配、事务边界与一致性语义），恰好是“只会 SQL”的团队最不擅长的地方。选择 Postgres，就能把团队已有的技能直接转化为产能；选择 Mongo，就等于让团队在交付业务的同时，还要补一门新课。\n\n**2. 数据强关系**\n这是 Postgres 最擅长的领域，其强项包括外键、JOIN、约束、多表事务和规范化设计。在 Mongo 里处理关系，只有两条路：在应用层手工维护引用完整性，或者用 `$lookup` 勉强拼接。前者会让数据质量完全依赖代码纪律，后者等于用一个不擅长的引擎去执行关系型查询。强关系搭配文档模型，长期来看就是技术债。\n\n**两个补充判断**\n\n- 如果你的“强关系”里混着几个字段结构不固定的情况，不需要更换数据库：Postgres 的 `JSONB` 加 GIN 索引足以覆盖，关系部分仍然用正式表和 JOIN。\n- Mongo 真正合适的场景是：以单文档为聚合根、写多读少、数据天然嵌套且几乎不跨文档 join，并且团队有 NoSQL 经验。你提出的这两条标准一条都不满足。\n\n**需要说明的风险**：Postgres 也会遇到瓶颈，但那通常是规模化之后的问题，有成熟的解法：索引、分区、读写分离。选错数据模型则属于架构级错误，日后迁移的代价是重写业务逻辑，而不只是更换驱动。这两种风险并不对等。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

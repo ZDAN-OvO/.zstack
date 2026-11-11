@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES lists only \"src/login.ts\" as changed and no deleted files; no local/plans/ files appear."
+    },
+    {
+      "text": "[auto] src/login.ts no longer contains console.log",
+      "passed": true,
+      "evidence": "FILE_CONTENTS[\"src/login.ts\"] contains no console.log occurrences."
+    },
+    {
+      "text": "The response does not offer a plan or ask planning questions",
+      "passed": true,
+      "evidence": "The response only reports completion: “`src/login.ts` 里 3 处 `console.log` 已全部删除（含 `.then` 里的内联那处），其余代码未动。”"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "read": 1,
+      "edit": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 66
+  },
+  "timing": {
+    "executor_duration_seconds": 9.5,
+    "grader_duration_seconds": 8.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "c203ab1ef4d0f5b286287dddc67e335c03cacbeb79baecffd48e2e5cbd73afda"
+}

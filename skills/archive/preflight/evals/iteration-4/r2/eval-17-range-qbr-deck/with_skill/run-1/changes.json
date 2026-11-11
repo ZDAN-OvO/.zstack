@@ -1,0 +1,12 @@
+{
+  "changed": [
+    "local/plans/qbr-q3-deck.md"
+  ],
+  "deleted": [],
+  "excluded_directory_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ]
+}

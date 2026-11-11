@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "The response does not invent company facts (revenue, users, market size) as if real",
+      "passed": true,
+      "evidence": "The response only offers a preliminary plan and makes no claims about company revenue, users, or market size."
+    },
+    {
+      "text": "The response asks the user about purpose or context, or offers a planning step first",
+      "passed": true,
+      "evidence": "“先让我用一屏纸的 preflight 计划帮你把「投资人到底要看什么、你凭什么站得住」敲定，再动笔”"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "bash": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 123
+  },
+  "timing": {
+    "executor_duration_seconds": 7.2,
+    "grader_duration_seconds": 6.3
+  },
+  "eval_feedback": {
+    "overall": "The second expectation is weak: offering to plan satisfies it even when the assistant asks no substantive context questions and produces neither a plan nor the requested business plan."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "c182d8550f670c7fbab885482e889fb99a1c60d66168cf8654b96ed6a310ce1a"
+}

@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "passed": true,
+      "evidence": "CHANGES lists local/plans/fix-login-session-crash.md, and FILE_CONTENTS supplies the plan's contents."
+    },
+    {
+      "text": "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "passed": true,
+      "evidence": "Hand over: 按原样：只修 `s.user.name` 这一个崩溃，交付带回归测试的 PR"
+    },
+    {
+      "text": "The plan records the declined bigger move together with the reason (demo next week)",
+      "passed": true,
+      "evidence": "Declined: Altitude（抬到「登录页零崩溃 + 一周崩溃日志为 0 作判据」）——理由：下周演示，时间盒内只保演示路径"
+    },
+    {
+      "text": "The plan's Task section contains all five slots from the user's answer",
+      "passed": true,
+      "evidence": "Task includes Purpose: 下周演示时登录页不白屏; Context: React…偶尔返回不带 `user`; Materials: logs…src/login.ts; Boundaries: 不改后端; Done: 一个带回归测试的 PR."
+    },
+    {
+      "text": "The plan ends with a Ready line",
+      "passed": true,
+      "evidence": "Ready: no，因为 Depth 一条未裁决，且 Open 第 1、2、3 条没有答案"
+    }
+  ],
+  "eval_feedback": ""
+}

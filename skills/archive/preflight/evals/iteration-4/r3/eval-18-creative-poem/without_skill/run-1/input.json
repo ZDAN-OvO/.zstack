@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 18,
+    "name": "creative-poem",
+    "fixture": "empty",
+    "explicit": true,
+    "prompt": "帮我给我妈写首生日小诗",
+    "expected_output": "Recognises creative/cheap work; skips the business altitude ladder; at most asks one or two personal details or just writes.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "[auto] No file was created under local/plans/",
+      "The response does not push a business-style altitude ladder (e.g. turning the poem into a bigger outcome)",
+      "The response either writes the poem or asks one or two personal details needed for it"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "帮我给我妈写首生日小诗",
+  "input_hash": "9a820104ffe222684399b42608b0f909da806ad336d9157f78bf486bba7bbeba"
+}

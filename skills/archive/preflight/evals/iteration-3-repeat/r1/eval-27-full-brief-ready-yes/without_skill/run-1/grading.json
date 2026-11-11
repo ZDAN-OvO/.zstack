@@ -1,0 +1,62 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": false,
+      "evidence": "CHANGES lists only \"plan.md\"; no file under local/plans/ is present in FILE_CONTENTS."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": false,
+      "evidence": "The plan has sections “现状读数”, “假设”, “范围”, “步骤”, “判定规则”, “风险与未决”, and “完成定义”, but no Requirement section covering all five elements."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": false,
+      "evidence": "No five Task slots are filled. The plan includes goals, materials, boundaries, and deliverables, but omits the user's B2B collaboration-tool background."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "There is no Ready line in plan.md; its completion definition instead begins “本 plan 确认（现在）”。"
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": false,
+      "evidence": "plan.md exceeds 70 lines, with seven numbered sections, a data table, detailed steps, experiment rules, risks, and completion criteria."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "Chinese headings and prose include “首页首屏重写”, “范围”, “判定规则”, and “交付 3 组 H1 + 副标题”。"
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES contains changed: [\"plan.md\"] and deleted: []; index.html is not modified."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 5,
+    "total": 7,
+    "pass_rate": 0.286
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "write": 1
+    },
+    "total_tool_calls": 3,
+    "output_chars": 910
+  },
+  "timing": {
+    "executor_duration_seconds": 62.9,
+    "grader_duration_seconds": 21.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "555e1c67e49ac8dda3ba356f52ae8b8556b9c7d2cb14a8cb88f4a09f929b77fd"
+}

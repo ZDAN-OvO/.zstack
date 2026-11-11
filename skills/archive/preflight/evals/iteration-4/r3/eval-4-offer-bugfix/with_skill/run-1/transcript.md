@@ -1,0 +1,106 @@
+TOOL bash: {"command": "ls -la && echo \"---\" && git log --oneline -15 2>/dev/null | head -20"}
+
+TOOL bash: {"command": "cd /tmp/pf-4-with_skill-zuw9_gdb && find . -path ./node_modules -prune -o -type f -print | head -50"}
+
+RESULT: total 188
+drwxrwxr-x  4 zdan zdan   4096 11月 10 16:17 .
+drwxrwxrwt 65 root root 167936 11月 10 22:44 ..
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 logs
+-rw-rw-r--  1 zdan zdan    206 11月 10 16:17 package.json
+-rw-rw-r--  1 zdan zdan    104 11月 10 16:17 README.md
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 src
+---
+
+
+RESULT: ./logs/crashes-2026-11.csv
+./package.json
+./src/login.ts
+./README.md
+
+
+TOOL bash: {"command": "cd /tmp/pf-4-with_skill-zuw9_gdb && cat package.json README.md && echo \"=== login.ts ===\" && cat -n src/login.ts"}
+
+TOOL bash: {"command": "cd /tmp/pf-4-with_skill-zuw9_gdb && wc -l logs/crashes-2026-11.csv && head -5 logs/crashes-2026-11.csv"}
+
+RESULT: {
+  "name": "acme-web",
+  "version": "2.3.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^19.2.0"
+  }
+}
+# acme-web
+
+React + TypeScript 前端。`npm test` 跑 vitest。
+Node 版本见 package.json engines。
+=== login.ts ===
+     1	export function mountLogin(root: HTMLElement) {
+     2	  console.log("mount login");
+     3	  const token = localStorage.getItem("token");
+     4	  fetch("/api/session", { headers: { Authorization: `Bearer ${token}` } })
+     5	    .then((r) => r.json())
+     6	    .then((s) => { console.log("session", s); root.innerHTML = renderForm(s.user.name); });
+     7	}
+     8	
+     9	function renderForm(name: string) {
+    10	  console.log("render", name);
+    11	  return `<form><input value="${name}"/></form>`;
+    12	}
+
+
+RESULT: 5 logs/crashes-2026-11.csv
+date,app_version,error,count
+2026-11-01,2.3.0,"TypeError: Cannot read properties of undefined (reading 'name') at login.ts:5",412
+2026-11-01,2.3.0,"ChunkLoadError: Loading chunk 7 failed",88
+2026-11-03,2.3.1,"TypeError: Cannot read properties of undefined (reading 'name') at login.ts:5",377
+2026-11-05,2.3.1,"RangeError: Maximum call stack size exceeded at cart.ts:41",19
+
+
+TOOL bash: {"command": "cd /tmp/pf-4-with_skill-zuw9_gdb && date +%F && node -v 2>/dev/null; npx --no-install vitest --version 2>&1 | tail -1; ls node_modules 2>/dev/null | head -3 || echo \"no node_modules\""}
+
+TOOL bash: {"command": "cd /tmp/pf-4-with_skill-zuw9_gdb && grep -rn \"api/session\\|token\\|router\\|Boundary\" --include=*.ts --include=*.json --include=*.md . | grep -v node_modules"}
+
+RESULT: 2026-11-10
+v26.13.0
+npm error A complete log of this run can be found in: /home/zdan/.npm/_logs/2026-11-10T14_44_38_413Z-debug-0.log
+
+
+RESULT: ./src/login.ts:3:  const token = localStorage.getItem("token");
+./src/login.ts:4:  fetch("/api/session", { headers: { Authorization: `Bearer ${token}` } })
+
+
+TOOL bash: {"command": "cd /tmp/pf-4-with_skill-zuw9_gdb && ls -la local/plans 2>/dev/null || echo \"no local/plans\"; git rev-parse --show-toplevel 2>/dev/null || echo \"not a git repo\""}
+
+RESULT: no local/plans
+not a git repo
+
+
+TOOL write: {"path": "/tmp/pf-4-with_skill-zuw9_gdb/local/plans/login-white-screen.md", "content": "# Plan: 登录页不再白屏（含原因可观测）\n\n- Asked: 「帮我修一下登录页偶尔白屏的 bug，代码在 src/login.ts」\n- Stage: execute\n- Date: 2026-11-10\n\n## Requirement\n\n**Hand over（建议直接交给结果的层级）**\n`mountLogin` 的每条失败路径都渲染出可恢复的界面（或用整页跳转离开），并且把失败按原因打点；附一组测试：在原始代码上必红（复现同一个 TypeError）、修复后必绿。\n\n**Fallback（上一层够不到时退到）**\n只管 `null` token 与 401 两条路径：判空 + 检查 `r.ok` + 兜底 UI + `.catch`。不做打点、不写测试（不算完成，只算止血）。\n\n**Ceiling（试过、超出模型可自主承担）**\n「登录页任何原因都不白屏，含 ChunkLoadError、部署缓存策略与线上白屏率 SLO」——需要 `/api/session` 契约、CDN/`index.html` 缓存配置、监控账号，模型无法自行验证。\n\n**Depth**\n- 专家动作（你没要求的那一层）：先分离因果再改代码。日志里是**两种**白屏，不是一种。\n- 最原始材料：`logs/crashes-2026-11.csv` 逐行（2.3.0 的 412 次与 2.3.1 的 377 次都是 `reading 'name' at login.ts:5`，说明 2.3.1 没修掉它，是主因；另有 88 次 `ChunkLoadError: Loading chunk 7 failed` 是**另一个**白屏来源，`cart.ts:41` 的 19 次与登录页无关）。\n- 器械：登录页状态机 `loading → ready | recoverable-error`，加失败注入测试矩阵；而不是重新排一遍 `try/catch`。\n- 拉伸目标：先写红队矩阵（token 缺失 / token 过期→401 JSON / 500 返回 HTML / 网络中断 / `/api/session` 返回非 JSON / chunk 加载失败），**修复前全部红**；修复后仅靠 `?.` 判空必须仍有红项。\n\n**Range（把交付物还原成动词）**\n定位（两种白屏分开）· 兜住（contain：可恢复 UI 或跳转）· 预防（prevent：契约边界判空 + 测试锁定）· 观测（observe：按原因打点，能在下次日志里区分）。\n拼队：前端排障（根因链）· 接口契约负责人（401/无 token 时 `/api/session` 到底返回什么）· 发布/SRE（chunk 与 `index.html` 缓存）· 红队（补矩阵之外的失败）。要各自**做什么**，不要风格。\n\n**Judge**\n外部判据：新增测试在原始 `login.ts` 上必须失败（复现同一 TypeError）、修复后通过；另开一个独立红队会话注入矩阵外的失败，再由一个会话裁定其反对意见。评分看方法（是否先复现、是否有对照），**只加 `?.` 的\"侥幸正确\"必须判不合格**，理由正当但漏一格的近似解可通过。\n\n**Needs**\n- vitest + jsdom 依赖（仓库当前**未安装**，`npm test` 现在跑不起来；无测试目录、无 vitest 配置）\n- `/api/session` 在无 token / 过期 token 时的真实响应体（**缺失**，仓库内无后端）\n- 跳转目标（前端路由登录页还是整页重定向）（**缺失**）\n- 错误打点 sink（**缺失**）\n- ChunkLoadError 的部署/缓存上下文（**缺失**）\n- 事实供确认：`login.ts:3-6` 中 `localStorage.getItem(\"token\")` 可为 `null` → 请求头 `Bearer null` → 非 2xx 时响应体无 `user` → `s.user.name` 抛错，且无 `.catch`，`root.innerHTML` 永不执行，页面即白屏；该文件是裸 DOM 操作，尽管 README 写的是 React。\n\n**Declined**\n（等你逐条接受/改写/拒绝）\n\n## Task\n\n**Purpose**：这次修复服务哪个决定/问题？——是\"止血上线\"（默认走 Fallback），还是\"让下次再白屏能一眼看出原因\"（走 Hand over）？（动作不是目的。）\n\n**Context**：一个有能力的外人需要知道什么才不跑偏？例如：登录页在什么场景被挂载、token 是否由别处刷新、白屏是否只出现在移动端/弱网？（事实部分见上，请确认）\n\n**Materials**：主源 = `logs/crashes-2026-11.csv` 与真实 401 响应体；次源 = 现有 `login.ts`；禁用源 = ？（尚未给出），\"未找到\"槽位 = `/api/session` 契约、跳转目标、sink。\n\n**Boundaries**（会让你说\"不是我要的\"）：\n- 只做 `?.` 判空、把报错藏起来而不改变用户所见？\n- 401 时静默跳转导致用户丢草稿/丢当前操作？\n- 顺手重构整个文件或引入新依赖？\n- 把 `ChunkLoadError` 一并处理（跨出 `src/login.ts`）？\n\n**Done**：出现什么你就能停？建议形状 = 状态机实现 + 失败注入测试 + 一行修前/修后对照（同一 CSV 口径）。检查点：先交\"病因分离结论 + 测试矩阵清单\"给你确认，再动实现。\n\n## Open\n\n- CSV 里 88 次 `ChunkLoadError` 也是白屏来源，但不在 `src/login.ts`。要一起修、单开一条、还是明确不管？\n- 你说的\"偶尔\"指哪一类：token 过期后的 377 次，还是首次访问/发版后的 chunk 失败？\n- 2.3.1 已发版但错误数几乎不减（412 → 377），是否意味着这个文件根本没被改过、或另有版本号错配？\n\nReady: no —— Requirement 三条轴尚未裁决，Task 五问尚未由你回答（Purpose/Boundaries 最关键）。\n"}
+
+RESULT: Successfully wrote to /tmp/pf-4-with_skill-zuw9_gdb/local/plans/login-white-screen.md
+
+ASSISTANT: 计划已写好：`local/plans/login-white-screen.md`
+
+查到的关键事实（这些不是提问，是证据）：
+
+- `src/login.ts:3-6` — `getItem("token")` 可为 `null` → `Bearer null` → 非 2xx 时响应体里没有 `user` → `s.user.name` 抛 TypeError，且没有 `.catch`，所以 `root.innerHTML` 永不执行 = 白屏。
+- `logs/crashes-2026-11.csv` — `reading 'name' at login.ts:5` 在 2.3.0 出现 412 次、2.3.1 仍是 377 次：**2.3.1 并没有修掉它**，这是主因。
+- 同一份日志里有 **88 次 `ChunkLoadError: Loading chunk 7 failed`** —— 第二种白屏原因，不在 `login.ts` 里。「偶尔」可能是两个 bug。
+- 仓库没有测试目录、vitest 未安装（`npm test` 现在跑不起来）、`/api/session` 无后端、无路由/错误边界；`login.ts` 是裸 DOM 操作（README 说是 React）。
+
+需要你裁决的三条轴（抄在计划里，接受/改写/拒绝都行）：
+
+1. **Altitude**：直接交结果 ——「所有失败路径都渲染可恢复界面 + 按原因打点 + 修前必红/修后必绿的测试」，还是退一格只止血（判空 + `r.ok` 兜底）？天花板我试到「含 ChunkLoadError 与部署缓存/SLO」，那需要后端契约和发布配置，超出我能自主验证的范围。
+2. **Depth**：专家动作是**先分离因果再改**，拉伸目标是失败注入矩阵先红后绿 —— 只加 `?.` 的"侥幸修复"会被判不合格。
+3. **Range**：定位 / 兜住 / 预防 / 观测四个动词，拼 前端排障 + 接口契约人 + 发布SRE + 红队。
+
+以及五个只有你能答的问题：Purpose（止血 vs 可观测）、Context、Materials（禁用源是哪些？）、Boundaries（比如"401 静默跳转会丢草稿"算不算 wall）、Done（建议先交病因分离+测试矩阵做检查点）。
+
+`Ready: no`。确认或改完之后，可以用 `/define-goal` 以这份计划为源。

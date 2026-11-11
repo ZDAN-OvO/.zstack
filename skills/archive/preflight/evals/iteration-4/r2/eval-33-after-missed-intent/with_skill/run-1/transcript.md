@@ -1,0 +1,108 @@
+TOOL bash: {"command": "ls -la; echo ---; ls -la local/plans 2>/dev/null; echo ---; find . -name \"*.md\" -o -name \"*.html\" -o -name \"*.pptx\" -o -name \"*.pdf\" | head -50"}
+
+TOOL read: {"path": "local/plans/q3-review.md"}
+
+RESULT: total 188
+drwxrwxr-x  5 zdan zdan   4096 11月 10 16:17 .
+drwxrwxrwt 64 root root 167936 11月 10 22:39 ..
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 data
+drwxrwxr-x  3 zdan zdan   4096 11月 10 16:17 local
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 notes
+-rw-rw-r--  1 zdan zdan    131 11月 10 16:17 template.md
+---
+total 12
+drwxrwxr-x 2 zdan zdan 4096 11月 10 16:17 .
+drwxrwxr-x 3 zdan zdan 4096 11月 10 16:17 ..
+-rw-rw-r-- 1 zdan zdan  461 11月 10 16:17 q3-review.md
+---
+./local/plans/q3-review.md
+./template.md
+./notes/worklog.md
+
+
+RESULT: # Plan: Q3 回顾讲清变化与决策
+
+- Asked: 帮我做 Q3 QBR
+- Stage: execute
+- Date: 2026-11-06
+
+## Requirement
+Hand over: 本季变化、原因、三个最急决策
+Fallback: 按模板填数
+Depth: 从原始月度数据出发
+Range: —
+Judge: 老板审阅
+Needs: data/q3-metrics.csv
+Declined: —
+
+## Task
+Purpose: 季度回顾
+Context: SaaS，Q3 收入下滑
+Materials: data/q3-metrics.csv
+Boundaries: 不编数字
+Done: 一份 10 页 deck
+
+Ready: yes
+
+
+TOOL bash: {"command": "cd /tmp/pf-33-with_skill-9iakw83f; ls -la data notes; echo ---; cat template.md; echo ---; cat notes/worklog.md; echo ---; head -30 data/*.csv"}
+
+RESULT: data:
+total 12
+drwxrwxr-x 2 zdan zdan 4096 11月 10 16:17 .
+drwxrwxr-x 5 zdan zdan 4096 11月 10 16:17 ..
+-rw-rw-r-- 1 zdan zdan  126 11月 10 16:17 q3-metrics.csv
+
+notes:
+total 12
+drwxrwxr-x 2 zdan zdan 4096 11月 10 16:17 .
+drwxrwxr-x 5 zdan zdan 4096 11月 10 16:17 ..
+-rw-rw-r-- 1 zdan zdan  182 11月 10 16:17 worklog.md
+---
+# Q3 业务回顾
+
+## 收入
+本季收入：{{revenue}}
+
+## 客户
+新增：{{new}}，流失：{{churn}}
+
+## 下季计划
+{{plan}}
+---
+# 工作日志
+
+- 9 月 8 日起，客服工单里"太难上手"的投诉明显变多。
+- 8 月中旬把免费试用从 14 天改为 7 天。
+- 老板说 QBR 下周四给 VP 看。
+---
+month,revenue_usd,new_customers,churned_customers,nps
+2026-07,182000,41,12,38
+2026-08,176000,35,19,31
+2026-09,171000,30,24,27
+
+
+TOOL write: {"path": "local/plans/q3-review.md", "content": "# Plan: Q3 客户季度回顾（讲清对方这季得到了什么）\n\n- Asked: 帮我做 Q3 QBR\n- 退回: 成品是给老板/VP 的内部 deck，实际要的是给客户的季度回顾\n- Stage: think（Task 重问；上一版在 Purpose / Context / Judge 三处失焦）\n- Date: 2026-11-06，2026-11-10 修订\n\n## Requirement\nHand over: 客户看得懂的「这季你得到了什么」＋下一步共识，续约/扩容由客户方提起\nFallback: 按 template.md 填数的一页纸客户回顾\nDepth: 原始材料换成客户侧一手数据（对方工单、使用量、上线里程碑、我方承诺 vs 兑现）；我方收入/流失/NPS 只作背景，不上页\nRange: 让客户「认得出来」这季发生了什么；让对接人「敢往上汇报」；让续约「有据可谈」。crew：客户成功（价值叙事）、数据分析（对方指标口径）、商务/法务（承诺措辞）、红队＝客户方最挑剔的采购或技术负责人（专找「这页是不是在甩锅/灌水」）\nJudge: 客户对接人（能直接判断时以他为准）；否则红队 session 挑刺＋一个 session 裁定。评方法：口径是否对方认、承诺是否有出处\nNeeds: 客户侧数据（缺）；上一版内部 deck 文件（工作区里没有，需路径）；我方对客户的承诺记录（缺）\nDeclined: —（待你逐条接受/改写/否掉）\n\n## Task\nPurpose: 待答——这次回顾要换来什么：续约、扩容，还是合同要求的例行汇报？\nContext: 待答——客户是谁、买了什么、对接人层级。已知：我方 Q3 收入下滑（182k→171k）、8 月中试用 14 天改 7 天、9 月起「太难上手」工单变多\nMaterials: 待答——排序：客户侧一手数据 > 我方 CRM/工单 > 内部汇总。禁用：未经客户确认的我方收入/流失/NPS、无出处的承诺、编造数字\nBoundaries: 待答——沿用「不编数字」；新增候选墙：不出现我方收入与流失率、不出现「三个最急决策」这类内部议题、不替客户下结论\nDone: 待答——先给 1 页目录＋每页一句话主张（checkpoint），你点头后再做全篇\n\n## Open\n- 内部版和客户版是两份，还是只留客户版？worklog 的「老板说下周四给 VP 看」正是上一版跑偏的入口，需要你定。\n- 客户侧数据在哪？工作区只有 data/q3-metrics.csv（我方月度汇总），没有任何客户维度数据。\n- 客户回顾的日期与形式（现场 / 线上 / 只发 PDF）。\n- 上一版 deck 的实际路径（工作区找不到）。\n\n## Tries\n- 2026-11-10 退回：成品是内部 deck 而非客户回顾。原因＝Task 失焦：Purpose 只写了「季度回顾」这个动作，Context 无受众，Judge 写成「老板审阅」，于是整个深度（我方收入、流失、NPS、内部决策）都朝着老板长。改法：四格重问；Judge 换成客户对接人＋红队；Depth 的原始材料从我方月度数据换成客户侧一手数据。\n\nReady: no — 五格 Task 与 Requirement 各条都待你裁定\n"}
+
+RESULT: Successfully wrote to local/plans/q3-review.md
+
+ASSISTANT: 我先看了计划本身，跑偏的入口在计划里就写着，不在执行里。
+
+**归因（按 After a try）：属于 Missed intent，不是方法错，也不是太大。**
+
+- `Purpose: 季度回顾` 只写了动作，没写这份东西要换来什么，更没写谁在看。
+- `Context` 没有任何受众信息；`Judge: 老板审阅` 直接把读者钉成了老板。于是 Depth 的「原始月度数据」自然被理解成我方收入、流失、NPS，成品就成了内部诊断 deck。
+- 线索其实在工作区：`notes/worklog.md` 写着「老板说 QBR 下周四给 VP 看」。上一版把这条当成了受众，而不是当成交付渠道。
+
+**已就地更新 `local/plans/q3-review.md`**：Task 四格清空重问，Judge 换成客户对接人＋红队，Depth 的原始材料从我方月度数据换成客户侧一手数据；`## Tries` 记了一条 2026-11-10 的退回与改法；Ready 改回 no。
+
+需要你回答的（只有你持有答案）：
+
+1. **Purpose**：这次客户回顾要换来什么——续约、扩容，还是合同要求的例行汇报？「讲清这季价值」不算答案，它是手段。
+2. **Context**：客户是谁、买了什么、对接人是什么层级，能不能替你往上报？
+3. **Materials**：客户侧数据在哪？工作区只有 `data/q3-metrics.csv`（我方月度汇总），一个客户维度的数都没有。上一版 deck 的实际路径也找不到，麻烦给一下。
+4. **Boundaries**：我加了三条候选墙待你确认——不出现我方收入与流失率、不出现「三个最急决策」这类内部议题、不替客户下结论。哪条要留、哪条要删？
+5. **Done**：建议 checkpoint 是「1 页目录＋每页一句话主张」，你点头后再做全篇。接受吗？
+6. **Open**：内部版和客户版是两份，还是只留客户版？
+
+你答完 1–6，我按新计划先出那 1 页目录，不直接产出 deck。要接着把这份计划变成目标，可以用 `/define-goal`，源文件就是 `local/plans/q3-review.md`。

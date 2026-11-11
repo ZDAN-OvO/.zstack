@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "帮我给我妈写首生日小诗",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response does not push a business-style altitude ladder (e.g. turning the poem into a bigger outcome)",
+    "The response either writes the poem or asks one or two personal details needed for it"
+  ],
+  "RESPONSE": "给你写一首，温柔一点的：\n\n**《给妈妈的生日》**\n\n你把春天缝进我的衣袖，\n把深夜留给了厨房的灯。\n我数不清你熬过多少回等候，\n只记得门口那声轻软的唤名。\n\n如今风也学会了你的语气，\n吹过窗台，把碗筷轻轻摆好。\n妈妈，你的白发是月光的线，\n一针一针，织成我长大的路。\n\n今天不谈辛苦，不谈年岁，\n只请你坐下，喝我敬的这杯。\n愿往后每个清晨都对你温和，\n愿你想要的，都慢慢地来。\n\n---\n\n想调的话告诉我方向，比如：\n- 想更短（四句，可以直接写贺卡上）\n- 想更口语/接地气，或更文雅一点\n- 想加一句具体的事（她的手艺、她的口头禅、老家的院子……）\n\n有了这些细节，诗会更像“她的”，而不是谁都能用的。",
+  "TRANSCRIPT": "ASSISTANT: 给你写一首，温柔一点的：\n\n**《给妈妈的生日》**\n\n你把春天缝进我的衣袖，\n把深夜留给了厨房的灯。\n我数不清你熬过多少回等候，\n只记得门口那声轻软的唤名。\n\n如今风也学会了你的语气，\n吹过窗台，把碗筷轻轻摆好。\n妈妈，你的白发是月光的线，\n一针一针，织成我长大的路。\n\n今天不谈辛苦，不谈年岁，\n只请你坐下，喝我敬的这杯。\n愿往后每个清晨都对你温和，\n愿你想要的，都慢慢地来。\n\n---\n\n想调的话告诉我方向，比如：\n- 想更短（四句，可以直接写贺卡上）\n- 想更口语/接地气，或更文雅一点\n- 想加一句具体的事（她的手艺、她的口头禅、老家的院子……）\n\n有了这些细节，诗会更像“她的”，而不是谁都能用的。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

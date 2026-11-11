@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "我在 Postgres 和 MongoDB 之间选。标准就两条：团队只会 SQL；数据强关系。帮我定",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response evaluates the options against the two stated criteria (team knows SQL; relational data)",
+    "The response gives a decision (Postgres) tied to those criteria"
+  ],
+  "RESPONSE": "**Postgres。**两条标准指向同一答案，没有 tradeoff 需要权衡。\n\n- **团队只会 SQL**：Postgres 是原生的 SQL 引擎；MongoDB 的查询是 JSON 表达式，团队的现有技能基本归零，遇到聚合/关联还得学 `$lookup`/`$unwind` 这套，学习成本不低而且不通用。\n- **数据强关系**：这正是关系型数据库的设计目标——外键、约束、多表 JOIN、事务。MongoDB 虽然支持事务，但文档模型默认鼓励内嵌/冗余，强关系数据在文档模型里会变成“手工维护的一致性”，JOIN 类需求（`$lookup`）在性能和可读性上都吃亏。\n\n补充两点，避免后面反复：\n\n1. 如果当初有人推荐 Mongo，理由通常是“schema 不固定”“文档天然嵌套”“要水平写扩展”。只有这三点真的成立且优先级高于你这两条标准时，才值得重新讨论；否则不用再开会。\n2. 用 Postgres 也能覆盖 Mongo 的常见诉求：`JSONB` 存半结构化字段、GIN 索引可查、必要时仍能规范化。所以反过来不成立——选 Postgres 的后悔成本很低。\n\n落地建议：直接上 Postgres，从第一版就把外键和唯一约束写全，不要为了“灵活”先留成裸 JSONB。",
+  "TRANSCRIPT": "ASSISTANT: **Postgres。**两条标准指向同一答案，没有 tradeoff 需要权衡。\n\n- **团队只会 SQL**：Postgres 是原生的 SQL 引擎；MongoDB 的查询是 JSON 表达式，团队的现有技能基本归零，遇到聚合/关联还得学 `$lookup`/`$unwind` 这套，学习成本不低而且不通用。\n- **数据强关系**：这正是关系型数据库的设计目标——外键、约束、多表 JOIN、事务。MongoDB 虽然支持事务，但文档模型默认鼓励内嵌/冗余，强关系数据在文档模型里会变成“手工维护的一致性”，JOIN 类需求（`$lookup`）在性能和可读性上都吃亏。\n\n补充两点，避免后面反复：\n\n1. 如果当初有人推荐 Mongo，理由通常是“schema 不固定”“文档天然嵌套”“要水平写扩展”。只有这三点真的成立且优先级高于你这两条标准时，才值得重新讨论；否则不用再开会。\n2. 用 Postgres 也能覆盖 Mongo 的常见诉求：`JSONB` 存半结构化字段、GIN 索引可查、必要时仍能规范化。所以反过来不成立——选 Postgres 的后悔成本很低。\n\n落地建议：直接上 Postgres，从第一版就把外键和唯一约束写全，不要为了“灵活”先留成裸 JSONB。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

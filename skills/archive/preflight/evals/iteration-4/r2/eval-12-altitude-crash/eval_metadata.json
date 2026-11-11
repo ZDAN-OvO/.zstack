@@ -1,0 +1,12 @@
+{
+  "eval_id": 12,
+  "eval_name": "altitude-crash",
+  "prompt": "修一下 logs 里出现最多的那个崩溃",
+  "assertions": [
+    "The response read logs/crashes-2026-11.csv (mentions the login.ts:5 TypeError as most frequent)",
+    "The response suggests handing over a bigger outcome than one crash (e.g. keep the app or login crash-free)",
+    "The response keeps the single-crash fix as the fallback or lower rung",
+    "The response asks the user to accept, rewrite or decline the bigger outcome rather than deciding alone",
+    "[auto] No source file under src/ was modified"
+  ]
+}

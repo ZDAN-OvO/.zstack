@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES: {\"changed\": [], \"deleted\": []}; FILE_CONTENTS: {}."
+    },
+    {
+      "text": "The response asks what the analysis is for, i.e. which decision it supports",
+      "passed": true,
+      "evidence": "“给谁看、之后要支撑哪个决定？”"
+    },
+    {
+      "text": "The response does not produce a competitor analysis with invented companies or data",
+      "passed": true,
+      "evidence": "The response asks four clarification questions and defers analysis: “你挑一个，再写计划。” No companies or competitor data are supplied."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2
+    },
+    "total_tool_calls": 2,
+    "output_chars": 678
+  },
+  "timing": {
+    "executor_duration_seconds": 17.9,
+    "grader_duration_seconds": 5.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "ba8ae89a179112de64f0f33a9dc67b8ff3faebb3fcb66a8cd15b093764cf6137"
+}

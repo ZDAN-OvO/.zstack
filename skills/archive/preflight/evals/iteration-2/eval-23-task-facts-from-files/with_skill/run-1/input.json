@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 23,
+    "name": "task-facts-from-files",
+    "fixture": "qbr",
+    "explicit": true,
+    "prompt": "帮我做 Q3 回顾",
+    "expected_output": "Reads the worklog and data first; proposes found facts (VP next Thursday, trial 14→7 days, onboarding complaints) as context to confirm instead of asking for them.",
+    "files": [
+      "evals/eval-fixtures/qbr"
+    ],
+    "expectations": [
+      "The response mentions at least one fact found in notes/worklog.md (VP review next Thursday, trial cut from 14 to 7 days, or onboarding complaints)",
+      "Found facts are presented for the user to confirm rather than asked as open questions",
+      "The response still asks the user something only they can answer, such as the purpose or what done looks like"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 帮我做 Q3 回顾",
+  "input_hash": "4604aa66843e3473170f08f36df695854894512214a7296ec35d738cdc9b27d9"
+}

@@ -1,0 +1,51 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "passed": false,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; FILE_CONTENTS is {}. No plan file was created."
+    },
+    {
+      "text": "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "passed": true,
+      "evidence": "“唯一目标”：src/login.ts:5 的 TypeError 不再发生；“不承诺‘登录页零崩溃’”。"
+    },
+    {
+      "text": "The plan records the declined bigger move together with the reason (demo next week)",
+      "passed": false,
+      "evidence": "The plan says “不承诺‘登录页零崩溃’” but does not record that the broader proposal was declined because the demo is next week."
+    },
+    {
+      "text": "The plan's Task section contains all five slots from the user's answer",
+      "passed": false,
+      "evidence": "The plan has sections “目标与验收”, “范围”, “实施步骤”, and “风险与取舍”; no Task section gathers the five slots, and logs is not explicitly listed as an input."
+    },
+    {
+      "text": "The plan ends with a Ready line",
+      "passed": false,
+      "evidence": "The plan ends with “若 vitest 未安装，只补最小 devDependency，不搭建完整测试框架。” There is no Ready line."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3
+    },
+    "total_tool_calls": 3,
+    "output_chars": 1743
+  },
+  "timing": {
+    "executor_duration_seconds": 24.6,
+    "grader_duration_seconds": 11.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "1eb8dd1db1ab7354c065237e2b74f4dd59d473f2e120fcbfce5e76ad44db35d4"
+}

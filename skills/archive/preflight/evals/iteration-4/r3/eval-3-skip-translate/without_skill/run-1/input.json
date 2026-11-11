@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 3,
+    "name": "skip-translate",
+    "fixture": "empty",
+    "explicit": true,
+    "prompt": "把这句翻成英文：本周上线延期到周五",
+    "expected_output": "Translates directly.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "[auto] No file was created under local/plans/",
+      "The response gives an English translation of the sentence",
+      "The response does not offer a plan"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "把这句翻成英文：本周上线延期到周五",
+  "input_hash": "8679b4169c52b3c1b22e60735d7e34ea93271efd2bf0eb4a045ecf7db78e344d"
+}

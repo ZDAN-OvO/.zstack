@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acme — 文档、日程、进度，一个 AI 替你收拾干净</title>
+<meta name="description" content="Acme 把团队写的东西、排的会、推进的事放进同一个工作台。AI 负责归档、总结和提醒下一步。日历接入可选，2 分钟开始。">
+<style>
+  :root{
+    --bg:#08090b;
+    --bg-soft:#0c0e12;
+    --surface:#10131a;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --fg:#f2f4f7;
+    --muted:#9aa1ab;
+    --dim:#6b7280;
+    --accent:#c8ff5e;          /* 仅用于点睛，覆盖率 < 2% */
+    --r-sm:8px; --r-md:14px; --r-lg:22px;
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:ui-sans-serif,-apple-system,"SF Pro Text","Inter","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  /* 极淡的网格，制造"精密"感而不抢戏 */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,.028) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.028) 1px, transparent 1px);
+    background-size:80px 80px;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, #000 10%, transparent 75%);
+  }
+  .wrap{position:relative; z-index:1}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,p{margin:0}
+  .container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
+
+  .skip{
+    position:absolute;left:-9999px;top:0;z-index:99;
+    background:var(--fg);color:#000;padding:12px 18px;border-radius:var(--r-sm);
+  }
+  .skip:focus{left:24px;top:12px}
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:40;
+    border-bottom:1px solid transparent;
+    background:rgba(8,9,11,.72);
+    background:color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter:blur(14px) saturate(140%);
+  }
+  .nav-inner{
+    display:flex; align-items:center; gap:32px;
+    height:68px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.01em;font-size:16px}
+  .brand-mark{
+    width:22px;height:22px;border-radius:7px;
+    background:linear-gradient(150deg,#fff,#8f9aad);
+    box-shadow:0 0 0 1px rgba(255,255,255,.12), 0 6px 18px rgba(0,0,0,.6);
+    position:relative; flex:none;
+  }
+  .brand-mark::after{
+    content:"";position:absolute;inset:7px;border-radius:2px;
+    background:var(--bg);
+  }
+  .nav-links{display:flex;gap:28px;font-size:14.5px;color:var(--muted)}
+  .nav-links a{transition:color .18s var(--ease)}
+  .nav-links a:hover{color:var(--fg)}
+  .nav-links a[aria-current]{color:var(--fg)}
+  .nav-actions{margin-left:auto;display:flex;align-items:center;gap:18px;font-size:14.5px}
+  .nav-actions .login{color:var(--muted);transition:color .18s var(--ease)}
+  .nav-actions .login:hover{color:var(--fg)}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    height:46px;padding:0 22px;border-radius:999px;
+    font-size:15px;font-weight:550;letter-spacing:.01em;
+    border:1px solid transparent;cursor:pointer;
+    transition:transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease), opacity .18s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--fg);color:#08090b;box-shadow:0 1px 0 rgba(255,255,255,.35) inset, 0 10px 30px -12px rgba(255,255,255,.35)}
+  .btn-primary:hover{transform:translateY(-1px);background:#fff}
+  .btn-ghost{background:transparent;color:var(--fg);border-color:var(--line-strong)}
+  .btn-ghost:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.28)}
+  .btn-sm{height:38px;padding:0 16px;font-size:14px}
+
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 0}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.02fr .98fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:26px;
+    border:1px solid var(--line);border-radius:999px;
+    padding:6px 14px 6px 11px;
+    background:rgba(255,255,255,.02);
+  }
+  .eyebrow .pip{
+    width:6px;height:6px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 4px rgba(200,255,94,.12);
+  }
+
+  h1{
+    font-size:clamp(2.4rem, 4.7vw, 4.15rem);
+    line-height:1.04;
+    letter-spacing:-.035em;
+    font-weight:600;
+    max-width:15ch;
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--muted);
+  }
+  .lede{
+    margin-top:26px;
+    font-size:clamp(1.02rem,1.35vw,1.16rem);
+    line-height:1.7;
+    color:var(--muted);
+    max-width:44ch;
+  }
+  .lede b{color:var(--fg);font-weight:550}
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .micro{
+    margin-top:20px;font-size:13.5px;color:var(--dim);
+    display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;
+  }
+  .micro span{display:inline-flex;align-items:center;gap:7px}
+  .micro span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--dim)}
+
+  /* ---------- 产品视觉（纯 CSS/SVG，无图片） ---------- */
+  .stage{position:relative;perspective:1600px}
+  .stage::before{
+    content:"";position:absolute;z-index:-1;
+    inset:-34% -18% -10% -18%;
+    background:radial-gradient(ellipse at 55% 42%, rgba(140,170,255,.16), transparent 62%),
+               radial-gradient(ellipse at 30% 70%, rgba(200,255,94,.09), transparent 55%);
+    filter:blur(10px);
+  }
+  .app{
+    position:relative;
+    border-radius:var(--r-lg);
+    border:1px solid var(--line-strong);
+    background:linear-gradient(180deg, #14171f 0%, #0b0d12 100%);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.06) inset,
+      0 40px 90px -30px rgba(0,0,0,.9),
+      0 0 0 1px rgba(0,0,0,.5);
+    overflow:hidden;
+    transform:rotateX(7deg) rotateY(-9deg) rotateZ(.6deg);
+    transform-origin:center;
+    animation:float 12s var(--ease) infinite alternate;
+  }
+  @keyframes float{
+    from{transform:rotateX(7deg) rotateY(-9deg) rotateZ(.6deg) translateY(0)}
+    to{transform:rotateX(4deg) rotateY(-5.5deg) rotateZ(.6deg) translateY(-10px)}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .app{animation:none}
+    *{transition-duration:.01ms !important}
+  }
+  .app-bar{
+    display:flex;align-items:center;gap:7px;
+    height:42px;padding:0 14px;
+    border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.02);
+  }
+  .app-bar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.16)}
+  .app-title{margin-left:auto;font-size:11.5px;color:var(--dim);letter-spacing:.02em}
+  .app-body{
+    display:grid;grid-template-columns:1fr 1.15fr 1fr;
+    gap:1px;background:var(--line);
+  }
+  .col{background:#0a0c11;padding:14px 13px 22px;min-height:246px}
+  .col-label{
+    font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--dim);margin-bottom:14px;
+  }
+  .slot{
+    font-size:11.5px;color:var(--muted);
+    padding:8px 9px;border-radius:var(--r-sm);
+    border:1px solid transparent;margin-bottom:7px;
+    background:rgba(255,255,255,.025);
+    display:flex;gap:8px;align-items:baseline;
+  }
+  .slot b{color:var(--dim);font-weight:500;font-size:10.5px;font-variant-numeric:tabular-nums}
+  .slot.is-active{
+    background:rgba(200,255,94,.07);
+    border-color:rgba(200,255,94,.28);
+    color:var(--fg);
+  }
+  .line{height:7px;border-radius:99px;background:rgba(255,255,255,.10);margin-bottom:11px}
+  .line.w90{width:90%} .line.w76{width:76%} .line.w84{width:84%}
+  .line.w54{width:54%} .line.w68{width:68%}
+  .line.head{height:10px;background:rgba(255,255,255,.20);width:62%;margin-bottom:18px}
+  .task{
+    display:flex;align-items:center;gap:8px;
+    font-size:11.5px;color:var(--muted);
+    padding:8px 9px;border-radius:var(--r-sm);
+    background:rgba(255,255,255,.025);margin-bottom:7px;
+  }
+  .tick{
+    width:12px;height:12px;border-radius:4px;flex:none;
+    border:1px solid rgba(200,255,94,.45);
+    background:rgba(200,255,94,.10);
+  }
+  .app-foot{
+    display:flex;align-items:center;gap:8px;
+    padding:11px 14px;border-top:1px solid var(--line);
+    font-size:11px;color:var(--dim);background:rgba(255,255,255,.015);
+  }
+  .app-foot .key{
+    margin-left:auto;border:1px solid var(--line);border-radius:5px;
+    padding:1px 6px;font-size:10px;color:var(--muted);
+  }
+
+  /* ---------- 通用 section ---------- */
+  .section{padding:104px 0}
+  .section-head{max-width:52ch;margin-bottom:52px}
+  .kicker{
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--dim);margin-bottom:16px;
+  }
+  h2{
+    font-size:clamp(1.6rem,2.9vw,2.35rem);
+    line-height:1.16;letter-spacing:-.028em;font-weight:600;
+  }
+  .section-head p{margin-top:16px;color:var(--muted);max-width:46ch}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line)}
+  .card{background:var(--bg);padding:34px 30px 38px}
+  .card .n{
+    font-size:11.5px;color:var(--dim);font-variant-numeric:tabular-nums;
+    letter-spacing:.1em;margin-bottom:26px;
+  }
+  .card h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+  .card p{font-size:14.5px;color:var(--muted);line-height:1.7}
+
+  /* ---------- 对比 ---------- */
+  .diff{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+  .diff-col{background:var(--bg-soft);padding:30px}
+  .diff-col.us{background:linear-gradient(180deg, rgba(200,255,94,.05), rgba(200,255,94,.01))}
+  .diff-col h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:22px}
+  .diff-col.us h3{color:var(--accent)}
+  .diff-col ul{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+  .diff-col li{font-size:14.5px;color:var(--muted);display:flex;gap:11px;line-height:1.6}
+  .diff-col li::before{content:"—";color:var(--dim);flex:none}
+  .diff-col.us li{color:var(--fg)}
+  .diff-col.us li::before{content:"→";color:var(--accent)}
+
+  /* ---------- 定价 ---------- */
+  .price-band{
+    display:flex;flex-wrap:wrap;align-items:center;gap:24px 40px;
+    border:1px solid var(--line);border-radius:var(--r-md);
+    padding:28px 32px;
+    background:linear-gradient(120deg, rgba(255,255,255,.035), rgba(255,255,255,.005));
+  }
+  .price-band .p-main{font-size:15px;color:var(--fg);font-weight:550}
+  .price-band .p-main small{display:block;font-size:13.5px;color:var(--muted);font-weight:400;margin-top:5px}
+  .price-band .spacer{flex:1 1 40px}
+
+  /* ---------- 尾 CTA ---------- */
+  .final{
+    text-align:center;
+    padding:110px 0 96px;
+    border-top:1px solid var(--line);
+    position:relative;
+  }
+  .final::before{
+    content:"";position:absolute;inset:auto 0 -60% 0;height:420px;z-index:-1;
+    background:radial-gradient(ellipse at 50% 0%, rgba(200,255,94,.10), transparent 68%);
+  }
+  .final h2{max-width:22ch;margin-inline:auto}
+  .final .cta-row{justify-content:center}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;font-size:13.5px;color:var(--dim)}
+  .foot-inner{display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px}
+  .foot-links{display:flex;flex-wrap:wrap;gap:24px;margin-left:auto}
+  .foot-links a:hover{color:var(--fg)}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:64px}
+    h1{max-width:20ch}
+    .stage{max-width:620px;margin-inline:auto;width:100%}
+    .app{transform:none;animation:none}
+    .cards{grid-template-columns:1fr}
+    .diff{grid-template-columns:1fr}
+    .section{padding:78px 0}
+  }
+  @media (max-width:760px){
+    .nav-links{display:none}
+    .hero{padding-top:56px}
+    .col.doc{display:none}
+    .app-body{grid-template-columns:1fr 1fr}
+    .col{min-height:210px}
+    .container{padding-inline:20px}
+    .cards .card{padding:28px 22px 32px}
+    .diff-col{padding:24px}
+  }
+  @media (max-width:420px){
+    .btn{width:100%}
+    .nav-actions .login{display:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<div class="wrap">
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <!-- TODO 品牌名/字标为占位，替换为真实产品名 -->
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Acme
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#what">产品</a>
+        <a href="#pricing">价格</a>
+        <a href="#diff">为什么不是 Notion</a>
+        <a href="/docs">文档</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="login" href="/login">登录</a>
+        <a class="btn btn-primary btn-sm" href="/signup">免费开始</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HERO：5 秒内回答 是什么 / 给谁 / 为什么不一样 ================= -->
+    <section class="hero container">
+      <div class="hero-grid">
+
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="pip" aria-hidden="true"></span>AI 工作台 · 为 3–30 人产品团队</span>
+
+          <h1>文档、日程、进度<br><em>一个 AI 替你收拾干净</em></h1>
+
+          <p class="lede">
+            Acme 把团队<b>写的东西</b>、<b>排的会</b>、<b>推进的事</b>放在同一个工作台里。
+            会开完，AI 自动整理结论、更新进度、提醒下一步——你不用再回头补文档。
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="/signup">免费开始</a>
+            <a class="btn btn-ghost" href="#demo">看 90 秒演示</a>
+          </div>
+
+          <!-- 这条直接消解客服记录里的流失原因：日历接入是可选步骤 -->
+          <p class="micro">
+            <span>无需信用卡</span>
+            <span>接入日历可选，跳过也能用</span>
+            <span>2 分钟建好第一个空间</span>
+          </p>
+        </div>
+
+        <!-- 产品视觉：纯 CSS 拼装，示意"三件事在同一处" -->
+        <div class="stage">
+          <div class="app" aria-hidden="true">
+            <div class="app-bar">
+              <i></i><i></i><i></i>
+              <span class="app-title">本周 · 产品迭代</span>
+            </div>
+            <div class="app-body">
+              <div class="col cal">
+                <div class="col-label">日程</div>
+                <div class="slot"><b>09:30</b> 每日站会</div>
+                <div class="slot is-active"><b>10:00</b> 迭代评审</div>
+                <div class="slot"><b>14:00</b> 用户访谈</div>
+                <div class="slot"><b>16:30</b> 发布窗口</div>
+              </div>
+              <div class="col doc">
+                <div class="col-label">文档</div>
+                <div class="line head"></div>
+                <div class="line w90"></div>
+                <div class="line w76"></div>
+                <div class="line w84"></div>
+                <div class="line w54"></div>
+                <div class="line w68"></div>
+              </div>
+              <div class="col ai">
+                <div class="col-label">AI 下一步</div>
+                <div class="task"><span class="tick"></span>整理评审结论</div>
+                <div class="task"><span class="tick"></span>同步到路线图</div>
+                <div class="task"><span class="tick"></span>通知 3 位相关人</div>
+              </div>
+            </div>
+            <div class="app-foot">
+              评审结论已归档到「Q4 路线图」
+              <span class="key">⌘K</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 是什么：三件事 ================= -->
+    <section class="section container" id="what">
+      <div class="section-head">
+        <p class="kicker">一个工作台，三件事</p>
+        <h2>你不需要再在三个工具之间搬运信息</h2>
+        <p>同样的数据同时是会议记录、任务看板和日程——改一处，三处都对。</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="n">01</div>
+          <h3>写 —— 会议与决策自动成文</h3>
+          <p>接入会议后自动生成结构化记录：结论、分歧、待办分开列，不再是一大段速记。</p>
+        </article>
+        <article class="card">
+          <div class="n">02</div>
+          <h3>排 —— 日程和进度同一份数据</h3>
+          <p>把任务拖到时间轴就排进了团队日历，谁什么时候做什么，一眼看得见。</p>
+        </article>
+        <article class="card">
+          <div class="n">03</div>
+          <h3>推 —— AI 给下一步，而不是给摘要</h3>
+          <p>它盯的是"还差什么没做"：谁没回、哪条没验收、哪个承诺过期了。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= 对比：正面回应"和 Notion 有什么区别" ================= -->
+    <section class="section container" id="diff">
+      <div class="section-head">
+        <p class="kicker">这是最常被问的问题</p>
+        <h2>和 Notion 的区别，一句话</h2>
+        <p>Notion 是一个很自由的编辑器，日程和进度要你自己搭；Acme 是搭好的工作台，AI 直接产出下一步动作。</p>
+      </div>
+
+      <div class="diff">
+        <div class="diff-col">
+          <h3>文档工具</h3>
+          <ul>
+            <li>日历、看板靠模板和集成拼出来</li>
+            <li>AI 是附加功能，产出是"摘要"</li>
+            <li>信息分散在不同页面，容易过期</li>
+            <li>上手要先设计结构</li>
+          </ul>
+        </div>
+        <div class="diff-col us">
+          <h3>Acme</h3>
+          <ul>
+            <li>日程、文档、进度天生同一份数据</li>
+            <li>AI 产出可执行的动作，带负责人和时间</li>
+            <li>过期内容会被标出来，而不是沉底</li>
+            <li>开箱就是产品团队的默认结构</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 定价锚点：不用跳转就能看到入口 ================= -->
+    <section class="section container" id="pricing" style="padding-top:0">
+      <div class="price-band">
+        <div class="p-main">
+          按人计费，无隐藏项
+          <!-- TODO 填入真实价格与套餐，避免访客再问"价格页在哪" -->
+          <small>免费版不限成员人数 · 团队版按活跃成员计费 · 年付有折扣</small>
+        </div>
+        <div class="spacer"></div>
+        <a class="btn btn-ghost" href="/pricing">查看完整价格 →</a>
+      </div>
+    </section>
+
+    <!-- ================= 尾 CTA ================= -->
+    <section class="final" id="demo">
+      <div class="container">
+        <h2>先看看它怎么处理你上周的那场会</h2>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="/signup">免费开始</a>
+          <a class="btn btn-ghost" href="/demo">看 90 秒演示</a>
+        </div>
+        <p class="micro" style="justify-content:center">
+          <span>无需信用卡</span>
+          <span>接入日历可选</span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container foot-inner">
+      <span>© 2026 Acme</span>
+      <nav class="foot-links" aria-label="页脚">
+        <a href="/pricing">价格</a>
+        <a href="/docs">文档</a>
+        <a href="/security">安全</a>
+        <a href="/privacy">隐私</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

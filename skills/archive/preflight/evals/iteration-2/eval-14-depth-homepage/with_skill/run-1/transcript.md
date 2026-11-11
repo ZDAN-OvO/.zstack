@@ -1,0 +1,64 @@
+TOOL ls: {"path": "/tmp/pf-14-with_skill-f9dliiua"}
+
+TOOL bash: {"command": "cd /tmp/pf-14-with_skill-f9dliiua && git rev-parse --show-toplevel 2>/dev/null; echo \"---\"; find . -type f -not -path './.git/*' | head -50"}
+
+RESULT: analytics/
+index.html
+support/
+
+RESULT: ---
+./index.html
+./support/chats-sample.md
+./analytics/weekly.csv
+
+
+TOOL read: {"path": "/tmp/pf-14-with_skill-f9dliiua/index.html"}
+
+TOOL read: {"path": "/tmp/pf-14-with_skill-f9dliiua/analytics/weekly.csv"}
+
+TOOL read: {"path": "/tmp/pf-14-with_skill-f9dliiua/support/chats-sample.md"}
+
+RESULT: <h1>The all-in-one platform for modern teams</h1>
+<p>Boost productivity with our seamless, AI-powered workspace.</p>
+<a href="/signup">Get started</a>
+
+
+RESULT: week,visits,signups,conversion,top_source
+2026-10-06,12000,480,4.0%,organic
+2026-10-13,11800,460,3.9%,organic
+2026-10-20,19500,390,2.0%,paid_social
+2026-10-27,21000,399,1.9%,paid_social
+
+
+RESULT: - "我还是没搞懂你们和 Notion 有什么区别"
+- "价格页在哪？"
+- "注册后要连日历，我就放弃了"
+
+
+ASSISTANT: 我看过工作区的三个文件（`analytics/weekly.csv`、`index.html`、`support/chats-sample.md`）。先说结论：**转化率掉一半，不是首页文案的问题，至少这组数据不支持这个诊断。**
+
+## 数据里实际发生的事
+
+| 周 | 访问 | 注册 | 混合转化率 | 主来源 |
+|---|---|---|---|---|
+| 10-06 | 12,000 | 480 | 4.0% | organic |
+| 10-13 | 11,800 | 460 | 3.9% | organic |
+| 10-20 | 19,500 | 390 | 2.0% | paid_social |
+| 10-27 | 21,000 | 399 | 1.9% | paid_social |
+
+- 访问量涨了 63%（+7,500），**注册绝对数没有涨，反而从 480 降到 390**。如果新增的 7,500 次访问按原来的 4% 转化，应该多出约 300 个注册，总数约 780，实际是 390。所以下降是分子不动、分母变大的算术结果，不是老流量的转化变差了。
+- 有一件事能直接验证：**10-20 那周有没有改过统计口径或埋点**（访问被重复计数、注册事件没上报）。注册数跌而不是平，值得先排除这一项。
+- 我算不出 paid_social 单独的转化率，因为这个 CSV 每周只有一行混合数据，没有分来源的注册数。要确认付费流量到底转化多少，需要按来源拆开的注册数。
+
+## 你的请求要成立，还缺三件事（只有你知道）
+
+1. **这个数字服务于哪个决定？** 是调整投放预算、还是向老板/投资人解释、还是决定要不要改产品？不同目的，该看的是注册数、混合转化率、还是付费流量的单客成本——选错指标会得出相反的结论。
+2. **首页现在主要写给谁看？** 自然搜索来的评估型用户，和付费社交来的冷流量，要的是两套文案。付费流量几乎不带注册，先要判断是人群不对、落地页路径不对、还是文案不对。
+3. **10-20 前后除了投放，页面或产品有别的改动吗？**（比如注册流程、日历授权）
+4. **`support/chats-sample.md` 里三条反馈**（和 Notion 的区别、价格页找不到、注册要连日历所以放弃）是 3 条，只能算线索不算证据。有没有更多工单或访谈可以拉出来，验证这三条是不是高频？
+
+## 关于重写文案本身
+
+现在的首页只有三行：一句 "all-in-one platform for modern teams"、一句 productivity、一个按钮——没有人能从这里看出它和 Notion 的区别，也没有价格入口。这两点对着支持反馈，确实值得改。但改它**不会恢复混合转化率**，那是投放渠道的问题；改它的正确目标是提升自然流量的注册率，并且需要一个对照（同期老文案 vs 新文案，或者至少分来源看注册数），否则改完你无法判断有没有用。
+
+回答上面 1–4，我就把它写成 `local/plans/` 下的一页计划（含交付物、禁区、完成标准、以及由谁判定）。如果你希望现在就动手，也可以只做一件事：我按"自然搜索评估型用户"写一版文案，同时把付费流量的问题单独列出来——你说要哪个。

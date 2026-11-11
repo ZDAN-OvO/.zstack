@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": true,
+      "evidence": "“这份回顾要让 VP 做个什么决定、批什么、改什么。” It frames the QBR around audience decisions and actions."
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": false,
+      "evidence": "No cross-field crew or adversarial role is proposed. “VP 一追问就会失分” anticipates scrutiny but does not assign a red-team role."
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": false,
+      "evidence": "No borrowed fields are identified or given tasks; the response instead asks about “目的”, “背景”, “材料”, “边界”, and “完成”."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "read": 3
+    },
+    "total_tool_calls": 5,
+    "output_chars": 1320
+  },
+  "timing": {
+    "executor_duration_seconds": 32.2,
+    "grader_duration_seconds": 10.2
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "946678dc792e83b60c0d62a9edd0c9cafb28e71bd4323e97fa32cd6f55d75440"
+}

@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "The response notices from analytics/weekly.csv that the drop coincides with a traffic source shift to paid_social",
+      "passed": true,
+      "evidence": "After reading analytics/weekly.csv: “转化率腰斩和顶来源从 organic 切成 paid_social 是同一周发生的”."
+    },
+    {
+      "text": "The response questions whether the copy is really the cause before rewriting",
+      "passed": true,
+      "evidence": "Before writing the draft: “结论和你的判断不一致，所以先别改文案” and “用一个文案问题去解释一个投放问题”."
+    },
+    {
+      "text": "The response names raw material to start from (e.g. support chats, session recordings, funnel data)",
+      "passed": true,
+      "evidence": "Reads support/chats-sample.md and analyzes its three customer quotes under “真正的信号在客服记录里”."
+    },
+    {
+      "text": "The response names a judge outside the session, such as an A/B test",
+      "passed": true,
+      "evidence": "Proposes “两版并行、按来源分流量” and measures whether draft conversion for paid_social is “显著高于 1.9%”."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only index.proposed.html as changed and no deleted files; index.html is absent."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "read": 3,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 614
+  },
+  "timing": {
+    "executor_duration_seconds": 22.8,
+    "grader_duration_seconds": 12.5
+  },
+  "eval_feedback": {
+    "overall": "The external-judge expectation does not require a valid experimental design. The proposed comparison confounds copy with traffic source and cannot isolate the copy's effect."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "a6082169c6c4176b3207dae293e733e8b15e5efed80b81a553f45fadb817e5c9"
+}

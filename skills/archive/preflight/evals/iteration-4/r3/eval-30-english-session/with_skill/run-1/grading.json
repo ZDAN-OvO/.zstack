@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS both include local/plans/nightly-job-reliability.md."
+    },
+    {
+      "text": "The plan is written in English",
+      "passed": true,
+      "evidence": "The plan uses English throughout, including: \"Purpose: no more missed nightly jobs. Two failed silently last month.\""
+    },
+    {
+      "text": "The plan's judge is outside the session (e.g. monitoring of job runs, alerting), not the assistant's own check",
+      "passed": true,
+      "evidence": "\"Judge: an outside session running the fault-injection harness above, plus one per-job duplicate-run test.\""
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "write": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 1062
+  },
+  "timing": {
+    "executor_duration_seconds": 38.3,
+    "grader_duration_seconds": 16.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "781c1dd6fd45c6968662b56716d8ad0b637feb31e378b6071c7c11d2661a9bd9"
+}

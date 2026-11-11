@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES lists local/plans/cron-to-queue-migration.md, and FILE_CONTENTS includes its contents."
+    },
+    {
+      "text": "The plan is written in English",
+      "passed": true,
+      "evidence": "The plan states: \"Purpose: \\\"no more missed nightly jobs.\\\"\" and \"Which queue, given free/self-hosted only\"."
+    },
+    {
+      "text": "The plan's judge is outside the session (e.g. monitoring of job runs, alerting), not the assistant's own check",
+      "passed": true,
+      "evidence": "\"Judge: your review of the checklists\" plus \"canary job stops, alert arrives, missed run is replayed correctly, with the script and log output attached.\""
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "find": 1,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 1370
+  },
+  "timing": {
+    "executor_duration_seconds": 32.0,
+    "grader_duration_seconds": 7.8
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "31e20c67d9136273f62f6dfc94c505ec84c23b67184cd687383e3e201b6348a8"
+}

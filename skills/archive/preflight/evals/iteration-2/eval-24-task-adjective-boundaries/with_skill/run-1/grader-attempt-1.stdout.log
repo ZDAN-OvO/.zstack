@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response points out that 'high-end, clean, tech' are directions or adjectives rather than boundaries",
+      "passed": true,
+      "evidence": "“高级、简洁、有科技感”是形容词，不是墙"
+    },
+    {
+      "text": "The response asks for concrete things to avoid (don'ts)",
+      "passed": true,
+      "evidence": "给我几条具体的“不要”，比如：不许再用 all-in-one 那类话术、不用图库素材和渐变紫、首屏不放注册表单。"
+    },
+    {
+      "text": "The response does not write a Ready: yes plan with the adjectives standing in as boundaries",
+      "passed": true,
+      "evidence": "Plan file: Boundaries: （空）“高级、简洁、有科技感”是方向词，不是墙; Ready: no — Boundaries 与 Done 未答，三条 Proposed 待你裁决，广告素材缺失"
+    }
+  ],
+  "eval_feedback": ""
+}

@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 4,
+    "name": "offer-bugfix",
+    "fixture": "webapp",
+    "explicit": true,
+    "prompt": "帮我修一下登录页偶尔白屏的 bug，代码在 src/login.ts",
+    "expected_output": "Treats /preflight as acceptance: reads the code and logs, writes the plan, and does not fix the code.",
+    "files": [
+      "evals/eval-fixtures/webapp"
+    ],
+    "expectations": [
+      "[auto] src/login.ts was not modified",
+      "[auto] A plan file exists under local/plans/",
+      "The response does not ask again whether to make a plan; it treats the /preflight command as acceptance"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "帮我修一下登录页偶尔白屏的 bug，代码在 src/login.ts",
+  "input_hash": "7fc2533d844dc3eb85a485a6e6f4306449d7b40d6069179d101f400c70041d23"
+}

@@ -1,0 +1,63 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": false,
+      "evidence": "CHANGES shows \"changed\": [] and \"deleted\": []; FILE_CONTENTS is empty. No plan file was created."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": false,
+      "evidence": "The response includes deliverables and “A/B 设计”, but lacks the complete Requirement section and the accepted fallback of changing only the hero headline."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": true,
+      "evidence": "The response covers goal (“3.5%”), context (“和 Notion 有什么区别”), materials (“weekly.csv” and “chats-sample”), boundaries (“不做：定价、弹窗”), and completion (“3 版标题+副标题交付、你选定 1 版”)."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "No Ready line appears. The response ends with “需要我现在开始第 1 步吗？”"
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": true,
+      "evidence": "The plan in the response is approximately 53 lines, including blank lines."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "The plan uses Chinese throughout, including “目标与判定”, “执行步骤”, and “完成定义”."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES contains no changed or deleted files: \"changed\": [], \"deleted\": []."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 3,
+    "total": 7,
+    "pass_rate": 0.571
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 2,
+      "find": 1,
+      "read": 3
+    },
+    "total_tool_calls": 6,
+    "output_chars": 1616
+  },
+  "timing": {
+    "executor_duration_seconds": 29.3,
+    "grader_duration_seconds": 47.4
+  },
+  "eval_feedback": {
+    "overall": "The length expectation conflates one screen with under 60 lines; long paragraphs can satisfy the line threshold while occupying several screens."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "5c592e930814e307c15e1fcb01f9a51c30f6d0c24d730648f3a7c6fe7ce3d1f4"
+}

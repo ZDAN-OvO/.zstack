@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 11,
+    "name": "stage-decide",
+    "fixture": "empty",
+    "explicit": true,
+    "prompt": "我在 Postgres 和 MongoDB 之间选。标准就两条：团队只会 SQL；数据强关系。帮我定",
+    "expected_output": "Decide stage: weighs options against the stated criteria and recommends.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "[auto] No file was created under local/plans/",
+      "The response evaluates the options against the two stated criteria (team knows SQL; relational data)",
+      "The response gives a decision (Postgres) tied to those criteria"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "我在 Postgres 和 MongoDB 之间选。标准就两条：团队只会 SQL；数据强关系。帮我定",
+  "input_hash": "44bf7e24e0902b9dd3e8e092072527ea0af2e1a55d06b7b6f1f511d001694743"
+}

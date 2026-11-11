@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "The response read logs/crashes-2026-11.csv (mentions the login.ts:5 TypeError as most frequent)",
+      "passed": true,
+      "evidence": "Transcript reads \"cat logs/crashes-2026-11.csv\"; response identifies the login.ts:5 TypeError as most frequent: \"412 + 377 = **789**\"."
+    },
+    {
+      "text": "The response suggests handing over a bigger outcome than one crash (e.g. keep the app or login crash-free)",
+      "passed": false,
+      "evidence": "\"另外两个崩溃没动…需要的话可以继续查。\" offers further investigation but does not propose responsibility for a broader outcome."
+    },
+    {
+      "text": "The response keeps the single-crash fix as the fallback or lower rung",
+      "passed": false,
+      "evidence": "\"修好了。崩溃排行第一的是\" presents the single-crash fix as the completed task, with no broader outcome or fallback hierarchy."
+    },
+    {
+      "text": "The response asks the user to accept, rewrite or decline the bigger outcome rather than deciding alone",
+      "passed": false,
+      "evidence": "\"需要的话可以继续查。\" does not ask the user to accept, rewrite, or decline a proposed bigger outcome."
+    },
+    {
+      "text": "[auto] No source file under src/ was modified",
+      "passed": false,
+      "evidence": "CHANGES lists \"src/login.ts\" as changed; FILE_CONTENTS includes added optional chaining, a catch handler, and escapeAttr."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 5,
+      "read": 1,
+      "edit": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 895
+  },
+  "timing": {
+    "executor_duration_seconds": 21.0,
+    "grader_duration_seconds": 11.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "78566a06ecad727a2679fba225fa50a80f83f8f18542b642b0caa1330f83d00e"
+}

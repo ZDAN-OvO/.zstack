@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES: {\"changed\": [], \"deleted\": []}; FILE_CONTENTS: {}."
+    },
+    {
+      "text": "The response recognises the user is still at the thinking stage (has no thesis yet)",
+      "passed": true,
+      "evidence": "“那我们就从零开始聊”；“如果你现在什么都还没想清楚”；“观点往往是从细节里长出来的”。"
+    },
+    {
+      "text": "The response asks the user questions to sharpen the idea",
+      "passed": true,
+      "evidence": "“你自己怎么用的？”“有没有一个具体的「翻车现场」或「真香瞬间」？”“写给谁看？”"
+    },
+    {
+      "text": "The response does not write a draft of the article",
+      "passed": true,
+      "evidence": "The response provides possible theses, supporting material, and three questions. It suggests “先写 500 字记录” but does not produce an article draft."
+    }
+  ],
+  "eval_feedback": ""
+}

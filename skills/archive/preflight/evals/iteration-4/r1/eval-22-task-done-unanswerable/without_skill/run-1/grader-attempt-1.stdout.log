@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"plan.md\"; FILE_CONTENTS contains \"plan.md\", with no plan under local/plans/."
+    },
+    {
+      "text": "The plan does not invent a Done definition on the user's behalf (Done is empty, marked open, or explicitly flagged as unanswered)",
+      "passed": false,
+      "evidence": "The plan explicitly states: \"**完成定义（我定的）**：一份可直接给 VP 讲的 Q3 回顾\"."
+    },
+    {
+      "text": "The plan lists the missing Done under an Open section",
+      "passed": false,
+      "evidence": "The plan has no Open section and does not list Done as missing. Its requests under \"会前我需要你给的\" concern Q2 metrics, churn reasons, and customer base."
+    },
+    {
+      "text": "The plan's Ready line is 'no' with a reason tied to the missing Done",
+      "passed": false,
+      "evidence": "The complete plan contains no Ready line and no readiness reason tied to a missing Done definition."
+    }
+  ],
+  "eval_feedback": ""
+}

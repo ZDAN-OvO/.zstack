@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 10,
+    "name": "stage-explore",
+    "fixture": "empty",
+    "explicit": true,
+    "prompt": "新项目的数据库选 Postgres 还是 MongoDB？我还没想好看什么标准",
+    "expected_output": "Names explore stage; maps options and trade-offs instead of a final recommendation or plan file.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "[auto] No file was created under local/plans/",
+      "The response treats this as an exploring stage and lays out options with trade-offs",
+      "The response does not jump to one final recommendation as if criteria were known"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 新项目的数据库选 Postgres 还是 MongoDB？我还没想好看什么标准",
+  "input_hash": "faa49c03948371e84af7fd7f1f2a252ad2080acb51e7b570d773a185e8514596"
+}

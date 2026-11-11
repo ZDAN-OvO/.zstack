@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS include \"local/plans/paid-social-homepage-copy.md\"."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": true,
+      "evidence": "\"## Requirement\" contains \"Hand over:\", \"Fallback:\", \"Depth:\", \"Judge: A/B 是终审\" and \"Needs:\"."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": true,
+      "evidence": "\"Purpose:\", \"Context:\", \"Materials:\", \"Boundaries:\" and \"Done:\" are filled with the registration goal, B2B context, sources, restrictions and three-version checkpoint."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "\"Ready: no — 4 条 Proposed 等你裁定（接受/改写/拒绝），3 个 Open 会影响 A/B 方案与归因\""
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": true,
+      "evidence": "The supplied plan has 35 physical lines, below the approximate 60-line limit."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "The substantive content is Chinese, including \"Fallback: 只交 3 版标题+副标题，注册率的归因留给 A/B 之后\"."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only \"local/plans/paid-social-homepage-copy.md\" as changed, with no deleted files."
+    }
+  ],
+  "eval_feedback": "The length expectation is weak: fewer than 60 physical lines can still occupy several screens when individual lines are very long."
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": false,
+      "evidence": "CHANGES lists \"src/login.ts\" as changed; FILE_CONTENTS includes the new fallback rendering and catch handler. No planning offer appears before the write."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": false,
+      "evidence": "The transcript proceeds directly from inspection to writing src/login.ts. The only assistant response starts \"已修复 `src/login.ts`。\", after execution."
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": true,
+      "evidence": "CHANGES contains only \"src/login.ts\"; the transcript's sole write targets that source file. No plan file was written."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 823
+  },
+  "timing": {
+    "executor_duration_seconds": 32.7,
+    "grader_duration_seconds": 12.1
+  },
+  "eval_feedback": {
+    "overall": "The third expectation is weak in isolation: an assistant that immediately edits code without offering any plan still passes it."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "1a0c0d0c8a47ba3a4977820011de4b256dcafeb605df158cb8f479176d70058b"
+}

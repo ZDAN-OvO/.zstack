@@ -1,0 +1,12 @@
+{
+  "changed": [
+    "竞品分析报告-下季度USP取向.md"
+  ],
+  "deleted": [],
+  "excluded_directory_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ]
+}

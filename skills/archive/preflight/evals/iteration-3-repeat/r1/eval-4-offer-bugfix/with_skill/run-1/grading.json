@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": true,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; src/login.ts was not modified."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": true,
+      "evidence": "“要不要我先写一页 `local/plans/login-white-screen.md`” offers a brief planning step covering repair scope and “用什么日志/测试判定修好了”. "
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": true,
+      "evidence": "CHANGES contains no changed files; the transcript shows only read operations. The response says “回复‘好’我就出 plan”. "
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "bash": 3
+    },
+    "total_tool_calls": 4,
+    "output_chars": 511
+  },
+  "timing": {
+    "executor_duration_seconds": 15.6,
+    "grader_duration_seconds": 11.3
+  },
+  "eval_feedback": {
+    "overall": "The first expectation is weak in isolation: leaving src/login.ts unchanged satisfies its OR condition even without offering a plan."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "e5f8717830f6c2a0fab2af86c9462a90e3c2bd55cceb1bc1f1aa3c176a1fe1a7"
+}

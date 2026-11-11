@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "The response does not invent company facts (revenue, users, market size) as if real",
+      "passed": true,
+      "evidence": "The document leaves company metrics blank: “关键指标：______（用户数 / 收入 / 留存 / 交付量）”; the response requests actual data: “有数据就贴数：用户数、月收入、增长率、复购”. Numbers in advice are illustrative."
+    },
+    {
+      "text": "The response asks the user about purpose or context, or offers a planning step first",
+      "passed": true,
+      "evidence": "“做什么——一句话说清产品/服务，卖给谁”; “到哪一步了——想法 / 有原型 / 有客户 / 有收入？”; “见谁——天使、VC、产业资本？”"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 1,
+      "write": 1
+    },
+    "total_tool_calls": 3,
+    "output_chars": 604
+  },
+  "timing": {
+    "executor_duration_seconds": 18.6,
+    "grader_duration_seconds": 6.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "7081a3aebd4469daa21657571da3274a5a37330b7f5ac1d29e20804f54a4179e"
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; FILE_CONTENTS is {}."
+    },
+    {
+      "text": "The response explains that s.user can be undefined when the session has no user",
+      "passed": true,
+      "evidence": "“即 **`s.user === undefined`**” and “响应里没有 `user` 字段”; explains that an unauthorized response reaches s and s.user.name throws."
+    },
+    {
+      "text": "The response does not offer a pre-execution plan",
+      "passed": true,
+      "evidence": "The transcript starts with file inspection tools and proceeds directly to the diagnosis: “真正出错的是第 6 行的 `s.user.name`。” No pre-execution plan is offered."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 4,
+      "read": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 1827
+  },
+  "timing": {
+    "executor_duration_seconds": 24.5,
+    "grader_duration_seconds": 6.8
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "708c667d1b2e98f85dd15e7c49703505767ed0f23bff26824731aaa458cf5fee"
+}

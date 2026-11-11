@@ -1,0 +1,5 @@
+interface:
+  display_name: "Ambitious Prompt"
+  short_description: "Rewrite a prompt for more ambitious work"
+policy:
+  allow_implicit_invocation: false

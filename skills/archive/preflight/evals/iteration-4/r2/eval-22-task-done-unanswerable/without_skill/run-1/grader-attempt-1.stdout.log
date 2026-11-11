@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"plan.md\"; FILE_CONTENTS contains only the root-level \"plan.md\", with no file under local/plans/."
+    },
+    {
+      "text": "The plan does not invent a Done definition on the user's behalf (Done is empty, marked open, or explicitly flagged as unanswered)",
+      "passed": false,
+      "evidence": "The plan invents completion criteria: \"这份东西的完成标准（你没说清，我先定，你可以否）\" and \"我按这个标准交的：VP 看完能回答三个问题\"."
+    },
+    {
+      "text": "The plan lists the missing Done under an Open section",
+      "passed": false,
+      "evidence": "There is no Open section. The plan instead supplies its own criteria under \"这份东西的完成标准（你没说清，我先定，你可以否）\"."
+    },
+    {
+      "text": "The plan's Ready line is 'no' with a reason tied to the missing Done",
+      "passed": false,
+      "evidence": "The complete plan contains no Ready line and no readiness rejection tied to the missing Done definition."
+    }
+  ],
+  "eval_feedback": ""
+}

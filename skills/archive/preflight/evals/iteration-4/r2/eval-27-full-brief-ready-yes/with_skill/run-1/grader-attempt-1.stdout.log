@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS both contain local/plans/paid-social-hero-copy.md."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": true,
+      "evidence": "“## Requirement” includes Hand over, Fallback, Depth, Needs, and “Judge: A/B 以「付费社媒新访客注册率」为预注册主指标”."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": false,
+      "evidence": "Purpose says “挑 1 版首屏上 A/B，同时判定「文案是不是这波下滑的杠杆」”, omitting the user's explicit goal of restoring paid-social new-visitor signup conversion to 3.5%."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "“Ready: yes（开跑前只需你一句话定 3.5% 的口径）” is conditional; the response confirms “定了这句，Ready 就是 yes”, treating readiness as blocked."
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": true,
+      "evidence": "The complete plan is 32 lines, including blank lines."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "The substantive content is Chinese, including “挽回付费社媒新访客的首页注册率” and “不改定价、不加弹窗、不承诺没有的功能”."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/paid-social-hero-copy.md as changed and no deleted files."
+    }
+  ],
+  "eval_feedback": "The Ready expectation is vulnerable to a literal yes followed by conditions that contradict readiness. Specify an unconditional yes with no unresolved blockers."
+}

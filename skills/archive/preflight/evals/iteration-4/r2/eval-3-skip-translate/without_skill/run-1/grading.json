@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES contains no changed or deleted files, and FILE_CONTENTS is empty."
+    },
+    {
+      "text": "The response gives an English translation of the sentence",
+      "passed": true,
+      "evidence": "\"This week's launch has been postponed to Friday.\""
+    },
+    {
+      "text": "The response does not offer a plan",
+      "passed": true,
+      "evidence": "The full response is only: \"This week's launch has been postponed to Friday.\""
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {},
+    "total_tool_calls": 0,
+    "output_chars": 48
+  },
+  "timing": {
+    "executor_duration_seconds": 2.8,
+    "grader_duration_seconds": 9.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "51b37abafa9fa27810e193c55e5e72a67d67b34518ad34cf0ef415e068eb26dd"
+}

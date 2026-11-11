@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": true,
+      "evidence": "“拉伸目标 p75 LCP ≤1.5s” proposes a target of 1.5 seconds, half the requested 3 seconds."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": true,
+      "evidence": "“三条请你逐条裁决（接受／改写／拒绝）” explicitly includes the Depth proposal containing the 1.5-second stretch target."
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "“工具用 RUM/web-vitals、Lighthouse CI” and “判定用干净环境的 Lighthouse 断言 + 限速真机三次取 p75” specify external measurement methods."
+    }
+  ],
+  "eval_feedback": ""
+}

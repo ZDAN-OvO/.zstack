@@ -1,0 +1,21 @@
+{
+  "case": {
+    "id": 6,
+    "name": "offer-bp",
+    "fixture": "empty",
+    "explicit": true,
+    "prompt": "给我搞一份商业计划书，投资人下周要看",
+    "expected_output": "Offers a plan; asks about purpose/context rather than inventing a BP.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "The response does not invent company facts (revenue, users, market size) as if real",
+      "The response asks the user about purpose or context, or offers a planning step first"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "给我搞一份商业计划书，投资人下周要看",
+  "input_hash": "2b98a8d27baf141efab376bef7c0dd7cd2df9afcd6c54acdaea8a5eefdc3bb54"
+}

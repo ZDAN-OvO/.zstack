@@ -1,0 +1,1 @@
+This week's launch has been postponed to Friday.

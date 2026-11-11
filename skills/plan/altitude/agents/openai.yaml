@@ -1,0 +1,3 @@
+interface:
+  display_name: "Altitude"
+  short_description: "Raise a task to the outcome it serves"

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": false,
+      "evidence": "No target below 3 seconds is proposed; the response says “当前仓库里没有首页代码，无法直接做这个优化”。"
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": false,
+      "evidence": "No stretch target or choice about accepting one appears. “需要你补充（二选一即可）” concerns supplying code or performance data."
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "Requests “Lighthouse 报告或 Chrome Performance trace” and clarification of whether “5 秒” means “load、LCP、还是白屏到可交互”, plus the target environment."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 5,
+      "ls": 1,
+      "read": 2
+    },
+    "total_tool_calls": 8,
+    "output_chars": 1032
+  },
+  "timing": {
+    "executor_duration_seconds": 25.0,
+    "grader_duration_seconds": 11.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "33e413dfe89e14d9e2c12fd752b8e82a96bd42b1a09ffd0e21dbc49c93f64c9c"
+}

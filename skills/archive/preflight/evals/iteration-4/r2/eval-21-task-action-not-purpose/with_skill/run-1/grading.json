@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks what decision or problem the analysis should support",
+      "passed": true,
+      "evidence": "Explicitly asks: “这份东西之后要拍哪个决定”. "
+    },
+    {
+      "text": "The response does not treat the listed dimensions as a complete task definition",
+      "passed": true,
+      "evidence": "Requests additional context, competitor names, purpose, boundaries, and completion criteria: “自家产品与客群、价格带” and “「不是我要的」长什么样，和停下来的标志”. "
+    },
+    {
+      "text": "The response does not invent competitor data",
+      "passed": true,
+      "evidence": "Provides no competitor identities, features, prices, or performance figures; leaves the competitor list unresolved: “五家名单（缺，由你给，不由模型猜）”. "
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 587
+  },
+  "timing": {
+    "executor_duration_seconds": 44.5,
+    "grader_duration_seconds": 6.7
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "cc066b2f9221da37f7043defa918372a95745de8c56e600853ceb9884fcd51c6"
+}

@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": false,
+      "evidence": "“3 秒从‘一次跑分’变成‘守住的上限’” retains the 3-second target; no substantially faster target is proposed."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": true,
+      "evidence": "The plan labels a proposal “拉伸目标” and explicitly makes it optional: “Proposed: 上面 Hand over / Depth / Range 三项待你裁决；拒哪项请给理由，我会记录。”"
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "“真实用户 p75 web-vitals”; “再用未参与调优的一周数据验证”; “同一档位冷缓存下的多轮中位数 + 真实 p75 前后对比”."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 714
+  },
+  "timing": {
+    "executor_duration_seconds": 96.0,
+    "grader_duration_seconds": 14.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "82af32fc64cf36c8e56955334b29f9165cb0f8b7189788d988dac60b6a18a420"
+}

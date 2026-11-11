@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": true,
+      "evidence": "“交付物不是\"PPT\"，是\"VP 在会末对一个明确 ask 表态\"。”"
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": true,
+      "evidence": "“crew 是数据分析+增长+CFO 口径+红队+编辑”，并提出红队给出“不用试用期也能解释下滑”的版本。"
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": true,
+      "evidence": "计划明确分工：“数据分析（口径与重算）、增长（试用漏斗）、CFO 口径（ARR 影响）、红队（攻击因果）、编辑（每页一个动作标题）。”"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 1255
+  },
+  "timing": {
+    "executor_duration_seconds": 44.9,
+    "grader_duration_seconds": 10.7
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "bb54cebdcf75cf4a2666e8a1f9a84298b429d722739ab2d9fe7afb7b23349bf1"
+}

@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response identifies the miss as intent (audience was wrong), not method or size",
+      "passed": true,
+      "evidence": "“Purpose 那一栏写的是\"季度回顾\"这个名词，没有写受众，也没写客户看完要做什么决定。”明确将偏差归因于受众和目的缺失。"
+    },
+    {
+      "text": "The response goes back to the Task's Purpose or Context slot to fix the audience",
+      "passed": true,
+      "evidence": "Task 已改为“Purpose: 待确认 —— 客户看完这份回顾要做出什么决定？”及“Context: 事实（待确认）：面向客户”。"
+    },
+    {
+      "text": "[auto] local/plans/q3-review.md was updated with a '## Tries' section containing a dated line",
+      "passed": true,
+      "evidence": "CHANGES 列出 local/plans/q3-review.md；文件包含“## Tries”和“- 2026-11-10 客户版被打回：做成了给老板/VP 的内部 deck。”"
+    }
+  ],
+  "eval_feedback": ""
+}

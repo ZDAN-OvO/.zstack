@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": false,
+      "evidence": "The target remains “用户 3 秒内看到可用首屏”; the plan proposes “p75 LCP ≤ 3.0s” without a substantially faster target."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": false,
+      "evidence": "“把‘3 秒’换成用户侧指标（如 p75 LCP ≤ 3.0s 或首屏可交互），请裁决” requests approval of a measurement definition, but proposes no more ambitious performance target."
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "“验收靠真实用户分位数和灰度对照组”; the plan also specifies WebPageTest, Lighthouse CI, and comparison of control versus experiment p75 LCP."
+    }
+  ],
+  "eval_feedback": ""
+}

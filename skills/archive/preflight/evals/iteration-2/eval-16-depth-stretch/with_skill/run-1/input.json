@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 16,
+    "name": "depth-stretch",
+    "fixture": "webapp",
+    "explicit": true,
+    "prompt": "首页加载 5 秒，帮我优化到 3 秒",
+    "expected_output": "Suggests a stretch target (e.g. ~200ms-1s) that forces a different method, as a suggestion the user can decline.",
+    "files": [
+      "evals/eval-fixtures/webapp"
+    ],
+    "expectations": [
+      "The response suggests a much more ambitious performance target than 3 seconds",
+      "The stretch target is framed as a suggestion for the user to accept or decline",
+      "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 首页加载 5 秒，帮我优化到 3 秒",
+  "input_hash": "9c6400aea03281a47b565d03e4ad29e4598fd0c2b4f9c0e1f5a17eb93ba41aaa"
+}

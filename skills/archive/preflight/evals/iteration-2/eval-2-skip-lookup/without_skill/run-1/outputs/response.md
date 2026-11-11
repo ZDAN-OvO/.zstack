@@ -1,0 +1,1 @@
+Node **>=20**（定义在 `package.json` 的 `engines.node` 字段中，README 也指向这里）。项目中没有 `.nvmrc` 或 `.node-version` 文件。

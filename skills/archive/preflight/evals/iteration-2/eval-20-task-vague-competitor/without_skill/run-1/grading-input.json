@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "帮我做个竞品分析",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response asks what the analysis is for, i.e. which decision it supports",
+    "The response does not produce a competitor analysis with invented companies or data"
+  ],
+  "RESPONSE": "当前目录是空的（只有一个 `.keep`），没有可参考的资料。做竞品分析需要先确定范围和依据，否则容易变成没有依据的概括性判断。请先回复以下几点：\n\n**必要信息（前 3 条不给，无法开始）**\n1. **你的产品/业务**：做什么、什么阶段（概念 / MVP / 已上线）、目标客户是谁\n2. **竞品范围**：你心里已有几个候选（名称即可），还是需要我帮你梳理「直接竞品 / 间接竞品 / 替代方案」分层\n3. **分析目的**：定价决策？融资材料？产品路线规划？销售打单时的对比话术？——目的不同，分析深度和侧重点完全不同\n\n**加分信息**\n4. 你能提供的一手材料：官网链接、价格页、销售话术、用户评价、自己的产品文档（放文件到当前目录，我直接读）\n5. 交付形式：Markdown 文档 / 对比矩阵（可用 CSV 导出 Excel）/ 一页纸给管理层\n6. 时间与颗粒度：要 3 家深挖，还是 8 家横向扫描\n\n**说明一个限制**：我运行在本地环境，默认没有联网检索能力。所以竞品的价格、功能、融资等信息需要你提供，或者你确认可以联网（我可先试一下网络是否通）。我不会凭印象编造竞品数据。这一点必须说明，因为编出的价格和功能在真实决策里是有害的。\n\n如果你想要个起点，我可以先做这些（选一个我就开工）：\n- **A**：建一套可填写的分析框架（`competitive-analysis.md` 骨架 + `matrix.csv` 对比表），你按格子填数据，我再帮你做归纳和结论\n- **B**：你先给我 3 家竞品名称 + 你的产品定位，我基于你提供的信息做结构化拆解（功能 / 定价 / 目标客群 / 定位话术 / 优劣势 / 对我们的威胁等级）\n- **C**：帮你设计访谈和调研问题清单（用于从销售、客户、试用用户处采集一手竞品情报）\n\n回复「A」「B」或「C」+ 上面第 1–3 条，我直接产出文件。",
+  "TRANSCRIPT": "TOOL bash: {\"command\": \"ls -la /tmp/pf-20-without_skill-jqx2ife8 2>&1 | head -50\"}\n\nTOOL bash: {\"command\": \"find /tmp/pf-20-without_skill-jqx2ife8 -maxdepth 3 -not -path '*/.git/*' 2>/dev/null | head -60\"}\n\nRESULT: total 172\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 .\ndrwxrwxrwt 60 root root 167936 11月 10 20:53 ..\n-rw-rw-r--  1 zdan zdan      0 11月 10 16:17 .keep\n\n\nRESULT: /tmp/pf-20-without_skill-jqx2ife8\n/tmp/pf-20-without_skill-jqx2ife8/.keep\n\n\nASSISTANT: 当前目录是空的（只有一个 `.keep`），没有可参考的资料。做竞品分析需要先确定范围和依据，否则容易变成没有依据的概括性判断。请先回复以下几点：\n\n**必要信息（前 3 条不给，无法开始）**\n1. **你的产品/业务**：做什么、什么阶段（概念 / MVP / 已上线）、目标客户是谁\n2. **竞品范围**：你心里已有几个候选（名称即可），还是需要我帮你梳理「直接竞品 / 间接竞品 / 替代方案」分层\n3. **分析目的**：定价决策？融资材料？产品路线规划？销售打单时的对比话术？——目的不同，分析深度和侧重点完全不同\n\n**加分信息**\n4. 你能提供的一手材料：官网链接、价格页、销售话术、用户评价、自己的产品文档（放文件到当前目录，我直接读）\n5. 交付形式：Markdown 文档 / 对比矩阵（可用 CSV 导出 Excel）/ 一页纸给管理层\n6. 时间与颗粒度：要 3 家深挖，还是 8 家横向扫描\n\n**说明一个限制**：我运行在本地环境，默认没有联网检索能力。所以竞品的价格、功能、融资等信息需要你提供，或者你确认可以联网（我可先试一下网络是否通）。我不会凭印象编造竞品数据。这一点必须说明，因为编出的价格和功能在真实决策里是有害的。\n\n如果你想要个起点，我可以先做这些（选一个我就开工）：\n- **A**：建一套可填写的分析框架（`competitive-analysis.md` 骨架 + `matrix.csv` 对比表），你按格子填数据，我再帮你做归纳和结论\n- **B**：你先给我 3 家竞品名称 + 你的产品定位，我基于你提供的信息做结构化拆解（功能 / 定价 / 目标客群 / 定位话术 / 优劣势 / 对我们的威胁等级）\n- **C**：帮你设计访谈和调研问题清单（用于从销售、客户、试用用户处采集一手竞品情报）\n\n回复「A」「B」或「C」+ 上面第 1–3 条，我直接产出文件。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

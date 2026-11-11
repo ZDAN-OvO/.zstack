@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"plan.md\"; FILE_CONTENTS contains \"plan.md\" at the root, with no plan under local/plans/."
+    },
+    {
+      "text": "The plan notes that only monthly or quarterly data is available and daily data or access is missing",
+      "passed": true,
+      "evidence": "plan.md: \"只有 **3 行月度汇总**\" and \"它连\\\"日\\\"都没有\"; G0 requires obtaining daily history."
+    },
+    {
+      "text": "The plan's judge or Done includes backtesting on history and/or running beside the current review",
+      "passed": true,
+      "evidence": "完成定义: \"回测表跑出，提前天数与误报数都有数\" and \"并行季度的第一份\\\"季报 + 一页日报复盘\\\"交出去\"."
+    }
+  ],
+  "eval_feedback": ""
+}

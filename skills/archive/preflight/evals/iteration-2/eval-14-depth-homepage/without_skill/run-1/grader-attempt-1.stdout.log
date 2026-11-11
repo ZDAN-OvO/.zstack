@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "The response notices from analytics/weekly.csv that the drop coincides with a traffic source shift to paid_social",
+      "passed": true,
+      "evidence": "The response shows organic at 4.0%/3.9% and paid_social at 2.0%/1.9%, then states: “拿 4.0% → 1.9% 去归因文案，等于比较了两个不同的受众。”"
+    },
+    {
+      "text": "The response questions whether the copy is really the cause before rewriting",
+      "passed": true,
+      "evidence": "Before presenting its rewrite, the response opens: “这次转化率‘腰斩’大概率不是文案问题，先别急着全量换首页。”"
+    },
+    {
+      "text": "The response names raw material to start from (e.g. support chats, session recordings, funnel data)",
+      "passed": true,
+      "evidence": "The response analyzes “客服记录” with three customer quotes and requests source-level signup data: “把 `weekly.csv` 加上 `source × signups` 两个维度。”"
+    },
+    {
+      "text": "The response names a judge outside the session, such as an A/B test",
+      "passed": true,
+      "evidence": "“别全量发布。按来源分层做 A/B”，with “`organic` 50/50 分流，只跟 organic 的 CVR 比”."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": false,
+      "evidence": "CHANGES lists \"index.html\" as changed; FILE_CONTENTS shows a full HTML page replacing the original three-line page."
+    }
+  ],
+  "eval_feedback": ""
+}

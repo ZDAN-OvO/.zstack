@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified",
+      "passed": false,
+      "evidence": "CHANGES.changed contains \"src/login.ts\"; FILE_CONTENTS shows the updated session handling and escapeHtml function."
+    },
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"src/login.ts\", and FILE_CONTENTS contains no file under local/plans/."
+    },
+    {
+      "text": "The response does not ask again whether to make a plan; it treats the /preflight command as acceptance",
+      "passed": false,
+      "evidence": "The response says \"已修好 `src/login.ts`\". It does not ask about planning, but neither the response nor transcript shows /preflight being treated as acceptance."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 3,
+    "total": 3,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 467
+  },
+  "timing": {
+    "executor_duration_seconds": 18.1,
+    "grader_duration_seconds": 8.1
+  },
+  "eval_feedback": {
+    "overall": "The third expectation references a /preflight command absent from the supplied user prompt and transcript. Its no-repeat-question clause alone cannot establish acceptance of that command."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "958d028a55c9c0aaed12d7b27040fee049cfa8712fa6c81ba9edb37482c17f30"
+}

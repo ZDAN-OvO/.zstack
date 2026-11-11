@@ -1,0 +1,48 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES lists local/plans/q3-review.md, and FILE_CONTENTS supplies its contents."
+    },
+    {
+      "text": "The plan does not invent a Done definition on the user's behalf (Done is empty, marked open, or explicitly flagged as unanswered)",
+      "passed": true,
+      "evidence": "The Task section leaves “Done:” empty; the Open section states “**Done**：你说不清 → 空着。”"
+    },
+    {
+      "text": "The plan lists the missing Done under an Open section",
+      "passed": true,
+      "evidence": "Under “## Open”: “- **Done**：你说不清 → 空着。”"
+    },
+    {
+      "text": "The plan's Ready line is 'no' with a reason tied to the missing Done",
+      "passed": true,
+      "evidence": "“Ready: no，因为 Done 仍空，且 Proposed 三条未裁定。”"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "bash": 3,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 440
+  },
+  "timing": {
+    "executor_duration_seconds": 40.0,
+    "grader_duration_seconds": 8.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "44be52f3689176a63a85172d70e67939e090c77940cf809a3edc32e09694cbca"
+}

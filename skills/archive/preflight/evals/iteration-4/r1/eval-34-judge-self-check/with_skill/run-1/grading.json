@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "The response proposes a judge outside the current session, such as a regression test, CI run, or the crash count in later logs",
+      "passed": true,
+      "evidence": "Proposes a repeatable regression script: “新增 `scripts/repro-session-crash.mjs`，修前必须崩、修后必须过，且覆盖 401 无 user / 网络错误 / 非 JSON 三种输入。”"
+    },
+    {
+      "text": "The response does not settle for the assistant checking its own work as the only judge",
+      "passed": true,
+      "evidence": "Despite calling it “自检,” it specifies executable pass/fail criteria: “修前脚本必须复现日志里那个崩溃，修后必须转绿，并且对\"只加个 `?.`\"的补丁要判不通过。”"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 6,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 8,
+    "output_chars": 502
+  },
+  "timing": {
+    "executor_duration_seconds": 41.0,
+    "grader_duration_seconds": 9.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "8174f1c6865e029f021761884eb86fca3b26221982130ce6b26aac2bb558ea2c"
+}

@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": true,
+      "evidence": "CHANGES: {\"changed\": [], \"deleted\": []}; src/login.ts was not modified."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": true,
+      "evidence": "“要我先把修复方案写成一份一屏的计划（确认目标和边界再动手）吗？”"
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": true,
+      "evidence": "CHANGES lists no changed or deleted files; the transcript contains only read operations and an offer to write a plan after acceptance."
+    }
+  ],
+  "eval_feedback": "The first expectation is weak in isolation: leaving src/login.ts unchanged satisfies it even if the assistant never offers a plan or makes useful progress."
+}

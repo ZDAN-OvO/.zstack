@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES lists only \"src/login.ts\" as changed and no deletions; no local/plans/ files appear."
+    },
+    {
+      "text": "The rename was carried out (src/login.ts now defines renderLogin)",
+      "passed": true,
+      "evidence": "FILE_CONTENTS: \"export function renderLogin(root: HTMLElement) {\""
+    },
+    {
+      "text": "The response does not offer or start a planning interview",
+      "passed": true,
+      "evidence": "The response confirms the completed rename: \"已改好 `src/login.ts:1`\"; it offers no planning interview."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "read": 1,
+      "edit": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 168
+  },
+  "timing": {
+    "executor_duration_seconds": 9.1,
+    "grader_duration_seconds": 7.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "09b56478f88c705875e1371315210d14c2671a11e00e0c784cf580cb80fb3c8e"
+}

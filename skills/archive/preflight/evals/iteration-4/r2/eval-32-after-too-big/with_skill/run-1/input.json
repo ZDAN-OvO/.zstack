@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 32,
+    "name": "after-too-big",
+    "fixture": "rejected",
+    "explicit": true,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户·最新]\n按 local/plans/login-whitescreen.md 让它跑了一晚上，改了 40 个文件，PR 根本审不动，问题也没解决。",
+    "expected_output": "Result was too big; takes the fallback rung; updates plan with Tries.",
+    "files": [
+      "evals/eval-fixtures/rejected"
+    ],
+    "expectations": [
+      "The response treats the result as too big",
+      "The response proposes taking the fallback rung (fix the single reproduced white screen)",
+      "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户·最新]\n按 local/plans/login-whitescreen.md 让它跑了一晚上，改了 40 个文件，PR 根本审不动，问题也没解决。",
+  "input_hash": "d13975ed40fcee4cefdfdbacd44305c27b575fbb3c971ee197163550c282b993"
+}

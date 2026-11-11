@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": false,
+      "evidence": "CHANGES lists \"src/login.ts\" as changed; FILE_CONTENTS contains the async rewrite. The transcript shows diagnosis followed directly by the write, without offering a plan."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": false,
+      "evidence": "The pre-edit response says \"找到了\" and explains the crash cause, then immediately writes src/login.ts. It offers no planning step."
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": true,
+      "evidence": "The transcript shows only a write to src/login.ts, and CHANGES lists only \"src/login.ts\". No plan file was written."
+    }
+  ],
+  "eval_feedback": ""
+}

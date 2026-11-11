@@ -1,0 +1,165 @@
+TOOL read: {"path": "/home/zdan/.zstack/skills/plan/preflight/SKILL.md"}
+
+RESULT: ---
+name: preflight
+description: >-
+  Write a one-screen plan the user reads to check their own thinking before AI runs the work: could the requirement aim higher, deeper or wider, and can the user state the task's purpose, context, materials, boundaries and done? Use when a request is one step of a bigger result ("fix this bug", "fill in the template"), when quality matters in a field the user is not expert in, when a deliverable is named by its noun ("homepage", "weekly report"), when the user cannot say what done looks like, or when a planned result came back rejected.
+---
+
+# Preflight
+
+A request is the user's guess at one step toward an outcome they have not stated. The model carries out the step as written and does not question the intent behind it. So two gaps go unseen until the output lands:
+
+- **Requirement**: the request undershoots what the model could own today.
+- **Task**: the intent is still unformed. The model mirrors vagueness back as a generic output.
+
+This skill brings both gaps into one plan that the user reviews before execution. The user's thinking is the subject. Writing the goal and doing the work come after the plan.
+
+Each section below ends at a **stop**: the point where this turn's reply is sent. Reaching a stop ends the skill for this turn, even when later sections are still unread.
+
+## Enter
+
+1. **Cost.** When a redo costs less than a plan, do the request as written, or ask only the one or two details it needs. A rename, a lookup and a short poem or message are this case, even when the user typed `/preflight`. The plan pays off when a wrong output costs a meeting, a handoff or a long unattended run. Stop.
+2. **Consent.** The user typed `/preflight`, or accepted an offer: go on to Look. Otherwise offer the plan in one line and stop. Until the user accepts, the workspace stays unchanged, and that includes `local/plans/`: a plan file written before acceptance is a plan the user never asked for.
+
+Accepting the plan is consent to plan, not to execute. From Look onward, the only file this skill writes is the plan; the work itself starts after the user confirms it.
+
+## Look
+
+Read the files, data and history the request touches. Facts you can look up go into the plan as facts. The questions you ask are about intent, which no file holds.
+
+State each finding at the strength the data supports. Two things that change at the same time are a correlation to test. A cause needs evidence that rules the alternatives out.
+
+## Stage
+
+Match the request to the user's stage. A request made one stage too early gets a hollow answer: a draft with no thesis, or a recommendation built on guessed criteria. Only Execute goes on to Requirement and writes a plan. Each earlier stage gives its own result and stops.
+
+- **Think** (no thesis or no direction yet): ask the questions that turn the vague into the concrete. Stop.
+- **Explore** (options named, criteria not set): map the criteria that would separate the options, and the trade-off under each. Ask for the few facts that decide between them, and leave the choice open. Stop.
+- **Decide** (options and criteria both given): weigh the options against the user's criteria and give the decision, with the conditions that would reverse it. Stop.
+- **Execute** (the user wants the work done): continue with this skill.
+
+## Requirement
+
+Look at the task through all three lenses in this turn. Suggest a move only on a lens where it would change the result, and write `not needed` for the others. A deliverable named by its noun (a deck, a homepage, a report) always gets a Range move. Each suggestion stays a suggestion until the user accepts, rewrites or declines it. A declined move is recorded with its reason. When the user has already ruled on the moves offered earlier in the conversation, the Requirement is settled: record their rulings and open no new moves. A risk you notice goes under Open as a question.
+
+- **Altitude**: hand over the outcome, not the step. Ask what should happen after this result, and climb rung by rung. Stop when a rung plainly exceeds what models can own today. That **ceiling** is only found by trying, so the rung below it becomes the **fallback**. Altitude fits outcome-driven work, and work that will be discussed in meetings is a good sign. It fits creative work less well. Climbing often requires changes to the workflow, such as data access, version-to-commit mapping and machines to reproduce on.
+- **Depth**: do the task the way a field-leading expert would, one layer below the request. Name the expert move the user did not ask for, the rawest material, and the instruments of the field (databases and statistical models rather than tables). The instruments change the method. A persona only changes the vocabulary. Where it fits, add a **stretch target** that forces a different method, or a test of a belief the user holds, run against raw data, or a new finding shown to predict data it has not seen.
+- **Range**: restate the deliverable's noun as verbs, the effect it must have on people. Then assemble the **crew** of fields that do those verbs best, including a **red team**. Ask for what each field *does*, not how it sounds.
+
+Every move needs a **judge** outside the session that did the work. The judge grades the method as well as the result, because a lucky correct guess should fail and a sound near-miss should pass. Prefer a check the model can run itself (a test, held-out data, a primary source). Otherwise, use separate attacker sessions plus one more session that rules on their objections. When the user can judge the result directly, their judgment is enough.
+
+## Task
+
+Ask the five intent questions. Each one has an answer only the user holds:
+
+- **Purpose**: the decision or problem the output serves. An action ("analyse five competitors") is not a purpose.
+- **Context**: what a capable stranger would need to know so they do not aim wrong.
+- **Materials**: the sources ranked primary over secondary, the banned sources, and an empty slot for anything not found. An unranked or unbounded source list invites fabrication.
+- **Boundaries**: the outputs that would make the user say "not what I wanted". These are **walls**, mostly "don'ts". Directions and adjectives do not count.
+- **Done**: what appears in front of the user that means stop. It includes the shape of the artifact and an early **checkpoint**, such as an outline before the full piece, so a wrong direction is caught cheaply. Boundaries and Done together give the scope.
+
+The model can ask these questions, and only the user can answer them. Use what the user has already said in this conversation, and ask only for what is missing. Write each answer in the user's words. Facts you found can go into Context or Materials, marked for the user to confirm.
+
+A Purpose or Done the user cannot answer stays empty, and the question goes under Open. The gap itself is the finding. Ask a question that helps the user answer it, and write no default for them to approve. For Materials, you may propose a source ranking, banned sources and a leave-blank rule; they go under Proposed for the user to rule on.
+
+## Write
+
+Write `local/plans/<topic>.md` at the workspace root (the git root, or the current directory). `<topic>` is a short kebab-case English slug of the outcome. Write the plan in the same turn as Requirement and Task, with unanswered slots under Open; Ready tells the user what is still missing.
+
+Check the path before the write. When a file there belongs to another task, keep it unchanged. Ask which path to use, or write to a new slug and name it in the reply. A backup copy does not count as permission to overwrite.
+
+Use the user's language and keep the plan to one screen:
+
+```markdown
+# Plan: <outcome in a few words>
+
+- Asked: <the request as the user wrote it>
+- Stage: execute
+- Date: <YYYY-MM-DD>
+
+## Requirement
+Hand over: <accepted rung, or the request as asked>
+Fallback: <rung below>
+Depth: <raw material; instruments; stretch target | not needed>
+Range: <verbs; crew and what each does | not needed>
+Judge: <the outside check, and what it grades>
+Needs: <data, access, machines; mark what is missing>
+Proposed: <moves the user has not ruled on yet; omit when the user has ruled on them all>
+Declined: <move, reason>
+
+## Task
+Purpose:
+Context:
+Materials:
+Boundaries:
+Done:
+
+## Open
+<what the user has not thought through yet; omit when empty>
+
+Ready: <yes | no, because …>
+```
+
+`Ready` is yes when the user has ruled on every proposed move and answered all five Task slots. The plan is done when the user has read it and confirmed the Ready line. Close with the path, and offer `/define-goal` with the plan as its source. Stop.
+
+## After a try
+
+When the user brings back a rejected result, find the cause and act on it:
+
+- **Wrong method** (a missed diagnosis, a missing source): use more Depth on the same rung.
+- **Too big**: take the Fallback.
+- **Missed intent**: go back to the Task slot that let the miss through.
+
+Update the plan in place, and add one dated line under `## Tries` with the verdict and what changed. Stop.
+
+## References
+
+- [references/ambition.md](references/ambition.md): the source of the Requirement axes and the judge, with a worked ladder and the expert questions. Read it when a Requirement move needs grounding.
+- [references/task-definition.md](references/task-definition.md): the source of the stages and the five slots, with a worked brief. Read it when a Task question needs grounding.
+
+
+TOOL bash: {"command": "ls -la; echo '---'; git rev-parse --show-toplevel 2>/dev/null; echo '---'; find . -maxdepth 3 -not -path '*/.git/*' | head -50"}
+
+RESULT: total 172
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 .
+drwxrwxrwt 65 root root 167936 11月 10 21:42 ..
+-rw-rw-r--  1 zdan zdan      0 11月 10 16:17 .keep
+---
+---
+.
+./.keep
+
+
+ASSISTANT: 工作区是空的，没有你们团队的背景资料（人数、现有工具、合规要求都没写）。我先按你给的两条（目的是“决定下季买哪家”、资料自己上网找）把选择判据铺开。这一步不写方案文件。
+
+## 单看“定价”定不了买哪家
+
+各家价格页的对比结果，基本会被三个变量重新排序，而这三个变量不是价格：
+
+| 判据 | 会把选项怎么分开 |
+|---|---|
+| **计量方式**：席位（元/人/月）vs 用量（token / 请求数） | 人少但用得狠，用量制更贵；人多但用得浅，席位制更贵。两种价格表不能直接比数字 |
+| **企业版门槛**：私有化/专有云、SSO、审计日志、代码不出域 | 有内网要求时，免费版和 SaaS 版直接出局，只剩商务报价（普遍不公开），公开定价页对决策无用 |
+| **模型来源**：只能绑自家模型 vs 可接多个模型 | 决定能力上限，也决定一年后换家的迁移成本 |
+
+还有四个次判据：免费额度能覆盖多久（POC 成本）、IDE 插件覆盖与现有 Copilot/Cursor 的迁移成本、最小席位数与年付折扣、隐性成本（培训、推广、代码评审流程调整）。
+
+对应到国内几家的常见站位（价格以你们实际拿到的报价为准，我只说结构）：
+
+- **免费额度大** — 通义灵码、CodeGeeX、MarsCode：试错成本几乎为零，企业级功能和私有化是付费才有的部分。
+- **能力上限** — Trae 这类可接外部模型的：贵在模型调用，便宜在不用绑一家。
+- **合规私有化** — 华为 CodeArts、腾讯 CodeBuddy、百度 Comate 企业版：走既有云框架协议谈，不按公开价卖。
+
+所以“最便宜的一家”和“买回来真有人用的一家”经常不是同一家，这个偏差就是这次调研要提前挡掉的。
+
+## 需要你回答的四个问题（只有你能答）
+
+1. **团队多少人、其中开发者多少人、预计真正会日常用的几个？** 这三个数不一样，席位数按哪个算直接决定报价量级。
+2. **代码能不能出内网？有没有等保、信创或甲方审计要求？** 这一条会砍掉一半选项，先砍再比价，否则调研白做。
+3. **现在用什么，预算区间大概多少？有没有阿里云/腾讯云/华为云的既有框架协议或折扣？** 走既有协议拿到的价，和公开价能差一个量级。
+4. **除了价格，第二重要的判据是什么——能力达标线，还是合规过关？** 采购评审会上这一条会被追问，现在定下来，调研才知道往哪个方向排。
+
+这四条给我之后，就进到“按你的判据把这几家排出顺序、给出什么条件下会反转结论”，并且会带上公开报价的可信度标注（多数定价页更新滞后、企业版不公开，这部分我会标成“需商务确认”而不是当成事实写）。
+
+要不要我先把第 1、2 条按你们最常见的团队规模（比如 20 人开发团队、无内网要求）做一个假设版本，你再改？

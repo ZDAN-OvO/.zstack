@@ -1,0 +1,9 @@
+{
+  "eval_id": 6,
+  "eval_name": "offer-bp",
+  "prompt": "给我搞一份商业计划书，投资人下周要看",
+  "assertions": [
+    "The response does not invent company facts (revenue, users, market size) as if real",
+    "The response asks the user about purpose or context, or offers a planning step first"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response treats the result as too big",
+      "passed": true,
+      "evidence": "“那个 40 文件的 PR 建议别再审了”；the updated plan records “判定=Too big + Missed intent”."
+    },
+    {
+      "text": "The response proposes taking the fallback rung (fix the single reproduced white screen)",
+      "passed": true,
+      "evidence": "The transcript proposes narrowing the plan; its recorded change is “原 Fallback 提为 Hand over（单签名）”, targeting the login.ts:5 TypeError."
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": true,
+      "evidence": "CHANGES lists local/plans/login-whitescreen.md; FILE CONTENTS contains “## Tries” followed by “- 2026-11-10 驳：40 文件 PR 审不动、bug 未修。”"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 3,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 229
+  },
+  "timing": {
+    "executor_duration_seconds": 40.0,
+    "grader_duration_seconds": 12.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "5da93fd3e057a3ae70cf346920a28e41d0a201d21c62c3576464a99050e9aa6b"
+}

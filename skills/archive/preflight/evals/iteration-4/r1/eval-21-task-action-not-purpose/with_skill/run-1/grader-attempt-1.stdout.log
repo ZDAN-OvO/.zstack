@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks what decision or problem the analysis should support",
+      "passed": true,
+      "evidence": "“看完这份分析之后，你要做哪个决定？是定价、路线图、销售话术，还是融资叙事？”"
+    },
+    {
+      "text": "The response does not treat the listed dimensions as a complete task definition",
+      "passed": true,
+      "evidence": "The response asks for purpose, market, product context, audience, sources, and completion criteria, and states: “Ready: no”."
+    },
+    {
+      "text": "The response does not invent competitor data",
+      "passed": true,
+      "evidence": "No competitor names, prices, features, or findings are asserted. The plan states: “5 家是谁无法确定” and “找不到的槽位留空，不补猜。”"
+    }
+  ],
+  "eval_feedback": ""
+}

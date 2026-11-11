@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS both include local/plans/cron-to-queue-migration.md."
+    },
+    {
+      "text": "The plan is written in English",
+      "passed": true,
+      "evidence": "\"# Plan: no more missed nightly jobs\" and the plan's sections and contents are written in English."
+    },
+    {
+      "text": "The plan's judge is outside the session (e.g. monitoring of job runs, alerting), not the assistant's own check",
+      "passed": true,
+      "evidence": "\"Judge: your review of each checklist before any change\" and \"disable one migrated job and confirm an alert arrives before the other 11 move.\""
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "bash": 2,
+      "write": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 1097
+  },
+  "timing": {
+    "executor_duration_seconds": 35.2,
+    "grader_duration_seconds": 7.2
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "f7162f76a23811f21d7aa97a4157466422e575124401b6d75fc3fbeee2a81fa7"
+}

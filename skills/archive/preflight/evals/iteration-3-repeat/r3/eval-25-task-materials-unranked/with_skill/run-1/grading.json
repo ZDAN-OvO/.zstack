@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": false,
+      "evidence": "The four questions concern team size, compliance, budget, and decision criteria; none asks to specify sources or rank their authority."
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": false,
+      "evidence": "“会带上公开报价的可信度标注” proposes credibility labels, but does not propose excluding low-trust or second-hand sources."
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": true,
+      "evidence": "“企业版不公开，这部分我会标成‘需商务确认’而不是当成事实写” proposes marking unavailable pricing as unresolved rather than inventing values."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "bash": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 1190
+  },
+  "timing": {
+    "executor_duration_seconds": 19.2,
+    "grader_duration_seconds": 13.7
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "23493e9da62c67068a2aac234e2124dfa8118dd7f6644e1bffba67e89a97c4b8"
+}

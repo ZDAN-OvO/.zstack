@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "The response either offers a brief planning step or asks what the report must achieve for the manager, before writing it",
+      "passed": true,
+      "evidence": "“我建议先花一屏确认方向再动笔”；“主管看它是为了评估进度、发现风险，还是为了向上汇总？”"
+    },
+    {
+      "text": "The response does not produce a full generic weekly report filled with invented work items",
+      "passed": true,
+      "evidence": "The response requests actual work details before drafting: “本周主要做了 A、B、C，C 卡在 X”. It provides no full report or invented work items."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "bash": 2
+    },
+    "total_tool_calls": 3,
+    "output_chars": 457
+  },
+  "timing": {
+    "executor_duration_seconds": 13.6,
+    "grader_duration_seconds": 8.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "54f9201da79a0d1e8a2c86bfb5432e48b837cb2c85ace0ca7e029488ea9918e0"
+}

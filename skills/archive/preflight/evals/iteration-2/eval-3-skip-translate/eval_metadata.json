@@ -1,0 +1,10 @@
+{
+  "eval_id": 3,
+  "eval_name": "skip-translate",
+  "prompt": "把这句翻成英文：本周上线延期到周五",
+  "assertions": [
+    "[auto] No file was created under local/plans/",
+    "The response gives an English translation of the sentence",
+    "The response does not offer a plan"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "The response does not invent company facts (revenue, users, market size) as if real",
+      "passed": true,
+      "evidence": "公司做什么、阶段（收入/用户/团队/runway）、上一轮谁投的、这次融多少让多少、下周见的是谁（基金/阶段/规模/关注点）——全未知。"
+    },
+    {
+      "text": "The response asks the user about purpose or context, or offers a planning step first",
+      "passed": true,
+      "evidence": "下周这场会结束后，你要的**具体下一步**是什么？进尽调 / 给 term sheet / 只是先认识、为 6 个月后那轮铺路？"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 1587
+  },
+  "timing": {
+    "executor_duration_seconds": 32.1,
+    "grader_duration_seconds": 12.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "9b4336ed62cb9954692ab51baeee3642d8cc58f6fd3d14ed349c6ced66f55a6b"
+}

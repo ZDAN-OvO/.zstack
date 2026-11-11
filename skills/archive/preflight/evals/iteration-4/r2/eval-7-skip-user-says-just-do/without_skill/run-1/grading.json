@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES lists only \"src/login.ts\" under changed and no deleted files; no local/plans/ files appear."
+    },
+    {
+      "text": "[auto] src/login.ts no longer contains console.log",
+      "passed": true,
+      "evidence": "FILE_CONTENTS[\"src/login.ts\"] contains no console.log calls; the session callback retains \"root.innerHTML = renderForm(s.user.name);\"."
+    },
+    {
+      "text": "The response does not offer a plan or ask planning questions",
+      "passed": true,
+      "evidence": "The response reports completed edits: \"`src/login.ts` 已改完，3 处 `console.log` 全部删除\" and offers no plan or planning questions."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "edit": 1
+    },
+    "total_tool_calls": 3,
+    "output_chars": 268
+  },
+  "timing": {
+    "executor_duration_seconds": 9.0,
+    "grader_duration_seconds": 20.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "fdd51386f1a064ccc34fa4dae7a6b798350825af36aa7b5d5b5aa51cd29e31ef"
+}

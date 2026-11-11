@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 29,
+    "name": "plan-overwrite-guard",
+    "fixture": "existing-plan",
+    "explicit": true,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 重写 onboarding 邮件序列\n\n[助手]\n（已完成提问。）\n\n[用户·最新]\n目标：新用户 7 天激活率从 20% 到 30%。背景：B2B 工具。素材：emails/welcome.md。边界：不发超过 3 封。完成：先给 3 封邮件的大纲。plan 文件就叫 onboarding-email.md。",
+    "expected_output": "Notices local/plans/onboarding-email.md belongs to another task and asks before overwriting (or picks a different name and says so).",
+    "files": [
+      "evals/eval-fixtures/existing-plan"
+    ],
+    "expectations": [
+      "[auto] local/plans/onboarding-email.md still contains the original A/B-test plan, unless the response explicitly asked and received permission (it cannot here)",
+      "The response points out that a plan with that name already exists for a different task",
+      "The response asks before overwriting or uses a different filename and tells the user"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 重写 onboarding 邮件序列\n\n[助手]\n（已完成提问。）\n\n[用户·最新]\n目标：新用户 7 天激活率从 20% 到 30%。背景：B2B 工具。素材：emails/welcome.md。边界：不发超过 3 封。完成：先给 3 封邮件的大纲。plan 文件就叫 onboarding-email.md。",
+  "input_hash": "5829e9ceb7be016aa229540e5535decb15590568e8aa5442c9265b3b26d983a8"
+}

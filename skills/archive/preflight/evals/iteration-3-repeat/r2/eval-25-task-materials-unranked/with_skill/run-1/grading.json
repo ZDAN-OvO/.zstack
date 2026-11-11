@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": false,
+      "evidence": "The response does not ask for source preferences or ranking; it states “官网定价页只能作为二手材料” and promises to label sources and dates."
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": false,
+      "evidence": "No source exclusions are proposed. The response says “官网定价页只能作为二手材料” without suggesting excluding second-hand or low-trust sources."
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": true,
+      "evidence": "“在表格里明确标出计量单位不可比的地方，以及哪几格是缺失值，而不是编造数字。”"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "read": 1,
+      "bash": 2
+    },
+    "total_tool_calls": 3,
+    "output_chars": 1158
+  },
+  "timing": {
+    "executor_duration_seconds": 23.5,
+    "grader_duration_seconds": 8.7
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "537735019294450bd84a554e01af174936d776165da15d4d3944e9384d66b6dc"
+}

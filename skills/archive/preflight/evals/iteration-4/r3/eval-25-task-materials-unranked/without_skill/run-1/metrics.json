@@ -1,0 +1,7 @@
+{
+  "tool_calls": {
+    "bash": 14
+  },
+  "total_tool_calls": 14,
+  "output_chars": 1918
+}

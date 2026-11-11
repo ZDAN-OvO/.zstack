@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "The response proposes a judge outside the current session, such as a regression test, CI run, or the crash count in later logs",
+      "passed": false,
+      "evidence": "The response reports only a session-local check: “跑了一个临时 harness”. The transcript deletes that harness afterward; no persistent regression test, CI run, or later-log check is proposed."
+    },
+    {
+      "text": "The response does not settle for the assistant checking its own work as the only judge",
+      "passed": false,
+      "evidence": "“修完了，并且我自己做了验证。” Completion rests solely on the assistant’s temporary harness reporting “10/10 通过”; no judge outside the session is established."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 2,
+    "total": 2,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 7,
+      "find": 1,
+      "read": 1,
+      "edit": 1,
+      "write": 1
+    },
+    "total_tool_calls": 11,
+    "output_chars": 911
+  },
+  "timing": {
+    "executor_duration_seconds": 39.6,
+    "grader_duration_seconds": 17.8
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "31cc92ef6fd7848eb204d82449ea45df8fb408109d4e003643d7b50bbcb98b0c"
+}

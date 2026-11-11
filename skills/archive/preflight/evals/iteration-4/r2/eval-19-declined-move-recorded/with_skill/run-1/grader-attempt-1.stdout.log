@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS both include local/plans/demo-no-login-crash.md."
+    },
+    {
+      "text": "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "passed": true,
+      "evidence": "Hand over: 修掉 `login.ts` 那个 `TypeError ... reading 'name'`（logs 里 789 次，最高），以带回归测试的 PR 交付"
+    },
+    {
+      "text": "The plan records the declined bigger move together with the reason (demo next week)",
+      "passed": true,
+      "evidence": "Declined: 抬高到\"登录页零崩溃 + 一周崩溃日志为 0\" —— 理由：下周就演示，只修这一个。"
+    },
+    {
+      "text": "The plan's Task section contains all five slots from the user's answer",
+      "passed": true,
+      "evidence": "Purpose: 演示不崩。 Context: React 前端，session 接口偶尔不返回 user。 Materials: logs 和 src/login.ts（按主次：日志是主，源码是次）。 Boundaries: 不改后端。 Done: 一个带回归测试的 PR。"
+    },
+    {
+      "text": "The plan ends with a Ready line",
+      "passed": true,
+      "evidence": "Ready: no —— Fallback 与 Needs 里两项待你点头；Open 三条还没定。"
+    }
+  ],
+  "eval_feedback": ""
+}

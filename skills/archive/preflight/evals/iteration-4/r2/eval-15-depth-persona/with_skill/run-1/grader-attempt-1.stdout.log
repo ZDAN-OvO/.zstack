@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response names concrete methods or tools a data analyst would use (e.g. cohort analysis, SQL, statistical tests) rather than just adopting a persona voice",
+      "passed": true,
+      "evidence": "“队列留存/生存模型、率×结构分解、工单原文编码、试用改动的 DiD” names concrete analytical methods."
+    },
+    {
+      "text": "The response points to the raw data in data/q3-metrics.csv or notes/worklog.md",
+      "passed": true,
+      "evidence": "“`data/q3-metrics.csv` 只有三行月汇总” and “`notes/worklog.md`：8 月中旬试用期 14 天→7 天” explicitly identify the source files."
+    },
+    {
+      "text": "The response suggests testing a belief against the data (e.g. whether the trial change from 14 to 7 days drove churn)",
+      "passed": true,
+      "evidence": "“先证伪'流失变多'” proposes challenging the premise; “试用改动的 DiD” proposes testing the trial change's effect."
+    }
+  ],
+  "eval_feedback": ""
+}

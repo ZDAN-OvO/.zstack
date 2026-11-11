@@ -1,0 +1,7 @@
+{
+  "tool_calls": {
+    "ls": 1
+  },
+  "total_tool_calls": 1,
+  "output_chars": 1208
+}

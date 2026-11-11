@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 30,
+    "name": "english-session",
+    "fixture": "empty",
+    "explicit": true,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[User]\n/skill:preflight help me plan a migration of our cron jobs to a queue\n\n[Assistant]\nWhat's it for, and what would make you say it's not what you wanted?\n\n[User, latest]\nGoal: no more missed nightly jobs. Context: 12 cron jobs on one VM, two failed silently last month. Materials: the crontab and job scripts. Boundaries: no new paid services, no downtime over 5 minutes. Done: a migration checklist per job, reviewed by me before any change. Write the plan.",
+    "expected_output": "Writes the plan in English.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "[auto] A plan file exists under local/plans/",
+      "The plan is written in English",
+      "The plan's judge is outside the session (e.g. monitoring of job runs, alerting), not the assistant's own check"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[User]\nhelp me plan a migration of our cron jobs to a queue\n\n[Assistant]\nWhat's it for, and what would make you say it's not what you wanted?\n\n[User, latest]\nGoal: no more missed nightly jobs. Context: 12 cron jobs on one VM, two failed silently last month. Materials: the crontab and job scripts. Boundaries: no new paid services, no downtime over 5 minutes. Done: a migration checklist per job, reviewed by me before any change. Write the plan.",
+  "input_hash": "b9bb94931d9365f88010a0bb9c97675a809f85d22c6729ad801375620b75b968"
+}

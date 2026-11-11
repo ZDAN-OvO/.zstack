@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists local/plans/database-choice-postgres-vs-mongodb.md, and FILE_CONTENTS supplies the created plan."
+    },
+    {
+      "text": "The response treats this as an exploring stage and lays out options with trade-offs",
+      "passed": false,
+      "evidence": "The response explicitly says “阶段判定：think” and asks for five task-definition slots; it does not lay out database options with trade-offs."
+    },
+    {
+      "text": "The response does not jump to one final recommendation as if criteria were known",
+      "passed": true,
+      "evidence": "The response asks “数据规模和写速大概多少？有没有真正需要事务和多表 join 的地方？” and makes no final database recommendation."
+    }
+  ],
+  "eval_feedback": ""
+}

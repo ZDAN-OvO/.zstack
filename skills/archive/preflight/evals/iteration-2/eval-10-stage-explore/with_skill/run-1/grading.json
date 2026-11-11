@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; FILE_CONTENTS is {}."
+    },
+    {
+      "text": "The response treats this as an exploring stage and lays out options with trade-offs",
+      "passed": true,
+      "evidence": "“Stage: explore。” The comparison table covers access patterns, transactions, scaling, operations, and schema changes for both databases."
+    },
+    {
+      "text": "The response does not jump to one final recommendation as if criteria were known",
+      "passed": false,
+      "evidence": "Before receiving answers to its criteria questions, it concludes: “前三个问题里如果没有一条明确指向 Mongo，默认就是 Postgres”."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2
+    },
+    "total_tool_calls": 2,
+    "output_chars": 1213
+  },
+  "timing": {
+    "executor_duration_seconds": 31.4,
+    "grader_duration_seconds": 10.2
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "52718919175cc15ef3ea6d255e5879a191551e0d9297a01f2afdbb08111fc0b4"
+}

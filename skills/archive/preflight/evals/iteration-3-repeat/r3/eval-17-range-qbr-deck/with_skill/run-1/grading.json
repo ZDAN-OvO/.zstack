@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": true,
+      "evidence": "Plan: “让 VP 在 3 分钟内 (a) 看见拐点、(b) 接受一个诊断、(c) 批准一个动作。”"
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": true,
+      "evidence": "Plan proposes a “Crew” including 数据分析、客服与 onboarding 一线、财务视角、红队、信息设计, and states “红队不可省。”"
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": true,
+      "evidence": "“数据分析（批次/流失分解）、客服与 onboarding 一线（投诉原文与时间线）、财务视角（收入桥：新签/扩张/流失）、红队（扮演怀疑的 VP：「这是试用期问题还是产品问题？」）、信息设计（一页一图）。”"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 3,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 438
+  },
+  "timing": {
+    "executor_duration_seconds": 39.7,
+    "grader_duration_seconds": 12.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "2ea41a13d9fdd9dcfe7937b1d5dfa09644e4f0a4d319e05eac87506f9a7eab62"
+}

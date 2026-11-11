@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "把这句翻成英文：本周上线延期到周五",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response gives an English translation of the sentence",
+    "The response does not offer a plan"
+  ],
+  "RESPONSE": "**This week's launch has been postponed to Friday.**\n\n如果想更简洁：**The launch is pushed back to Friday this week.**\n\n（\"上线\"按发布/上线发布理解；如果指内部系统上线，可用 *rollout / go-live*，如 **This week's go-live is delayed until Friday.**）",
+  "TRANSCRIPT": "ASSISTANT: **This week's launch has been postponed to Friday.**\n\n如果想更简洁：**The launch is pushed back to Friday this week.**\n\n（\"上线\"按发布/上线发布理解；如果指内部系统上线，可用 *rollout / go-live*，如 **This week's go-live is delayed until Friday.**）",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

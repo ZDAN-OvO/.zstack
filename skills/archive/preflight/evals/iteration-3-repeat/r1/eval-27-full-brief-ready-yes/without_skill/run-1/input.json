@@ -1,0 +1,26 @@
+{
+  "case": {
+    "id": 27,
+    "name": "full-brief-ready-yes",
+    "fixture": "homepage",
+    "explicit": false,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 首页转化率掉了一半，帮我重写首页文案\n\n[助手]\n我看了 analytics：转化下降那周来源从 organic 变成 paid_social。建议先确认是不是文案的问题；从 support/chats-sample.md 和漏斗数据出发；用 A/B 测试判断；退路是只改首屏标题。你接受哪些？另请回答：目标、背景、素材、边界、完成定义。\n\n[用户·最新]\n都接受。目标：让付费社媒来的新访客注册率回到 3.5%。背景：B2B 协作工具，新访客多不懂我们和 Notion 的区别。素材：support 聊天、analytics；不用网上竞品文案。边界：不改定价、不加弹窗、不承诺没有的功能。完成：先给我 3 版首屏标题+副标题，我挑一版再上 A/B。写 plan。",
+    "expected_output": "Writes a full one-screen plan per the template, Ready: yes, user's words kept.",
+    "files": [
+      "evals/eval-fixtures/homepage"
+    ],
+    "expectations": [
+      "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "The plan has all five Task slots filled from the user's answer",
+      "The plan's Ready line is yes",
+      "The plan is short (one screen, roughly under 60 lines)",
+      "The plan is written in Chinese",
+      "[auto] index.html was not modified"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n首页转化率掉了一半，帮我重写首页文案\n\n[助手]\n我看了 analytics：转化下降那周来源从 organic 变成 paid_social。建议先确认是不是文案的问题；从 support/chats-sample.md 和漏斗数据出发；用 A/B 测试判断；退路是只改首屏标题。你接受哪些？另请回答：目标、背景、素材、边界、完成定义。\n\n[用户·最新]\n都接受。目标：让付费社媒来的新访客注册率回到 3.5%。背景：B2B 协作工具，新访客多不懂我们和 Notion 的区别。素材：support 聊天、analytics；不用网上竞品文案。边界：不改定价、不加弹窗、不承诺没有的功能。完成：先给我 3 版首屏标题+副标题，我挑一版再上 A/B。写 plan。",
+  "input_hash": "faf9aef133c593c9cad2c9919ccb643c0dec5459769325006c2807d230862e58"
+}

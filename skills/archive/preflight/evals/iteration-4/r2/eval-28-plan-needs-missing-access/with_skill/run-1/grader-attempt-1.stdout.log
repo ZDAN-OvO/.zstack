@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS both include local/plans/daily-anomaly-detection.md."
+    },
+    {
+      "text": "The plan notes that only monthly or quarterly data is available and daily data or access is missing",
+      "passed": true,
+      "evidence": "Needs: 有：data/q3-metrics.csv（仅 3 行月度汇总）；缺（阻塞）：日级数据。"
+    },
+    {
+      "text": "The plan's judge or Done includes backtesting on history and/or running beside the current review",
+      "passed": true,
+      "evidence": "Judge: 留出时间窗上的回测。Done: 用历史数据证明它会更早发现问题，再和季报并行跑一个季度。"
+    }
+  ],
+  "eval_feedback": ""
+}

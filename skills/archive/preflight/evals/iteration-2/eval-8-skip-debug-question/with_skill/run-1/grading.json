@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; FILE_CONTENTS is {}."
+    },
+    {
+      "text": "The response explains that s.user can be undefined when the session has no user",
+      "passed": true,
+      "evidence": "“直接把错误体当 session 用，于是 `s.user` 不存在。”"
+    },
+    {
+      "text": "The response does not offer a pre-execution plan",
+      "passed": true,
+      "evidence": "The assistant directly explains the error after reading the files. Its “修复方向（按优先级）” follows the diagnosis; it does not offer a preliminary planning step."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 1191
+  },
+  "timing": {
+    "executor_duration_seconds": 25.4,
+    "grader_duration_seconds": 12.8
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "0b92c6d55beaa30864fb1772a2ce05adae00a72ead4bda8d98683d593e280516"
+}

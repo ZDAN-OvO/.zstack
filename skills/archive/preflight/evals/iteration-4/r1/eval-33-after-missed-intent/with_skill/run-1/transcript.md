@@ -1,0 +1,118 @@
+TOOL bash: {"command": "ls -a; echo ---; cat local/plans/q3-review.md 2>/dev/null"}
+
+TOOL bash: {"command": "find . -path ./.git -prune -o -type f -print 2>/dev/null | head -50"}
+
+RESULT: .
+..
+data
+local
+notes
+template.md
+---
+# Plan: Q3 回顾讲清变化与决策
+
+- Asked: 帮我做 Q3 QBR
+- Stage: execute
+- Date: 2026-11-06
+
+## Requirement
+Hand over: 本季变化、原因、三个最急决策
+Fallback: 按模板填数
+Depth: 从原始月度数据出发
+Range: —
+Judge: 老板审阅
+Needs: data/q3-metrics.csv
+Declined: —
+
+## Task
+Purpose: 季度回顾
+Context: SaaS，Q3 收入下滑
+Materials: data/q3-metrics.csv
+Boundaries: 不编数字
+Done: 一份 10 页 deck
+
+Ready: yes
+
+
+RESULT: ./local/plans/q3-review.md
+./template.md
+./data/q3-metrics.csv
+./notes/worklog.md
+
+
+TOOL bash: {"command": "echo \"=== template.md ===\"; cat template.md; echo; echo \"=== notes/worklog.md ===\"; cat notes/worklog.md; echo; echo \"=== data ===\"; head -20 data/q3-metrics.csv"}
+
+TOOL bash: {"command": "cd /tmp/pf-33-with_skill-77ku97c_ && ls -la local local/plans data notes 2>/dev/null; echo ---; git log --oneline 2>/dev/null | head"}
+
+RESULT: === template.md ===
+# Q3 业务回顾
+
+## 收入
+本季收入：{{revenue}}
+
+## 客户
+新增：{{new}}，流失：{{churn}}
+
+## 下季计划
+{{plan}}
+
+=== notes/worklog.md ===
+# 工作日志
+
+- 9 月 8 日起，客服工单里"太难上手"的投诉明显变多。
+- 8 月中旬把免费试用从 14 天改为 7 天。
+- 老板说 QBR 下周四给 VP 看。
+
+=== data ===
+month,revenue_usd,new_customers,churned_customers,nps
+2026-07,182000,41,12,38
+2026-08,176000,35,19,31
+2026-09,171000,30,24,27
+
+
+RESULT: data:
+total 12
+drwxrwxr-x 2 zdan zdan 4096 11月 10 16:17 .
+drwxrwxr-x 5 zdan zdan 4096 11月 10 16:17 ..
+-rw-rw-r-- 1 zdan zdan  126 11月 10 16:17 q3-metrics.csv
+
+local:
+total 12
+drwxrwxr-x 3 zdan zdan 4096 11月 10 16:17 .
+drwxrwxr-x 5 zdan zdan 4096 11月 10 16:17 ..
+drwxrwxr-x 2 zdan zdan 4096 11月 10 16:17 plans
+
+local/plans:
+total 12
+drwxrwxr-x 2 zdan zdan 4096 11月 10 16:17 .
+drwxrwxr-x 3 zdan zdan 4096 11月 10 16:17 ..
+-rw-rw-r-- 1 zdan zdan  461 11月 10 16:17 q3-review.md
+
+notes:
+total 12
+drwxrwxr-x 2 zdan zdan 4096 11月 10 16:17 .
+drwxrwxr-x 5 zdan zdan 4096 11月 10 16:17 ..
+-rw-rw-r-- 1 zdan zdan  182 11月 10 16:17 worklog.md
+---
+
+
+TOOL write: {"path": "/tmp/pf-33-with_skill-77ku97c_/local/plans/q3-review.md", "content": "# Plan: 给客户的 Q3 季度回顾\n\n- Asked: 帮我做 Q3 QBR（实际要的是客户版回顾，不是内部 deck）\n- Stage: execute\n- Date: 2026-11-10\n\n## Requirement\nHand over: 客户能直接读、并据此决定续约/扩容的季度回顾\nFallback: 客户向一页纸（本季交付的价值 + 下季承诺）\nDepth: 原始材料换成客户账号自己的数据（用量、工单、SLA、目标达成）；专家动作 = 用客户的单位证明价值，而不是把我们的收入曲线换个说法；stretch 目标：每页挂一个客户下季要做的决定\nRange: 证明 / 对齐 / 承诺 —— 客户成功（价值口径）、支持（工单与上手问题）、销售（续约与报价）、红队（扮演客户财务与采购，逐页问\"这跟我有什么关系\"）\nJudge: 以客户方经济买家的视角复读全篇（\"我付了钱得到什么、凭什么续\"），外加一位客户线/CS 的人；判方法也判结果——把我们内部数字换个包装即使内容真实也算失败\nNeeds: 客户账号级用量/工单/SLA/目标达成数据（缺）；data/q3-metrics.csv 为内部口径（客户版能否出现待定）；notes/worklog.md（一手线索）\nDeclined: —\n\n## Task\nPurpose: 待确认 —— 客户看完这份回顾要做出什么决定？（续约 / 扩容 / 同意下季计划）\nContext: 事实（待确认）：面向客户；notes/worklog.md 里\"老板说 QBR 下周四给 VP 看\"是内部受众——这是两份东西还是同一份？上一版正是被这条带偏的。Q3 内部实况：收入 182k→171k、NPS 38→27、流失 12→24、新增 41→30。\nMaterials: 客户账号级数据（未提供）；data/q3-metrics.csv（内部指标）；notes/worklog.md（8 月中试用期 14→7 天、9 月\"太难上手\"工单增多）\nBoundaries: 候选，请确认或改写——不出现我方收入/毛利与流失数字；不出现其他客户名称；不把自己的问题写成客户的问题；不承诺路线图以外的日期\nDone: 待确认 —— 页数；早期检查点：先交一页\"本季客户得到了什么\"的结论页，方向确认后再铺全篇\n\n## Open\nPurpose 未答：上一版用\"季度回顾\"这个名词占了它的位置，受众与决策都没落地。客户账号数据是否存在未知。是否需要同时做内部 VP 版未知。\n\n## Tries\n- 2026-11-10 客户版被打回：做成了给老板/VP 的内部 deck。原因 = Purpose 槽漏了受众与要促成的决定，而材料里唯一的受众信号是 worklog 的\"给 VP 看\"，默认受众因此落到内部。改法：Purpose 重问；Context 记入受众并标出这条冲突；Materials 换客户账号级数据；Judge 换客户经济买家视角。\n\nReady: no —— Purpose、客户数据、Done 的页数与检查点待你确认\n"}
+
+RESULT: Successfully wrote to /tmp/pf-33-with_skill-77ku97c_/local/plans/q3-review.md
+
+ASSISTANT: **原因（已写进 `local/plans/q3-review.md` 的 `## Tries`）**：Purpose 那一栏写的是"季度回顾"这个名词，没有写受众，也没写客户看完要做什么决定。而材料里唯一出现的受众信号，是 `notes/worklog.md` 那句"老板说 QBR 下周四给 VP 看"——模型的默认受众就落到内部了。这不是模型擅自改方向，是计划本身没拦住。
+
+同时，Materials、Judge 也都跟着错了：`data/q3-metrics.csv` 是内部口径（收入下降、流失翻倍），Judge 写的是"老板审阅"——这两处共同把方向固定成了内部 deck。
+
+**需要你回答的三件事**（其余我已经按事实或候选写进计划）：
+
+1. **Purpose**：客户看完这份回顾，要做出什么决定？续约、扩容、还是同意下季计划？决定不同，整套讲法都会变。
+2. **Materials**：有没有客户账号自己的数据（用量、工单、SLA、季度目标达成情况）？如果没有，这份回顾只能靠"承诺 + 共识"撑，不靠数字。
+3. **Done**：页数，以及第一个检查点——我建议先交一页"本季客户得到了什么"，方向对了再铺全篇。
+
+另外两个待确认，也放在 Context/Open 里了：
+
+- worklog 那条"给 VP 看"和这次客户版，是**两份东西**还是同一份？如果两份，内部那份的受众就固定是 VP，客户那份单独做。
+- Boundaries 我列了四条候选（不出现我方收入毛利与流失、不出现其他客户名、不把自己的问题写成客户的问题、不承诺路线图以外日期），你确认或直接改写。
+
+Ready 仍是 no。等你回这三条，我改完 Purpose/Context/Done 就置 yes，然后可以把这份计划交给 `/define-goal` 当输入。

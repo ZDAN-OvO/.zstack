@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists local/plans/database-choice-postgres-vs-mongodb.md, and FILE_CONTENTS supplies the created plan."
+    },
+    {
+      "text": "The response treats this as an exploring stage and lays out options with trade-offs",
+      "passed": false,
+      "evidence": "The response explicitly says “阶段判定：think” and asks for five task-definition slots; it does not lay out database options with trade-offs."
+    },
+    {
+      "text": "The response does not jump to one final recommendation as if criteria were known",
+      "passed": true,
+      "evidence": "The response asks “数据规模和写速大概多少？有没有真正需要事务和多表 join 的地方？” and makes no final database recommendation."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 707
+  },
+  "timing": {
+    "executor_duration_seconds": 41.5,
+    "grader_duration_seconds": 8.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "be3b52729bb01e231ee79fb10178cbfa36dc3589066d0b7958337468ae6d77e1"
+}

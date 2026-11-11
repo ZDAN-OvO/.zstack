@@ -1,0 +1,63 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": false,
+      "evidence": "CHANGES.changed contains only \"PLAN.md\"; no plan exists at the required local/plans/<kebab-case-english-slug>.md path."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": false,
+      "evidence": "PLAN.md includes delivery and A/B details, but lacks a Requirement section covering all five elements; depth and the accepted headline-only fallback are not specified."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": true,
+      "evidence": "The plan covers the 3.5% goal, paid_social/Notion context, support and analytics materials, all three boundaries, and delivery of three headline/subtitle versions before selection and A/B."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "No Ready line appears. The plan ends: \"确认本 plan 后，我直接产出 3 版首屏标题 + 副标题对照表。\""
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": true,
+      "evidence": "PLAN.md contains 55 lines, including blank lines."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "Chinese headings and prose include \"目标 / 成功指标\", \"已确认的约束\", \"文案假设\", and \"判定与后续\"."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only PLAN.md as changed and no deleted files; index.html is absent from the changes."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 3,
+    "total": 7,
+    "pass_rate": 0.571
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "read": 3,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 457
+  },
+  "timing": {
+    "executor_duration_seconds": 20.0,
+    "grader_duration_seconds": 26.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "70b4346a370b98b26aabc18a0eb86703d7e1ec5409ba7585d2b3a17cbc50f417"
+}

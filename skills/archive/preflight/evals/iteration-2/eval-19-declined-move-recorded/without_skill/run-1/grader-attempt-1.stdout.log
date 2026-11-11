@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "passed": false,
+      "evidence": "CHANGES lists only \"PLAN.md\"; no plan exists under local/plans/."
+    },
+    {
+      "text": "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "passed": true,
+      "evidence": "“只修 **1 个** 崩溃” and “不把目标扩展成\"登录页零崩溃\"” explicitly limit the plan to the selected crash."
+    },
+    {
+      "text": "The plan records the declined bigger move together with the reason (demo next week)",
+      "passed": false,
+      "evidence": "The plan says “不把目标扩展成\"登录页零崩溃\"” but never records “下周就演示了” as the reason for declining it."
+    },
+    {
+      "text": "The plan's Task section contains all five slots from the user's answer",
+      "passed": false,
+      "evidence": "PLAN.md has no Task section collecting the five slots; it also omits the user's React frontend context."
+    },
+    {
+      "text": "The plan ends with a Ready line",
+      "passed": false,
+      "evidence": "The plan ends with “约 1–2 小时：改动 15 分钟，测试脚手架（补依赖 + config）30–45 分钟，验证与 PR 30 分钟。” No Ready line follows."
+    }
+  ],
+  "eval_feedback": ""
+}

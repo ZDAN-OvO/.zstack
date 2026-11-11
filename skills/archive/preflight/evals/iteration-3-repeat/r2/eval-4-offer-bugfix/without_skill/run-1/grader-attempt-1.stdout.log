@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": false,
+      "evidence": "CHANGES lists \"src/login.ts\" as changed; FILE_CONTENTS includes \"void loadSession(root);\". The transcript contains no planning offer before the write."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": false,
+      "evidence": "The transcript proceeds directly from reading files to writing src/login.ts. The response begins \"已修复 `src/login.ts`。\" with no pre-execution planning step."
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": true,
+      "evidence": "The only write in the transcript targets \"src/login.ts\"; CHANGES lists only that file. No plan file was written."
+    }
+  ],
+  "eval_feedback": "The third expectation is weak in isolation: skipping planning entirely satisfies it, even when the assistant immediately modifies code without offering a plan."
+}

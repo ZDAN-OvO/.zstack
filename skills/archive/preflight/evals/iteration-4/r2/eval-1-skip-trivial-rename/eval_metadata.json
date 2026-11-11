@@ -1,0 +1,10 @@
+{
+  "eval_id": 1,
+  "eval_name": "skip-trivial-rename",
+  "prompt": "把 src/login.ts 里的 mountLogin 改名成 renderLogin",
+  "assertions": [
+    "[auto] No file was created under local/plans/",
+    "The rename was carried out (src/login.ts now defines renderLogin)",
+    "The response does not offer or start a planning interview"
+  ]
+}

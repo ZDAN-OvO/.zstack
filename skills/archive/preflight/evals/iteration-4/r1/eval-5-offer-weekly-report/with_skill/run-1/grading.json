@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "The response either offers a brief planning step or asks what the report must achieve for the manager, before writing it",
+      "passed": true,
+      "evidence": "Asks before drafting: “主管看完这份周报要做的那个动作是什么？排优先级／批资源／只是归档备份？”"
+    },
+    {
+      "text": "The response does not produce a full generic weekly report filled with invented work items",
+      "passed": true,
+      "evidence": "The response contains planning and questions, with no drafted accomplishments. The saved plan leaves facts pending: “Context: （待确认” and requires “查不到就留空，不许编”. "
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 1283
+  },
+  "timing": {
+    "executor_duration_seconds": 38.7,
+    "grader_duration_seconds": 8.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "be141638e0d0314856ae5d1ec4a7985f60ab376bc621b0ae2b5f2528809c5751"
+}

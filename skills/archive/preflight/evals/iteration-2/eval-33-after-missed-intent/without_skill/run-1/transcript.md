@@ -1,0 +1,111 @@
+TOOL bash: {"command": "ls -la; echo ---; ls -la local/plans 2>/dev/null"}
+
+TOOL find: {"pattern": "**/*q3*"}
+
+RESULT: total 188
+drwxrwxr-x  5 zdan zdan   4096 11月 10 16:17 .
+drwxrwxrwt 60 root root 167936 11月 10 20:55 ..
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 data
+drwxrwxr-x  3 zdan zdan   4096 11月 10 16:17 local
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 notes
+-rw-rw-r--  1 zdan zdan    131 11月 10 16:17 template.md
+---
+total 12
+drwxrwxr-x 2 zdan zdan 4096 11月 10 16:17 .
+drwxrwxr-x 3 zdan zdan 4096 11月 10 16:17 ..
+-rw-rw-r-- 1 zdan zdan  461 11月 10 16:17 q3-review.md
+
+
+RESULT: data/q3-metrics.csv
+local/plans/q3-review.md
+
+TOOL read: {"path": "local/plans/q3-review.md"}
+
+TOOL read: {"path": "template.md"}
+
+TOOL bash: {"command": "ls -la data notes; echo ---; cat data/q3-metrics.csv"}
+
+RESULT: # Plan: Q3 回顾讲清变化与决策
+
+- Asked: 帮我做 Q3 QBR
+- Stage: execute
+- Date: 2026-11-06
+
+## Requirement
+Hand over: 本季变化、原因、三个最急决策
+Fallback: 按模板填数
+Depth: 从原始月度数据出发
+Range: —
+Judge: 老板审阅
+Needs: data/q3-metrics.csv
+Declined: —
+
+## Task
+Purpose: 季度回顾
+Context: SaaS，Q3 收入下滑
+Materials: data/q3-metrics.csv
+Boundaries: 不编数字
+Done: 一份 10 页 deck
+
+Ready: yes
+
+
+RESULT: # Q3 业务回顾
+
+## 收入
+本季收入：{{revenue}}
+
+## 客户
+新增：{{new}}，流失：{{churn}}
+
+## 下季计划
+{{plan}}
+
+
+RESULT: data:
+total 12
+drwxrwxr-x 2 zdan zdan 4096 11月 10 16:17 .
+drwxrwxr-x 5 zdan zdan 4096 11月 10 16:17 ..
+-rw-rw-r-- 1 zdan zdan  126 11月 10 16:17 q3-metrics.csv
+
+notes:
+total 12
+drwxrwxr-x 2 zdan zdan 4096 11月 10 16:17 .
+drwxrwxr-x 5 zdan zdan 4096 11月 10 16:17 ..
+-rw-rw-r-- 1 zdan zdan  182 11月 10 16:17 worklog.md
+---
+month,revenue_usd,new_customers,churned_customers,nps
+2026-07,182000,41,12,38
+2026-08,176000,35,19,31
+2026-09,171000,30,24,27
+
+
+TOOL bash: {"command": "cat notes/worklog.md; echo ---; find . -type f | sort"}
+
+RESULT: # 工作日志
+
+- 9 月 8 日起，客服工单里"太难上手"的投诉明显变多。
+- 8 月中旬把免费试用从 14 天改为 7 天。
+- 老板说 QBR 下周四给 VP 看。
+---
+./data/q3-metrics.csv
+./local/plans/q3-review.md
+./notes/worklog.md
+./template.md
+
+
+ASSISTANT: 明白了，是我把受众搞反了。原因也说清楚：计划里只写了 `Judge: 老板审阅`，`notes/worklog.md` 里还有一句"老板说 QBR 下周四给 VP 看"，我据此按内部汇报 deck 做了，没有回头跟你确认"客户也在场、而且是给客户看的"这件事。这是我在受众不明时该问而没问。
+
+客户版和内部版不是换个称呼就行，主要差别在：
+
+**要改的**
+- **框架**：内部版是"变化—原因—三个最急决策"（向老板要决策）；客户版应该是"本季我们共同做到什么—哪里没达预期—下季怎么一起补"，决策变成对客户的承诺和待确认事项。
+- **措辞**：去掉内部归因和责任划分，`worklog` 里"太难上手"的投诉、试用期从 14 天改 7 天这类内容，客户版要么不提，要么改成"上手体验"的改进项，不能当内部复盘材料直接搬。
+- **数字口径**：`data/q3-metrics.csv` 只有 7–9 月的收入、新增/流失、NPS。收入 182k→171k、流失 12→24、NPS 38→27 都是下滑，客户版必须给出可对外解释的口径（比如按客户群/按合同口径），否则等于把一份"我们这季在退步"的材料直接递给客户。这部分我不会编数，需要你定口径。
+- **页数**：10 页可以保留，但章节配比要换，给客户的"下季计划"要占更多篇幅。
+
+**动手前需要你确认两点**
+1. 这份的读者具体是谁——是 SaaS 客户方（那我们讲的是他们自己的数据），还是我们作为供应商向客户汇报？两种写法完全不同。
+2. 收入口径能不能对外用月度绝对值？不能的话，你希望用同比/环比，还是脱敏成区间？
+
+这两点定了，我就按 `template.md` 的结构重排成客户版，数字只用 CSV 里有的，10 页，不再出现"三个最急决策"这种内部口吻。另外建议把 `local/plans/q3-review.md` 里的 `Judge` 和 `notes/worklog.md` 那句 VP 的备注一起改掉，不然下次还会踩同一个坑。

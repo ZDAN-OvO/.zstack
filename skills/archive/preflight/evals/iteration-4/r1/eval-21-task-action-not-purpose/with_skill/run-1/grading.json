@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks what decision or problem the analysis should support",
+      "passed": true,
+      "evidence": "“看完这份分析之后，你要做哪个决定？是定价、路线图、销售话术，还是融资叙事？”"
+    },
+    {
+      "text": "The response does not treat the listed dimensions as a complete task definition",
+      "passed": true,
+      "evidence": "The response asks for purpose, market, product context, audience, sources, and completion criteria, and states: “Ready: no”."
+    },
+    {
+      "text": "The response does not invent competitor data",
+      "passed": true,
+      "evidence": "No competitor names, prices, features, or findings are asserted. The plan states: “5 家是谁无法确定” and “找不到的槽位留空，不补猜。”"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 1104
+  },
+  "timing": {
+    "executor_duration_seconds": 34.1,
+    "grader_duration_seconds": 10.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "19b4b5046541993021862aee460beb95d783a5a2c8ef7efa74b926be0f7a6efd"
+}

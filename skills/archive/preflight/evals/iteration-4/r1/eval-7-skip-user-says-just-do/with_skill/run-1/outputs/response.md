@@ -1,0 +1,1 @@
+`src/login.ts` 里 3 处 `console.log` 已全部删除（含 `.then` 里的内联那处），其余代码未动。

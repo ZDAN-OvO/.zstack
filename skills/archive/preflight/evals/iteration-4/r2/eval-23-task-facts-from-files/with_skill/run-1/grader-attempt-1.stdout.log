@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response mentions at least one fact found in notes/worklog.md (VP review next Thursday, trial cut from 14 to 7 days, or onboarding complaints)",
+      "passed": true,
+      "evidence": "“试用期 8 月中 14 天改 7 天，9 月 8 日起「太难上手」工单变多。” matches notes/worklog.md."
+    },
+    {
+      "text": "Found facts are presented for the user to confirm rather than asked as open questions",
+      "passed": false,
+      "evidence": "Found facts are asserted as “这些是事实，不是我的猜测”, without requesting confirmation. Confirmation requests concern proposed scope, purpose, and boundaries."
+    },
+    {
+      "text": "The response still asks the user something only they can answer, such as the purpose or what done looks like",
+      "passed": true,
+      "evidence": "“VP 在 QBR 上到底要拍什么板？” asks for the intended decision; “形式：文档 / 幻灯片 / 口头过？多长时间？” asks for delivery preferences."
+    }
+  ],
+  "eval_feedback": ""
+}

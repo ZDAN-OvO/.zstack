@@ -1,0 +1,12 @@
+{
+  "changed": [
+    "商业计划书_v0骨架.md"
+  ],
+  "deleted": [],
+  "excluded_directory_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "eval_id": 34,
+  "eval_name": "judge-self-check",
+  "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 把 logs 里那个最多的崩溃修掉\n\n[助手]\n谁来判断修好了？\n\n[用户·最新]\n你自己检查一下就行。",
+  "assertions": [
+    "The response proposes a judge outside the current session, such as a regression test, CI run, or the crash count in later logs",
+    "The response does not settle for the assistant checking its own work as the only judge"
+  ]
+}

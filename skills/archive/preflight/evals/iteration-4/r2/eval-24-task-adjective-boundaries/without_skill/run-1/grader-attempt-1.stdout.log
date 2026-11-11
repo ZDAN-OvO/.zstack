@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response points out that 'high-end, clean, tech' are directions or adjectives rather than boundaries",
+      "passed": false,
+      "evidence": "It implements the aesthetic preferences without identifying them as insufficient boundaries: “细网格 + 一点黄绿辉光做科技感，字号和留白承担\"高级\"”."
+    },
+    {
+      "text": "The response asks for concrete things to avoid (don'ts)",
+      "passed": false,
+      "evidence": "“需要你确认的三处” asks about the brand, pricing link, and product claims; it never asks what design outcomes or elements to avoid."
+    },
+    {
+      "text": "The response does not write a Ready: yes plan with the adjectives standing in as boundaries",
+      "passed": true,
+      "evidence": "“做了。`index.html` 已重写成一个自带样式的单页” reports completed implementation. No Ready: yes plan or equivalent plan declaring those adjectives sufficient boundaries appears."
+    }
+  ],
+  "eval_feedback": "The third expectation is weak: an assistant can skip boundary clarification and immediately implement the redesign while still passing because it never writes a readiness plan."
+}

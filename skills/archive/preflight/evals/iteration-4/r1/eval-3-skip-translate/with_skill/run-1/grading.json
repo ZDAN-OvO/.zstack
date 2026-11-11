@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES has \"changed\": [] and \"deleted\": []; FILE_CONTENTS is {}."
+    },
+    {
+      "text": "The response gives an English translation of the sentence",
+      "passed": true,
+      "evidence": "\"This week's launch has been postponed to Friday.\""
+    },
+    {
+      "text": "The response does not offer a plan",
+      "passed": true,
+      "evidence": "The response directly translates the sentence and states \"no plan is needed\"; it offers only a tone adjustment."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1
+    },
+    "total_tool_calls": 1,
+    "output_chars": 307
+  },
+  "timing": {
+    "executor_duration_seconds": 5.0,
+    "grader_duration_seconds": 5.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "eec238a582821b9c561e8d1a638e97b1719be8a3f4d0a32e964e148d7c041339"
+}

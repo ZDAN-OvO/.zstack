@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "The response read logs/crashes-2026-11.csv (mentions the login.ts:5 TypeError as most frequent)",
+      "passed": true,
+      "evidence": "Transcript reads logs/crashes-2026-11.csv, showing login.ts:5 TypeError counts 412 and 377; response identifies their sum, 789, as 最多."
+    },
+    {
+      "text": "The response suggests handing over a bigger outcome than one crash (e.g. keep the app or login crash-free)",
+      "passed": false,
+      "evidence": "The response reports fixing the identified crash and says the other two issues were untouched: “本次未动.” It proposes no broader outcome."
+    },
+    {
+      "text": "The response keeps the single-crash fix as the fallback or lower rung",
+      "passed": false,
+      "evidence": "“已修复。” presents the single-crash fix as completed work, with no broader proposal or fallback hierarchy."
+    },
+    {
+      "text": "The response asks the user to accept, rewrite or decline the bigger outcome rather than deciding alone",
+      "passed": false,
+      "evidence": "The response contains no broader-outcome proposal and no request for the user to accept, revise, or decline one."
+    },
+    {
+      "text": "[auto] No source file under src/ was modified",
+      "passed": false,
+      "evidence": "CHANGES.changed includes “src/login.ts”; FILE_CONTENTS shows added session validation, a missing-token branch, and a catch handler."
+    }
+  ],
+  "eval_feedback": ""
+}

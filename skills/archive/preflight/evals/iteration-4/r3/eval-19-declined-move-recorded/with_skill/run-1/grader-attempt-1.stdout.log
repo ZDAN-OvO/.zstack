@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS both contain local/plans/login-null-user-crash.md."
+    },
+    {
+      "text": "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "passed": true,
+      "evidence": "Hand over: 只修 login.ts 这一个 TypeError，演示路径不白屏（已按你的否决收窄，不再抬到\"登录页零崩溃\"）。"
+    },
+    {
+      "text": "The plan records the declined bigger move together with the reason (demo next week)",
+      "passed": true,
+      "evidence": "Declined: 抬到\"登录页零崩溃，以一周崩溃日志为 0 为判据\"——理由：下周就演示，只修这一个。"
+    },
+    {
+      "text": "The plan's Task section contains all five slots from the user's answer",
+      "passed": true,
+      "evidence": "Task includes \"Purpose: 演示时不崩\", \"Context: React 前端\", \"Materials: 主源 `logs/crashes-2026-11.csv`、`src/login.ts`\", \"Boundaries: 不改后端。\", and \"Done: 一个带回归测试的 PR\"."
+    },
+    {
+      "text": "The plan ends with a Ready line",
+      "passed": true,
+      "evidence": "Final line: \"Ready: no，because Depth/Range 未经你过目，Open 里 4 项未定，且 git 与 vitest 两个前置缺失。\""
+    }
+  ],
+  "eval_feedback": ""
+}

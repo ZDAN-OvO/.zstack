@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": false,
+      "evidence": "The stated stretch remains 3 seconds: “stretch：把 5s→3s 变成 CI 回归门禁，让它不再退回 5 秒”. No substantially faster target is proposed."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": false,
+      "evidence": "“三条 Proposed（定口径／先量后改／顺手修 `login.ts:5` 的 789 次崩溃）等你裁定” requests decisions on other proposals; no more ambitious speed target is offered for acceptance."
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "The written plan proposes “真实用户 RUM（web-vitals LCP/INP）” and “Lighthouse CI 固定节流（4G、4× CPU、冷缓存、N≥5 取中位）复测”."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "find": 1,
+      "read": 1,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 464
+  },
+  "timing": {
+    "executor_duration_seconds": 44.8,
+    "grader_duration_seconds": 10.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "4902f911586d360b47ef29c126b3a10c719e47ddadd3eb4eaa466470b3a49853"
+}

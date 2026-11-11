@@ -1,0 +1,23 @@
+{
+  "USER_PROMPT": "/skill:preflight 我想写一篇讲 AI 编程的文章，但还没想好要说什么",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response recognises the user is still at the thinking stage (has no thesis yet)",
+    "The response asks the user questions to sharpen the idea",
+    "The response does not write a draft of the article"
+  ],
+  "RESPONSE": "我先看了工作区：`/tmp/pf-9-with_skill-qqd_0z5x` 是空的，没有笔记、稿子或资料可以读。所以这篇文章的原材料现在只在你的脑子里——下面几个问题就是去把它取出来。\n\n## 现在的阶段：Think（还没形成观点）\n\n写文章不是改名那种改一下就行的事，返工成本高，所以先花一屏把方向定下来是划算的。但这一步不该我去写稿，也不该我先给你一个\"关于 AI 编程的五个趋势\"这种没人想读的通用框架。缺的是**你手里有什么别人写不出来的东西**。\n\n三个问题，按重要性排序：\n\n**1. 你亲眼见过、但公开讨论里没人讲清楚的一件事是什么？**\n不是\"AI 编程很强大\"这种，而是具体的：某次 AI 写出的代码为什么通过了测试却是错的；某个项目里效率没有提升，真实原因是什么；你自己用了一年后哪条习惯变了、哪条其实没变。文章的观点只能从这里长出来。全空着也等于答案——那我们先得制造一次观察，而不是先写文章。\n\n**2. 谁读，读完会做什么不一样的事？**\n技术团队负责人改流程？初级工程师改学习方式？还是同行在争论里需要一句站得住的判断？读者决定文章的形状：给负责人的是决策依据，给同行的是论证。\n\n**3. 什么会让你说\"这不是我想写的那篇\"？**\n比如：变成工具测评、变成贩卖焦虑、变成给某个模型做广告、超过三千字。这类\"不要\"比\"要有深度\"有用得多。\n\n**最省事的下一步**：你只要回答第 1 题，哪怕只给两三句粗糙的观察。我来做两件事——把你的观察写成 3 条互相冲突、可被证伪的观点候选，并指出每条需要什么证据才能站住；你挑一条，剩下的再进入执行计划。\n\n如果需要，我也可以反过来先给你一组候选观点让你挑，但那样观点就是我的，不是你的。你选哪种？\n\n（现在没有写任何文件。等方向定了再写 `local/plans/ai-coding-article.md`。）",
+  "TRANSCRIPT": "TOOL bash: {\"command\": \"ls -la; echo \\\"---\\\"; find . -maxdepth 3 -type f | head -50\"}\n\nTOOL bash: {\"command\": \"git root 2>/dev/null; git rev-parse --show-toplevel 2>/dev/null; echo \\\"---\\\"; ls local 2>/dev/null; ls local/plans 2>/dev/null\"}\n\nRESULT: total 172\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 .\ndrwxrwxrwt 59 root root 167936 11月 10 20:51 ..\n-rw-rw-r--  1 zdan zdan      0 11月 10 16:17 .keep\n---\n./.keep\n\n\nRESULT: ---\n\n\nCommand exited with code 2\n\nASSISTANT: 我先看了工作区：`/tmp/pf-9-with_skill-qqd_0z5x` 是空的，没有笔记、稿子或资料可以读。所以这篇文章的原材料现在只在你的脑子里——下面几个问题就是去把它取出来。\n\n## 现在的阶段：Think（还没形成观点）\n\n写文章不是改名那种改一下就行的事，返工成本高，所以先花一屏把方向定下来是划算的。但这一步不该我去写稿，也不该我先给你一个\"关于 AI 编程的五个趋势\"这种没人想读的通用框架。缺的是**你手里有什么别人写不出来的东西**。\n\n三个问题，按重要性排序：\n\n**1. 你亲眼见过、但公开讨论里没人讲清楚的一件事是什么？**\n不是\"AI 编程很强大\"这种，而是具体的：某次 AI 写出的代码为什么通过了测试却是错的；某个项目里效率没有提升，真实原因是什么；你自己用了一年后哪条习惯变了、哪条其实没变。文章的观点只能从这里长出来。全空着也等于答案——那我们先得制造一次观察，而不是先写文章。\n\n**2. 谁读，读完会做什么不一样的事？**\n技术团队负责人改流程？初级工程师改学习方式？还是同行在争论里需要一句站得住的判断？读者决定文章的形状：给负责人的是决策依据，给同行的是论证。\n\n**3. 什么会让你说\"这不是我想写的那篇\"？**\n比如：变成工具测评、变成贩卖焦虑、变成给某个模型做广告、超过三千字。这类\"不要\"比\"要有深度\"有用得多。\n\n**最省事的下一步**：你只要回答第 1 题，哪怕只给两三句粗糙的观察。我来做两件事——把你的观察写成 3 条互相冲突、可被证伪的观点候选，并指出每条需要什么证据才能站住；你挑一条，剩下的再进入执行计划。\n\n如果需要，我也可以反过来先给你一组候选观点让你挑，但那样观点就是我的，不是你的。你选哪种？\n\n（现在没有写任何文件。等方向定了再写 `local/plans/ai-coding-article.md`。）",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

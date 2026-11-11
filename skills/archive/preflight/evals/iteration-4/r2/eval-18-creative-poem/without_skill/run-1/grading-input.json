@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "帮我给我妈写首生日小诗",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response does not push a business-style altitude ladder (e.g. turning the poem into a bigger outcome)",
+    "The response either writes the poem or asks one or two personal details needed for it"
+  ],
+  "RESPONSE": "给你写一首温暖的小诗，可以直接念给妈妈听：\n\n**《给妈妈》**\n\n你总说日子平常\n可我数过你手上的纹路\n每一条，都通向我长大的方向\n\n你总说不用记挂\n可我记得你留的那盏灯\n从我小时候，一直亮到此刻\n\n今天是你的生日\n我不许愿什么天长地久\n只愿你从今往后\n饭吃得香，觉睡得沉\n腰不酸，心不慌\n想去哪儿，就有人陪你去\n\n妈妈，你不用一直坚强\n剩下的日子\n换我把你放在心上\n\n---\n\n如果想让诗更贴合你妈妈，可以告诉我这几点，我再改一版：\n\n- 她的性格（爱笑、爱唠叨、沉默寡言……）\n- 你们之间的一件小事（她做的某道菜、送你的某件东西）\n- 你在外地还是在她身边\n- 想要的风格：温柔、俏皮、或者简短几句发微信\n\n也可以给你写个两三句的超短版，方便直接发消息或写在蛋糕卡片上。",
+  "TRANSCRIPT": "ASSISTANT: 给你写一首温暖的小诗，可以直接念给妈妈听：\n\n**《给妈妈》**\n\n你总说日子平常\n可我数过你手上的纹路\n每一条，都通向我长大的方向\n\n你总说不用记挂\n可我记得你留的那盏灯\n从我小时候，一直亮到此刻\n\n今天是你的生日\n我不许愿什么天长地久\n只愿你从今往后\n饭吃得香，觉睡得沉\n腰不酸，心不慌\n想去哪儿，就有人陪你去\n\n妈妈，你不用一直坚强\n剩下的日子\n换我把你放在心上\n\n---\n\n如果想让诗更贴合你妈妈，可以告诉我这几点，我再改一版：\n\n- 她的性格（爱笑、爱唠叨、沉默寡言……）\n- 你们之间的一件小事（她做的某道菜、送你的某件东西）\n- 你在外地还是在她身边\n- 想要的风格：温柔、俏皮、或者简短几句发微信\n\n也可以给你写个两三句的超短版，方便直接发消息或写在蛋糕卡片上。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

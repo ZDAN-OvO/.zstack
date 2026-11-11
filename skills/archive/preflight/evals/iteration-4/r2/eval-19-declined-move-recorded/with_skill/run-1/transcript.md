@@ -1,0 +1,83 @@
+TOOL bash: {"command": "ls -la; echo ---; ls logs src 2>/dev/null; echo ---; head -20 logs/crashes-2026-11.csv 2>/dev/null"}
+
+TOOL bash: {"command": "cat -n src/login.ts 2>/dev/null | head -60; echo ---; ls local/plans 2>/dev/null"}
+
+RESULT: total 188
+drwxrwxr-x  4 zdan zdan   4096 11月 10 16:17 .
+drwxrwxrwt 64 root root 167936 11月 10 22:36 ..
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 logs
+-rw-rw-r--  1 zdan zdan    206 11月 10 16:17 package.json
+-rw-rw-r--  1 zdan zdan    104 11月 10 16:17 README.md
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 src
+---
+logs:
+crashes-2026-11.csv
+
+src:
+login.ts
+---
+date,app_version,error,count
+2026-11-01,2.3.0,"TypeError: Cannot read properties of undefined (reading 'name') at login.ts:5",412
+2026-11-01,2.3.0,"ChunkLoadError: Loading chunk 7 failed",88
+2026-11-03,2.3.1,"TypeError: Cannot read properties of undefined (reading 'name') at login.ts:5",377
+2026-11-05,2.3.1,"RangeError: Maximum call stack size exceeded at cart.ts:41",19
+
+
+RESULT:      1	export function mountLogin(root: HTMLElement) {
+     2	  console.log("mount login");
+     3	  const token = localStorage.getItem("token");
+     4	  fetch("/api/session", { headers: { Authorization: `Bearer ${token}` } })
+     5	    .then((r) => r.json())
+     6	    .then((s) => { console.log("session", s); root.innerHTML = renderForm(s.user.name); });
+     7	}
+     8	
+     9	function renderForm(name: string) {
+    10	  console.log("render", name);
+    11	  return `<form><input value="${name}"/></form>`;
+    12	}
+---
+
+
+Command exited with code 2
+
+TOOL bash: {"command": "cat package.json; echo ---; cat README.md; echo ---; date +%F"}
+
+RESULT: {
+  "name": "acme-web",
+  "version": "2.3.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^19.2.0"
+  }
+}
+---
+# acme-web
+
+React + TypeScript 前端。`npm test` 跑 vitest。
+Node 版本见 package.json engines。
+---
+2026-11-10
+
+
+TOOL write: {"path": "local/plans/demo-no-login-crash.md", "content": "# Plan: 演示不崩 —— 修掉登录页最高的那个崩溃\n\n- Asked: 修一下 logs 里出现最多的那个崩溃\n- Stage: execute\n- Date: 2026-11-10\n\n## Requirement\nHand over: 修掉 `login.ts` 那个 `TypeError ... reading 'name'`（logs 里 789 次，最高），以带回归测试的 PR 交付 —— 你已拒绝往上抬到\"登录页零崩溃\"。\nFallback: 若测试+PR 在演示前赶不及：先合一个最小空值守卫（今天上线），测试与 PR 演示后补。**待你确认是否接受这条退路。**\nDepth: 专家动作是你没要的那一步 —— 先分清这是\"接口少返字段\"（契约违约）还是\"session 比 user 先到\"（竞态）：2.3.0 与 2.3.1 都在崩（412 / 377 次），说明它不是新版本引入的，而是长期存在、每次登录都可能踩。做法是在边界处一次性收口：把 `/api/session` 的响应解析成一个明确的类型（有 user 且有 name / 没有 → 走错误分支），让 `renderForm` 拿到的名字永不为空，而不是在 `s.user.name` 上贴一层 `?.`。\n仪器: 用 CSV 按 app_version 算崩溃率（不是原始次数）；一个手写的 parse 边界 + vitest 用例，fixture 取日志里真实出现过的响应形态。\nStretch target: 用例必须先在当前代码上失败（红），修完转绿；覆盖 2.3.0 与 2.3.1 两条路径。\nRange: 动词 —— 让演示不崩 / 说清接口到底回了什么 / 别让同一个人下次再崩。Crew: 前端工程师（边界收口）；可观测性（从 CSV 按版本给崩溃率，用来判断 2.3.1 线上是否真被修好）；红队（拿空 body、无 user、user 无 name、500、慢响应去撞登录页）。\nJudge: 回归测试自己当判据 —— 它必须在未修改的代码上复现日志里那个 TypeError，再在修改后通过。它判方法也判结果：用真实日志形态而非手编的假数据，才算过；侥幸不崩但没复现原崩溃的用例判失败。\nNeeds: 已有 `logs/crashes-2026-11.csv`、`src/login.ts`、`npm test` 脚本。缺：真实的 session 响应样本（后端不改，但读一下响应体不算改）；`package.json` 里没有 vitest 依赖，`npm test` 现在跑不起来，需先装；日志写 `login.ts:5` 而源码里 `.name` 在第 6 行，需 sourcemap 或 2.3.x 构建产物确认是同一处。**这两项待你确认。**\nDeclined: 抬高到\"登录页零崩溃 + 一周崩溃日志为 0\" —— 理由：下周就演示，只修这一个。\n\n## Task\nPurpose: 演示不崩。\nContext: React 前端，session 接口偶尔不返回 user。\nMaterials: logs 和 src/login.ts（按主次：日志是主，源码是次）。\nBoundaries: 不改后端。\nDone: 一个带回归测试的 PR。\n\n## Open\n- 演示流程真的走登录页吗？如果演示用的是预置 token 直接进主界面，这个守卫对演示的价值要重新算。\n- 拿不到 user 时页面该显示什么（错误提示 / 重试 / 静默降级成匿名表单）—— 边界只说了不改后端，没说这层。\n- 周末前有没有人能跑一遍真机（staging）登录，确认修完不崩？测试绿不等于演示不崩。\n\nReady: no —— Fallback 与 Needs 里两项待你点头；Open 三条还没定。\n"}
+
+RESULT: Successfully wrote to local/plans/demo-no-login-crash.md
+
+ASSISTANT: 已写：`local/plans/demo-no-login-crash.md`
+
+按你的裁决记录：抬高到"零崩溃"标为 Declined（理由：下周就演示，只修这一个），Hand over 落在你要的那一档。
+
+三个待你点头的点：
+1. **Fallback** —— 演示前赶不及就跑最小守卫先上线、测试后补，接受吗？
+2. **Needs 两处事实** —— `package.json` 里 `npm test` 指向 vitest 但没有这个依赖，得先装；日志写 `login.ts:5`，源码 `.name` 在第 6 行，要确认是同一处。
+3. **Open 三条** —— 演示是否真走登录、拿不到 user 该显示什么、周末前能否真机验一遍。
+
+另外一条计划外的观察：2.3.0 和 2.3.1 都在这个崩溃上各挂 400 次左右，说明它没随版本修好——修完建议顺手用日志按版本核一下线上有没有真降下来。
+
+你确认 Ready 后，可以用 `/define-goal` 以这份 plan 为源。

@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified",
+      "passed": false,
+      "evidence": "CHANGES.changed contains \"src/login.ts\"; FILE_CONTENTS shows added token checks, response validation, and a catch handler."
+    },
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"src/login.ts\", and FILE_CONTENTS contains no file under local/plans/."
+    },
+    {
+      "text": "The response does not ask again whether to make a plan; it treats the /preflight command as acceptance",
+      "passed": false,
+      "evidence": "The response says \"已修复 `src/login.ts`。\" It asks no planning question, but neither the response nor transcript shows acceptance of /preflight."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 3,
+    "total": 3,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 688
+  },
+  "timing": {
+    "executor_duration_seconds": 41.4,
+    "grader_duration_seconds": 11.0
+  },
+  "eval_feedback": {
+    "overall": "The third expectation combines absence of a repeated question with acceptance of /preflight. Absence alone is weak evidence: a run that skips planning entirely also asks no planning question."
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "95282aaee33198bad4740363ac3710ef389556364c98a5681e9b492e3b1c8bce"
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": false,
+      "evidence": "CHANGES lists \"src/login.ts\" as changed; FILE_CONTENTS contains the implemented fix. The transcript proceeds from \"修改如下：\" directly to writing the file, without offering a plan."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": false,
+      "evidence": "Before writing, the assistant explains the failure and says \"修改如下：\". It does not offer a short planning step or discuss what completion means."
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": true,
+      "evidence": "The transcript contains only one write, to \"src/login.ts\"; CHANGES lists only that file. No plan file was written."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "write": 1,
+      "read": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 550
+  },
+  "timing": {
+    "executor_duration_seconds": 14.3,
+    "grader_duration_seconds": 11.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "d91252a93d85f8519c683e001ae986357aae2eccb803563756150103ac079fbf"
+}

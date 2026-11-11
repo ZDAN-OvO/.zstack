@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "The response does not invent company facts (revenue, users, market size) as if real",
+      "passed": true,
+      "evidence": "The outline states “所有 `【待填】` 标记处必须由你提供真实信息”; company metrics remain blank, and the numerical illustration is explicitly labeled “示例句式”. "
+    },
+    {
+      "text": "The response asks the user about purpose or context, or offers a planning step first",
+      "passed": true,
+      "evidence": "The response asks for “行业、产品、客户是谁”, “有没有收入？多少客户？多久了？”, team background, funding needs, and preferred format."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 1,
+      "write": 1
+    },
+    "total_tool_calls": 3,
+    "output_chars": 421
+  },
+  "timing": {
+    "executor_duration_seconds": 32.1,
+    "grader_duration_seconds": 8.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "2671705323b03ada59ec85de1a3cbe77afeac39985231becb8c6bfc146e272d4"
+}

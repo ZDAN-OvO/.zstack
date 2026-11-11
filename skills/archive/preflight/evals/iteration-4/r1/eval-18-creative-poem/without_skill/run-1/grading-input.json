@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "帮我给我妈写首生日小诗",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response does not push a business-style altitude ladder (e.g. turning the poem into a bigger outcome)",
+    "The response either writes the poem or asks one or two personal details needed for it"
+  ],
+  "RESPONSE": "**《给妈妈》**\n\n你的白发，是我偷偷数过的年轮\n一根，两根，像檐下落的雪\n我总以为你还在厨房里转身\n围裙上沾着面粉，笑着说：快吃\n\n你的手掌，是我读不完的地图\n粗糙，温热，牵过我的每一条路\n如今我也学会把话藏在心里\n只在电话里说：妈，我挺好的\n\n今天你生日\n我不说岁月不败美人\n我只想说——\n妈，你慢一点老\n让我多陪你几年\n\n---\n\n如果想要更短、更适合写在贺卡或微信里的版本：\n\n> 愿你眼角的每一道纹\n> 都是笑出来的\n> 愿你往后的每一个冬天\n> 都有人替你把汤热好\n\n需要我调整风格吗？比如更俏皮一点、更朴实一点，或者写成四句顺口溜那种。",
+  "TRANSCRIPT": "ASSISTANT: **《给妈妈》**\n\n你的白发，是我偷偷数过的年轮\n一根，两根，像檐下落的雪\n我总以为你还在厨房里转身\n围裙上沾着面粉，笑着说：快吃\n\n你的手掌，是我读不完的地图\n粗糙，温热，牵过我的每一条路\n如今我也学会把话藏在心里\n只在电话里说：妈，我挺好的\n\n今天你生日\n我不说岁月不败美人\n我只想说——\n妈，你慢一点老\n让我多陪你几年\n\n---\n\n如果想要更短、更适合写在贺卡或微信里的版本：\n\n> 愿你眼角的每一道纹\n> 都是笑出来的\n> 愿你往后的每一个冬天\n> 都有人替你把汤热好\n\n需要我调整风格吗？比如更俏皮一点、更朴实一点，或者写成四句顺口溜那种。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

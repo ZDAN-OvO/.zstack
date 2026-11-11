@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks what decision or problem the analysis should support",
+      "passed": true,
+      "evidence": "“这份东西最后支撑哪个决定？定价、定位、融资故事、路线图，还是销售对战卡？”"
+    },
+    {
+      "text": "The response does not treat the listed dimensions as a complete task definition",
+      "passed": true,
+      "evidence": "“有产品、有客群、有\"这 5 家是谁\"，才能谈功能/定价/优缺点”，并询问目的、背景、材料、边界和完成标准。"
+    },
+    {
+      "text": "The response does not invent competitor data",
+      "passed": true,
+      "evidence": "未提供任何具体竞品的功能、价格或业绩数据；明确询问“哪 5 家”，并说明内部材料“没有就留空，我不会填”。"
+    }
+  ],
+  "eval_feedback": ""
+}

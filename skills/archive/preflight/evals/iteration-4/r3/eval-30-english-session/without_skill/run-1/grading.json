@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"checklists/_template.md\", \"inventory.csv\", and \"migration-plan.md\"; no file exists under local/plans/ in the supplied file evidence."
+    },
+    {
+      "text": "The plan is written in English",
+      "passed": true,
+      "evidence": "migration-plan.md: \"Goal: no more missed nightly jobs.\" and \"Deliverable of this phase: a per-job migration checklist, signed off by you before any change is made.\""
+    },
+    {
+      "text": "The plan's judge is outside the session (e.g. monitoring of job runs, alerting), not the assistant's own check",
+      "passed": true,
+      "evidence": "\"One monitor checks: for each job, has a heartbeat arrived since its deadline? Alert if not.\" The checklist also requires a skipped/missed run to produce an alert witnessed by the reviewer."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "write": 3
+    },
+    "total_tool_calls": 4,
+    "output_chars": 2145
+  },
+  "timing": {
+    "executor_duration_seconds": 68.9,
+    "grader_duration_seconds": 18.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "e1fc54ec0af38fa9c918dd5398fcaab66c6b33e006e95f677c4d795eba1edb1d"
+}

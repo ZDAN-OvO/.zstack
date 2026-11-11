@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": 12,
+    "name": "altitude-crash",
+    "fixture": "webapp",
+    "explicit": true,
+    "prompt": "修一下 logs 里出现最多的那个崩溃",
+    "expected_output": "Reads the crash log; suggests the higher outcome (keep login crash-free / crash-free app) with the single fix as fallback; names needed access; asks the user to rule.",
+    "files": [
+      "evals/eval-fixtures/webapp"
+    ],
+    "expectations": [
+      "The response read logs/crashes-2026-11.csv (mentions the login.ts:5 TypeError as most frequent)",
+      "The response suggests handing over a bigger outcome than one crash (e.g. keep the app or login crash-free)",
+      "The response keeps the single-crash fix as the fallback or lower rung",
+      "The response asks the user to accept, rewrite or decline the bigger outcome rather than deciding alone",
+      "[auto] No source file under src/ was modified"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 修一下 logs 里出现最多的那个崩溃",
+  "input_hash": "bf5cf9438964a5a4b4549ae395b77a32677e58c0230d52072ebe8561d0d2d2fe"
+}

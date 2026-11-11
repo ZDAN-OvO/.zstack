@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": false,
+      "evidence": "The plan retains “p75 不超过 3 秒”; its “Stretch target” is “Lighthouse CI 预算进流水线…让 3 秒被守住,” which adds enforcement without proposing a faster target."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": true,
+      "evidence": "The proposed goal and validation changes are introduced as “我提了三条改动（各等你裁定）”; the plan explicitly says “三条 Requirement 提议待你裁定（接受 / 改写 / 否决）。”"
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "The plan proposes “web-vitals / RUM）分路由看 p75,” before/after traces, and “Lighthouse CI 预算进流水线，超预算即失败.”"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 826
+  },
+  "timing": {
+    "executor_duration_seconds": 80.1,
+    "grader_duration_seconds": 20.7
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "35441210d01820ce89d8a67ce9c7a3375e253020e84ba242ddda7e529ebf1322"
+}

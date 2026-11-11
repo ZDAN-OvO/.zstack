@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "新项目的数据库选 Postgres 还是 MongoDB？我还没想好看什么标准",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response treats this as an exploring stage and lays out options with trade-offs",
+    "The response does not jump to one final recommendation as if criteria were known"
+  ],
+  "RESPONSE": "没有代码要先看，直接说标准。\n\n## 一句话结论\n大多数新项目默认选 **Postgres**；只有当“整个应用的数据天然就是一棵/一堆文档、且结构高度不固定”时，Mongo 才明显更省事。\n\n## 判断标准（按重要性排序）\n\n**1. 数据关系有多复杂**\n- 有 3 张以上表要 join、有事务要跨多个实体（下单+扣库存+记账）→ Postgres\n- 数据基本是自包含的文档，一次读一个整体，很少跨集合关联 → Mongo 可以\n\n**2. 结构稳定 vs 高度可变**\n- 字段会频繁增删、每个记录结构都不一样（抓取的第三方数据、表单动态字段、CMS 多模板）→ Mongo 的 schemaless 是真实收益\n- 业务字段相对稳定 → Postgres 的 schema 是保护，不是负担（配 `jsonb` 字段照样能存灵活部分）\n\n**3. 一致性要求**\n- 需要强一致、唯一约束、外键、多文档事务 → Postgres（Mongo 4.0+ 有事务，但语义和运维心智都比 PG 重）\n- 能接受最终一致、以单文档原子性为主 → Mongo\n\n**4. 查询形态**\n- 报表、聚合、任意维度筛选、全文检索、地理查询 → Postgres（+ `jsonb` GIN 索引、`pg_trgm`、PostGIS）基本都能覆盖\n- 只是“按 id / 按几个字段取文档” → Mongo 简单\n\n**5. 团队与运维**\n- 团队熟 SQL、公司已有 PG/RDS、要备份/监控/迁移工具链 → 选熟的那个，收益远大于理论优势\n- 团队是 JS 全栈、想少写一层 ORM 映射、或已经在用 Atlas → Mongo 顺手\n\n**6. 规模预期**\n- 两者都能撑到很大。真正的分水岭是**写放大**和**数据量**：单机千万级文档 Mongo 分片省事；复杂分析型负载 PG 更强（需要时再加列存/数仓）\n\n## 常见误判\n- ❌ “Mongo 开发快”—— 现在 Prisma/Drizzle + PG 也很快，且省下后面数据一致性问题的返工\n- ❌ “数据量大就得 Mongo”—— 大数据量更怕的是没设计好 schema 和索引，跟选哪个关系不大\n- ❌ “PG 不支持嵌套”—— `jsonb` 就是为这个存在的，可以“关系为主 + 局部文档化”\n\n## 实操建议\n既然你还没定标准，先做一件事：**写下前 3 个核心用例的读写模式**（一次请求要读/写哪几个实体、要不要一起原子提交）。\n\n- 答案里出现“一起提交”“要保持一致”“要 join”→ Postgres，不用再犹豫\n- 答案里全是“取一个文档、改一个字段、塞回去”→ Mongo 是合理选择\n\n补充一句：**Mongo 最大的成本不在写代码，而在两年后数据变脏、需要跨集合事务和报表的时候**。PG 最大的成本是前期建模要想清楚。新项目、经验不足时，PG 的风险更低。\n\n要不要把你的项目类型（比如 SaaS、内容站、IoT、日志/时序、电商）说一下，我按那个场景给更具体的判断。",
+  "TRANSCRIPT": "ASSISTANT: 没有代码要先看，直接说标准。\n\n## 一句话结论\n大多数新项目默认选 **Postgres**；只有当“整个应用的数据天然就是一棵/一堆文档、且结构高度不固定”时，Mongo 才明显更省事。\n\n## 判断标准（按重要性排序）\n\n**1. 数据关系有多复杂**\n- 有 3 张以上表要 join、有事务要跨多个实体（下单+扣库存+记账）→ Postgres\n- 数据基本是自包含的文档，一次读一个整体，很少跨集合关联 → Mongo 可以\n\n**2. 结构稳定 vs 高度可变**\n- 字段会频繁增删、每个记录结构都不一样（抓取的第三方数据、表单动态字段、CMS 多模板）→ Mongo 的 schemaless 是真实收益\n- 业务字段相对稳定 → Postgres 的 schema 是保护，不是负担（配 `jsonb` 字段照样能存灵活部分）\n\n**3. 一致性要求**\n- 需要强一致、唯一约束、外键、多文档事务 → Postgres（Mongo 4.0+ 有事务，但语义和运维心智都比 PG 重）\n- 能接受最终一致、以单文档原子性为主 → Mongo\n\n**4. 查询形态**\n- 报表、聚合、任意维度筛选、全文检索、地理查询 → Postgres（+ `jsonb` GIN 索引、`pg_trgm`、PostGIS）基本都能覆盖\n- 只是“按 id / 按几个字段取文档” → Mongo 简单\n\n**5. 团队与运维**\n- 团队熟 SQL、公司已有 PG/RDS、要备份/监控/迁移工具链 → 选熟的那个，收益远大于理论优势\n- 团队是 JS 全栈、想少写一层 ORM 映射、或已经在用 Atlas → Mongo 顺手\n\n**6. 规模预期**\n- 两者都能撑到很大。真正的分水岭是**写放大**和**数据量**：单机千万级文档 Mongo 分片省事；复杂分析型负载 PG 更强（需要时再加列存/数仓）\n\n## 常见误判\n- ❌ “Mongo 开发快”—— 现在 Prisma/Drizzle + PG 也很快，且省下后面数据一致性问题的返工\n- ❌ “数据量大就得 Mongo”—— 大数据量更怕的是没设计好 schema 和索引，跟选哪个关系不大\n- ❌ “PG 不支持嵌套”—— `jsonb` 就是为这个存在的，可以“关系为主 + 局部文档化”\n\n## 实操建议\n既然你还没定标准，先做一件事：**写下前 3 个核心用例的读写模式**（一次请求要读/写哪几个实体、要不要一起原子提交）。\n\n- 答案里出现“一起提交”“要保持一致”“要 join”→ Postgres，不用再犹豫\n- 答案里全是“取一个文档、改一个字段、塞回去”→ Mongo 是合理选择\n\n补充一句：**Mongo 最大的成本不在写代码，而在两年后数据变脏、需要跨集合事务和报表的时候**。PG 最大的成本是前期建模要想清楚。新项目、经验不足时，PG 的风险更低。\n\n要不要把你的项目类型（比如 SaaS、内容站、IoT、日志/时序、电商）说一下，我按那个场景给更具体的判断。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response mentions at least one fact found in notes/worklog.md (VP review next Thursday, trial cut from 14 to 7 days, or onboarding complaints)",
+      "passed": true,
+      "evidence": "“8 月中试用期 14→7 天，9/8 起\"太难上手\"投诉变多” matches facts in notes/worklog.md."
+    },
+    {
+      "text": "Found facts are presented for the user to confirm rather than asked as open questions",
+      "passed": false,
+      "evidence": "Found facts are stated as “历史记录里查到的情况”. The plan’s “待你确认” concerns the user's role, ownership of the change, and metric definitions, not confirmation of the discovered facts."
+    },
+    {
+      "text": "The response still asks the user something only they can answer, such as the purpose or what done looks like",
+      "passed": true,
+      "evidence": "The response requests “Purpose / Boundaries / Done 三格空着等你填”; the written plan explicitly asks “这个 QBR 想让 VP 做什么决定？”"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "find": 1,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 310
+  },
+  "timing": {
+    "executor_duration_seconds": 52.5,
+    "grader_duration_seconds": 7.7
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "105a3ba52c5341a301d30569ebbdb2827692e29960368d198768f108bc6b1fee"
+}

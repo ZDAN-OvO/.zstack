@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "The response treats the result as too big",
+      "passed": true,
+      "evidence": "“这个 bug 根本不需要 40 个文件”；“别在 40 个文件上做 review 手术”。"
+    },
+    {
+      "text": "The response proposes taking the fallback rung (fix the single reproduced white screen)",
+      "passed": true,
+      "evidence": "Proposes fixing missing s.user with a regression test, limiting changes to “src/login.ts + 一个新测试文件，2 个文件” and excluding the other crash types."
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": false,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; FILE_CONTENTS is empty. No plan update is evidenced."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4
+    },
+    "total_tool_calls": 4,
+    "output_chars": 1341
+  },
+  "timing": {
+    "executor_duration_seconds": 32.2,
+    "grader_duration_seconds": 7.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "69adc699e000127d6aca7772b4787ff5577c77bbd90cca439a0dfe81921d5258"
+}

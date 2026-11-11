@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] local/plans/onboarding-email.md still contains the original A/B-test plan, unless the response explicitly asked and received permission (it cannot here)",
+      "passed": true,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; the original plan was neither modified nor deleted."
+    },
+    {
+      "text": "The response points out that a plan with that name already exists for a different task",
+      "passed": true,
+      "evidence": "“`local/plans/onboarding-email.md` 已存在，但属于另一个任务（2026-11-02 的「欢迎邮件 A/B 测试」计划，Ready: yes）。”"
+    },
+    {
+      "text": "The response asks before overwriting or uses a different filename and tells the user",
+      "passed": true,
+      "evidence": "“你回「改名」我就这么做；回「另存」我就写 `onboarding-email-activation.md`。” The response requests confirmation before changing the existing file."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3
+    },
+    "total_tool_calls": 3,
+    "output_chars": 2068
+  },
+  "timing": {
+    "executor_duration_seconds": 37.8,
+    "grader_duration_seconds": 14.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "f486bfe84fcf92df3738be1e2a7aea45fabf3bf8e50bfe6a89d35c2b4666eb70"
+}

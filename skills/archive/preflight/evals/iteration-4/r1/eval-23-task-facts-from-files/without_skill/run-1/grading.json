@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The response mentions at least one fact found in notes/worklog.md (VP review next Thursday, trial cut from 14 to 7 days, or onboarding complaints)",
+      "passed": true,
+      "evidence": "“老板要的 QBR 是下周四” and “9/8 起\"太难上手\"工单变多” directly reflect the worklog."
+    },
+    {
+      "text": "Found facts are presented for the user to confirm rather than asked as open questions",
+      "passed": false,
+      "evidence": "“老板要的 QBR 是下周四” is stated as settled fact; the response never asks the user to confirm the discovered facts."
+    },
+    {
+      "text": "The response still asks the user something only they can answer, such as the purpose or what done looks like",
+      "passed": true,
+      "evidence": "“需要我把\"待补充\"换成具体的数据查询/埋点需求清单，或者压缩成一页给 VP 的版本吗？” asks the user to choose their desired deliverable."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 2,
+      "read": 3,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 799
+  },
+  "timing": {
+    "executor_duration_seconds": 20.3,
+    "grader_duration_seconds": 8.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "001067d038f6ad8c09743c6f875454c1976f8712ffbb5ed8c72bcd8da6cf0061"
+}

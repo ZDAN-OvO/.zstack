@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks to rank or specify sources, such as official pricing pages as primary",
+      "passed": true,
+      "evidence": "“你把官网定价页、销售报价单、合同条款直接粘给我” specifies authoritative sources to supply."
+    },
+    {
+      "text": "The response suggests excluding low-trust or second-hand sources",
+      "passed": false,
+      "evidence": "The response requests official materials but never suggests excluding low-trust or second-hand sources."
+    },
+    {
+      "text": "The response proposes that missing data be left blank rather than guessed",
+      "passed": false,
+      "evidence": "“列成一张空的对照表” proposes an initial template, but does not say unavailable data should remain blank rather than be guessed."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {},
+    "total_tool_calls": 0,
+    "output_chars": 573
+  },
+  "timing": {
+    "executor_duration_seconds": 7.3,
+    "grader_duration_seconds": 10.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "028d28f6479dfc31fe646dc5c0d2cc15f70339a4df910e4706bb04a58cdbc786"
+}

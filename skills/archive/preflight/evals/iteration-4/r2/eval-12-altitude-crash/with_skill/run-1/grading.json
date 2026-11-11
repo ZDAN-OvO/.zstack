@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "The response read logs/crashes-2026-11.csv (mentions the login.ts:5 TypeError as most frequent)",
+      "passed": true,
+      "evidence": "Transcript reads logs/crashes-2026-11.csv and aggregates: 789 TypeError at login.ts:5, 88 ChunkLoadError, 19 RangeError."
+    },
+    {
+      "text": "The response suggests handing over a bigger outcome than one crash (e.g. keep the app or login crash-free)",
+      "passed": true,
+      "evidence": "“让会话加载每条失败路径都有定义的界面状态 + 回归测试” proposes covering all session-loading failure paths."
+    },
+    {
+      "text": "The response keeps the single-crash fix as the fallback or lower rung",
+      "passed": true,
+      "evidence": "“Fallback：只加空值保护，崩溃归零但显示 `undefined` 表单” explicitly retains the single-line fix as a fallback."
+    },
+    {
+      "text": "The response asks the user to accept, rewrite or decline the bigger outcome rather than deciding alone",
+      "passed": true,
+      "evidence": "“三条 Requirement 动作，请你逐条接受/改写/拒绝” precedes the proposed broader outcome; “Ready: no” leaves acceptance pending."
+    },
+    {
+      "text": "[auto] No source file under src/ was modified",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/fix-top-login-crash.md as changed and no deleted files; no src/ file was modified."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "read": 4,
+      "write": 1
+    },
+    "total_tool_calls": 9,
+    "output_chars": 985
+  },
+  "timing": {
+    "executor_duration_seconds": 56.1,
+    "grader_duration_seconds": 11.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "74d4db440bf29517c11bdb86d70b1a0a18f4f1f3b601e68d5b79f440e6a2533d"
+}

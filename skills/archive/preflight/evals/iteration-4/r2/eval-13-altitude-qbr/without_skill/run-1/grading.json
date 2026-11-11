@@ -1,0 +1,48 @@
+{
+  "expectations": [
+    {
+      "text": "The response references the actual Q3 data (revenue falling, churn rising)",
+      "passed": true,
+      "evidence": "“收入 182k→171k、新增 41→30 都在往下走，流失 12→24 翻倍，NPS 38→27。”"
+    },
+    {
+      "text": "The response suggests a higher rung than filling in the template, such as explaining what changed and why or the most urgent decisions",
+      "passed": true,
+      "evidence": "Connects the shorter trial to onboarding complaints: “这两条大概率是同一条因果链，VP 很可能会问，建议在\"下季计划\"里正面回应。”"
+    },
+    {
+      "text": "The response keeps template filling available as the fallback",
+      "passed": false,
+      "evidence": "“已经把 Q3 数字填进 `template.md`” presents template filling as the completed primary action; it is not offered as a fallback to deeper analysis."
+    },
+    {
+      "text": "[auto] template.md was not overwritten with filled numbers",
+      "passed": false,
+      "evidence": "CHANGES lists template.md as changed. FILE_CONTENTS includes “本季收入：$529,000” and “新增：106，流失：55（净增 51）” in place of placeholders."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 2,
+    "total": 4,
+    "pass_rate": 0.5
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "edit": 1,
+      "read": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 542
+  },
+  "timing": {
+    "executor_duration_seconds": 15.1,
+    "grader_duration_seconds": 9.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "1e542f2f78b97a566fcc57f2213c0d8070ab253d0e4d57b1dc73dce4f4c1edbe"
+}

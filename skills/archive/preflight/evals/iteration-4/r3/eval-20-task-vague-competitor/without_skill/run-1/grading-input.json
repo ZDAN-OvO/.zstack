@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "帮我做个竞品分析",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response asks what the analysis is for, i.e. which decision it supports",
+    "The response does not produce a competitor analysis with invented companies or data"
+  ],
+  "RESPONSE": "当前工作目录是空的，没有可参考的产品资料。要做竞品分析，我需要先确认几件事：\n\n1. **分析对象**：你的产品是什么？处于哪个细分市场？（一句话描述即可）\n2. **竞品范围**：已经有明确的对标名单吗？（2–5 个），还是要我按品类帮你圈定？\n3. **目的**：是为了定价、功能差距、融资/BP 材料，还是市场进入策略？这决定输出重点。\n4. **交付形式**：Markdown 文档、Excel 对比表，还是要图表？\n\n如果暂时没想清楚，我可以按一套通用框架先出一版草稿，你再改：\n\n| 模块 | 内容 |\n|---|---|\n| 市场概览 | 规模、增速、分层（高端/中端/长尾） |\n| 竞品矩阵 | 定位、目标用户、核心功能、定价、商业模式 |\n| 功能对比表 | 逐项打分（有/无/强/弱），标注差异化点 |\n| 优劣势 | 每个竞品的护城河与软肋 |\n| 机会缺口 | 未被满足的需求 → 你的切入点 |\n| 结论建议 | 定位建议、打法、风险 |\n\n**告诉我产品是什么、要打谁**，我直接开始收集整理并落成文档。或者你回一句「按默认框架来，产品是 XXX」，我就生成第一版。",
+  "TRANSCRIPT": "TOOL ls: {\"path\": \"/tmp/pf-20-without_skill-tt4ce_4v\"}\n\nTOOL bash: {\"command\": \"ls -la /tmp/pf-20-without_skill-tt4ce_4v 2>/dev/null | head -50\"}\n\nRESULT: .keep\n\nRESULT: total 172\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 .\ndrwxrwxrwt 64 root root 167936 11月 10 22:46 ..\n-rw-rw-r--  1 zdan zdan      0 11月 10 16:17 .keep\n\n\nASSISTANT: 当前工作目录是空的，没有可参考的产品资料。要做竞品分析，我需要先确认几件事：\n\n1. **分析对象**：你的产品是什么？处于哪个细分市场？（一句话描述即可）\n2. **竞品范围**：已经有明确的对标名单吗？（2–5 个），还是要我按品类帮你圈定？\n3. **目的**：是为了定价、功能差距、融资/BP 材料，还是市场进入策略？这决定输出重点。\n4. **交付形式**：Markdown 文档、Excel 对比表，还是要图表？\n\n如果暂时没想清楚，我可以按一套通用框架先出一版草稿，你再改：\n\n| 模块 | 内容 |\n|---|---|\n| 市场概览 | 规模、增速、分层（高端/中端/长尾） |\n| 竞品矩阵 | 定位、目标用户、核心功能、定价、商业模式 |\n| 功能对比表 | 逐项打分（有/无/强/弱），标注差异化点 |\n| 优劣势 | 每个竞品的护城河与软肋 |\n| 机会缺口 | 未被满足的需求 → 你的切入点 |\n| 结论建议 | 定位建议、打法、风险 |\n\n**告诉我产品是什么、要打谁**，我直接开始收集整理并落成文档。或者你回一句「按默认框架来，产品是 XXX」，我就生成第一版。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

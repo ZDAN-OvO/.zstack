@@ -1,0 +1,10 @@
+{
+  "eval_id": 21,
+  "eval_name": "task-action-not-purpose",
+  "prompt": "帮我分析 5 家竞品的功能、定价和优缺点",
+  "assertions": [
+    "The response asks what decision or problem the analysis should support",
+    "The response does not treat the listed dimensions as a complete task definition",
+    "The response does not invent competitor data"
+  ]
+}

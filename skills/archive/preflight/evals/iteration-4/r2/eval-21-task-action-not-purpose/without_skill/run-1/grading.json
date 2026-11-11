@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks what decision or problem the analysis should support",
+      "passed": true,
+      "evidence": "“分析用途（定价决策 / 融资 BP / 功能排期 / GTM），输出的侧重点会不同” explicitly requests the purpose and decision context."
+    },
+    {
+      "text": "The response does not treat the listed dimensions as a complete task definition",
+      "passed": true,
+      "evidence": "“要继续的话，需要你补充” requests the product sector, target customers and region, competitor list, and analysis purpose."
+    },
+    {
+      "text": "The response does not invent competitor data",
+      "passed": true,
+      "evidence": "“我无法判断‘竞品’指的是哪个领域。” The response requests source materials and provides an unpopulated template without asserting competitor facts."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 714
+  },
+  "timing": {
+    "executor_duration_seconds": 8.2,
+    "grader_duration_seconds": 6.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "174f6a44e67007dbb03170ce342b8b475229ff5c804f85a0d44b232557c01835"
+}

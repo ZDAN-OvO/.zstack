@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": false,
+      "evidence": "The plan targets “首页 p75 可交互 ≤3s” and offers a fallback of “只把这一页降到 3s”; no more ambitious performance target is proposed."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": false,
+      "evidence": "“要我把它接成正式目标吗” asks whether to formalize the existing plan. No stretch target is offered for acceptance or rejection."
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "The written plan specifies “Lighthouse CI 预算 + 冷缓存 4G 下 p75 复核” and requires “可复现 trace” to validate results."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "find": 1,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 329
+  },
+  "timing": {
+    "executor_duration_seconds": 36.8,
+    "grader_duration_seconds": 9.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "8dff487140c589e2a3276e00818b39eb28444a3cbcb09e0402690b833de81dc7"
+}

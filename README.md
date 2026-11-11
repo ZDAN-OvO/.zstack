@@ -20,7 +20,7 @@ Every skill is one of two kinds, and the flag is independent of the harness that
 - **User-invoked**: `disable-model-invocation: true` in the frontmatter, so only `/skill:<name>` reaches it. Its description is read by a human.
 - **Model-invoked**: no such flag, so the model can also reach for it on its own. Its description carries trigger phrasing.
 
-This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 36 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
+This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 38 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
 
 ## Targets
 
@@ -30,6 +30,8 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 
 ## User-invoked
 
+- **[ambition](./skills/plan/ambition/SKILL.md)**: Plan a task through altitude, depth and range, then hold the result to an outside judge.
+- **[ambitious-prompt](./skills/meta/ambitious-prompt/SKILL.md)**: Rewrite a prompt so it demands altitude, depth, range and an outside judge.
 - **[correct](./skills/meta/correct/SKILL.md)**: Find the mistakes agents keep repeating in this repo and make each one impossible.
 - **[ds-prompting](./skills/meta/ds-prompting/SKILL.md)**: DeepSeek 极限用量提示词的逐字存档，需要原样取用时调用。
 - **[grill-me](./skills/plan/grill-me/SKILL.md)**: Get relentlessly interviewed about a plan or design until every branch of the design tree is settled.
@@ -38,6 +40,7 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[how](./skills/investigate/how/SKILL.md)**: Trace a subsystem’s architecture, runtime flow, ownership, and gotchas from the code.
 - **[multi-phase-plan](./skills/plan/multi-phase-plan/SKILL.md)**: Ground changes in code and feasibility evidence, then plan reviewable PRs with strict verification gates and safe parallel boundaries.
 - **[no-comments](./skills/build/no-comments/SKILL.md)**: Spawn the comment-sicko subagent, fix accepted findings, offer encodings for claimed constraints.
+- **[prototype](./skills/plan/prototype/SKILL.md)**: Build a throwaway prototype to answer a design question: one shareable HTML file for a state model, or several switchable UI variations on one route.
 - **[readme-crafter-skill](./skills/explain/readme-crafter-skill/SKILL.md)**: Write, rewrite, or audit a repository's `README.md` as a landing page and onboarding guide.
 - **[skill-creator](./skills/meta/skill-creator/SKILL.md)**: Create or revise a skill, then measure it: test cases, a review viewer, and variance analysis before shipping it.
 - **[spike](./skills/plan/spike/SKILL.md)**: Settle design, behavior, timing, and feasibility questions with throwaway prototypes, observed evidence, and a recommendation.
@@ -47,19 +50,21 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 
 ## Model-invoked
 
+- **[altitude](./skills/plan/altitude/SKILL.md)**: Climb from the requested task to the outcome it serves and check that the road is the best one.
 - **[answer-me-with-html](./skills/explain/answer-me-with-html/SKILL.md)**: Draft an answer as Markdown and let a bundled CLI build it into a one-page visual HTML explainer, with diagrams, charts and a writing check.
 - **[archify](./skills/explain/archify/SKILL.md)**: Render architecture, workflow, sequence, ERD and lifecycle diagrams plus one-page explainers as standalone HTML through a JSON-IR CLI.
 - **[define-goal](./skills/plan/define-goal/SKILL.md)**: Turn a fuzzy intention into a measurable objective with evidence, thresholds, scope bounds and a stop condition, then create the goal.
+- **[depth](./skills/build/depth/SKILL.md)**: Work the way the field's best practitioner would: raw material, named instruments, challenged beliefs, measured rounds.
 - **[diagnosing-bugs](./skills/investigate/diagnosing-bugs/SKILL.md)**: Diagnosis loop for hard bugs and perf regressions, built on a tight pass/fail feedback loop.
 - **[dispatching-parallel-agents](./skills/build/dispatching-parallel-agents/SKILL.md)**: Split independent work across agents dispatched in one response, then review and integrate what they return.
 - **[docx](./skills/documents/docx/SKILL.md)**: Create, read, edit and template Word `.docx`/`.dotx` files.
 - **[domain-modeling](./skills/plan/domain-modeling/SKILL.md)**: Build and sharpen the domain model: challenge terms, test edge-case scenarios, keep `GLOSSARY.md` and ADRs current.
 - **[find-skills](./skills/meta/find-skills/SKILL.md)**: Discover and install skills from the open agent skills ecosystem.
 - **[grilling](./skills/plan/grilling/SKILL.md)**: Interview the user relentlessly about a plan until every branch of the design tree is settled. The engine behind `/grill-me` and `/grill-with-docs`.
+- **[outside-judge](./skills/verify/outside-judge/SKILL.md)**: Pick a judge that can say no, run it as you go, and report verified, unverified and failed claims separately.
 - **[pdf](./skills/documents/pdf/SKILL.md)**: Read, merge, split, fill, encrypt and OCR PDFs.
 - **[pptx](./skills/documents/pptx/SKILL.md)**: Build, parse and edit `.pptx` decks from templates.
-- **[preflight](./skills/plan/preflight/SKILL.md)**: Write a one-screen plan at `local/plans/<topic>.md` so the user checks, before a goal, whether the requirement could aim higher, deeper or wider (Felix Rieseberg) and whether they can state purpose, context, materials, boundaries and done (Gary Chen).
-- **[prototype](./skills/plan/prototype/SKILL.md)**: Build a throwaway prototype to answer a design question: one shareable HTML file for a state model, or several switchable UI variations on one route.
+- **[range](./skills/build/range/SKILL.md)**: Bring a crew of other fields, an adversary and one foreign instrument into the task.
 - **[shuorenhua](./skills/explain/shuorenhua/SKILL.md)**: Cut packaging and translationese from Chinese or English without dropping facts, terms or who is responsible, or mark the problems without rewriting.
 - **[tdd](./skills/build/tdd/SKILL.md)**: Write the failing regression test before fixing a bug with a cheap local test target, and fall back to the closest executable check when a test is impractical.
 - **[verification-before-completion](./skills/verify/verification-before-completion/SKILL.md)**: Put every completion claim behind fresh evidence: run the check, read the output, then report.
@@ -86,6 +91,7 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[interrogate](./skills/archive/interrogate/SKILL.md)**: Challenge a change with parallel adversaries and retain only findings confirmed by rerunning their reproductions.
 - **[maintain-verification-skill](./skills/archive/maintain-verification-skill/SKILL.md)**: Keep a project’s verification skill and feature map accurate through source review and live feature checks.
 - **[opening-a-pr](./skills/archive/opening-a-pr/SKILL.md)**: Write a fixed PR briefing on the problem, changes, scope, risk and observed verification, with original evidence linked.
+- **[preflight](./skills/archive/preflight/SKILL.md)**: Write a one-screen plan at `local/plans/<topic>.md` so you check, before a goal, whether the requirement could aim higher, deeper or wider (Felix Rieseberg) and whether you can state purpose, context, materials, boundaries and done (Gary Chen).
 - **[retro](./skills/archive/retro/SKILL.md)**: Retrospective on a coding session, most severe improvement first.
 - **[sharpen](./skills/archive/sharpen/SKILL.md)**: Make a task deeper rather than bigger, then rewrite the prompt to ask for that.
 - **[show-me](./skills/archive/show-me/SKILL.md)**: Explain the current topic visually with diagrams, code-shape sketches, and focused HTML artifacts.

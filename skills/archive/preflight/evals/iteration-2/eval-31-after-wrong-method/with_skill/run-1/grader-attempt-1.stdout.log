@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response identifies the failure as a wrong method (no diagnosis of root cause)",
+      "passed": true,
+      "evidence": "“我把这次拒收按‘方法不足’处理”；并指出“日志里本来就有，上一轮没用上”。"
+    },
+    {
+      "text": "The response proposes more depth on the same rung (e.g. start from the crash log, the undefined user at login.ts:5) rather than dropping to the fallback",
+      "passed": true,
+      "evidence": "定位到 login.ts 的 s.user.name，推断 s.user 为 undefined，并提出“mock 三种响应形态喂 mountLogin”和“一条改动前就失败的用例”。"
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": true,
+      "evidence": "CHANGES 列出 local/plans/login-whitescreen.md；FILE_CONTENTS 包含“## Tries\\n2026-11-10 · 拒收（只加 loading 骨架屏，根因未查）”。"
+    }
+  ],
+  "eval_feedback": ""
+}

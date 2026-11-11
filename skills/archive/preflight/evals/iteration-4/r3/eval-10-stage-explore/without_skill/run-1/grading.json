@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES: {\"changed\": [], \"deleted\": []}; FILE_CONTENTS: {}."
+    },
+    {
+      "text": "The response treats this as an exploring stage and lays out options with trade-offs",
+      "passed": false,
+      "evidence": "It lists comparison criteria but frames the decision as already settled: “没想好标准时的默认答案：Postgres” and “只有……MongoDB 才值得认真比较。”"
+    },
+    {
+      "text": "The response does not jump to one final recommendation as if criteria were known",
+      "passed": false,
+      "evidence": "Before establishing the project's criteria, it recommends “没想好标准时的默认答案：Postgres” and asserts “如果是‘以后可能灵活’，那答案是 Postgres + `jsonb`。”"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1
+    },
+    "total_tool_calls": 1,
+    "output_chars": 1208
+  },
+  "timing": {
+    "executor_duration_seconds": 14.7,
+    "grader_duration_seconds": 9.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "f57824e2ba829b13f71c645c4072015238ff1ae81ac5ec67d8e435aaf0d45919"
+}

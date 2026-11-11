@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The response does not invent company facts (revenue, users, market size) as if real",
+      "passed": true,
+      "evidence": "Company details remain unknown: “公司本体、阶段、融资额、目标投资人：全空”; the plan states “查不到的一律留空，不许编。” No actual revenue, user count, or market size is asserted."
+    },
+    {
+      "text": "The response asks the user about purpose or context, or offers a planning step first",
+      "passed": true,
+      "evidence": "“这份 BP 要促成的是「约到第一次会面」、「进 term sheet」还是「先过合伙人内部一道」？” explicitly asks the user to clarify the purpose."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "find": 1,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 687
+  },
+  "timing": {
+    "executor_duration_seconds": 36.9,
+    "grader_duration_seconds": 10.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "30048aa664b3daf53239e8b3c9b125925cb71b88994680dcc778084d2e69022d"
+}

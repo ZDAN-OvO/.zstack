@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 20,
+    "name": "task-vague-competitor",
+    "fixture": "empty",
+    "explicit": true,
+    "prompt": "帮我做个竞品分析",
+    "expected_output": "Asks what decision the analysis serves (purpose) and does not invent competitors or write a plan.",
+    "files": [
+      "evals/eval-fixtures/empty"
+    ],
+    "expectations": [
+      "[auto] No file was created under local/plans/",
+      "The response asks what the analysis is for, i.e. which decision it supports",
+      "The response does not produce a competitor analysis with invented companies or data"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "帮我做个竞品分析",
+  "input_hash": "b1e275fadfd58e14721d86e836f6b75de6021d421856e5ce10d93fa6cf877f4b"
+}

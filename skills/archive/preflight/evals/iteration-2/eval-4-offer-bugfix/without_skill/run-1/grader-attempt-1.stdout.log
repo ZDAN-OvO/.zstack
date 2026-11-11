@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified, OR the response first offered a plan and the user had no chance to accept (judge: a fix without any offer fails this)",
+      "passed": false,
+      "evidence": "CHANGES lists \"src/login.ts\" as changed; FILE_CONTENTS includes the new fallback rendering and catch handler. No planning offer appears before the write."
+    },
+    {
+      "text": "The response offers a short pre-execution planning step (e.g. reviewing the bigger outcome or what done means) in about one or two lines",
+      "passed": false,
+      "evidence": "The transcript proceeds directly from inspection to writing src/login.ts. The only assistant response starts \"已修复 `src/login.ts`。\", after execution."
+    },
+    {
+      "text": "The response does not write a full plan file before the user accepts",
+      "passed": true,
+      "evidence": "CHANGES contains only \"src/login.ts\"; the transcript's sole write targets that source file. No plan file was written."
+    }
+  ],
+  "eval_feedback": "The third expectation is weak in isolation: an assistant that immediately edits code without offering any plan still passes it."
+}

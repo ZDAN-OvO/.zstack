@@ -1,0 +1,3 @@
+interface:
+  display_name: "Range"
+  short_description: "Bring in methods from other fields"

@@ -1,0 +1,21 @@
+{
+  "USER_PROMPT": "帮我写本周周报，下午要交给主管",
+  "EXPECTATIONS": [
+    "The response either offers a brief planning step or asks what the report must achieve for the manager, before writing it",
+    "The response does not produce a full generic weekly report filled with invented work items"
+  ],
+  "RESPONSE": "当前目录里是空的（只有 `.keep`），没有任何工作记录、代码或文档可以参考。所以我现在没法替你编内容——周报里写什么、做到什么程度，只有你知道，编出来的东西主管一问就露馅。\n\n给你两个选择：\n\n**如果急着交，先用这个模板填空（10 分钟能搞定）：**\n\n```\n本周周报（X月X日 - X月X日）\n姓名：___ 部门：___\n\n一、本周完成\n1. 【项目/任务名】进展：___ → 结果：___（可量化就写数字：完成 3/5 模块、接口耗时从 800ms 降到 120ms）\n2. ...\n3. ...\n\n二、遇到的问题 / 风险\n- 问题：___ 影响：___ 我的处理：___ 需要支持：___\n\n三、下周计划\n1. ___\n2. ___\n\n四、其他（可选）\n- 需要的资源、跨部门协作、想跟主管对齐的事\n```\n\n**几个让周报显得专业的细节：**\n- 每条写「做了什么 → 产生什么结果」，不要只写「参与了 XX」\n- 有数字就放数字，没有数字就写状态（已上线 / 联调中 / 待评审）\n- 问题栏不要空着，空着主管会觉得你没在思考；但也别把锅甩给别人\n- 下周计划最多 3 条，写清楚交付物和时间点\n\n**如果想让我直接写好，告诉我这些就够：**\n1. 你的岗位 / 大概在做什么方向\n2. 这周实际干了哪几件事（流水账、口语都行，我来整理）\n3. 有没有卡住的事、需要主管拍板的事\n\n你把粗糙的笔记丢给我（甚至 git log、任务列表截图里的文字），我直接给你成稿。",
+  "TRANSCRIPT": "ASSISTANT: 我先看看当前目录里有没有可用的工作记录或上下文。\n\nTOOL bash: {\"command\": \"ls -la /tmp/pf-5-without_skill-vh0hhz6b 2>/dev/null | head -50\"}\n\nTOOL bash: {\"command\": \"cd /tmp/pf-5-without_skill-vh0hhz6b 2>/dev/null && find . -maxdepth 3 -not -path '*/.git/*' -not -name 'node_modules' | head -60\"}\n\nRESULT: total 172\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 .\ndrwxrwxrwt 59 root root 167936 11月 10 20:51 ..\n-rw-rw-r--  1 zdan zdan      0 11月 10 16:17 .keep\n\n\nRESULT: .\n./.keep\n\n\nASSISTANT: 当前目录里是空的（只有 `.keep`），没有任何工作记录、代码或文档可以参考。所以我现在没法替你编内容——周报里写什么、做到什么程度，只有你知道，编出来的东西主管一问就露馅。\n\n给你两个选择：\n\n**如果急着交，先用这个模板填空（10 分钟能搞定）：**\n\n```\n本周周报（X月X日 - X月X日）\n姓名：___ 部门：___\n\n一、本周完成\n1. 【项目/任务名】进展：___ → 结果：___（可量化就写数字：完成 3/5 模块、接口耗时从 800ms 降到 120ms）\n2. ...\n3. ...\n\n二、遇到的问题 / 风险\n- 问题：___ 影响：___ 我的处理：___ 需要支持：___\n\n三、下周计划\n1. ___\n2. ___\n\n四、其他（可选）\n- 需要的资源、跨部门协作、想跟主管对齐的事\n```\n\n**几个让周报显得专业的细节：**\n- 每条写「做了什么 → 产生什么结果」，不要只写「参与了 XX」\n- 有数字就放数字，没有数字就写状态（已上线 / 联调中 / 待评审）\n- 问题栏不要空着，空着主管会觉得你没在思考；但也别把锅甩给别人\n- 下周计划最多 3 条，写清楚交付物和时间点\n\n**如果想让我直接写好，告诉我这些就够：**\n1. 你的岗位 / 大概在做什么方向\n2. 这周实际干了哪几件事（流水账、口语都行，我来整理）\n3. 有没有卡住的事、需要主管拍板的事\n\n你把粗糙的笔记丢给我（甚至 git log、任务列表截图里的文字），我直接给你成稿。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

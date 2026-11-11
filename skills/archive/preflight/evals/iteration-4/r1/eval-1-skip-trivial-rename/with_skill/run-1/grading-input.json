@@ -1,0 +1,26 @@
+{
+  "USER_PROMPT": "/skill:preflight 把 src/login.ts 里的 mountLogin 改名成 renderLogin",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The rename was carried out (src/login.ts now defines renderLogin)",
+    "The response does not offer or start a planning interview"
+  ],
+  "RESPONSE": "已完成。这是一个重命名，代价远低于写计划，因此按原请求直接执行。\n\n`src/login.ts:1`：`mountLogin` → `renderLogin`，全仓库仅此一处，没有其他引用或调用点。\n\n两点说明：\n- 第 2 行的日志字符串仍是 `\"mount login\"`，那是运行时输出而非标识符，我没有改动。需要一起改成 `\"render login\"` 的话说一声。\n- 项目里没有测试文件（`npm test` 会跑 vitest 但无 spec），所以没有运行验证；改动是纯标识符替换，无行为变化。",
+  "TRANSCRIPT": "TOOL bash: {\"command\": \"ls -la; ls src 2>/dev/null\"}\n\nTOOL grep: {\"pattern\": \"mountLogin\"}\n\nRESULT: total 188\ndrwxrwxr-x  4 zdan zdan   4096 11月 10 16:17 .\ndrwxrwxrwt 63 root root 167936 11月 10 22:22 ..\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 logs\n-rw-rw-r--  1 zdan zdan    206 11月 10 16:17 package.json\n-rw-rw-r--  1 zdan zdan    104 11月 10 16:17 README.md\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 src\nlogin.ts\n\n\nRESULT: src/login.ts:1: export function mountLogin(root: HTMLElement) {\n\nTOOL read: {\"path\": \"src/login.ts\"}\n\nTOOL bash: {\"command\": \"cd /tmp/pf-1-with_skill-eeuhaj5g && cat package.json README.md && ls logs\"}\n\nRESULT: export function mountLogin(root: HTMLElement) {\n  console.log(\"mount login\");\n  const token = localStorage.getItem(\"token\");\n  fetch(\"/api/session\", { headers: { Authorization: `Bearer ${token}` } })\n    .then((r) => r.json())\n    .then((s) => { console.log(\"session\", s); root.innerHTML = renderForm(s.user.name); });\n}\n\nfunction renderForm(name: string) {\n  console.log(\"render\", name);\n  return `<form><input value=\"${name}\"/></form>`;\n}\n\n\nRESULT: {\n  \"name\": \"acme-web\",\n  \"version\": \"2.3.1\",\n  \"engines\": {\n    \"node\": \">=20\"\n  },\n  \"scripts\": {\n    \"test\": \"vitest run\",\n    \"build\": \"vite build\"\n  },\n  \"dependencies\": {\n    \"react\": \"^19.2.0\"\n  }\n}\n# acme-web\n\nReact + TypeScript 前端。`npm test` 跑 vitest。\nNode 版本见 package.json engines。\ncrashes-2026-11.csv\n\n\nTOOL edit: {\"path\": \"src/login.ts\", \"edits\": [{\"oldText\": \"export function mountLogin(root: HTMLElement) {\", \"newText\": \"export function renderLogin(root: HTMLElement) {\"}]}\n\nRESULT: Successfully replaced 1 block(s) in src/login.ts.\n\nTOOL bash: {\"command\": \"cd /tmp/pf-1-with_skill-eeuhaj5g && grep -rn \\\"mountLogin\\\\|renderLogin\\\" . ; cat src/login.ts\"}\n\nRESULT: ./src/login.ts:1:export function renderLogin(root: HTMLElement) {\nexport function renderLogin(root: HTMLElement) {\n  console.log(\"mount login\");\n  const token = localStorage.getItem(\"token\");\n  fetch(\"/api/session\", { headers: { Authorization: `Bearer ${token}` } })\n    .then((r) => r.json())\n    .then((s) => { console.log(\"session\", s); root.innerHTML = renderForm(s.user.name); });\n}\n\nfunction renderForm(name: string) {\n  console.log(\"render\", name);\n  return `<form><input value=\"${name}\"/></form>`;\n}\n\n\nASSISTANT: 已完成。这是一个重命名，代价远低于写计划，因此按原请求直接执行。\n\n`src/login.ts:1`：`mountLogin` → `renderLogin`，全仓库仅此一处，没有其他引用或调用点。\n\n两点说明：\n- 第 2 行的日志字符串仍是 `\"mount login\"`，那是运行时输出而非标识符，我没有改动。需要一起改成 `\"render login\"` 的话说一声。\n- 项目里没有测试文件（`npm test` 会跑 vitest 但无 spec），所以没有运行验证；改动是纯标识符替换，无行为变化。",
+  "CHANGES": {
+    "changed": [
+      "src/login.ts"
+    ],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {
+    "src/login.ts": "export function renderLogin(root: HTMLElement) {\n  console.log(\"mount login\");\n  const token = localStorage.getItem(\"token\");\n  fetch(\"/api/session\", { headers: { Authorization: `Bearer ${token}` } })\n    .then((r) => r.json())\n    .then((s) => { console.log(\"session\", s); root.innerHTML = renderForm(s.user.name); });\n}\n\nfunction renderForm(name: string) {\n  console.log(\"render\", name);\n  return `<form><input value=\"${name}\"/></form>`;\n}\n"
+  },
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

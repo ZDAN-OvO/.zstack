@@ -1,0 +1,12 @@
+{
+  "changed": [
+    "local/plans/q3-qbr-vp-decision.md"
+  ],
+  "deleted": [],
+  "excluded_directory_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ]
+}

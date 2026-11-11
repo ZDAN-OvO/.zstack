@@ -1,0 +1,63 @@
+TOOL bash: {"command": "ls -a; echo \"---\"; ls -a .. 2>/dev/null | head -20"}
+
+RESULT: .
+..
+.keep
+---
+.
+..
+archify-visual-check-profile-ec1MTx
+ccd-ssh.1000
+clash-verge-service.core-execution.lock
+claude-1000
+claude-http-66a9a365c9d490f9.sock
+com.google.Chrome.7dd7ZL
+com.google.Chrome.aPri0l
+com.google.Chrome.bgUzrS
+com.google.Chrome.chrome_chrome_url_fetcher_.auFacr
+com.google.Chrome.E5Zwoo
+com.google.Chrome.FwzHLj
+com.google.Chrome.HmaaR8
+com.google.Chrome.l3RkCu
+com.google.Chrome.ZVoCGu
+config-err-UIKNpr
+cursor-agent-logs-1000
+D1ulastbZDo39mf4Alj-b089YvkvfUH0o_GooHAGHWY
+.font-unix
+
+
+ASSISTANT: 当前目录是空的，没有项目上下文，所以我按通用标准来说。
+
+## 先看这几个方面，不必先看“哪个更好”
+
+| 维度 | 倾向 Postgres | 倾向 MongoDB |
+|---|---|---|
+| 数据关系 | 多实体关联、需要 join、多表事务 | 数据天然是“一整块文档”，按 id 取整条 |
+| 一致性 | 钱、库存、账目，需要 ACID 和串行化 | 最终一致可以接受 |
+| 查询方式 | 临时 SQL、报表、BI、聚合分析 | 只有固定的几条查询路径，不需要即席查询 |
+| Schema | 结构相对稳定，或“半结构化”（用 JSONB） | 每条记录字段差异大，且无法预先枚举 |
+| 规模路径 | 单机纵向扩展就能用很久 | 真的需要写入水平分片；这个需求很少真的出现 |
+| 团队与运维 | 会 SQL 的人多，托管方案到处都有 | 有人会运维 replica set、sharding |
+| 迁移成本 | 最低 | 退出成本较高 |
+
+## 最容易忽略但最关键的一点
+
+**JSONB 让“schema 灵活”不再是 Mongo 的独占理由。** 你可以把 Postgres 当成“带事务的文档库”用：一列 JSONB 存不规则的嵌套结构，其余字段照常建索引、照常 join。反过来，用 Mongo 做关系型 join 和多表事务，体验很差。
+
+所以这个选择并不对称：**Mongo 的长处 Postgres 大多能覆盖，Postgres 的长处 Mongo 覆盖不了。** 再加上扩展生态（pgvector 做向量检索、PostGIS 做地理、TimescaleDB 做时序、`SKIP LOCKED` 做队列），Postgres 能陪你走很远，不用为了新需求换库。
+
+## 需要你回答的 3 个问题
+
+1. **你要存的核心数据是什么？给我 2-3 个实体和它们的关系。** 有没有“订单-商品-用户”这种多对多？需要跨表事务吗？
+2. **读的模式是什么？** 是“前端按 id 拿整条渲染”，还是要“按各种条件组合筛选、排序、统计”？
+3. **谁来运维？** 有没有人熟悉其中一种？半夜出问题谁处理？
+
+## 如果现在必须选
+
+**选 Postgres。** 除非第 1 题你明确回答“没有关系，全是独立文档”，或者第 2 题明确回答“永远不需要即席查询”，否则选 Mongo 属于为想象中的问题付出真实的复杂度。
+
+另外两条建议：
+- 新项目别一上来就搞多数据库/多语言存储，把两者拼接起来，运维成本会翻倍。
+- 真正需要全文搜索、向量或时序时，优先考虑 Postgres 扩展，而不是新增一个数据库。
+
+补充背景信息（业务类型、预期量级、团队情况），我可以直接给结论，不用你自己对着表打分。

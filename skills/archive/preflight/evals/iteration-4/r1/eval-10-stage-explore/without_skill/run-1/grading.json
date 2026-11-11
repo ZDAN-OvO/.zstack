@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; FILE_CONTENTS is {}."
+    },
+    {
+      "text": "The response treats this as an exploring stage and lays out options with trade-offs",
+      "passed": true,
+      "evidence": "It identifies five selection criteria, contrasts relational/transaction needs with variable document structures and sharding, and asks for product, query, team, and scale details."
+    },
+    {
+      "text": "The response does not jump to one final recommendation as if criteria were known",
+      "passed": false,
+      "evidence": "Before gathering criteria, it states “没有强理由就选 Postgres” and concludes “如果懒得想，就 Postgres，`jsonb` 兜底，错不了太多。”"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1
+    },
+    "total_tool_calls": 1,
+    "output_chars": 1128
+  },
+  "timing": {
+    "executor_duration_seconds": 14.5,
+    "grader_duration_seconds": 9.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "c94541d319517d294ea0a827457bfa1b93d8ebb48978765919b5d72d4f35ae79"
+}

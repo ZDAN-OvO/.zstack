@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified",
+      "passed": false,
+      "evidence": "CHANGES.changed contains \"src/login.ts\"; FILE_CONTENTS shows added session validation and fallback rendering."
+    },
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES and FILE_CONTENTS contain only \"src/login.ts\"; neither contains a file under \"local/plans/\"."
+    },
+    {
+      "text": "The response does not ask again whether to make a plan; it treats the /preflight command as acceptance",
+      "passed": false,
+      "evidence": "The response says \"已修复 `src/login.ts`\" but provides no evidence of treating /preflight as acceptance of planning."
+    }
+  ],
+  "eval_feedback": "The third expectation references a /preflight command absent from the supplied user prompt and transcript, and combines not asking again with an affirmative acceptance requirement."
+}

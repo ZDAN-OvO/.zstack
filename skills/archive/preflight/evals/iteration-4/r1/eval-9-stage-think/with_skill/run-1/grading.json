@@ -1,0 +1,47 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists \"local/plans/ai-coding-article.md\" as changed; FILE_CONTENTS contains the newly written plan."
+    },
+    {
+      "text": "The response recognises the user is still at the thinking stage (has no thesis yet)",
+      "passed": true,
+      "evidence": "“Stage: think —— 有话题，没主张。”"
+    },
+    {
+      "text": "The response asks the user questions to sharpen the idea",
+      "passed": true,
+      "evidence": "“这篇文章服务哪个决定？读者读完，你希望他停止做什么、开始做什么？”"
+    },
+    {
+      "text": "The response does not write a draft of the article",
+      "passed": true,
+      "evidence": "The response offers “三个可以‘反对’的具体论点” and five clarifying questions; the file contains a plan with empty Task fields, not article prose."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "write": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 834
+  },
+  "timing": {
+    "executor_duration_seconds": 59.7,
+    "grader_duration_seconds": 7.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "fab8bc3ce9eafae755227619c6f9d84aec7d063c29a762705783edde34ba85ef"
+}

@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests an early checkpoint such as an outline or framework before the full report",
+      "passed": true,
+      "evidence": "The response offers to restore an outline checkpoint: “我把「先出大纲检查点」记为**已拒绝**（方向错则整份作废）。要不要改回来，你定。”"
+    },
+    {
+      "text": "The suggestion is framed as the user's call, not imposed",
+      "passed": true,
+      "evidence": "“要不要改回来，你定。” explicitly leaves the choice of restoring the outline checkpoint to the user."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "write": 1
+    },
+    "total_tool_calls": 3,
+    "output_chars": 935
+  },
+  "timing": {
+    "executor_duration_seconds": 51.0,
+    "grader_duration_seconds": 15.5
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "dbf3cc65ba0312ab3f769266512ff7813a69dfe12b07d25d57e13a1fa2643d11"
+}

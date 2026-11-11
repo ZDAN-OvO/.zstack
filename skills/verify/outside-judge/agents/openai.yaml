@@ -1,0 +1,3 @@
+interface:
+  display_name: "Outside Judge"
+  short_description: "Verify work with something that can say no"

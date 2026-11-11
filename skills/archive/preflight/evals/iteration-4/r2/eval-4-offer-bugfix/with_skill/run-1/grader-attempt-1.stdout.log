@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] src/login.ts was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only \"local/plans/login-white-screen.md\" as changed, with no deleted files."
+    },
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": true,
+      "evidence": "FILE_CONTENTS includes \"local/plans/login-white-screen.md\", beginning with \"# Plan: 登录页不再白屏\"."
+    },
+    {
+      "text": "The response does not ask again whether to make a plan; it treats the /preflight command as acceptance",
+      "passed": true,
+      "evidence": "“计划已写入 `/tmp/pf-4-with_skill-vpf1jww9/local/plans/login-white-screen.md`。” Follow-up questions concern scope and implementation readiness, not permission to create a plan."
+    }
+  ],
+  "eval_feedback": ""
+}

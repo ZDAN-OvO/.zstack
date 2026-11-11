@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "The response references the actual Q3 data (revenue falling, churn rising)",
+      "passed": true,
+      "evidence": "The response's monthly table shows revenue 182,000 → 176,000 → 171,000 and churn 12 → 19 → 24."
+    },
+    {
+      "text": "The response suggests a higher rung than filling in the template, such as explaining what changed and why or the most urgent decisions",
+      "passed": true,
+      "evidence": "“给 VP 的一页纸 —— 数字 + 月度拆解 + 归因假设 + 下季计划 + 需要拍板的一件事”"
+    },
+    {
+      "text": "The response keeps template filling available as the fallback",
+      "passed": true,
+      "evidence": "“如果你只想先要那三个数字进模板，说一声，我立刻填。”"
+    },
+    {
+      "text": "[auto] template.md was not overwritten with filled numbers",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/q3-quarterly-review.md as changed and no deletions; template.md is absent."
+    }
+  ],
+  "eval_feedback": ""
+}

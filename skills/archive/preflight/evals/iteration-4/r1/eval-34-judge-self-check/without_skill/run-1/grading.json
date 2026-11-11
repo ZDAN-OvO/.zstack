@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The response proposes a judge outside the current session, such as a regression test, CI run, or the crash count in later logs",
+      "passed": true,
+      "evidence": "Proposes a lasting regression test: “要长期防回归，得补个 vitest 用例。”"
+    },
+    {
+      "text": "The response does not settle for the assistant checking its own work as the only judge",
+      "passed": false,
+      "evidence": "Declares “已修好并自检过” based on “临时脚本验证”; the lasting Vitest regression test is deferred, with no external acceptance check established."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 1,
+    "total": 2,
+    "pass_rate": 0.5
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "find": 1,
+      "read": 4,
+      "write": 1
+    },
+    "total_tool_calls": 10,
+    "output_chars": 592
+  },
+  "timing": {
+    "executor_duration_seconds": 25.5,
+    "grader_duration_seconds": 9.7
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "d914b3affe6ee584e4f4c9d4cb08f7c27eca13bd315c4d0c9fbeacb3bed3bb40"
+}

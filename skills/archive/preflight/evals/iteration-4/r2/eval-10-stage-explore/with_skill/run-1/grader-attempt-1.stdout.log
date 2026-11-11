@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists local/plans/database-choice-criteria.md, and FILE_CONTENTS contains the newly written plan."
+    },
+    {
+      "text": "The response treats this as an exploring stage and lays out options with trade-offs",
+      "passed": false,
+      "evidence": "The response declares “阶段：Think” and says “先不问答案，先问标准从哪来,” then requests five answers without laying out database options and trade-offs."
+    },
+    {
+      "text": "The response does not jump to one final recommendation as if criteria were known",
+      "passed": true,
+      "evidence": "“Ready: no —— 五个槽全空，三条建议未裁定。” The response asks for decision criteria and does not recommend either database."
+    }
+  ],
+  "eval_feedback": ""
+}

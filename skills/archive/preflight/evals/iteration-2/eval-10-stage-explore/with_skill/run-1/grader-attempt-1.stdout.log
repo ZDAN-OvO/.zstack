@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": true,
+      "evidence": "CHANGES contains \"changed\": [] and \"deleted\": []; FILE_CONTENTS is {}."
+    },
+    {
+      "text": "The response treats this as an exploring stage and lays out options with trade-offs",
+      "passed": true,
+      "evidence": "“Stage: explore。” The comparison table covers access patterns, transactions, scaling, operations, and schema changes for both databases."
+    },
+    {
+      "text": "The response does not jump to one final recommendation as if criteria were known",
+      "passed": false,
+      "evidence": "Before receiving answers to its criteria questions, it concludes: “前三个问题里如果没有一条明确指向 Mongo，默认就是 Postgres”."
+    }
+  ],
+  "eval_feedback": ""
+}

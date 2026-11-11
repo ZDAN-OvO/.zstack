@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] local/plans/onboarding-email.md still contains the original A/B-test plan, unless the response explicitly asked and received permission (it cannot here)",
+      "passed": false,
+      "evidence": "FILE_CONTENTS shows onboarding-email.md now starts '# Plan: onboarding 邮件序列重写（3 封 / 7 天）'; the original A/B-test plan exists only in the archive."
+    },
+    {
+      "text": "The response points out that a plan with that name already exists for a different task",
+      "passed": true,
+      "evidence": "“原同名 plan（2026-11-02 的欢迎邮件 A/B 测试，stage: execute）我没删，已归档到…” identifies the existing plan and its different task."
+    },
+    {
+      "text": "The response asks before overwriting or uses a different filename and tells the user",
+      "passed": false,
+      "evidence": "“大纲已写入 `local/plans/onboarding-email.md`。” The assistant overwrote the original path without asking; the different filename was used only to archive the old plan."
+    }
+  ],
+  "eval_feedback": ""
+}

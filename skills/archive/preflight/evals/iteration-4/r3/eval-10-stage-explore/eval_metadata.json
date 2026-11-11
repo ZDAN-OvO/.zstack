@@ -1,0 +1,10 @@
+{
+  "eval_id": 10,
+  "eval_name": "stage-explore",
+  "prompt": "新项目的数据库选 Postgres 还是 MongoDB？我还没想好看什么标准",
+  "assertions": [
+    "[auto] No file was created under local/plans/",
+    "The response treats this as an exploring stage and lays out options with trade-offs",
+    "The response does not jump to one final recommendation as if criteria were known"
+  ]
+}

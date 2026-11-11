@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "/skill:preflight 我在 Postgres 和 MongoDB 之间选。标准就两条：团队只会 SQL；数据强关系。帮我定",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response evaluates the options against the two stated criteria (team knows SQL; relational data)",
+    "The response gives a decision (Postgres) tied to those criteria"
+  ],
+  "RESPONSE": "**结论：Postgres。** 你给的两条标准，全都指向同一个方向，没有需要权衡的地方。\n\n**按你的两条标准过一遍**\n\n| 标准 | Postgres | MongoDB |\n|---|---|---|\n| 团队只会 SQL | 能直接上手，现有的经验、工具和排查习惯都能沿用 | 聚合管线是另一套写法。`$lookup` 可以算作 join，但表达能力和优化器都弱得多，团队还得重新学 |\n| 数据强关系 | 外键、JOIN、多表事务、`NOT NULL`/`UNIQUE`/`CHECK` 都是一等公民 | 没有跨文档事务的日常用法，约束要自己在应用层写，一旦写漏就会产生脏数据，而且没人拦得住 |\n\n强关系数据放进文档库，就等于把关系约束从数据库搬到了代码里，这恰好是团队最不擅长、也最难 review 的地方。\n\n**这些条件会让结论反转（遇到才需要回来重看）**\n\n- 数据其实是“一个聚合根一坨”，也就是父子永远整体读写、从不跨文档查询。那关系就是表面的。\n- 写入量或水平扩展是实际受限的瓶颈，且愿意为此放弃关系约束。\n- schema 真的完全不定型，并且团队愿意彻底放弃 SQL。\n- 中间路线：核心交易数据放在 Postgres，日志、事件、半结构化数据旁路用 Mongo，但这不是你现在要做的“二选一”。\n\n**一个提醒**：如果“强关系”只是“我大概会想 join 一下”，那还是要先确认一下它到底是哪种情况。不过即使这样，结论也不变，因为 Postgres 的 `JSONB` 已经能覆盖大部分半结构化的场景，你不需要为了灵活而换库。\n\n需要我把选型理由和反转条件整理成一页可以贴到会议上的决策记录吗？如果需要，我可以写一份。",
+  "TRANSCRIPT": "ASSISTANT: **结论：Postgres。** 你给的两条标准，全都指向同一个方向，没有需要权衡的地方。\n\n**按你的两条标准过一遍**\n\n| 标准 | Postgres | MongoDB |\n|---|---|---|\n| 团队只会 SQL | 能直接上手，现有的经验、工具和排查习惯都能沿用 | 聚合管线是另一套写法。`$lookup` 可以算作 join，但表达能力和优化器都弱得多，团队还得重新学 |\n| 数据强关系 | 外键、JOIN、多表事务、`NOT NULL`/`UNIQUE`/`CHECK` 都是一等公民 | 没有跨文档事务的日常用法，约束要自己在应用层写，一旦写漏就会产生脏数据，而且没人拦得住 |\n\n强关系数据放进文档库，就等于把关系约束从数据库搬到了代码里，这恰好是团队最不擅长、也最难 review 的地方。\n\n**这些条件会让结论反转（遇到才需要回来重看）**\n\n- 数据其实是“一个聚合根一坨”，也就是父子永远整体读写、从不跨文档查询。那关系就是表面的。\n- 写入量或水平扩展是实际受限的瓶颈，且愿意为此放弃关系约束。\n- schema 真的完全不定型，并且团队愿意彻底放弃 SQL。\n- 中间路线：核心交易数据放在 Postgres，日志、事件、半结构化数据旁路用 Mongo，但这不是你现在要做的“二选一”。\n\n**一个提醒**：如果“强关系”只是“我大概会想 join 一下”，那还是要先确认一下它到底是哪种情况。不过即使这样，结论也不变，因为 Postgres 的 `JSONB` 已经能覆盖大部分半结构化的场景，你不需要为了灵活而换库。\n\n需要我把选型理由和反转条件整理成一页可以贴到会议上的决策记录吗？如果需要，我可以写一份。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

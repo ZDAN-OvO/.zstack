@@ -1,0 +1,61 @@
+TOOL bash: {"command": "ls -la /tmp/pf-18-with_skill-jhvvbcl7 2>/dev/null; echo \"---\"; ls /tmp/pf-18-with_skill-jhvvbcl7/local/plans 2>/dev/null"}
+
+TOOL bash: {"command": "cd /tmp/pf-18-with_skill-jhvvbcl7 2>/dev/null && git status --short 2>/dev/null | head -20; echo \"---files---\"; find . -maxdepth 3 -not -path '*/.git/*' -type f | head -40"}
+
+RESULT: total 172
+drwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 .
+drwxrwxrwt 64 root root 167936 11月 10 22:36 ..
+-rw-rw-r--  1 zdan zdan      0 11月 10 16:17 .keep
+---
+
+
+Command exited with code 2
+
+RESULT: ---files---
+./.keep
+
+
+TOOL bash: {"command": "date +%Y-%m-%d"}
+
+RESULT: 2026-11-10
+
+
+TOOL write: {"path": "/tmp/pf-18-with_skill-jhvvbcl7/local/plans/mom-birthday-poem.md", "content": "# Plan: 妈妈生日的一首短诗\n\n- Asked: 帮我给我妈写首生日小诗\n- Stage: execute\n- Date: 2026-11-10\n\n## Requirement\nHand over: 一首她能对上号的短诗 **＋** 交付方式（手写卡片 / 饭桌上念 / 微信发）——建议一起给，诗在哪出现决定了它长什么样\nFallback: 只写诗，交付方式你自己定\nDepth: 原料＝你口述的一个真实场景（她做饭的背影、喊你名字的语气、只有你家有的习惯），不是形容词；工具＝口语短句、不押韵、只写动作；stretch＝把\"妈妈\"二字去掉，陌生人仍能认出这是**某一个人**的妈，否则重写\nRange: 动词＝让她认出自己、让她笑一下、让她知道被看见；班子＝一个写口语诗的（删掉所有形容词，只留动作和声音）＋ 红队（专杀滥调：白发、皱纹、烛光、岁月、康乃馨、永远年轻）\nJudge: 你自己念一遍，找那句\"这不是我妈\"；红队过一遍禁词表。你能当场判，所以你的判断就够\nNeeds: 一个只有你知道的细节——我没有，得问你要\nDeclined: —\n\n## Task\nPurpose:\nContext:\nMaterials: 主＝你讲的一个真实场景（口述即可）；禁＝网络贺寿套话、成语堆砌、\"辛苦了\"\nBoundaries:\nDone: 8–12 行、口语、一个具体画面；**checkpoint**＝先看下面的初稿，你指出哪一句不像她，再定稿\n\n## Open\nPurpose / Context / Boundaries 三格空着——它们决定这首诗是\"给妈妈的\"还是\"给任何一个妈妈的\"。Above 的 altitude 那一级也等你点头。\n（已给一版初稿，见对话；它不是成品，是用来让你指出偏差的靶子。）\n\nReady: no — 需要你填三格并对 altitude 那一级拍板\n"}
+
+RESULT: Successfully wrote to /tmp/pf-18-with_skill-jhvvbcl7/local/plans/mom-birthday-poem.md
+
+ASSISTANT: 看了一遍工作区，是空的——没有关于你妈的材料。所以事实只有一个：我手里没有"她"，只有"妈妈"这个词。
+
+先把靶子给你，省得空谈：
+
+**《今年》**
+
+你总背对着我们说话，
+声音穿过抽油烟机，
+像在跟隔壁房间的人讲事情。
+
+我数过你切菜的节奏，
+比钟表准。
+最后一刀落下，饭就好了，
+从没见你看过表。
+
+所以今年我不祝你年轻。
+我祝你哪天不想做饭，
+就把锅铲一放，
+坐在窗边什么也不干，
+等我推门进来问：
+妈，今天想吃什么。
+
+这里有两处是故意留的：切菜那段是真的有画面，但如果她不做饭，这整首就废了——这就是我缺的那个细节。类的滥调（白发、皱纹、烛光、康乃馨、永远年轻）我一句没写。
+
+计划写在 `local/plans/mom-birthday-poem.md`，三格等你填：
+
+- **Purpose**：诗用在哪——手写卡片？饭桌上念？发朋友圈？这决定长短和口气。
+- **Context**：她多大、你们平时怎么称呼、说方言还是普通话（念出来顺不顺很关键）。
+- **Boundaries**：哪些话她听了会尴尬或不好意思。这条最常被漏掉，也最常毁一首祝寿诗。
+
+再一个建议你拍板的（可以拒）：**手递到底**——诗写完，顺手给你一个它该出现的场合草案（卡片正面怎么排、饭桌上什么时候念）。一首诗和一次让她被看见的时刻，成本差不了多少。
+
+填完三格，我出定稿；或者你先告诉我"哪一句不像我妈"，我按那句改。
+
+Goal 定下来之后可以用 `/define-goal`，把这份计划当源。

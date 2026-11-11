@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "The response proposes a judge outside the current session, such as a regression test, CI run, or the crash count in later logs",
+      "passed": true,
+      "evidence": "Proposes “登录页在无有效会话时走登录表单 + 一条回归测试”; the plan specifies reproduction tests that fail before the fix and pass afterward."
+    },
+    {
+      "text": "The response does not settle for the assistant checking its own work as the only judge",
+      "passed": true,
+      "evidence": "Although labeled “模型自跑”, judgment includes executable criteria: “新增 ≥2 条 vitest（无 user 不抛、有效 user 渲染 name）；`npm test` 绿”."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 5,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 1031
+  },
+  "timing": {
+    "executor_duration_seconds": 73.2,
+    "grader_duration_seconds": 15.2
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "11ac257ba4e14410f5dc78d4a9e7081c5efd4098054ab267527df6bc78521bfe"
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response identifies the failure as a wrong method (no diagnosis of root cause)",
+      "passed": true,
+      "evidence": "“计划里 `Depth: 先看崩溃日志`、`Materials: logs/crashes-2026-11.csv` 都写对了，但执行跳过了这一步，直接进入 UI 空态处理。”"
+    },
+    {
+      "text": "The response proposes more depth on the same rung (e.g. start from the crash log, the undefined user at login.ts:5) rather than dropping to the fallback",
+      "passed": true,
+      "evidence": "Diagnoses the logged “Cannot read properties of undefined (reading 'name') at login.ts:5”; fixes missing-user handling and request failures, with six passing regression tests."
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": false,
+      "evidence": "CHANGES lists only package-lock.json, package.json, src/login.test.ts, and src/login.ts; the plan is absent from both CHANGES and FILE_CONTENTS."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 9,
+      "find": 1,
+      "write": 2
+    },
+    "total_tool_calls": 12,
+    "output_chars": 1494
+  },
+  "timing": {
+    "executor_duration_seconds": 80.0,
+    "grader_duration_seconds": 9.0
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "2e3640aa4b0d57755beddd53e1fd2f4fd4616b44774d3e47e52384fc092daf53"
+}

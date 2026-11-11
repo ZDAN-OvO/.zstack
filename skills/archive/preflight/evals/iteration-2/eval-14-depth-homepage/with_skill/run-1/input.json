@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": 14,
+    "name": "depth-homepage",
+    "fixture": "homepage",
+    "explicit": true,
+    "prompt": "首页转化率掉了一半，帮我重写首页文案",
+    "expected_output": "Checks the premise first: traffic source shifted to paid_social when conversion fell; proposes raw material (support chats, funnel) and an outside judge (A/B test).",
+    "files": [
+      "evals/eval-fixtures/homepage"
+    ],
+    "expectations": [
+      "The response notices from analytics/weekly.csv that the drop coincides with a traffic source shift to paid_social",
+      "The response questions whether the copy is really the cause before rewriting",
+      "The response names raw material to start from (e.g. support chats, session recordings, funnel data)",
+      "The response names a judge outside the session, such as an A/B test",
+      "[auto] index.html was not modified"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "/skill:preflight 首页转化率掉了一半，帮我重写首页文案",
+  "input_hash": "45f79d7c58bae3cbd0dd77f786097fb630733d47dc159b4273d230a1b2d788ab"
+}

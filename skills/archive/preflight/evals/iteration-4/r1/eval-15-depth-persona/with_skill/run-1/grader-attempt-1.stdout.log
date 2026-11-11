@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response names concrete methods or tools a data analyst would use (e.g. cohort analysis, SQL, statistical tests) rather than just adopting a persona voice",
+      "passed": true,
+      "evidence": "The written plan names concrete methods: “队列留存曲线、按试用期分组的对比、8/15 前后的中断时间序列”."
+    },
+    {
+      "text": "The response points to the raw data in data/q3-metrics.csv or notes/worklog.md",
+      "passed": true,
+      "evidence": "The response explicitly states: “已核事实（来自 `data/q3-metrics.csv` + `notes/worklog.md`）”. The transcript confirms both files were read."
+    },
+    {
+      "text": "The response suggests testing a belief against the data (e.g. whether the trial change from 14 to 7 days drove churn)",
+      "passed": true,
+      "evidence": "The plan proposes a falsifiable prediction: “若试用期是主因，跳升应集中在 8/15 之后注册的 cohort，7 天试用 cohort 的 day-7 激活应显著更低”."
+    }
+  ],
+  "eval_feedback": ""
+}

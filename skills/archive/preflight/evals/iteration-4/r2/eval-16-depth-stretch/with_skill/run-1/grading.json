@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests a much more ambitious performance target than 3 seconds",
+      "passed": true,
+      "evidence": "“拉伸目标 p75 LCP ≤1.5s” proposes a target of 1.5 seconds, half the requested 3 seconds."
+    },
+    {
+      "text": "The stretch target is framed as a suggestion for the user to accept or decline",
+      "passed": true,
+      "evidence": "“三条请你逐条裁决（接受／改写／拒绝）” explicitly includes the Depth proposal containing the 1.5-second stretch target."
+    },
+    {
+      "text": "The response suggests how the result would be measured outside the session (e.g. Lighthouse, real-user metrics)",
+      "passed": true,
+      "evidence": "“工具用 RUM/web-vitals、Lighthouse CI” and “判定用干净环境的 Lighthouse 断言 + 限速真机三次取 p75” specify external measurement methods."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "ls": 1,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 1495
+  },
+  "timing": {
+    "executor_duration_seconds": 43.6,
+    "grader_duration_seconds": 8.6
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "fe1dc02913a615c4e5bacca0fce8339ab9eee1e521de4d1ea11fe4fe32fbdce5"
+}

@@ -1,0 +1,62 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS include local/plans/homepage-copy-paid-social.md."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": true,
+      "evidence": "The Requirement section contains Hand over, Fallback, Depth, Judge, and Needs; Judge states “A/B 结果为主，按来源分段判 3.5%”."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": true,
+      "evidence": "Task fills Purpose (3.5%), Context (B2B/Notion confusion), Materials (support/analytics; no online competitor copy), Boundaries (all three limits), and Done (3 variants, user selection, A/B)."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": true,
+      "evidence": "The plan explicitly contains “Ready: yes”."
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": true,
+      "evidence": "FILE_CONTENTS contains a 33-line plan, below the approximate 60-line limit."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "The substantive prose is Chinese, including “不改定价；不加弹窗；不承诺没有的功能” and “先交 3 版首屏标题+副标题”."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/homepage-copy-paid-social.md as changed and no deleted files; index.html is absent."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "write": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 527
+  },
+  "timing": {
+    "executor_duration_seconds": 24.6,
+    "grader_duration_seconds": 39.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "e9b149c5477a6ff79a3a53555a7100a77a069afd5d52959826b307736b8995b0"
+}

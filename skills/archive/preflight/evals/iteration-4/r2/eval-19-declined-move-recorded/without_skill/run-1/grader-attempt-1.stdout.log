@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "passed": false,
+      "evidence": "CHANGES lists only \"PLAN.md\"; no plan exists under local/plans/."
+    },
+    {
+      "text": "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "passed": true,
+      "evidence": "“本次只修 login.ts:5，其余两个崩溃另开 issue”；“不追求\"一周崩溃为 0\"”。"
+    },
+    {
+      "text": "The plan records the declined bigger move together with the reason (demo next week)",
+      "passed": false,
+      "evidence": "The plan separately says “不追求\"一周崩溃为 0\"” and “符合下周演示的时间约束”, but does not record the user's rejection of the bigger move with that reason."
+    },
+    {
+      "text": "The plan's Task section contains all five slots from the user's answer",
+      "passed": false,
+      "evidence": "PLAN.md has no Task section and omits the React frontend context; the five slots are not all recorded."
+    },
+    {
+      "text": "The plan ends with a Ready line",
+      "passed": false,
+      "evidence": "The final line is “- 回退：单文件改动，`git revert` 该 commit 即恢复原状，不影响后端与其他页面。” No Ready line follows."
+    }
+  ],
+  "eval_feedback": ""
+}

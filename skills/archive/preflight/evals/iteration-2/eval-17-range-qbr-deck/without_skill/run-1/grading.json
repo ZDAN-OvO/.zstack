@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": true,
+      "evidence": "“先讲问题 → 再讲根因 → 最后要决策”；“需要 VP 拍板的三件事” frames the presentation as explaining problems and securing decisions."
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": false,
+      "evidence": "The response lists “产品/销售/客户成功” as suggested action owners, but proposes no crew borrowed from other fields and no adversarial or red-team role."
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": false,
+      "evidence": "No borrowed fields or their functions are described. “负责人和完成时间……按角色填的建议值” concerns business action owners, not fields contributing to the presentation."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 20,
+      "read": 33,
+      "write": 1,
+      "edit": 10
+    },
+    "total_tool_calls": 64,
+    "output_chars": 1042
+  },
+  "timing": {
+    "executor_duration_seconds": 482.4,
+    "grader_duration_seconds": 20.2
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "58d8c076d2fae2f50947a5df9c89f6dd8d04c405bfd6ba3e80d52ad3b2598484"
+}

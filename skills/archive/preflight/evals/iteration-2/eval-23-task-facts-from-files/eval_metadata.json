@@ -1,0 +1,10 @@
+{
+  "eval_id": 23,
+  "eval_name": "task-facts-from-files",
+  "prompt": "帮我做 Q3 回顾",
+  "assertions": [
+    "The response mentions at least one fact found in notes/worklog.md (VP review next Thursday, trial cut from 14 to 7 days, or onboarding complaints)",
+    "Found facts are presented for the user to confirm rather than asked as open questions",
+    "The response still asks the user something only they can answer, such as the purpose or what done looks like"
+  ]
+}

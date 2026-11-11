@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES and FILE_CONTENTS contain only \"plan.q3-review.md\", located at the root rather than under local/plans/."
+    },
+    {
+      "text": "The plan does not invent a Done definition on the user's behalf (Done is empty, marked open, or explicitly flagged as unanswered)",
+      "passed": false,
+      "evidence": "The plan states \"## 我的完成定义（你说不清，我定这个）\" and supplies four criteria under \"同时满足即可交付\"."
+    },
+    {
+      "text": "The plan lists the missing Done under an Open section",
+      "passed": false,
+      "evidence": "No Open section lists missing Done. The questions under \"需要你给的三件事\" concern Q4 targets, customer/ARPA data, and decision preferences."
+    },
+    {
+      "text": "The plan's Ready line is 'no' with a reason tied to the missing Done",
+      "passed": false,
+      "evidence": "The plan contains no Ready line and instead defines completion itself: \"我的完成定义（你说不清，我定这个）\"."
+    }
+  ],
+  "eval_feedback": ""
+}

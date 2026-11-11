@@ -1,0 +1,81 @@
+TOOL ls: {"path": "/tmp/pf-13-with_skill-ma_vq73f"}
+
+TOOL bash: {"command": "cd /tmp/pf-13-with_skill-ma_vq73f && find . -type f -not -path './.git/*' | head -50"}
+
+RESULT: data/
+notes/
+template.md
+
+RESULT: ./template.md
+./data/q3-metrics.csv
+./notes/worklog.md
+
+
+TOOL read: {"path": "/tmp/pf-13-with_skill-ma_vq73f/template.md"}
+
+TOOL read: {"path": "/tmp/pf-13-with_skill-ma_vq73f/data/q3-metrics.csv"}
+
+TOOL read: {"path": "/tmp/pf-13-with_skill-ma_vq73f/notes/worklog.md"}
+
+RESULT: # Q3 业务回顾
+
+## 收入
+本季收入：{{revenue}}
+
+## 客户
+新增：{{new}}，流失：{{churn}}
+
+## 下季计划
+{{plan}}
+
+
+RESULT: month,revenue_usd,new_customers,churned_customers,nps
+2026-07,182000,41,12,38
+2026-08,176000,35,19,31
+2026-09,171000,30,24,27
+
+
+RESULT: # 工作日志
+
+- 9 月 8 日起，客服工单里"太难上手"的投诉明显变多。
+- 8 月中旬把免费试用从 14 天改为 7 天。
+- 老板说 QBR 下周四给 VP 看。
+
+
+TOOL bash: {"command": "cd /tmp/pf-13-with_skill-ma_vq73f && date +%F && git rev-parse --show-toplevel 2>/dev/null || echo \"no-git\"; ls -a"}
+
+RESULT: 2026-11-10
+no-git
+.
+..
+data
+notes
+template.md
+
+
+TOOL write: {"path": "/tmp/pf-13-with_skill-ma_vq73f/local/plans/q3-review.md", "content": "# Plan: Q3 季度回顾填数\n\n- 问的：「帮我把 Q3 的数字填进 template.md 做季度回顾」\n- Stage: execute\n- Date: 2026-11-10\n\n## Requirement\nHand over: 请求原样 = template 三个槽位填数（本季收入 529,000 USD；新增 106 / 流失 55）。建议上升到：一页回顾，让收入、客户、NPS 三条线各自的季度走势在纸面上可见，并附一条明确标注「待验证」的原因假设（见 Proposed）。\nFallback: 只填数字 + 一行月度走势（182k→176k→171k、净增 29→16→6），「下季计划」留空给老板定。\nDepth: 原始材料 = data/q3-metrics.csv 三行 + notes/worklog.md 的三个时间点。工具 = 月度环比、净增客户（41−12/+35−19/+30−24 = +29/+16/+6）、流失÷新增（29%→80%）、NPS 38→31→27。拉伸目标 = 用「8 月中试用期 14→7 天」去检验：若试用期是原因，9 月流失应偏向 8 月中后注册的群组——需要按注册月份的 cohort 拆分，现有数据没有，缺这个就写不出因果。\nRange: 动词 = 让 VP 看懂 Q3 到底发生了什么、判断要不要改回试用期、对 Q4 方向表态。Crew = FP&A（核对数字与收入桥）+ 增长分析（流失、上手漏斗）+ 红队（VP 视角：「你砍了试用期，流失就涨了，证明给我看」）。红队攻击因果，不评措辞。\nJudge: 自己能跑的检查 = 填进 template 的每个数必须能从 CSV 复现（529,000 / 106 / 55 / 净增 51），加总对不上即不通过。因果判断由老板和 VP 判；因此交付里只写「相关」并列出待验证的证据，不写结论。\nNeeds: 已有 month 级 CSV 与工作日志。缺：每月客户总数（算流失率）、按注册月份的 cohort（验证试用期）、收入构成。\n\n## Task\nPurpose: （待你回答）\nContext: 已查到、待你确认——QBR 下周四给 VP 看（worklog）；8 月中试用期由 14 天改为 7 天；9 月 8 日起「太难上手」工单明显变多；NPS 一季跌 11 点。\nMaterials: 一手 = data/q3-metrics.csv、notes/worklog.md。待补 = 客户总数、注册 cohort、收入构成。禁用 = （待你指定）。\nBoundaries: （待你回答）\nDone: （待你回答）\n\n## Open\n- 这次回顾要 VP 做出的决定是什么：继续投增长、改回试用期、还是要预算？\n- CSV 是最终口径吗？收入按什么确认（合同额 / 实收 / MRR）？会上谁会质疑算法？\n- 「下季计划」谁定？如果只能老板定，我该留空还是给两三个带取舍的选项？\n- 哪些话会让你说「不是我要的」——比如 VP 材料里不许写未验证的因果、不许出现内部工单原话？\n- 交付形态与检查点：先给一页提纲（数字 + 三条走势 + 一个决策请求）你过一遍，再写全文？\n\n## Proposed\n1. 拔高：在 template 之外补月度走势与净增客户，并把「8 月中 14→7 天」标在客户行旁边——单行 529,000 会把 +29→+6 的塌陷盖住，而那是 VP 一定会问的那件事。\n2. 纵深：把「下季计划」从空白变成一条方向 + 一个验证条件（Q4 头两周对比恢复 14 天试用的 cohort），并标为提议待拍板，而不是替你定。\n\nReady: no —— 上面两条建议待你拍板；Purpose / Boundaries / Done 三个槽位还空着，Materials 的禁用项也缺。\n"}
+
+RESULT: Successfully wrote to /tmp/pf-13-with_skill-ma_vq73f/local/plans/q3-review.md
+
+ASSISTANT: 计划已写好：`/tmp/pf-13-with_skill-ma_vq73f/local/plans/q3-review.md`（template.md 未动）
+
+**查到的三件事，可能和你的请求有落差：**
+
+| | 10 年内 |
+|---|---|
+| 收入 | 182k → 176k → 171k（季度 529,000，跌 6%） |
+| 净增客户 | +29 → +16 → **+6**（塌了 79%） |
+| NPS | 38 → 31 → 27 |
+
+template 里只有一个「本季收入」格，填 529,000 会把真正的故事（净增客户几乎归零、流失从 12 涨到 24）抹平。而工作日志里 8 月中试用期 14→7 天、9 月起「太难上手」投诉变多，和这条下滑线**同时发生**——这是要验证的相关，不是因果；手上数据按注册月份没拆分，写不出因果。
+
+**两条建议待你拍板：**
+1. 补月度走势 + 净增客户，把试用期改动标在客户行旁
+2. 「下季计划」给一条方向 + 验证条件（并标明待你定），而不是留空或我替你编
+
+**只有你能答的（计划里也是空的）：**
+- 这次回顾要 VP 做出的决定是什么？
+- 哪些内容算「不是我要的」（比如 VP 材料里不许出现未验证的因果、不许出现工单原话）？
+- 做到什么算完——要不要先给你一页提纲过一遍再写全文？
+
+Ready 还是 no。你拍板 + 答完上面几点，我再改计划；之后可以用 `/define-goal` 拿这份计划当输入。

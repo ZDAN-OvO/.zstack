@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": true,
+      "evidence": "“第 6 页专门用一栏向 VP 讲清这一点，避免为错误的病因开药。” This defines an audience effect: understanding uncertainty to avoid a mistaken decision."
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": false,
+      "evidence": "No cross-field crew or adversarial role is proposed. “如果 VP 质疑「证据够不够」” anticipates an audience objection but does not assign a red-team role."
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": false,
+      "evidence": "No borrowed fields or their contributions are described. “产品 + 工程”“客户成功”“客服 + 产品” assign business-plan ownership, not roles in a cross-field crew."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 17,
+      "read": 30,
+      "write": 1
+    },
+    "total_tool_calls": 48,
+    "output_chars": 1073
+  },
+  "timing": {
+    "executor_duration_seconds": 409.8,
+    "grader_duration_seconds": 16.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "4c67b732695679ec3cf701945fd90a22e2389fcd2a6ae27d7b0c8c674d1dff08"
+}

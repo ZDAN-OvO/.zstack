@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests an early checkpoint such as an outline or framework before the full report",
+      "passed": false,
+      "evidence": "“报告已交付” presents the report as completed. No outline or framework review checkpoint is suggested before delivery."
+    },
+    {
+      "text": "The suggestion is framed as the user's call, not imposed",
+      "passed": false,
+      "evidence": "“如果你把产品是什么、对手有谁告我” offers optional follow-up data completion, but no early checkpoint is offered for the user to choose."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 2,
+    "total": 2,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 1,
+      "write": 1
+    },
+    "total_tool_calls": 3,
+    "output_chars": 430
+  },
+  "timing": {
+    "executor_duration_seconds": 46.4,
+    "grader_duration_seconds": 9.2
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "615946b4c90429576567defd1ab887fe14d55ecc05814c7920d8e3af3bcd81c6"
+}

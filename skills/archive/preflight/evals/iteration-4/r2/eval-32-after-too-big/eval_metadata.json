@@ -1,0 +1,10 @@
+{
+  "eval_id": 32,
+  "eval_name": "after-too-big",
+  "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户·最新]\n按 local/plans/login-whitescreen.md 让它跑了一晚上，改了 40 个文件，PR 根本审不动，问题也没解决。",
+  "assertions": [
+    "The response treats the result as too big",
+    "The response proposes taking the fallback rung (fix the single reproduced white screen)",
+    "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line"
+  ]
+}

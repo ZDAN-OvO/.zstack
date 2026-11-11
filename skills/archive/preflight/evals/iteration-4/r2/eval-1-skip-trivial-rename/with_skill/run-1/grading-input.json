@@ -1,0 +1,26 @@
+{
+  "USER_PROMPT": "/skill:preflight 把 src/login.ts 里的 mountLogin 改名成 renderLogin",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The rename was carried out (src/login.ts now defines renderLogin)",
+    "The response does not offer or start a planning interview"
+  ],
+  "RESPONSE": "改名完成。\n\n- `src/login.ts:1`：`mountLogin` → `renderLogin`\n- 全仓库仅此一处引用，无其他调用点需要同步\n\n未写 plan：按 preflight 的 Enter 条款，比起一份 plan 更便宜的请求（改名、查文件）照原样执行。\n\n如果你其实想动的是更上游的东西（比如 `mountXxx` 这类命名在一个模块里统一成 `renderXxx`，或者有外部消费者通过 `import { mountLogin }` 引用、rename 属于破坏性变更），告诉我，那才需要一份 plan。",
+  "TRANSCRIPT": "TOOL bash: {\"command\": \"ls -la; echo ---; cat src/login.ts 2>/dev/null | head -50\"}\n\nTOOL grep: {\"pattern\": \"mountLogin\"}\n\nRESULT: total 188\ndrwxrwxr-x  4 zdan zdan   4096 11月 10 16:17 .\ndrwxrwxrwt 64 root root 167936 11月 10 22:34 ..\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 logs\n-rw-rw-r--  1 zdan zdan    206 11月 10 16:17 package.json\n-rw-rw-r--  1 zdan zdan    104 11月 10 16:17 README.md\ndrwxrwxr-x  2 zdan zdan   4096 11月 10 16:17 src\n---\nexport function mountLogin(root: HTMLElement) {\n  console.log(\"mount login\");\n  const token = localStorage.getItem(\"token\");\n  fetch(\"/api/session\", { headers: { Authorization: `Bearer ${token}` } })\n    .then((r) => r.json())\n    .then((s) => { console.log(\"session\", s); root.innerHTML = renderForm(s.user.name); });\n}\n\nfunction renderForm(name: string) {\n  console.log(\"render\", name);\n  return `<form><input value=\"${name}\"/></form>`;\n}\n\n\nRESULT: src/login.ts:1: export function mountLogin(root: HTMLElement) {\n\nTOOL bash: {\"command\": \"cd /tmp/pf-1-with_skill-qyw6wasq && sed -i 's/mountLogin/renderLogin/' src/login.ts && grep -rn \\\"renderLogin\\\\|mountLogin\\\" src/ && node -e \\\"1\\\" 2>/dev/null; cat package.json\"}\n\nRESULT: src/login.ts:1:export function renderLogin(root: HTMLElement) {\n{\n  \"name\": \"acme-web\",\n  \"version\": \"2.3.1\",\n  \"engines\": {\n    \"node\": \">=20\"\n  },\n  \"scripts\": {\n    \"test\": \"vitest run\",\n    \"build\": \"vite build\"\n  },\n  \"dependencies\": {\n    \"react\": \"^19.2.0\"\n  }\n}\n\n\nASSISTANT: 改名完成。\n\n- `src/login.ts:1`：`mountLogin` → `renderLogin`\n- 全仓库仅此一处引用，无其他调用点需要同步\n\n未写 plan：按 preflight 的 Enter 条款，比起一份 plan 更便宜的请求（改名、查文件）照原样执行。\n\n如果你其实想动的是更上游的东西（比如 `mountXxx` 这类命名在一个模块里统一成 `renderXxx`，或者有外部消费者通过 `import { mountLogin }` 引用、rename 属于破坏性变更），告诉我，那才需要一份 plan。",
+  "CHANGES": {
+    "changed": [
+      "src/login.ts"
+    ],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {
+    "src/login.ts": "export function renderLogin(root: HTMLElement) {\n  console.log(\"mount login\");\n  const token = localStorage.getItem(\"token\");\n  fetch(\"/api/session\", { headers: { Authorization: `Bearer ${token}` } })\n    .then((r) => r.json())\n    .then((s) => { console.log(\"session\", s); root.innerHTML = renderForm(s.user.name); });\n}\n\nfunction renderForm(name: string) {\n  console.log(\"render\", name);\n  return `<form><input value=\"${name}\"/></form>`;\n}\n"
+  },
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

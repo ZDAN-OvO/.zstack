@@ -1,0 +1,51 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "passed": false,
+      "evidence": "CHANGES.changed is [] and FILE_CONTENTS is {}; no plan file under local/plans/ is evidenced."
+    },
+    {
+      "text": "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "passed": true,
+      "evidence": "“Plan：修复 login.ts:5 崩溃（仅此一个）”; scope specifies “s.user 缺失时回退到空名字”."
+    },
+    {
+      "text": "The plan records the declined bigger move together with the reason (demo next week)",
+      "passed": false,
+      "evidence": "The plan says “不追求\"零崩溃\"” but does not record that the broader proposal was declined because the demo is next week."
+    },
+    {
+      "text": "The plan's Task section contains all five slots from the user's answer",
+      "passed": false,
+      "evidence": "No Task section collects the five slots. Goal, context, materials, boundaries, and completion details are dispersed across other sections."
+    },
+    {
+      "text": "The plan ends with a Ready line",
+      "passed": false,
+      "evidence": "The final line is “不做的事…不追求\"零崩溃\"…不动后端。” There is no Ready line."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4
+    },
+    "total_tool_calls": 4,
+    "output_chars": 1782
+  },
+  "timing": {
+    "executor_duration_seconds": 15.1,
+    "grader_duration_seconds": 12.4
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "02c9ed4c9043edadd53ddc3028e961d00940cdf912e37f853dc76a6593b2a335"
+}

@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES.changed includes \"local/plans/competitive-analysis.md\"; FILE_CONTENTS contains the plan."
+    },
+    {
+      "text": "The response asks what the analysis is for, i.e. which decision it supports",
+      "passed": true,
+      "evidence": "“这份分析之后你要做的那个决定是什么？”"
+    },
+    {
+      "text": "The response does not produce a competitor analysis with invented companies or data",
+      "passed": true,
+      "evidence": "The response asks for product context and materials and provides proposed methods, without naming competitors or reporting company data."
+    }
+  ],
+  "eval_feedback": ""
+}

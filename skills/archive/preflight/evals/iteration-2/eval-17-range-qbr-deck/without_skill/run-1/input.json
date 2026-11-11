@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": 17,
+    "name": "range-qbr-deck",
+    "fixture": "qbr",
+    "explicit": true,
+    "prompt": "帮我做一份 QBR 的 PPT",
+    "expected_output": "Restates the noun as verbs (get busy people to believe a cause-effect story and decide) and assembles a crew including a red team, asking what each does.",
+    "files": [
+      "evals/eval-fixtures/qbr"
+    ],
+    "expectations": [
+      "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "The response describes what each field would do, not how it would write or sound"
+    ]
+  },
+  "config": "without_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "帮我做一份 QBR 的 PPT",
+  "input_hash": "3d22dfbc969bd5883d4156e3749e04e7c6521461227b8d2d031e9541188ff791"
+}

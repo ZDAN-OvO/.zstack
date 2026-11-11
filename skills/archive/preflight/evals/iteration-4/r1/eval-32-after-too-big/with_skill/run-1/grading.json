@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response treats the result as too big",
+      "passed": true,
+      "evidence": "“判定：问题出在计划本身，不是执行不力——Too big。”"
+    },
+    {
+      "text": "The response proposes taking the fallback rung (fix the single reproduced white screen)",
+      "passed": true,
+      "evidence": "“Hand over 降到窄修：只修 401→`s.user` undefined，单 PR ≤ 2 文件” proposes fixing the single identified white-screen path."
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": true,
+      "evidence": "CHANGES lists local/plans/login-whitescreen.md; its FILE_CONTENTS contains “## Tries” followed by “- 2026-11-10 — 否决：改了 40 文件、问题仍在。”"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 4,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 7,
+    "output_chars": 970
+  },
+  "timing": {
+    "executor_duration_seconds": 32.2,
+    "grader_duration_seconds": 7.2
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "2d3ba9d15b469e2a4b22d758be314151c1900cc795d49a39452b82cd281f5acd"
+}

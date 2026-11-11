@@ -1,0 +1,22 @@
+{
+  "USER_PROMPT": "我在 Postgres 和 MongoDB 之间选。标准就两条：团队只会 SQL；数据强关系。帮我定",
+  "EXPECTATIONS": [
+    "[auto] No file was created under local/plans/",
+    "The response evaluates the options against the two stated criteria (team knows SQL; relational data)",
+    "The response gives a decision (Postgres) tied to those criteria"
+  ],
+  "RESPONSE": "**PostgreSQL。**\n\n两条标准都直接指向它：\n\n**1. 团队只会 SQL**\n- Postgres 不需要团队学习额外内容，现有的 SQL、JOIN、事务、explain 分析都能继续使用。\n- MongoDB 需要团队额外学习文档建模、聚合管道（`$lookup`/`$unwind`/`$group`），以及驱动/ODM（对象文档映射）的语义（如 BSON、Mongoose），这些学习成本都要由“只会 SQL”的团队承担。\n\n**2. 数据强关系**\n- 外键约束、JOIN、ACID 事务、唯一/检查约束都是 Postgres 的原生能力，数据库层面能保证一致性。\n- Mongo 的 `$lookup` 只是“查询时拼接”，没有外键，也没有级联，而且跨文档事务有性能代价，通常要刻意回避。强关系模型放在文档库里，一致性约束会退化成应用层代码。\n\n**需要注意的一点**：Mongo 常被选的理由是“schema 灵活”，但 Postgres 的 `jsonb` 也能满足需求，半结构化字段放进 `jsonb`（可建 GIN 索引），关系部分仍然用正规表和 JOIN。所以灵活性上你并不亏。\n\n什么时候不该选 Postgres：如果数据其实是**以单文档为聚合根、几乎不需要跨实体 JOIN、写入吞吐优先**于一致性（如日志、事件、内容快照），那 Mongo 的文档模型才更自然。但对照你的两条标准，这些条件都不满足。\n\n**决定：PostgreSQL。** 强关系数据交给关系库，并且团队已经具备操作它的知识；这是唯一没有技能断层又能保障一致性约束的选项。",
+  "TRANSCRIPT": "ASSISTANT: **PostgreSQL。**\n\n两条标准都直接指向它：\n\n**1. 团队只会 SQL**\n- Postgres 不需要团队学习额外内容，现有的 SQL、JOIN、事务、explain 分析都能继续使用。\n- MongoDB 需要团队额外学习文档建模、聚合管道（`$lookup`/`$unwind`/`$group`），以及驱动/ODM（对象文档映射）的语义（如 BSON、Mongoose），这些学习成本都要由“只会 SQL”的团队承担。\n\n**2. 数据强关系**\n- 外键约束、JOIN、ACID 事务、唯一/检查约束都是 Postgres 的原生能力，数据库层面能保证一致性。\n- Mongo 的 `$lookup` 只是“查询时拼接”，没有外键，也没有级联，而且跨文档事务有性能代价，通常要刻意回避。强关系模型放在文档库里，一致性约束会退化成应用层代码。\n\n**需要注意的一点**：Mongo 常被选的理由是“schema 灵活”，但 Postgres 的 `jsonb` 也能满足需求，半结构化字段放进 `jsonb`（可建 GIN 索引），关系部分仍然用正规表和 JOIN。所以灵活性上你并不亏。\n\n什么时候不该选 Postgres：如果数据其实是**以单文档为聚合根、几乎不需要跨实体 JOIN、写入吞吐优先**于一致性（如日志、事件、内容快照），那 Mongo 的文档模型才更自然。但对照你的两条标准，这些条件都不满足。\n\n**决定：PostgreSQL。** 强关系数据交给关系库，并且团队已经具备操作它的知识；这是唯一没有技能断层又能保障一致性约束的选项。",
+  "CHANGES": {
+    "changed": [],
+    "deleted": []
+  },
+  "FILE_CONTENTS": {},
+  "EXCLUDED_GENERATED_DIRECTORIES": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "EXCLUDED_GENERATED_FILE_COUNT_IN_RAW_MANIFEST": 0
+}

@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": 19,
+    "name": "declined-move-recorded",
+    "fixture": "webapp",
+    "explicit": false,
+    "prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 修一下 logs 里出现最多的那个崩溃\n\n[助手]\n我看了 logs/crashes-2026-11.csv，最多的是 login.ts:5 的 TypeError。建议往上一级：让登录页零崩溃，并用一周崩溃日志为 0 作判据；只修这一个崩溃作为退路。你接受吗？\n\n[用户·最新]\n不接受，下周就演示了，只修这一个就行。目标：演示不崩；背景：React 前端，session 接口偶尔不返回 user；素材：logs 和 src/login.ts；边界：不改后端；完成：一个带回归测试的 PR。写 plan 吧。",
+    "expected_output": "Writes a plan handing over the single fix, records the declined move with reason, all five slots filled.",
+    "files": [
+      "evals/eval-fixtures/webapp"
+    ],
+    "expectations": [
+      "[auto] A plan file exists under local/plans/ with a kebab-case English slug",
+      "The plan's handed-over rung is the single crash fix, not the bigger outcome",
+      "The plan records the declined bigger move together with the reason (demo next week)",
+      "The plan's Task section contains all five slots from the user's answer",
+      "The plan ends with a Ready line"
+    ]
+  },
+  "config": "with_skill",
+  "model": "auto/deepseek-v4.1-flash",
+  "effective_prompt": "下面是这次会话到目前为止的记录，请只回复最后一条用户消息：\n\n[用户]\n/skill:preflight 修一下 logs 里出现最多的那个崩溃\n\n[助手]\n我看了 logs/crashes-2026-11.csv，最多的是 login.ts:5 的 TypeError。建议往上一级：让登录页零崩溃，并用一周崩溃日志为 0 作判据；只修这一个崩溃作为退路。你接受吗？\n\n[用户·最新]\n不接受，下周就演示了，只修这一个就行。目标：演示不崩；背景：React 前端，session 接口偶尔不返回 user；素材：logs 和 src/login.ts；边界：不改后端；完成：一个带回归测试的 PR。写 plan 吧。",
+  "input_hash": "a5cb333025bea8e7c4b2f377611bc33d4c39a3423f468b59488ad25f9dcaeefa"
+}

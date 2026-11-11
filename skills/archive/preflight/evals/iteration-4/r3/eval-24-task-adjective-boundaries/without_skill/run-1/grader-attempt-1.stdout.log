@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response points out that 'high-end, clean, tech' are directions or adjectives rather than boundaries",
+      "passed": false,
+      "evidence": "The response says “高级/简洁/科技感落到可验收的规则” but never identifies these adjectives as directions rather than boundaries."
+    },
+    {
+      "text": "The response asks for concrete things to avoid (don'ts)",
+      "passed": false,
+      "evidence": "“明确不做：玻璃拟态堆叠、粒子背景、轮播图、自动播放视频。” supplies its own exclusions. Its questions ask about positioning and calendar connection, not the user's don'ts."
+    },
+    {
+      "text": "The response does not write a Ready: yes plan with the adjectives standing in as boundaries",
+      "passed": true,
+      "evidence": "There is no “Ready: yes” declaration, and the response gives concrete constraints: “首屏一个视觉焦点，背景留白 ≥ 50%，只有一处强调色。”"
+    }
+  ],
+  "eval_feedback": ""
+}

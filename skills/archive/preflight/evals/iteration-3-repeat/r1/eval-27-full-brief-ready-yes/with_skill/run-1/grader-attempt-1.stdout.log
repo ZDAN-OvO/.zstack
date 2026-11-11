@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists at local/plans/<kebab-case-english-slug>.md",
+      "passed": true,
+      "evidence": "CHANGES and FILE_CONTENTS both include local/plans/paid-social-signup-rate.md."
+    },
+    {
+      "text": "The plan has a Requirement section with hand-over, fallback, depth, judge (A/B test) and needs",
+      "passed": true,
+      "evidence": "“## Requirement” contains Hand over, Fallback, Depth, Judge (“A/B 测试”), and Needs."
+    },
+    {
+      "text": "The plan has all five Task slots filled from the user's answer",
+      "passed": true,
+      "evidence": "Task includes Purpose (3.5%), Context (B2B、Notion), Materials (support、analytics；禁用网上竞品文案), Boundaries (不改定价、不加弹窗、不承诺没有的功能), Done (3 版首屏标题+副标题，用户挑选后 A/B)."
+    },
+    {
+      "text": "The plan's Ready line is yes",
+      "passed": false,
+      "evidence": "“Ready: no —— 缺‘与 Notion 的差异’这条产品事实，且 3.5% 的目标口径未定；这两项给了就能出 3 版”"
+    },
+    {
+      "text": "The plan is short (one screen, roughly under 60 lines)",
+      "passed": true,
+      "evidence": "The plan has 33 lines, including blank lines, below the approximate 60-line limit."
+    },
+    {
+      "text": "The plan is written in Chinese",
+      "passed": true,
+      "evidence": "The substantive plan text is Chinese: “Purpose: 让付费社媒来的新访客注册率回到 3.5%”."
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES lists only local/plans/paid-social-signup-rate.md as changed and no deleted files."
+    }
+  ],
+  "eval_feedback": "The shortness expectation is weak: fewer than 60 physical lines can still exceed one screen when long paragraphs wrap."
+}

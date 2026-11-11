@@ -1,0 +1,1 @@
+Done. 3 处 `console.log` 已从 `src/login.ts` 删除，其余逻辑未动（行内那处只摘掉了调用，`root.innerHTML` 保留）。文件里已无 `console.` 或 `debugger`。

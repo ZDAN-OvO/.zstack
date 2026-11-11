@@ -1,0 +1,10 @@
+{
+  "eval_id": 8,
+  "eval_name": "skip-debug-question",
+  "prompt": "login.ts 第 5 行为什么会报 Cannot read properties of undefined (reading 'name')？",
+  "assertions": [
+    "[auto] No file was created under local/plans/",
+    "The response explains that s.user can be undefined when the session has no user",
+    "The response does not offer a pre-execution plan"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "changed": [
+    "src/login.test.ts",
+    "src/login.ts"
+  ],
+  "deleted": [],
+  "excluded_directory_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ]
+}

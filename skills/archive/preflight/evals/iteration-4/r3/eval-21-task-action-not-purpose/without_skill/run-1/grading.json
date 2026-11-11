@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "The response asks what decision or problem the analysis should support",
+      "passed": true,
+      "evidence": "“目的是什么：定价策略、销售 battlecard、融资材料里的竞争格局、还是产品路线图取舍？”"
+    },
+    {
+      "text": "The response does not treat the listed dimensions as a complete task definition",
+      "passed": true,
+      "evidence": "Asks for product, market, competitor selection criteria, and purpose: “你们做什么产品、什么品类、面向谁” and “请给出判断标准（同客群 / 同场景 / 同价位 / 替代方案）”。"
+    },
+    {
+      "text": "The response does not invent competitor data",
+      "passed": true,
+      "evidence": "No competitor-specific facts or prices are supplied. Instead, it requests sources: “你把 5 家的官网文案、定价页、文档、G2/评论摘录贴给我或放到工作目录”。"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "ls": 1,
+      "bash": 1
+    },
+    "total_tool_calls": 2,
+    "output_chars": 666
+  },
+  "timing": {
+    "executor_duration_seconds": 12.4,
+    "grader_duration_seconds": 7.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "76069c303deeda08cfeac2c09795ef275cf0444ad74c164da4b0108bb8abc88f"
+}

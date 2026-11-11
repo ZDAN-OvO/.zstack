@@ -1,0 +1,49 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"plan.md\"; FILE_CONTENTS contains no file under \"local/plans/\"."
+    },
+    {
+      "text": "The plan does not invent a Done definition on the user's behalf (Done is empty, marked open, or explicitly flagged as unanswered)",
+      "passed": false,
+      "evidence": "The plan explicitly invents one: \"完成定义（我替你定，不满意随时改）：VP 5 分钟读完能复述…且每个数字都能追到 CSV。\""
+    },
+    {
+      "text": "The plan lists the missing Done under an Open section",
+      "passed": false,
+      "evidence": "No Open section or unanswered Done appears. \"## 4. 周四之前我需要补的（否则 QBR 上会答不出来）\" lists missing business data only."
+    },
+    {
+      "text": "The plan's Ready line is 'no' with a reason tied to the missing Done",
+      "passed": false,
+      "evidence": "The complete plan.md contains no Ready line and no reason identifying Done as missing."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 4,
+    "total": 4,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 1,
+      "find": 1,
+      "read": 3,
+      "write": 1
+    },
+    "total_tool_calls": 6,
+    "output_chars": 532
+  },
+  "timing": {
+    "executor_duration_seconds": 24.5,
+    "grader_duration_seconds": 8.9
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "a3cbc453b88d0002ac0fb41aeaa8ed70666c390fd518d45439b5421ab24e150d"
+}

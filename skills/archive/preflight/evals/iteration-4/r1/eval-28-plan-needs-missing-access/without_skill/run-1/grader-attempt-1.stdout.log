@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] A plan file exists under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists only \"plan.md\"; FILE_CONTENTS contains only \"plan.md\", with no plan under local/plans/."
+    },
+    {
+      "text": "The plan notes that only monthly or quarterly data is available and daily data or access is missing",
+      "passed": true,
+      "evidence": "plan.md: “当前没有可用于回测\"每日\"监控的历史数据。” and “只有 3 行（2026-07/08/09），月粒度”。"
+    },
+    {
+      "text": "The plan's judge or Done includes backtesting on history and/or running beside the current review",
+      "passed": true,
+      "evidence": "完成定义 includes “回测通过：用历史数据跑一遍，报警时点早于季报时点” and “并行运行一个季度：日/周监控与季报同时产出”。"
+    }
+  ],
+  "eval_feedback": ""
+}

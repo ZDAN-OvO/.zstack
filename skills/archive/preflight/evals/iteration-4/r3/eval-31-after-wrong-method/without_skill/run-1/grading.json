@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "The response identifies the failure as a wrong method (no diagnosis of root cause)",
+      "passed": true,
+      "evidence": "“plan 写的 `Depth: 先看崩溃日志`，上一轮执行显然跳过了，才会去做骨架屏这种通用兜底” explicitly identifies the skipped diagnosis and wrong method."
+    },
+    {
+      "text": "The response proposes more depth on the same rung (e.g. start from the crash log, the undefined user at login.ts:5) rather than dropping to the fallback",
+      "passed": true,
+      "evidence": "The transcript reads crash logs and src/login.ts, traces undefined s.user to unchecked session responses, adds response validation and error handling, and runs five passing regression tests."
+    },
+    {
+      "text": "[auto] local/plans/login-whitescreen.md was updated with a '## Tries' section containing a dated line",
+      "passed": false,
+      "evidence": "CHANGES lists only “package-lock.json”, “package.json”, “src/login.test.ts”, and “src/login.ts”; no plan update or dated “## Tries” section is supplied in FILE_CONTENTS."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 9,
+      "ls": 1,
+      "write": 2
+    },
+    "total_tool_calls": 12,
+    "output_chars": 1165
+  },
+  "timing": {
+    "executor_duration_seconds": 58.6,
+    "grader_duration_seconds": 24.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "cd48e58d7c29f4eeb647df79f198f024662d2d674b896cd1079600343be24609"
+}

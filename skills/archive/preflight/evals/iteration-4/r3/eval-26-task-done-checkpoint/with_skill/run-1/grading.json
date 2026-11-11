@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "The response suggests an early checkpoint such as an outline or framework before the full report",
+      "passed": false,
+      "evidence": "The plan records “Declined: 早检查点（先出大纲再写全文）—— 理由：直接要完整报告。” No early checkpoint is offered to the user."
+    },
+    {
+      "text": "The suggestion is framed as the user's call, not imposed",
+      "passed": false,
+      "evidence": "“Ready 是 no。你逐条回，我改计划；确认 Ready 之后可以接 `/define-goal`” makes alignment a prerequisite without offering the user a choice to skip it."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 2,
+    "total": 2,
+    "pass_rate": 0.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 3,
+      "write": 1
+    },
+    "total_tool_calls": 4,
+    "output_chars": 463
+  },
+  "timing": {
+    "executor_duration_seconds": 80.8,
+    "grader_duration_seconds": 27.3
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "d0e29356b5395c9cfebf84de87bc6536962d2cd85b98b7f27e3c48e50fe17dfd"
+}

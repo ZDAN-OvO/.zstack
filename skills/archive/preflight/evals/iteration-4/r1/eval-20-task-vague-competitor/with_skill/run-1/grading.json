@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "[auto] No file was created under local/plans/",
+      "passed": false,
+      "evidence": "CHANGES lists \"local/plans/competitive-analysis.md\", and FILE_CONTENTS contains the newly written plan."
+    },
+    {
+      "text": "The response asks what the analysis is for, i.e. which decision it supports",
+      "passed": true,
+      "evidence": "“这份东西出现后，你要做的**那个决定**是什么？（‘了解竞品’不是决定）”"
+    },
+    {
+      "text": "The response does not produce a competitor analysis with invented companies or data",
+      "passed": true,
+      "evidence": "The response provides proposed methods and clarification questions, with no company comparisons or factual competitor data: “再给竞品三家和你能拿到的一手材料。”"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "read": 2,
+      "write": 1
+    },
+    "total_tool_calls": 5,
+    "output_chars": 760
+  },
+  "timing": {
+    "executor_duration_seconds": 37.8,
+    "grader_duration_seconds": 12.1
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "6ef027301c07a7bc9ed994151e4144bf83a4f122649db351e266a336dc3b3bd9"
+}

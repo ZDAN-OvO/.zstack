@@ -1,0 +1,157 @@
+TOOL bash: {"command": "pwd; ls -a; echo '---'; cat local/plans/login-whitescreen.md 2>/dev/null | head -100"}
+
+TOOL bash: {"command": "cd /tmp/pf-32-with_skill-5vctmfg1 2>/dev/null; git status --porcelain 2>/dev/null | head -60; echo '--- log'; git log --oneline -15 2>/dev/null"}
+
+RESULT: /tmp/pf-32-with_skill-5vctmfg1
+.
+..
+local
+logs
+package.json
+README.md
+src
+---
+# Plan: 登录页白屏不再出现
+
+- Asked: 帮我修一下登录页偶尔白屏的 bug
+- Stage: execute
+- Date: 2026-11-08
+
+## Requirement
+Hand over: 登录页白屏不再出现，并有回归测试
+Fallback: 只修当前复现的那一个白屏
+Depth: 先看崩溃日志
+Range: —
+Judge: 回归测试通过 + 一周内崩溃日志该错误为 0
+Needs: 崩溃日志
+Declined: —
+
+## Task
+Purpose: 下周演示前登录稳定
+Context: React 前端，登录依赖 /api/session
+Materials: logs/crashes-2026-11.csv, src/login.ts
+Boundaries: 不改后端接口
+Done: 一个 PR，含回归测试
+
+Ready: yes
+
+
+RESULT: --- log
+
+
+Command exited with code 128
+
+TOOL bash: {"command": "cd /tmp/pf-32-with_skill-5vctmfg1; ls -R src logs local | head -40; echo '=== crashes'; head -30 logs/crashes-2026-11.csv"}
+
+TOOL bash: {"command": "cd /tmp/pf-32-with_skill-5vctmfg1; cat README.md; echo '=== pkg'; cat package.json; echo '=== login.ts'; cat src/login.ts"}
+
+RESULT: local:
+plans
+
+local/plans:
+login-whitescreen.md
+
+logs:
+crashes-2026-11.csv
+
+src:
+login.ts
+=== crashes
+date,app_version,error,count
+2026-11-01,2.3.0,"TypeError: Cannot read properties of undefined (reading 'name') at login.ts:5",412
+2026-11-01,2.3.0,"ChunkLoadError: Loading chunk 7 failed",88
+2026-11-03,2.3.1,"TypeError: Cannot read properties of undefined (reading 'name') at login.ts:5",377
+2026-11-05,2.3.1,"RangeError: Maximum call stack size exceeded at cart.ts:41",19
+
+
+RESULT: # acme-web
+
+React + TypeScript 前端。`npm test` 跑 vitest。
+Node 版本见 package.json engines。
+=== pkg
+{
+  "name": "acme-web",
+  "version": "2.3.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^19.2.0"
+  }
+}
+=== login.ts
+export function mountLogin(root: HTMLElement) {
+  console.log("mount login");
+  const token = localStorage.getItem("token");
+  fetch("/api/session", { headers: { Authorization: `Bearer ${token}` } })
+    .then((r) => r.json())
+    .then((s) => { console.log("session", s); root.innerHTML = renderForm(s.user.name); });
+}
+
+function renderForm(name: string) {
+  console.log("render", name);
+  return `<form><input value="${name}"/></form>`;
+}
+
+
+TOOL bash: {"command": "date +%F; cd /tmp/pf-32-with_skill-5vctmfg1; ls node_modules 2>/dev/null | head -3; ls -a src"}
+
+RESULT: 2026-11-10
+.
+..
+login.ts
+
+
+TOOL write: {"path": "/tmp/pf-32-with_skill-5vctmfg1/local/plans/login-whitescreen.md", "content": "# Plan: 登录页白屏不再出现\n\n- Asked: 帮我修一下登录页偶尔白屏的 bug\n- Stage: execute\n- Date: 2026-11-08（2026-11-10 修订）\n\n## Requirement\nHand over: 只修 login.ts:5 这一处 —— `/api/session` 没有 user 时渲染空表单，不再整页白屏（1 file，~6 行 diff）\nFallback: 连兜底都不改，只在挂载处加一层错误边界，把白屏换成错误提示（0 逻辑改动）\nDepth: 原始材料=logs/crashes-2026-11.csv 按 error+文件行号聚合：896 次里 789 次（412+377）都是同一行 `login.ts:5`，只有一个根因；专家动作=先算清规模再动手，而不是边跑边改。Stretch：用 app_version 分布验证 2.3.1 是否真的修好（377 次仍在，说明没修）\nRange: 动词=定位单行 / 只改一处 / 证明不复发。Crew：前端排障（聚合日志把 896 收敛到 1 行）、测试（只断言该行不抛）、红队（这次改动会不会把真实 401 吞掉，让用户看不到\"请重新登录\"）\nJudge: 回归测试通过 **且** diff 只碰 1 个文件（≤2）、审阅 ≤5 分钟；改前先贴「根因一行 + 计划 diff」给人看一眼（checkpoint）\nNeeds: 崩溃日志 ✅；缺：overnight 那支分支的 diff（好判断哪些是噪音、哪些能留）、vitest 与测试目录（package.json 现无测试依赖、src 下无测试文件）\nDeclined: 原 Hand over「白屏不再出现，并有回归测试」——理由：范围吞进了 ChunkLoadError（88 次，另一个根因，部署后旧 chunk），于是 40 文件扫射；改为一次只吞一个根因\n\n## Task\nPurpose: 下周演示前登录稳定\nContext: 实际崩溃是 `/api/session` 在未登录/token 过期时返回无 `user`，`s.user.name` 读 undefined；`r.json()` 在 401 非 JSON 时也会抛，两条路径都落到白屏。ChunkLoadError 是独立问题，不在本次范围\nMaterials: logs/crashes-2026-11.csv（按 error+行号聚合）、src/login.ts（primary）\nBoundaries: 不改后端接口；不重构、不改目录结构、不动无关 console；单 PR 文件数 ≤2；不顺手修 ChunkLoadError\nDone: 1 个文件 diff + 1 个断言该行不抛的测试 + 审阅 ≤5 分钟。Checkpoint：动手写代码前先出「根因一行 + diff 预览」\n\n## Open\n- overnight 那 40 个文件里，有没有值得保留的一处？（拿到 diff 才能判，否则整支丢弃重开）\n- 无 vitest 环境：回归测试跑不起来，\"Done\" 里那条断言现在没人能执行\n\n## Tries\n- 2026-11-10 | 结果被拒：40 files / PR 审不动 / 问题未解决 | 判定 = Too big（接了 Hand over 的大范围）+ Missed intent（Boundaries 没有规模墙，Done 没有 checkpoint）| 改法 = 降到 Fallback，用日志把范围钉到 login.ts:5 一行；Boundaries 加文件数上限；Done 加\"改前先看 diff 预览\"\n\nReady: no，因为 overnight 分支 diff 与测试环境还没拿到；Hand over 已改为 Fallback 那一级，等你确认降级与两道墙\n"}
+
+RESULT: Successfully wrote to /tmp/pf-32-with_skill-5vctmfg1/local/plans/login-whitescreen.md
+
+ASSISTANT: ## 判定：不是执行不到位，是计划给了它 40 个文件的空间
+
+用 `logs/crashes-2026-11.csv` 一聚合，范围本来只有一行：
+
+| error | 次数 |
+|---|---|
+| `TypeError: ... reading 'name' at login.ts:5` | **789**（412+377） |
+| `ChunkLoadError: Loading chunk 7 failed` | 88（另一个根因，部署后旧 chunk） |
+| `RangeError ... cart.ts:41` | 19（无关） |
+
+`src/login.ts:5` 在 `/api/session` 返回没有 `user`（未登录 / token 过期 / 401 非 JSON）时读 `s.user.name` → 整页白屏。2.3.1 里 377 次还在，说明这行没被碰过。
+
+计划里的两处漏，让它整夜都在猜：
+
+1. **Too big** — `Hand over: 白屏不再出现，并有回归测试` 这一步把 ChunkLoadError 也算进"白屏"，于是它去改 chunk 加载、路由、请求层……40 个文件。`Fallback: 只修当前复现的那一个白屏` 本来就在计划里，但没被执行。
+2. **Missed intent** — `Boundaries` 只有"不改后端接口"，没有规模墙；`Done` 直接是"一个 PR"，没有改前 checkpoint，所以 40 文件的 PR 也算交了卷。
+
+## 已改的（`local/plans/login-whitescreen.md`）
+
+- Hand over 降到 Fallback 那一级：**只修 login.ts:5**，1 file / ~6 行
+- Boundaries 加墙：单 PR 文件数 ≤2、不重构、不顺手修 ChunkLoadError
+- Done 加 checkpoint：**动手前先出「根因一行 + diff 预览」**
+- Depth 换成专家动作：先按 error+行号聚合、算清 896→1，再动手
+- Judge 加一条可自查的：diff 只碰 1 个文件、审阅 ≤5 分钟
+
+目标改法（等你点头再落盘）：
+
+```ts
+export function mountLogin(root: HTMLElement) {
+  const token = localStorage.getItem("token");
+  fetch("/api/session", { headers: { Authorization: `Bearer ${token}` } })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((s) => { root.innerHTML = renderForm(s?.user?.name ?? ""); })
+    .catch(() => { root.innerHTML = renderForm(""); });   // 401 / 非 JSON 也不白屏
+}
+```
+
+红队会问的那句先摆出来：这样吞掉后，token 过期的人看到空表单，以为是"没登录过"而不是"请重新登录"——演示前够用，但不是终态。
+
+## 需要你两个东西（`Ready: no`）
+
+1. 那 40 个文件的**分支 diff**——不给的话整支丢弃重开，免得有人把噪音当修复继承下来
+2. **vitest 环境**：`package.json` 没有测试依赖，`src` 下没有测试文件，"回归测试通过"这条现在没人能执行
+
+计划在 `local/plans/login-whitescreen.md`。确认降级 + 两道墙后 `Ready: yes`，可以接着用 `/define-goal` 把它当来源。

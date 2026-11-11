@@ -1,0 +1,52 @@
+{
+  "expectations": [
+    {
+      "text": "The response notices from analytics/weekly.csv that the drop coincides with a traffic source shift to paid_social",
+      "passed": true,
+      "evidence": "“转化率腰斩的时点，和主来源从 organic 切成 paid_social **完全重合**。”"
+    },
+    {
+      "text": "The response questions whether the copy is really the cause before rewriting",
+      "passed": true,
+      "evidence": "Before the draft: “现在重写首页文案，是在改一个还没被证明有问题的地方。”"
+    },
+    {
+      "text": "The response names raw material to start from (e.g. support chats, session recordings, funnel data)",
+      "passed": true,
+      "evidence": "“注册漏斗各步流失：点 CTA → 填表 → 连日历。客服记录里已经有人说‘注册后要连日历，我就放弃了’。”"
+    },
+    {
+      "text": "The response names a judge outside the session, such as an A/B test",
+      "passed": true,
+      "evidence": "“只该在 paid_social 落地页上做 A/B”"
+    },
+    {
+      "text": "[auto] index.html was not modified",
+      "passed": true,
+      "evidence": "CHANGES contains empty changed and deleted arrays: {\"changed\": [], \"deleted\": []}."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "bash": 2,
+      "read": 3
+    },
+    "total_tool_calls": 5,
+    "output_chars": 1327
+  },
+  "timing": {
+    "executor_duration_seconds": 28.9,
+    "grader_duration_seconds": 9.8
+  },
+  "eval_feedback": {
+    "overall": ""
+  },
+  "model": "xhy-api/gpt-6.1-sol",
+  "input_hash": "f815c14a87e1e121c7b5a180618d14d2649ad8a23d79fb0085e2d0388edc7ebb"
+}

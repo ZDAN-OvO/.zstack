@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One workspace, ready on day one</title>
+<meta name="description" content="Docs, tasks, and chat in one workspace. Start in seconds — no calendar or SSO setup. Pricing is public.">
+<style>
+  :root{
+    --bg:#0a0b0d;
+    --ink:#f4f5f7;
+    --muted:#9aa1ab;
+    --line:rgba(255,255,255,.09);
+    --accent:#d8ff43;
+    --max:1080px;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  /* fine grid, fades out — texture without noise */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(to right,rgba(255,255,255,.045) 1px,transparent 1px),
+      linear-gradient(to bottom,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:84px 84px;
+    -webkit-mask-image:radial-gradient(120% 85% at 50% 0%,#000 0%,transparent 72%);
+            mask-image:radial-gradient(120% 85% at 50% 0%,#000 0%,transparent 72%);
+  }
+  .glow{
+    position:fixed;top:-38vh;left:50%;transform:translateX(-50%);
+    width:min(1100px,140vw);height:70vh;z-index:0;pointer-events:none;
+    background:radial-gradient(closest-side,rgba(216,255,67,.10),rgba(216,255,67,0) 70%);
+  }
+  .wrap{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:0 24px}
+  a{color:inherit}
+
+  /* ---------- nav ---------- */
+  header{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.01em;text-decoration:none}
+  .brand i{width:16px;height:16px;border-radius:5px;background:var(--accent);display:block}
+  nav{display:flex;align-items:center;gap:28px}
+  nav a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .15s}
+  nav a:hover,nav a:focus-visible{color:var(--ink)}
+  nav a.cta{
+    color:var(--ink);border:1px solid var(--line);border-radius:999px;
+    padding:8px 16px;transition:border-color .15s,background .15s;
+  }
+  nav a.cta:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.04)}
+  @media (max-width:640px){ nav a:not(.cta){display:none} }
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(52px,11vh,120px) 0 clamp(56px,8vh,96px)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 26px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  h1{
+    margin:0;max-width:19ch;
+    font-size:clamp(2.5rem,6.4vw,4.5rem);
+    line-height:1.02;letter-spacing:-.035em;font-weight:600;
+    text-wrap:balance;
+  }
+  h1 span{color:var(--muted)}
+  .sub{
+    margin:24px 0 0;max-width:44ch;
+    font-size:clamp(1rem,1.6vw,1.125rem);color:var(--muted);line-height:1.65;
+  }
+  .actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:38px 0 0}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--ink);color:#08090a;text-decoration:none;
+    font-weight:600;font-size:15px;letter-spacing:-.01em;
+    padding:14px 24px;border-radius:999px;
+    transition:transform .15s,box-shadow .2s,background .15s;
+  }
+  .btn svg{transition:transform .18s}
+  .btn:hover{background:#fff;box-shadow:0 6px 30px rgba(255,255,255,.14)}
+  .btn:hover svg{transform:translateX(3px)}
+  .link{
+    font-size:14.5px;color:var(--ink);text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px;
+    transition:border-color .15s,color .15s;
+  }
+  .link:hover{border-color:var(--accent);color:var(--accent)}
+  .fine{
+    margin:18px 0 0;font-size:13px;color:#6d7480;
+    display:flex;flex-wrap:wrap;gap:6px 16px;
+  }
+  .fine span{display:inline-flex;align-items:center;gap:7px}
+  .fine span::before{content:"";width:3px;height:3px;border-radius:50%;background:#3b4049}
+
+  /* ---------- capabilities ---------- */
+  .grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);
+  }
+  .cell{padding:34px 28px 40px 0;border-right:1px solid var(--line)}
+  .cell:last-child{border-right:0;padding-right:0}
+  .num{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.1em}
+  .cell h2{margin:16px 0 8px;font-size:17px;font-weight:600;letter-spacing:-.015em}
+  .cell p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.6;max-width:30ch}
+  @media (max-width:820px){
+    .grid{grid-template-columns:1fr}
+    .cell{padding:28px 0;border-right:0;border-bottom:1px solid var(--line)}
+    .cell:last-child{border-bottom:0}
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;
+    padding:30px 0 46px;margin-top:clamp(48px,8vh,88px);
+    border-top:1px solid var(--line);
+    font-size:13px;color:#6d7480;
+  }
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--ink)}
+
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header>
+    <a class="brand" href="/"><i aria-hidden="true"></i>Northwind</a>
+    <nav aria-label="Main">
+      <a href="/pricing">Pricing</a>
+      <a href="/docs">Docs</a>
+      <a class="cta" href="/signup">Start free</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">One workspace for the whole team</p>
+      <h1>Docs, tasks, and chat.<br><span>One place, no setup.</span></h1>
+      <p class="sub">
+        Your team's work is already wired together — so you start on day one
+        instead of spending week one connecting tools.
+      </p>
+      <div class="actions">
+        <a class="btn" href="/signup">
+          Create a workspace
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="link" href="/pricing">See pricing&nbsp;→</a>
+      </div>
+      <p class="fine">
+        <span>No calendar to connect</span>
+        <span>Pricing published, not quoted</span>
+        <span>Invite your team in one link</span>
+      </p>
+    </section>
+
+    <section class="grid" aria-label="What you get">
+      <div class="cell">
+        <p class="num">01</p>
+        <h2>Start without integrations</h2>
+        <p>Sign up, name the workspace, invite the team. Nothing to connect first.</p>
+      </div>
+      <div class="cell">
+        <p class="num">02</p>
+        <h2>Docs, tasks, and chat together</h2>
+        <p>A task links to its spec, and the discussion stays attached to both.</p>
+      </div>
+      <div class="cell">
+        <p class="num">03</p>
+        <h2>Public pricing, no sales call</h2>
+        <p>Every plan and limit is on the page — no "contact us" wall.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Northwind</span>
+    <span><a href="/pricing">Pricing</a> · <a href="/security">Security</a> · <a href="/contact">Contact</a></span>
+  </footer>
+</div>
+</body>
+</html>

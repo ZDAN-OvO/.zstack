@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "The response restates the deck's job as verbs or an effect on its audience rather than as 'a deck'",
+      "passed": true,
+      "evidence": "“我把它讲成一条主线（增长减速 → 流失翻倍 → 体验先崩）……这样 VP 能记住一个结论。” This explicitly identifies the intended audience effect."
+    },
+    {
+      "text": "The response suggests borrowing from other fields (a crew), including at least one adversarial or red-team role",
+      "passed": false,
+      "evidence": "“主动暴露了 4 个口径缺口……放在附录防守” anticipates scrutiny, but no borrowed fields, crew, or adversarial role are proposed."
+    },
+    {
+      "text": "The response describes what each field would do, not how it would write or sound",
+      "passed": false,
+      "evidence": "“下季计划 — 3 条工作流 + 需 VP 决策的 3 项” describes business plans; no borrowed fields are identified or assigned concrete tasks."
+    }
+  ],
+  "eval_feedback": ""
+}
