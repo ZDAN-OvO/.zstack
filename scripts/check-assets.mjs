@@ -36,10 +36,10 @@ export function parseFrontmatter(text) {
   return fields;
 }
 
-// `targets.json` is the one source of truth for which harness gets which skill, and the two
+// `targets.json` is the one source of truth for which harness gets which skill, and the three
 // farms are its only materialization: one symlink per skill, pointing into `skills/`.
 const TARGETS = "targets.json";
-const FARMS = { pi: "skills-pi", claude: "skills-claude" };
+const FARMS = { pi: "skills-pi", claude: "skills-claude", codex: "skills-codex" };
 // A bucket, not a scene: kept in the repo, published to no harness.
 const ARCHIVE = "archive";
 

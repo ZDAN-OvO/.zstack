@@ -9,9 +9,10 @@ skills/<scene>/<skill-name>/SKILL.md    the skill, one copy
 skills/archive/<skill-name>/            kept here, published to no harness
 skills-pi/<skill-name>                  -> ../skills/<scene>/<skill-name>
 skills-claude/<skill-name>              -> ../skills/<scene>/<skill-name>
+skills-codex/<skill-name>               -> ../skills/<scene>/<skill-name>
 ```
 
-Two levels under `skills/`: a scene, then a skill. `skills/archive/` is a bucket, not a scene, and holds skills no harness is told about. Supporting files (`references/`, `scripts/`, assets) sit beside `SKILL.md` inside the skill directory. `skills-pi/` and `skills-claude/` are never edited by hand; `scripts/link-skills.mjs` builds them from `targets.json`.
+Two levels under `skills/`: a scene, then a skill. `skills/archive/` is a bucket, not a scene, and holds skills no harness is told about. Supporting files (`references/`, `scripts/`, assets) sit beside `SKILL.md` inside the skill directory. `skills-pi/`, `skills-claude/`, and `skills-codex/` are never edited by hand; `scripts/link-skills.mjs` builds them from `targets.json`.
 
 ## Invocation
 
@@ -20,13 +21,13 @@ Every skill is one of two kinds, and the flag is independent of the harness that
 - **User-invoked**: `disable-model-invocation: true` in the frontmatter, so only `/skill:<name>` reaches it. Its description is read by a human.
 - **Model-invoked**: no such flag, so the model can also reach for it on its own. Its description carries trigger phrasing.
 
-This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 38 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
+This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 37 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
 
 ## Targets
 
-[`targets.json`](./targets.json) is the single source of truth. `pi` lists what Pi gets, `claude` lists what Claude Code gets, and a name in both is shared, with the file still existing once. The checker fails when a scene skill is in no list and not archived, when a farm disagrees with the lists, or when the index below disagrees with either.
+[`targets.json`](./targets.json) is the single source of truth. `pi` lists what Pi gets, `claude` lists what Claude Code gets, and `codex` lists what Codex gets; a name in more than one is shared, with the file still existing once. The checker fails when a scene skill is in no list and not archived, when a farm disagrees with the lists, or when the index below disagrees with either.
 
-The split follows the harness. Claude Code carries the long, judgment-heavy workflows, because its harness is built for them. Pi keeps the narrow, self-contained ones and stays cheap.
+The split follows the harness. Claude Code carries the long, judgment-heavy workflows, because its harness is built for them. Pi keeps the narrow, self-contained ones and stays cheap. Codex gets a subset of the Pi list.
 
 ## User-invoked
 
@@ -70,7 +71,6 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[verification-before-completion](./skills/verify/verification-before-completion/SKILL.md)**: Put every completion claim behind fresh evidence: run the check, read the output, then report.
 - **[writing-for-agents](./skills/meta/writing-for-agents/SKILL.md)**: The levers for writing anything an agent consumes: context pointers, skills, `AGENTS.md`, and pointer wording.
 - **[xlsx](./skills/documents/xlsx/SKILL.md)**: Read, edit, clean and generate spreadsheets, formulas and charts.
-- **[zdan-mode](./skills/meta/zdan-mode/SKILL.md)**: zdan's agent style for plan-gated work, delegated execution, evidence-based verification, small stacked PRs, and terse Chinese reporting.
 
 ## Archived
 
@@ -101,13 +101,14 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[verify-pr](./skills/archive/verify-pr/SKILL.md)**: Independently run a PR’s real behavior, audit acceptance and check sensitivity, and issue a verdict bound to its versions.
 - **[voice-debrief](./skills/archive/voice-debrief/SKILL.md)**: 面试或会议录音转写复盘，可存飞书文档并归档到对应多维表格。
 - **[wider](./skills/archive/wider/SKILL.md)**: Turn a deliverable's noun into a verb, then suggest fields that do that verb best and one technique to borrow from each.
+- **[zdan-mode](./skills/archive/zdan-mode/SKILL.md)**: zdan's agent style for plan-gated work, delegated execution, evidence-based verification, small stacked PRs, and terse Chinese reporting.
 
 ## Install
 
-Each harness needs one directory symlink, pointing at its farm:
+Each harness is pointed at its farm. Pi and Claude Code take one directory symlink each; Codex keeps its own `.system/` directory inside `~/.codex/skills`, so that directory gets one symlink per skill.
 
 ```bash
-node scripts/link-skills.mjs          # rebuild both farms from targets.json, then point the two links at them
+node scripts/link-skills.mjs          # rebuild all three farms from targets.json, then link them into the harnesses
 node scripts/link-skills.mjs --check  # report a missing, stale, or wrong link
 ```
 
@@ -115,5 +116,6 @@ node scripts/link-skills.mjs --check  # report a missing, stale, or wrong link
 | --- | --- | --- |
 | Pi | `~/.pi/agent/skills` | `skills-pi/` |
 | Claude Code | `~/.claude/skills` | `skills-claude/` |
+| Codex | `~/.codex/skills/<skill-name>` | `skills-codex/` |
 
-Because each farm is one symlink per skill, a `git pull` keeps both harnesses current and no skill file is ever copied. Then run `/reload` in Pi. Conventions for installing, adapting, and indexing skills live in [`AGENTS.md`](./AGENTS.md).
+Because each farm is one symlink per skill, a `git pull` keeps all three harnesses current and no skill file is ever copied. Then run `/reload` in Pi. Conventions for installing, adapting, and indexing skills live in [`AGENTS.md`](./AGENTS.md).

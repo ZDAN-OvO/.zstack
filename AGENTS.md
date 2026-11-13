@@ -9,8 +9,8 @@ This repo is a skill library, not a project to build or test. Each directory und
 | Skill | `skills/<scene>/<skill-name>/SKILL.md` |
 | Scenes | Exactly seven, one level: `plan`, `build`, `verify`, `investigate`, `explain`, `documents`, `meta` |
 | Archive | `skills/archive/<skill-name>/` holds skills no harness is told about. It is a bucket, not an eighth scene |
-| Targets | `targets.json` lists which skills each harness gets: `pi` and `claude`. A skill in a scene must appear in at least one list; a skill in no list belongs in `archive/` |
-| Farms | `skills-pi/<skill-name>` and `skills-claude/<skill-name>` are symlinks into `skills/`, built from `targets.json`. Never edited by hand; each harness only needs one symlink at the farm |
+| Targets | `targets.json` lists which skills each harness gets: `pi`, `claude`, and `codex`. A skill in a scene must appear in at least one list; a skill in no list belongs in `archive/` |
+| Farms | `skills-pi/<skill-name>`, `skills-claude/<skill-name>`, and `skills-codex/<skill-name>` are symlinks into `skills/`, built from `targets.json`. Never edited by hand |
 | Root index | `README.md` lists every skill: user-invoked, model-invoked, and archived. It is the only index |
 | Supporting files | `references/`, `scripts/`, and assets stay beside `SKILL.md` |
 | Frontmatter | `name` must equal the skill directory name |
@@ -47,7 +47,7 @@ This is a Pi porting rule rather than upstream wording. When an upstream skill l
    node scripts/link-skills.mjs --check
    ```
 
-   The script reads `targets.json`, rebuilds `skills-pi/` and `skills-claude/` (one relative symlink per skill, pointing into `skills/`), then points `~/.pi/agent/skills` at the first farm and `~/.claude/skills` at the second. It prunes links that point into this repo but are no longer listed, and leaves every entry it does not own alone, so a skill that travels to both harnesses is still one directory here. It does not read frontmatter, so check the invocation flag against upstream yourself.
+   The script reads `targets.json`, rebuilds `skills-pi/`, `skills-claude/`, and `skills-codex/` (one relative symlink per skill, pointing into `skills/`), then points `~/.pi/agent/skills` at the first farm, `~/.claude/skills` at the second, and links each skill from the third into `~/.codex/skills`. It prunes links that point into this repo but are no longer listed, and leaves every entry it does not own alone, so a skill that travels to several harnesses is still one directory here. It does not read frontmatter, so check the invocation flag against upstream yourself.
 
 7. Add the entry to `README.md` under the right invocation heading and the scene folder the skill landed in, add its name to `targets.json`, and report the source and revision, plus any reference the copy left dangling (a playbook, skill, or path that does not exist here).
 
@@ -55,17 +55,17 @@ The user runs `/reload` in Pi after a skill or its frontmatter changes.
 
 ## Facts
 
-- `~/.pi/agent/skills` is Pi's user skill directory and `~/.claude/skills` Claude Code's. Each is a single symlink to a farm in this repo (`skills-pi/`, `skills-claude/`), and each farm holds one symlink per published skill pointing into `skills/`. A `git pull` therefore updates both harnesses, and a skill that goes to both still lives here once. Pi discovers directories containing `SKILL.md` recursively, so the scene folder costs nothing.
+- `~/.pi/agent/skills` is Pi's user skill directory, `~/.claude/skills` Claude Code's, and `~/.codex/skills` Codex's. The first two are single symlinks to `skills-pi/` and `skills-claude/`; Codex keeps its own `.system/` directory there, so `skills-codex/` is linked in one skill at a time. Each farm holds one symlink per published skill pointing into `skills/`. A `git pull` therefore updates all three harnesses, and a skill that goes to several still lives here once. Pi discovers directories containing `SKILL.md` recursively, so the scene folder costs nothing.
 - `~/.agents/` is retired: nothing is published there any more, and neither script writes it.
-- Writing through either link writes into this repo's working tree. Tools that install skills by writing there modify the repo directly; treat those changes as unreviewed and verify them with `git status`.
-- `scripts/link-skills.mjs` maintains both farms and both links from `targets.json`; it is the only supported way to publish skills. Idempotent, no dependencies, and it owns only links that resolve inside this repo.
+- Writing through any of these links writes into this repo's working tree. Tools that install skills by writing there modify the repo directly; treat those changes as unreviewed and verify them with `git status`.
+- `scripts/link-skills.mjs` maintains all three farms and the harness links from `targets.json`; it is the only supported way to publish skills. Idempotent, no dependencies, and it owns only links that resolve inside this repo.
 - `AGENTS.global.md` is the global instructions asset. Publish it by symlink at `~/.pi/agent/AGENTS.md` for Pi's native context loader. This repo's own instructions remain in this file.
 
 ## Verify library assets
 
 | Check | Command |
 | --- | --- |
-| Both farms and both harness links match `targets.json`, with no stale links into this repo | `node scripts/link-skills.mjs --check` |
+| All three farms and every harness link match `targets.json`, with no stale links into this repo | `node scripts/link-skills.mjs --check` |
 | Scene layout, archive, targets, root index, frontmatter, invocation mode | `node scripts/check-assets.mjs` |
 | Checker regression tests | `node --test scripts/*.test.mjs` |
 

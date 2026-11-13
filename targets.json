@@ -57,7 +57,31 @@
     "readme-crafter-skill",
     "skill-creator",
     "spike",
+    "wait-what"
+  ],
+  "codex": [
+    "altitude",
+    "ambition",
+    "ambitious-prompt",
+    "answer-me-with-html",
+    "archify",
+    "correct",
+    "depth",
+    "domain-modeling",
+    "ds-prompting",
+    "grilling",
+    "grill-me",
+    "grill-with-docs",
+    "how",
+    "no-comments",
+    "outside-judge",
+    "prototype",
+    "range",
+    "readme-crafter-skill",
+    "skill-creator",
+    "spike",
+    "verification-before-completion",
     "wait-what",
-    "zdan-mode"
+    "why"
   ]
 }

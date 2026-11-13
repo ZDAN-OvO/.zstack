@@ -3,13 +3,16 @@
 //
 //   skills-pi/<skill>      -> ../skills/<scene>/<skill>     built from targets.json
 //   skills-claude/<skill>  -> ../skills/<scene>/<skill>     built from targets.json
-//   ~/.pi/agent/skills     -> skills-pi/                    Pi's user skill directory
-//   ~/.claude/skills       -> skills-claude/                Claude Code's user skill directory
+//   skills-codex/<skill>   -> ../skills/<scene>/<skill>     built from targets.json
+//   ~/.pi/agent/skills     -> skills-pi/                    Pi's user skill directory, one link
+//   ~/.claude/skills       -> skills-claude/                Claude Code's, one link
+//   ~/.codex/skills/<skill> -> skills-codex/<skill>         Codex's, one link per skill
 //
-// One directory symlink per harness is all a harness needs, and one symlink per skill in each
-// farm keeps both current after a git pull, so a skill file exists once. Nothing outside those
-// two links is touched: a target directory holding anything that does not point back into this
-// repo is reported, not deleted.
+// One symlink per skill in each farm keeps all three harnesses current after a git pull, so a
+// skill file exists once. Pi and Claude Code take a single directory link; Codex keeps its own
+// `.system/` directory inside `~/.codex/skills`, so it gets one link per skill there instead.
+// Nothing outside those links is touched: an entry that does not point back into this repo is
+// reported, not deleted.
 // Usage: node scripts/link-skills.mjs [--check]
 import fs from "node:fs";
 import path from "node:path";
@@ -23,6 +26,7 @@ const skillsDir = path.join(repo, "skills");
 const LINKS = [
   { base: path.join(home, ".pi", "agent"), name: "skills", src: path.join(repo, "skills-pi") },
   { base: path.join(home, ".claude"), name: "skills", src: path.join(repo, "skills-claude") },
+  { base: path.join(home, ".codex"), name: "skills", src: path.join(repo, "skills-codex"), shared: true },
 ];
 function problem(message) {
   console.log(`problem: ${message}`);
@@ -169,12 +173,70 @@ function publish({ base, name, src }) {
   return problem(`${dest} exists and is neither a symlink nor a directory, left alone`);
 }
 
+/** Keep one link per published skill in a harness directory that also holds the app's own entries. */
+function publishShared({ base, name, src }) {
+  const dest = path.join(base, name);
+  const state = fs.lstatSync(dest, { throwIfNoEntry: false });
+  if (!state) {
+    if (checkOnly) return problem(`${dest} does not exist; run scripts/link-skills.mjs`);
+    fs.mkdirSync(dest, { recursive: true });
+    console.log(`created ${dest}`);
+  } else if (!state.isDirectory()) {
+    return problem(`${dest} is not a directory; this harness needs its own entries beside ours`);
+  }
+
+  const wanted = fs.existsSync(src) ? fs.readdirSync(src).sort() : [];
+  const owned = (link) => {
+    const target = fs.readlinkSync(link);
+    return path.resolve(dest, target).startsWith(repo + path.sep);
+  };
+  let ok = true;
+
+  for (const entry of fs.readdirSync(dest, { withFileTypes: true })) {
+    if (!entry.isSymbolicLink()) continue;
+    const link = path.join(dest, entry.name);
+    if (!owned(link) || wanted.includes(entry.name)) continue;
+    if (checkOnly) ok = problem(`${link} is not in targets.json; run scripts/link-skills.mjs`) && ok;
+    else {
+      fs.rmSync(link, { force: true });
+      console.log(`removed ${link} (not in targets.json)`);
+    }
+  }
+
+  for (const skill of wanted) {
+    const link = path.join(dest, skill);
+    const expected = path.join(src, skill);
+    const current = fs.lstatSync(link, { throwIfNoEntry: false });
+    if (!current) {
+      if (checkOnly) ok = problem(`${link} is missing; run scripts/link-skills.mjs`) && ok;
+      else {
+        fs.symlinkSync(expected, link);
+        console.log(`linked ${link} -> ${expected}`);
+      }
+      continue;
+    }
+    if (!current.isSymbolicLink()) {
+      ok = problem(`${link} is a real file or directory, left alone`) && ok;
+      continue;
+    }
+    if (path.resolve(dest, fs.readlinkSync(link)) === expected) continue;
+    if (checkOnly) ok = problem(`${link} points elsewhere; run scripts/link-skills.mjs`) && ok;
+    else {
+      fs.rmSync(link, { force: true });
+      fs.symlinkSync(expected, link);
+      console.log(`relinked ${link} -> ${expected}`);
+    }
+  }
+  return ok;
+}
+
 const wanted = targets();
 let ok = wanted !== null;
 if (ok) {
   const scenes = sceneOf();
   ok = syncFarm("skills-pi", wanted.pi ?? [], scenes) && ok;
   ok = syncFarm("skills-claude", wanted.claude ?? [], scenes) && ok;
-  for (const link of LINKS) ok = publish(link) && ok;
+  ok = syncFarm("skills-codex", wanted.codex ?? [], scenes) && ok;
+  for (const link of LINKS) ok = (link.shared ? publishShared(link) : publish(link)) && ok;
 }
 if (!ok) process.exitCode = 1;

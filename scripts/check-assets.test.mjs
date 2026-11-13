@@ -9,7 +9,7 @@ import { checkAssets, parseFrontmatter } from "./check-assets.mjs";
 const SKILL = (name, { user = false } = {}) =>
   `---\nname: ${name}\ndescription: does one thing\n${user ? "disable-model-invocation: true\n" : ""}---\n\n# ${name}\n`;
 
-const TARGETS = (pi = [], claude = []) => `${JSON.stringify({ pi, claude }, null, 2)}\n`;
+const TARGETS = (pi = [], claude = [], codex = []) => `${JSON.stringify({ pi, claude, codex }, null, 2)}\n`;
 
 function library(t, files) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "check-assets-"));
@@ -246,7 +246,7 @@ test("frontmatter parsing rejects a missing block", () => {
 // The farms are the only materialization of targets.json, so they are checked when they exist.
 function farm(t, files, links) {
   const root = library(t, files);
-  for (const farmName of ["skills-pi", "skills-claude"]) fs.mkdirSync(path.join(root, farmName), { recursive: true });
+  for (const farmName of ["skills-pi", "skills-claude", "skills-codex"]) fs.mkdirSync(path.join(root, farmName), { recursive: true });
   for (const [rel, target] of Object.entries(links)) fs.symlinkSync(target, path.join(root, rel));
   return root;
 }
@@ -265,6 +265,21 @@ test("a populated pair of farms has no problems", (t) => {
     "skills-claude/other": "../skills/verify/other",
   });
   assert.deepEqual(checkAssets(root), []);
+});
+
+test("the codex farm is checked like the others", (t) => {
+  const root = farm(
+    t,
+    { ...FARM_BASE, "targets.json": TARGETS(["beta"], ["other"], ["beta", "other"]) },
+    {
+      "skills-pi/beta": "../skills/plan/beta",
+      "skills-claude/other": "../skills/verify/other",
+      "skills-codex/beta": "../skills/plan/beta",
+    },
+  );
+  const [problem] = checkAssets(root);
+  assert.equal(problem.rule, "target-link-missing");
+  assert.match(problem.message, /other/);
 });
 
 test("a skill in the pool with no link is reported", (t) => {
