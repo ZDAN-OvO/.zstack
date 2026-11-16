@@ -52,7 +52,6 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 ## Model-invoked
 
 - **[altitude](./skills/plan/altitude/SKILL.md)**: Climb from the requested task to the outcome it serves and check that the road is the best one.
-- **[answer-me-with-html](./skills/explain/answer-me-with-html/SKILL.md)**: Draft an answer as Markdown and let a bundled CLI build it into a one-page visual HTML explainer, with diagrams, charts and a writing check.
 - **[archify](./skills/explain/archify/SKILL.md)**: Render architecture, workflow, sequence, ERD and lifecycle diagrams plus one-page explainers as standalone HTML through a JSON-IR CLI.
 - **[define-goal](./skills/plan/define-goal/SKILL.md)**: Turn a fuzzy intention into a measurable objective with evidence, thresholds, scope bounds and a stop condition, then create the goal.
 - **[depth](./skills/build/depth/SKILL.md)**: Work the way the field's best practitioner would: raw material, named instruments, challenged beliefs, measured rounds.
@@ -62,6 +61,7 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[domain-modeling](./skills/plan/domain-modeling/SKILL.md)**: Build and sharpen the domain model: challenge terms, test edge-case scenarios, keep `GLOSSARY.md` and ADRs current.
 - **[find-skills](./skills/meta/find-skills/SKILL.md)**: Discover and install skills from the open agent skills ecosystem.
 - **[grilling](./skills/plan/grilling/SKILL.md)**: Interview the user relentlessly about a plan until every branch of the design tree is settled. The engine behind `/grill-me` and `/grill-with-docs`.
+- **[oil-diff](./skills/explain/oil-diff/SKILL.md)**: Turn a Git diff, commit range or working tree into a single-file HTML report page for non-coders: business summary, before/after diagrams, file tree and source drawer.
 - **[oil-ui](./skills/build/oil-ui/SKILL.md)**: Design, refine and review interfaces: one visual direction by default, three-way comparison on request, real-browser screenshot critique, and `DESIGN.md` governance.
 - **[outside-judge](./skills/verify/outside-judge/SKILL.md)**: Pick a judge that can say no, run it as you go, and report verified, unverified and failed claims separately.
 - **[pdf](./skills/documents/pdf/SKILL.md)**: Read, merge, split, fill, encrypt and OCR PDFs.
