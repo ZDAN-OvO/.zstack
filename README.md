@@ -21,7 +21,7 @@ Every skill is one of two kinds, and the flag is independent of the harness that
 - **User-invoked**: `disable-model-invocation: true` in the frontmatter, so only `/skill:<name>` reaches it. Its description is read by a human.
 - **Model-invoked**: no such flag, so the model can also reach for it on its own. Its description carries trigger phrasing.
 
-This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 37 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
+This matters most in Pi: every model-invoked description sits in its prompt on every turn, while a user-invoked skill costs nothing until it is called. The two sections below list the 38 skills that at least one harness is told about; skills in `skills/archive/` are listed under `## Archived` instead.
 
 ## Targets
 
@@ -62,6 +62,7 @@ The split follows the harness. Claude Code carries the long, judgment-heavy work
 - **[domain-modeling](./skills/plan/domain-modeling/SKILL.md)**: Build and sharpen the domain model: challenge terms, test edge-case scenarios, keep `GLOSSARY.md` and ADRs current.
 - **[find-skills](./skills/meta/find-skills/SKILL.md)**: Discover and install skills from the open agent skills ecosystem.
 - **[grilling](./skills/plan/grilling/SKILL.md)**: Interview the user relentlessly about a plan until every branch of the design tree is settled. The engine behind `/grill-me` and `/grill-with-docs`.
+- **[oil-ui](./skills/build/oil-ui/SKILL.md)**: Design, refine and review interfaces: one visual direction by default, three-way comparison on request, real-browser screenshot critique, and `DESIGN.md` governance.
 - **[outside-judge](./skills/verify/outside-judge/SKILL.md)**: Pick a judge that can say no, run it as you go, and report verified, unverified and failed claims separately.
 - **[pdf](./skills/documents/pdf/SKILL.md)**: Read, merge, split, fill, encrypt and OCR PDFs.
 - **[pptx](./skills/documents/pptx/SKILL.md)**: Build, parse and edit `.pptx` decks from templates.
